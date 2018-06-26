@@ -1,0 +1,73 @@
+body{
+	background-image: url("http://static.igen.fr/2011/1/OM2jWood_Tile@2x-20110116-083340.jpg");
+	background-size: cover;
+}
+
+h1{
+	font-style: italic;
+	text-decoration: underline;
+	text-align: center;
+	margin-top: 7%;
+	margin-bottom: 50px;
+}
+
+table{
+	border: 2px solid black;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+th{
+	font-size: 20px;
+}
+td, th {
+	border: 2px solid black;
+	width: 100px;
+	padding: 5px 10px
+}
+
+#centralrow{
+	width: 400px;
+}
+
+label{
+	color: green;
+	font-style: italic;
+}
+
+#submit{
+	display: block;
+	margin: 50px auto 10px auto;
+	font-size: 20px;
+	padding: 5px 8px 3px 8px;
+	border-radius: 3px;
+	border: 1.5px solid black;
+	box-shadow: 6px 6px #72512b;
+}
+
+#submitIA{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	font-size: 15px;
+	padding: 2px 8px;
+	border-radius: 5px;
+	border: 1.5px solid black;
+	box-shadow: 4px 4px #72512b;
+}
+h2{
+	text-align: center;
+	font-family: arial black, sansserif;
+	font-style: bold;
+	font-size: 20px;
+	margin: 5px;
+}
+
+hr{
+	color: black; 
+	width: 70%;
+}
