@@ -11,12 +11,11 @@ body{
 }
 
 table{
+	position: relative;
 	border-collapse: collapse;
 	border : 2px solid black;
 	background-color: blue;
 	margin: auto;
-	max-width: 75%;
-	max-height: 75%;
 }
 
 tr{
@@ -50,7 +49,7 @@ input{
 	width: 100px;
 }
 
-button{
+#boutonCase{
 	width: 100%;
 	height: 100%;
 	background-color: green;
@@ -66,14 +65,65 @@ button{
 	padding: 5px 5px;
 }
 
-#boutonChrono{
+#boutonStart{
+	background-color: green;
 	border: 2px solid black;
 	border-radius: 3px;
-	width: 400px;
-	padding: 3px 2px 1px 2px;
+	width: 415px;
+	padding: 7px 2px 6px 2px;
+}
+
+#posTimerScore{
+	display: inline-block;
+	position: relative;
 }
 
 #blockTimer{
-	display: inline-block;
-	margin: 20px 0px 10px 0px;
+	position: absolute;
+	width: 100px;
+	background-color: #677716;
+	top : -275px;
+	left: 300px;
+	border: 3px solid black;
+	border-radius: 8px;
+	padding: 15px;
+	font-size: 25px;
+}
+
+#blockScore{
+	position: absolute;
+	width: 100px;
+	background-color: #677716;
+	top : -275px;
+	right: 300px;
+	border: 3px solid black;
+	border-radius: 8px;
+	padding: 15px;
+	font-size: 25px;
+}
+
+#spTimer{
+	display: block;
+	text-decoration: underline;
+	margin-bottom: 2px;
+	padding-bottom: 2px;
+}
+
+#spScore{
+	display: block;
+	text-decoration: underline;
+	margin-bottom: 2px;
+	padding-bottom: 2px;
+}
+
+#timer{
+	font-size: 35px;
+	font-weight: bold;
+	padding-bottom: 0px;
+}
+
+#stockScore{
+	font-size: 35px;
+	font-weight: bold;
+	padding-bottom: 0px;
 }

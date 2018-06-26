@@ -10,7 +10,7 @@ function clickCase()
 		var random = Math.floor((Math.random()*nombreCases)+1);
 	}
 	//DEPLACE LE BOUTON A LA NOUVEL CASE (DE POSITION RANDOM)
-	var node = document.getElementById('bouton');
+	var node = document.getElementById('boutonCase');
 	var td = document.getElementById("case"+random);
 	td.appendChild(node);
 	var oldrandom = document.getElementById('stockRandom');
@@ -29,7 +29,7 @@ function startChrono (){
 	var start = document.getElementById('start');
 	start.innerHTML = "";
 	//AFFICHE LE PREMIER BOUTON A CLIQUER
-	document.getElementById("bouton").removeAttribute("hidden");
+	document.getElementById("boutonCase").removeAttribute("hidden");
 	//LANCE LE CHRONO
 	var sec = 1;
 	var interChrono = setInterval(chrono, 1000);
@@ -38,9 +38,9 @@ function startChrono (){
 		timer = document.getElementById('timer');
 		timer.innerHTML = sec;
 		//FIN DU CHRONO
-		if (sec==11) {
-						var blockTimer = document.getElementById("blockTimer");
-			blockTimer.innerHTML = "Fini !";
+		if (sec==15) {
+			var blockTimer = document.getElementById("blockTimer");
+			blockTimer.innerHTML = "Bravo !";
 			alert ("Terminé !");
 			clearInterval(interChrono);
 		}
