@@ -9,7 +9,10 @@
 		SOMMAIRE
 	</h1>
 	<p>
-		<a href="..\BLAGUES\index.php">Blague</a>
+		<a href="..\BLAGUES\ACCUEIL\index.php">Blague-Accueil</a>
+	</p>
+	<p>
+		<a href="..\BLAGUES\RESULTATS\index.php">Blague-Résultats</a>
 	</p>
 	<p>
 		<a href="..\TAPCAZ\index.php">Tapcaz</a>

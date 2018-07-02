@@ -10,40 +10,65 @@ function clickCase()
 		var random = Math.floor((Math.random()*nombreCases)+1);
 	}
 	//DEPLACE LE BOUTON A LA NOUVEL CASE (DE POSITION RANDOM)
-	var node = document.getElementById('boutonCase');
+	var bouton = document.getElementById('boutonCase');
 	var td = document.getElementById("case"+random);
-	td.appendChild(node);
+	td.appendChild(bouton);
 	var oldrandom = document.getElementById('stockRandom');
 	oldrandom.innerHTML = random;
 	//AJOUTE 1 PAR CLIQUE AU SCORE
-	var score = document.getElementById('stockScore').innerHTML;
+	var score = document.getElementById('score').innerHTML;
 	var newScore = parseInt(score) +1;
-	var stockScore = document.getElementById('stockScore');
-	stockScore.innerHTML = newScore;
+	var score = document.getElementById('score');
+	score.innerHTML = newScore;
 }
 
 
 
 function startChrono (){
 	//SUPPRIME LE BOUTON START
-	var start = document.getElementById('start');
-	start.innerHTML = "";
+	var boutonStart = document.getElementById('boutonStart');
+	boutonStart.parentNode.removeChild(boutonStart);
 	//AFFICHE LE PREMIER BOUTON A CLIQUER
 	document.getElementById("boutonCase").removeAttribute("hidden");
 	//LANCE LE CHRONO
-	var sec = 1;
-	var interChrono = setInterval(chrono, 1000);
+	var centSec = 1;
+	var interChrono = setInterval(chrono, 10);
 	function chrono()
 	{
+		sec = centSec/100
 		timer = document.getElementById('timer');
-		timer.innerHTML = sec;
+		timer.innerHTML = sec.toFixed(1);
 		//FIN DU CHRONO
-		if (sec==15) {
-			var blockTimer = document.getElementById("blockTimer");
-			blockTimer.innerHTML = "Bravo !";
-			alert ("Terminé !");
+		if (sec==15.02) {
+			var bouton = document.getElementById('boutonCase');
+			bouton.parentNode.removeChild(bouton);
 			clearInterval(interChrono);
+			showPrompt();
 		}
-		sec++;
+		centSec++;
+	}
+}
+
+function checkForm(){
+    var a=document.forms["form"]["nombreCases"].value;
+    if (a>20)
+    {
+		var plop = confirm("Argh, tu es joueur ! L'affichage n'est pas optimal pour des grilles aussi grandes... Tu veux quand même continuer ?");
+		if (plop== true){
+			return true;
+		}
+		else{
+			return false;
+		}
+    }
+}
+
+function showPrompt(){
+	var pseudo = prompt("Yeah ! Pseudo ? \"Annuler\" pour rejouer");
+	if (pseudo == ""){showPrompt();}
+	if (pseudo == null){window.location="";}
+	else{
+		var titre = document.getElementById('titre');
+		titre.innerHTML= pseudo;
 	}
 }
