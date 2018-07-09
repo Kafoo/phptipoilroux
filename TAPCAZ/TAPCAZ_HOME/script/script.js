@@ -51,7 +51,6 @@ function startChrono (){
 	}
 }
 
-showPseudoForm()
 function showPseudoForm(){
 	var pseudoForm = document.getElementById('pseudoForm');
 	var table = document.getElementById('table');
