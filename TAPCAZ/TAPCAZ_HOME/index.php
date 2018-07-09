@@ -37,7 +37,7 @@ if(isset($_SESSION['sauvegarde']))
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<title>Test Responsive Sommaire</title>
+<title>TAPCAZ</title>
 </head>
 <body>
 	<header>
@@ -161,7 +161,7 @@ if(isset($_SESSION['sauvegarde']))
 	<div id="pseudoForm" hidden>
 		<form method="POST" action="../TAPCAZ_RESULTATS/index.php">
 			Bien joué !<br/><br/>Rentre ton pseudo pour<br/>apparaître dans les HighScores<br/><br/>
-			<input type="text" name="pseudo" placeholder="Pseudo (max 10 caract.)" maxlength="10" /><br/>
+			<input type="text" required pattern=".*\S+.*" title="This field is required" name="pseudo" placeholder="Pseudo (max 10 caract.)" maxlength="10" /><br/>
 			<input id="stockScore" type="text" name="score" hidden/>
 			<input type="submit" name="submit">
 		</form>
