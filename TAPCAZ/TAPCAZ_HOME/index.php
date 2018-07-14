@@ -64,11 +64,18 @@ if(isset($_SESSION['sauvegarde']))
 				<form id="changeTaille" method="POST" name="changetaille" action="" onsubmit="return checkForm()">
 					<label>Change la taille<br/>de ta grille</label>
 					<br/>
-					<input type="text" name="nombreCases" placeholder="cases/côté"/>
+					<select name='nombreCases' onchange="this.form.submit()">
+						<option></option>
+						<?php
+						$i=2;
+						while ($i<=10) {
+							echo "<option value='".$i."'>".$i."x".$i."</option>";
+							$i++;}?>
+					</select>
 				</form>
 			</div>
 			<div id="timerBlock">
-				<span class="compteurs">Timer</span><br/><span id="timer">0</span>
+				<span class="compteurs">Timer</span><br/><span id="timer">0</span>.<span id="timerDec">00</span>
 			</div>
 		</div>
 

@@ -1,11 +1,1 @@
-﻿------------
-Page ouverte à 11:4:42
-Grille : 4
-------------
-------------
-Page ouverte à 11:5:13
-Pseudo : Kfutest
-Grille : 3
-Score : 29
-Nouvelle entrée réussie !
-------------
+﻿

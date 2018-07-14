@@ -39,15 +39,40 @@ function startChrono (){
 	{
 		timer = document.getElementById('timer');
 		timer.innerHTML = sec.toFixed(0);
+		//SIMULATION DES DECIMALES
+
 		//FIN DU CHRONO
 		if (sec==15.00) {
 			var bouton = document.getElementById('boutonCase');
 			bouton.parentNode.removeChild(bouton);
 			clearInterval(interChrono);
+			clearInterval(interChronoDec);
+			timerDec = document.getElementById('timerDec');
+			timerDec.innerHTML = "00";
 			showPseudoForm();
 		}
 		sec++;
 	}
+
+	var dec = 1;
+	var interChronoDec = setInterval(chronoDec, 10);
+	checkSec = 1;
+	function chronoDec(){
+		timerDec = document.getElementById('timerDec');
+		if (checkSec == sec && dec<99) {
+			dec=dec+1;
+		}
+		else{
+			dec = 1;
+			checkSec = sec;
+		}
+		if (dec<10) {
+			timerDec.innerHTML = "0"+dec.toFixed(0);	
+		}
+		else{
+			timerDec.innerHTML = dec.toFixed(0);		
+		}
+	}	
 }
 
 function showPseudoForm(){
