@@ -40,28 +40,30 @@ if(isset($_SESSION['sauvegarde']))
 <title>TAPCAZ</title>
 </head>
 <body>
-	<header>
-		<div class="container">
-			<div id="branding">
-				<h1>Kfu Corp<img src="img/smiley.png" width="30px"></h1>
-			</div>
-			<nav>
-				<ul>
-					<li><a href="../../INPROGRESS">HOME</a></li>
-					<li><a href="" class="current">TAPCAZ</a></li>
-					<li><a href="../../INPROGRESS">SOON1</a></li>
-					<li><a href="../../INPROGRESS">SOON2</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
-	
 
+<!--HEADER-->
+		<header>
+			<div class="container">
+				<div id="branding">
+					<h1>Kfu Corp<img src="img/smiley.png" width="30px"></h1>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="../../INPROGRESS">HOME</a></li>
+						<li><a href="" class="current">TAPCAZ</a></li>
+						<li><a href="../../INPROGRESS">SOON1</a></li>
+						<li><a href="../../INPROGRESS">SOON2</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+	
 	<section id="main">
+
 <!--LEFT BLOCK-->
 		<div id="leftBlock">
 			<div id="tailleBlock">
-				<form id="changeTaille" method="POST" name="changetaille" action="" onsubmit="return checkForm()">
+				<form id="changeTaille" method="POST" name="changetaille" action="" onsubmit="return changeCurrentSize()">
 					<label>Change la taille<br/>de ta grille</label>
 					<br/>
 					<select name='nombreCases' onchange="this.form.submit()">
@@ -69,8 +71,22 @@ if(isset($_SESSION['sauvegarde']))
 						<?php
 						$i=2;
 						while ($i<=10) {
-							echo "<option value='".$i."'>".$i."x".$i."</option>";
-							$i++;}?>
+							if (isset($_POST['nombreCases'])) {
+								if ($i==$_POST['nombreCases']) {
+									echo "<option selected id = 'x".$i."' value='".$i."'>".$i."x".$i."</option>";
+								}
+								else{
+									echo "<option id = 'x".$i."' value='".$i."'>".$i."x".$i."</option>";
+								}
+							}
+							else{
+								echo "<option id = 'x".$i."' value='".$i."'>".$i."x".$i."</option>";
+							}
+							$i++;
+						}?>
+
+
+
 					</select>
 				</form>
 			</div>
@@ -88,8 +104,8 @@ if(isset($_SESSION['sauvegarde']))
 				}
 
 
-				//ON VERIFIE QUE L'INPUT EST BIEN UN NOMBRE ENTIER ENTRE 2 ET 10 POUR GENERER LE TABLEAU :
-				if (isset($_POST['nombreCases']) AND !empty($_POST['nombreCases']) AND (int)$_POST['nombreCases']==$_POST['nombreCases'] AND (int)$_POST['nombreCases']>1 AND (int)$_POST['nombreCases']<11)
+				//SI LA GRILLE EST DEFINIE, ON GENERE LE TABLEAU :
+				if (isset($_POST['nombreCases']) AND $_POST['nombreCases'] != "")
 				{
 					$nombreCases=$_POST['nombreCases'];
 					echo "<tr>";
@@ -112,20 +128,6 @@ if(isset($_SESSION['sauvegarde']))
 					}
 					echo "</tr>";
 					$canStart=True;
-				}
-
-				//SI INPUT PAS BON, DIFFERENTS MESSAGES D'ERREUR EN FONCTION DES SITUATIONS :
-				elseif (isset($_POST['nombreCases']) AND !empty($_POST['nombreCases']) AND (int)$_POST['nombreCases']==$_POST['nombreCases'] AND (int)$_POST['nombreCases']>10){
-					echo "<th id=\"emptyTable\">Restons raisonnable...;-) <br/> (Max = 10)</th>";
-				}
-				elseif (isset($_POST['nombreCases']) AND (int)$_POST['nombreCases']==$_POST['nombreCases'] AND ($_POST['nombreCases']=="1" OR $_POST['nombreCases']=="0")){
-					echo "<th id=\"emptyTable\">Tricheur =P</th>";
-				}
-				elseif (isset($_POST['nombreCases']) AND !empty($_POST['nombreCases']) AND (int)$_POST['nombreCases']==$_POST['nombreCases'] AND (int)$_POST['nombreCases']<0){
-					echo "<th id=\"emptyTable\">Essaye pas de m'avoir,<br/>rentre un nombre positif =P</th>";
-				}
-				elseif (isset($_POST['nombreCases']) AND !empty($_POST['nombreCases'])){
-					echo "<th id=\"emptyTable\">C'est pas un nombre, ça ;-)</th>";
 				}
 				?>
 			</table>
@@ -153,6 +155,8 @@ if(isset($_SESSION['sauvegarde']))
 
 	</section>
 
+<!--HIDDEN STUFF-->
+
 	<!--ON STOCK CE QU'IL FAUT POUR LE JAVASCRIPT-->
 	<p hidden id="stockCases"><?php if (isset($nombreCases)) {echo $nombreCases*$nombreCases;$_SESSION['grille']=$nombreCases;}?></p>
 	<!--Défini un premier random égal à la position du premier bouton-->
@@ -175,5 +179,6 @@ if(isset($_SESSION['sauvegarde']))
 	</div>
 
 	<script type="text/javascript" src="script/script.js"></script>
+
 </body>
 </html>
