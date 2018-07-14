@@ -33,21 +33,20 @@ function startChrono (){
 	//AFFICHE LE PREMIER BOUTON A CLIQUER
 	document.getElementById("boutonCase").removeAttribute("hidden");
 	//LANCE LE CHRONO
-	var centSec = 1;
-	var interChrono = setInterval(chrono, 10);
+	var sec = 1;
+	var interChrono = setInterval(chrono, 1000);
 	function chrono()
 	{
-		var sec = centSec/100
 		timer = document.getElementById('timer');
-		timer.innerHTML = sec.toFixed(1);
+		timer.innerHTML = sec.toFixed(0);
 		//FIN DU CHRONO
-		if (sec==15.02) {
+		if (sec==15.00) {
 			var bouton = document.getElementById('boutonCase');
 			bouton.parentNode.removeChild(bouton);
 			clearInterval(interChrono);
 			showPseudoForm();
 		}
-		centSec++;
+		sec++;
 	}
 }
 
