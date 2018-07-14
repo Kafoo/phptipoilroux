@@ -30,14 +30,33 @@ if(isset($_SESSION['sauvegarde']))
 }
 // } Fin - Seconde partie
 
+
+//LOG_INITIALISATION
+
+$log= fopen("fichier.txt", "a+");
+
+fwrite($log, "------------\r\nPage ouverte à ".(int)(getdate()['hours']+2).":".getdate()['minutes'].":".getdate()['seconds']."\r\n");
+
 // ON RENTRE LE NOUVEAU SCORE DANS LA BDD
 $bdd = new mysqli("eu-cdbr-west-02.cleardb.net","b0a2bf938d18c9","a67e9613","heroku_cb182906a27e6b4");
 if (isset($_POST['pseudo'])){
 	$pseudo = $_POST['pseudo'];
-	$grille = $_SESSION['grille'];
-	$score = $_POST['score'];
-	$bdd->query("INSERT INTO tapcaz_scores (pseudo, grille, score) VALUES ('$pseudo','$grille','$score')");
+	fwrite($log, "Pseudo : ".$pseudo."\r\n");
 }
+if (isset($_SESSION['grille'])){
+	$grille = $_SESSION['grille'];
+	fwrite($log, "Grille : ".$grille."\r\n");
+}
+if (isset($_POST['score'])){
+	$score = $_POST['score'];
+	fwrite($log, "Score : ".$score."\r\n");
+}
+
+if (isset($_POST['score']) AND isset($_POST['score']) AND isset($_POST['score'])){
+	$bdd->query("INSERT INTO tapcaz_scores (pseudo, grille, score) VALUES ('$pseudo','$grille','$score')");
+	fwrite($log, "Nouvelle entrée réussie !"."\r\n");
+}
+
 ?>
 
 

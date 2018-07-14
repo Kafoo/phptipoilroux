@@ -62,7 +62,7 @@ if(isset($_SESSION['sauvegarde']))
 		<div id="leftBlock">
 			<div id="tailleBlock">
 				<form id="changeTaille" method="POST" name="changetaille" action="" onsubmit="return checkForm()">
-					<label>Change la taille<br/>de ta grille !</label>
+					<label>Change la taille<br/>de ta grille</label>
 					<br/>
 					<input type="text" name="nombreCases" placeholder="cases/côté"/>
 				</form>
