@@ -1,36 +1,37 @@
-<?php
+<!--REFRESH PHP-->
+	<?php
 
-// Inutile d'expliquer la présence du session_start().
-session_start();
+	// Inutile d'expliquer la présence du session_start().
+	session_start();
 
-// { Début - Première partie
-if(!empty($_POST) OR !empty($_FILES))
-{
-    $_SESSION['sauvegarde'] = $_POST ;
-    $_SESSION['sauvegardeFILES'] = $_FILES ;
-    
-    $fichierActuel = $_SERVER['PHP_SELF'] ;
-    if(!empty($_SERVER['QUERY_STRING']))
-    {
-        $fichierActuel .= '?' . $_SERVER['QUERY_STRING'] ; 
-    }
-    
-    header('Location: ' . $fichierActuel);
-    exit;
-}
-// } Fin - Première partie
+	// { Début - Première partie
+	if(!empty($_POST) OR !empty($_FILES))
+	{
+	    $_SESSION['sauvegarde'] = $_POST ;
+	    $_SESSION['sauvegardeFILES'] = $_FILES ;
+	    
+	    $fichierActuel = $_SERVER['PHP_SELF'] ;
+	    if(!empty($_SERVER['QUERY_STRING']))
+	    {
+	        $fichierActuel .= '?' . $_SERVER['QUERY_STRING'] ; 
+	    }
+	    
+	    header('Location: ' . $fichierActuel);
+	    exit;
+	}
+	// } Fin - Première partie
 
-// { Début - Seconde partie
-if(isset($_SESSION['sauvegarde']))
-{
-    $_POST = $_SESSION['sauvegarde'] ;
-    $_FILES = $_SESSION['sauvegardeFILES'] ;
-    
-    unset($_SESSION['sauvegarde'], $_SESSION['sauvegardeFILES']);
-}
-// } Fin - Seconde partie
+	// { Début - Seconde partie
+	if(isset($_SESSION['sauvegarde']))
+	{
+	    $_POST = $_SESSION['sauvegarde'] ;
+	    $_FILES = $_SESSION['sauvegardeFILES'] ;
+	    
+	    unset($_SESSION['sauvegarde'], $_SESSION['sauvegardeFILES']);
+	}
+	// } Fin - Seconde partie
 
-?>
+	?>
 
 <!DOCTYPE html>
 <html>
@@ -63,7 +64,7 @@ if(isset($_SESSION['sauvegarde']))
 <!--LEFT BLOCK-->
 		<div id="leftBlock">
 			<div id="tailleBlock">
-				<form id="changeTaille" method="POST" name="changetaille" action="" onsubmit="return changeCurrentSize()">
+				<form id="changeTaille" method="POST" name="changetaille" action="" onsubmit="">
 					<label>Change la taille<br/>de ta grille</label>
 					<br/>
 					<select name='nombreCases' onchange="this.form.submit()">
