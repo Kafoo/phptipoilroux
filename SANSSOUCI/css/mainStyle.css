@@ -1,0 +1,242 @@
+/*---------GENERAL---------*/
+
+	body{
+		margin: 0;
+		background-image: url(http://www.noshade.net/imgs/tutoriaux/112_psd/02.jpg);
+		background-size: cover;
+	}
+
+/*---------STRUCTURE---------*/
+
+	.mainGrid{
+		display: grid;
+		grid-template-columns: 1fr 80% 1fr;
+		grid-template-rows: 100px 1fr 50px;
+		grid-template-areas: 
+		"head head head"
+		". section ."
+		". foot .";
+	}
+
+	.headerGrid{
+		display: grid;
+		grid-template-columns: 30% 40% 30%;
+		grid-template-rows: 1fr 1fr 1fr;
+		grid-template-areas: 
+		"brand nav connect"
+		"brand nav connect"
+		"brand nav connect"
+		;
+	}
+
+/*---------CONTENU---------*/
+
+/*HEADER*/
+
+	header{
+		grid-area: head;
+		background-color: #2f3640;
+		border-bottom: 3px solid black;
+		z-index: 20;
+	}
+
+	#branding{
+		grid-area: brand;
+		font-size: 4vw;
+		font-weight: bold;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		line-height: 96px;
+	}
+
+	#navDesktop{
+		grid-area: nav;
+		margin: auto auto 5px auto;
+		text-align: center;
+	}
+
+	#navDesktop a{
+		font-size: 1.3em;
+		margin: 5px;
+	}
+
+	#navDesktop a:link, a:visited, a:active{
+		color: grey;
+		text-decoration: none;
+	}
+
+	#navDesktop a:hover{
+		color : #dcdde1;
+	}
+
+	#connectionDesktop{
+		grid-area: connect;
+		text-align:center;
+		margin: auto;
+		padding: 4px;
+		width: 16vw;
+		max-width: 250px;
+		background-color: rgba(149, 165, 166,0.3);
+		box-shadow: 0 0 10px black;
+	}
+
+	#connectionDesktop input{
+		text-align: center;
+		display: block;
+		margin: 2px;
+		width: 95%;
+	}
+
+	#connectionDesktop input[type="submit"]{
+		width: 96.8%;
+		border: 0;
+	}
+
+/*SECTION*/
+
+	section{
+		grid-area: section;
+		background-color: rgba(149, 165, 166,0.7);
+		box-shadow: 0 0 20px black;
+		min-height: 200px;
+		z-index: 10;
+		margin-top: 8px;
+	}
+
+/*FOOTER*/
+
+	footer{
+		grid-area: foot;
+		background-color: rgba(127, 140, 141,1.0);
+		box-shadow: 0 0 20px black;
+		z-index: 10;
+	}
+
+	footer div{
+		text-align: center;
+		font-size: 0.8em;
+		font-style: italic;
+		margin: auto; /*pourquoi le margin auto ne centre pas tout ?*/
+		margin-top: 20px;
+	}
+
+/*TOGGLE MDE*/
+
+	#connectionMobile{display: none;}
+	#navMobile{display: none;}
+
+/*---------MEDIA QUERIES---------*/
+
+	@media (max-width: 760px){
+
+		/*STRUCTURE*/
+
+			.mainGrid{
+				grid-template-rows: 280px 1fr 50px;
+				grid-template-areas: 
+				"head head head"
+				"section section section"
+				"foot foot foot"
+			}
+
+			.headerGrid{
+				grid-template-rows: 1fr 1fr 1fr;
+				grid-template-areas:
+				"brand brand brand"
+				"connect connect connect"
+				"nav nav nav";
+			}
+
+			.navMobileGrid{
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: 1fr 1fr;
+				grid-template-areas: 
+				"nav1 nav2"
+				"nav3 nav4"
+				;
+				grid-gap: 0;
+			}
+
+		/*HEADER*/
+
+			header{
+				border: none;
+			}
+
+			#branding{
+				font-size: 4em;
+				line-height: 106px;
+				background-color: rgba(189, 195, 199,1.0);
+				box-shadow: inset 0 0 40px black;
+			}
+
+			#connectionMobile{
+				display: initial;
+				grid-area: connect;
+				font-size: 2.5em;
+				background-color: #383838;
+				text-align: center;
+				line-height: 85px;
+				border: 1px solid black;
+				border-bottom: none;
+			}
+
+			#navMobile{
+				display: grid;
+				grid-area: nav;
+				font-weight: bold;
+				width: 100%;
+				height: 100%;
+			}
+			#navMobile div{
+				background-color: #2f3640;
+				width: 100%;
+				height: 100%;
+				border: 2px solid black;
+				box-shadow: inset 0 0 5px black;
+				text-align: center;
+				line-height: 40px;
+				color: rgba(127, 140, 141,1.0);
+			}
+
+			#navMobile1{
+				grid-area: nav1;
+				margin:auto;
+			}
+			#navMobile2{
+				grid-area: nav2;
+				margin:auto;
+			}
+			#navMobile3{
+				grid-area: nav3;
+				margin:auto;
+			}
+			#navMobile4{
+				grid-area: nav4;
+				margin:auto;
+			}
+
+		/*SECTION*/
+
+			section{
+				margin-top: 0;
+			}
+
+		/*TOGGLE MDE*/
+
+			#connectionDesktop{display: none;}
+			#navDesktop{display: none;}
+	}
+
+
+
+
+
+/*---------------Pour une navigation déroulante sans flèche...---------------
+select 
+{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+*/
