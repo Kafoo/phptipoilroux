@@ -9,7 +9,7 @@ include("shared/connectDB.php");
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="css/mainStyle.css">
-	<link rel="stylesheet" type="text/css" href="css/homeStyle.css">
+	<link rel="stylesheet" type="text/css" href="css/autresStyle.css">
 	<title>SANS SOUCI</title>
 </head>
 <body>
@@ -21,7 +21,7 @@ include("shared/connectDB.php");
 
 	<!--SECTION-->
 		<section class="sectionGrid">
-			<div id="firstContent">Coucou c'est moi le first content</div>
+			<h1>AUTRES</h1>
 		</section>
 
 	<!--FOOTER-->

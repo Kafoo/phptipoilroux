@@ -38,7 +38,7 @@ $log= fopen("fichier.txt", "a+");
 fwrite($log, "------------\r\nPage ouverte à ".(int)(getdate()['hours']+2).":".getdate()['minutes'].":".getdate()['seconds']."\r\n");
 
 // ON RENTRE LE NOUVEAU SCORE DANS LA BDD
-$bdd = new mysqli("eu-cdbr-west-02.cleardb.net","b0a2bf938d18c9","a67e9613","heroku_cb182906a27e6b4");
+$bdd = new mysqli("eu-cdbr-west-02.cleardb.net","b2e27d049f1274","0ffbbb07","heroku_3ca6f2b572bf369");
 if (isset($_POST['pseudo'])){
 	$pseudo = $_POST['pseudo'];
 	fwrite($log, "Pseudo : ".$pseudo."\r\n");
