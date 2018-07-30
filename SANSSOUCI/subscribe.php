@@ -18,7 +18,16 @@ if (isset($_POST['submit'])){
 				if ($password == $passwordConfirm) {
 					$insertMembre = $bdd->prepare("INSERT INTO ss_membres (pseudo, password) VALUES (?, ?)");
 					$insertMembre->execute(array($pseudo, $password));
-					$confirmation = "Utilisateur enregistré ! ;-)";
+					//Connexion auto après l'inscription, et redirection vers le profil
+					$reqUser = $bdd->prepare("SELECT * FROM ss_membres WHERE pseudo=? AND password=?");
+					$reqUser->execute(array($pseudo, $password));
+					$userExist = $reqUser->rowCount();
+					$userInfo = $reqUser->fetch();
+					$_SESSION['id'] = $userInfo['id'];
+					$_SESSION['pseudo'] = $userInfo['pseudo'];
+					$_SESSION['password'] = $userInfo['password'];
+					$_SESSION['connected'] = 'connected';
+					header("Location: profil.php");
 				}
 				else{
 					$erreur = "Les mots de passe sont différents !";
@@ -27,7 +36,6 @@ if (isset($_POST['submit'])){
 			else{
 				$erreur = "Pseudo déjà pris !";
 			}
-
 		}
 		else{
 			$erreur = "Pseudo trop long !";
@@ -45,8 +53,8 @@ if (isset($_POST['submit'])){
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" type="text/css" href="css/mainStyle.css">
-	<link rel="stylesheet" type="text/css" href="css/subscribeStyle.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/subscribe.css">
 	<title>SANS SOUCI</title>
 </head>
 <body>
@@ -92,9 +100,7 @@ if (isset($_POST['submit'])){
 				</form>
 				<br/>
 				<span>
-					<?php if (isset($erreur)){echo $erreur;}
-					if (isset($confirmation)){echo $confirmation;} 
-					?>
+					<?php if (isset($erreur)){echo $erreur;}?>
 				</span>
 			</div>
 

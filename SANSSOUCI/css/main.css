@@ -62,7 +62,7 @@
 
 	}
 
-	#navDesktop a:link, a:visited, a:active{
+	#navDesktop a:link, #navDesktop a:visited, #navDesktop a:active{
 		color: grey;
 		text-decoration: none;
 	}
@@ -71,7 +71,7 @@
 		color : #dcdde1;
 	}
 
-	#connectionDesktop, #connectedDesktop{
+	#connectionDesktop{
 		grid-area: connect;
 		position: relative;
 		margin: 20px 0 auto 2vw;
@@ -81,6 +81,27 @@
 		max-width: 250px;
 		background-color: #4e5556;
 		box-shadow: 0 0 10px black;
+	}
+
+	#connectedDesktop{
+		grid-area: connect;
+		position: relative;
+		margin: 17px 0 auto 2vw;
+		text-align:center;
+		padding: 10px;
+		width: 16vw;
+		background-color: #4e5556;
+		box-shadow: 0 0 10px black;
+	}
+
+	#connectedPseudo{
+		color: lightgrey;
+		font-weight: bold;
+		line-height: 1.8em;
+	}
+
+	#connectedDesktop a[href="deconnect.php"]{
+		color: grey;
 	}
 
 	#connectionDesktop input{
@@ -110,6 +131,7 @@
 		color: lightgrey;
 		text-decoration: none;
 	}
+
 
 /*SECTION*/
 
@@ -164,7 +186,7 @@
 				grid-template-rows: 120px 50px 80px;
 				grid-template-areas:
 				"brand brand"
-				"connect subscribe"
+				"connect connect"
 				"nav nav";
 			}
 
@@ -260,6 +282,7 @@
 		/*TOGGLE MDE*/
 
 			#connectionDesktop{display: none;}
+			#connectedDesktop{display: none;}
 			#navDesktop{display: none;}
 	}
 

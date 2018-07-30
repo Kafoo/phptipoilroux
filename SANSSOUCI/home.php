@@ -8,8 +8,8 @@ include("shared/connectDB.php");
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" type="text/css" href="css/mainStyle.css">
-	<link rel="stylesheet" type="text/css" href="css/homeStyle.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/home.css">
 	<title>SANS SOUCI</title>
 </head>
 <body>

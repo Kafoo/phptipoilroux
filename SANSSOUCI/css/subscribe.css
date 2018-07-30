@@ -1,0 +1,21 @@
+section{
+	text-align: center;
+}
+
+#subscribeBlock{
+	text-align: center;
+	display: inline-block;
+	margin-top: 50px;
+}
+
+#subscribe{
+	display: none;
+}
+
+form td{
+	text-align: right;
+}
+
+input[type="submit"]{
+	width: 60%;
+}

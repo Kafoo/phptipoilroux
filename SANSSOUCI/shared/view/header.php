@@ -1,4 +1,5 @@
 <?php
+//-----------SI TENTATIVE DE CONNEXION :-----------
 if (isset($_POST['submitConnect'])) {
 
 	$pseudoConnect = htmlspecialchars($_POST['pseudoConnect']);
@@ -14,7 +15,10 @@ if (isset($_POST['submitConnect'])) {
 			$_SESSION['id'] = $userInfo['id'];
 			$_SESSION['pseudo'] = $userInfo['pseudo'];
 			$_SESSION['password'] = $userInfo['password'];
-			$_SESSION['connected'] = 'bouh';
+			$_SESSION['connected'] = 'connected';
+			if (basename($_SERVER['PHP_SELF']) == "subscribe.php"){
+				header("Location: home.php");
+			}
 		}
 		else{
 			$erreurConnect = "Pseudo ou Mot de passe incorrect !";
@@ -29,7 +33,6 @@ if (isset($_POST['submitConnect'])) {
 	else{
 		$erreurConnect = "Rempli quelque chose wesh";
 	}
-
 }
 
 ?>
@@ -41,26 +44,38 @@ if (isset($_POST['submitConnect'])) {
 			<nav id="navDesktop">
 				<div style="display: inline-block;"><a href="monde.php">MONDE</a>
 				<a href="histoire.php">HISTOIRE</a></div>
-				<div style="display: inline-block;"><a href="personnage.php">PERSONNAGE</a>
+				<div style="display: inline-block;"><a href="profil.php">PROFIL</a>
 				<a href="autres.php">AUTRES</a></div>			
 			</nav>
 			<nav class="navMobileGrid" id="navMobile" style="cursor: pointer;">
 				<div id="navMobile1" onclick="window.location='monde.php';">MONDE</div>
 				<div id="navMobile2" onclick="window.location='histoire.php';">HISTOIRE</div>
-				<div id="navMobile3" onclick="window.location='personnage.php';">PERSONNAGE</div>
+				<div id="navMobile3" onclick="window.location='profil.php';">PROFIL</div>
 				<div id="navMobile4" onclick="window.location='autres.php';">AUTRES</div>
 			</nav>
 
 			
 			<?php
+			//ERREUR DE CONNEXION
 			if (isset($erreurConnect)) {
-				echo $erreurConnect . '<a href="home.php">Réessayer</a>';
+				echo '
+				<div id="connectionDesktop">
+				' . $erreurConnect . '<br/><a href="home.php">Réessayer</a>
+				</div>
+				';
 			}
-
+			//MEMBRE CONNECTE
 			elseif (isset($_SESSION['connected'])) {
-				echo $_SESSION['pseudo'] . ' est connecté ! <a href="deconnect.php">Déconnexion</a>';
+				echo '
+				<div id="connectedDesktop">
+				<a id="connectedPseudo" href="profil.php">' . $_SESSION['pseudo'] . '</a> (<a href="deconnect.php">Déconnexion</a>)<br/>
+				Statut : -/  Perso : -/<br/>
+				Histoire : -/  Message : -/<br/>
+				
+				</div>
+				';
 			}
-
+			//MEMBRE DECONNECTE
 			else{
 				echo '
 				<div id="connectionDesktop">
@@ -75,9 +90,7 @@ if (isset($_POST['submitConnect'])) {
 			}
 
 			?>
-				<div id="connectedDesktop" hidden>
-				
-				</div>
+
+			
 			<div id="connectionMobile" style="cursor: pointer;" onclick="window.location='http://youtube.com';">CONNEXION</div>
-			<div id="subscribeMobile" style="cursor: pointer;" onclick="window.location='http://youtube.com';">INSCRIPTION</div>
 		</header>
