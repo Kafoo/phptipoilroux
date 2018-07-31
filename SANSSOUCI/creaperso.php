@@ -62,7 +62,7 @@ include("shared/connectDB.php");
 								<label for="persoForce">Force :</label>
 							</td>
 							<td>
-								<input type="checkbox" name="persoForce1">1
+								<input type="range" min="1" max="10" name="persoForce">
 								<input type="checkbox" name="persoForce2">2
 								<input type="checkbox" name="persoForce3">3
 								<input type="checkbox" name="persoForce4">4

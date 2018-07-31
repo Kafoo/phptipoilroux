@@ -40,7 +40,15 @@ include("shared/connectDB.php");
 					</tr>
 					<tr>
 						<td align="right">Perso :</td>
-						<td align="left"><a class="infoMembre" href="creaperso.php">Créer un nouveau perso !</a></td>
+						<td align="left">';
+							if (isset($_SESSION[nomPerso])){
+								echo 'Nom perso';
+							}
+							else{
+								echo '<a class="infoMembre" href="creaperso.php">Créer un nouveau perso !</a>';
+							}
+						echo '
+						</td>
 					</tr>
 					<tr>
 						<td align="right">Histoire actuelle :</td>
