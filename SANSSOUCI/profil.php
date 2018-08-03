@@ -41,8 +41,8 @@ include("shared/connectDB.php");
 					<tr>
 						<td align="right">Perso :</td>
 						<td align="left">';
-							if (isset($_SESSION[nomPerso])){
-								echo 'Nom perso';
+							if (isset($_SESSION['nomPerso'])){
+								echo $_SESSION['nomPerso'];
 							}
 							else{
 								echo '<a class="infoMembre" href="creaperso.php">Créer un nouveau perso !</a>';
