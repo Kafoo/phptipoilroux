@@ -60,10 +60,13 @@ section{
 /*END BUBBLE ARROW*/
 
 .userInfo{
-	width: 95px;
-	margin: 30px auto 30px 2vw;
+	position: fixed;
+	width: 8vw;
 	padding: 10px;
+	top: 250px;
+	right: 10%;
 	border-radius: 5px;
+	border: 1px solid black;
 	color: black;
 }
 
