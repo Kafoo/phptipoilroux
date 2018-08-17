@@ -69,7 +69,8 @@ if (isset($_POST['submitConnect'])) {
 				echo '
 				<div id="connectedDesktop">
 				<a id="connectedPseudo" href="profil.php">' . $_SESSION['pseudo'] . '</a> (<a href="deconnect.php">Déconnexion</a>)<br/>
-				Perso
+				Perso<br/>
+				Quelques stats ?
 				
 				</div>
 				';

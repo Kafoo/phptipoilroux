@@ -5,13 +5,10 @@ section{
 #sectionGrid{
 	display: grid;
 	grid-template-columns: auto 55% auto;
-	grid-template-areas: 
-	"msgInfo msg userInfo";
 	grid-auto-rows: minmax(200px, min-content);
 }
 
 .msgInfo{
-	grid-area: msgInfo;
 	width: 95px;
 	margin: 30px 10px 30px auto;
 	padding: 10px;
@@ -20,7 +17,6 @@ section{
 }
 
 .msg{
-	grid-area: msg;
 	margin: 30px 10px 30px 10px;
 	padding: 10px;
 	background-color: rgba(3, 33, 2, 0.5);
@@ -32,24 +28,19 @@ section{
 }
 
 .userInfo{
-	grid-area: userInfo;
 	width: 95px;
 	margin: 30px auto 30px 10px;
 	padding: 10px;
 	border: 1.5px solid black;
 	border-radius: 5px;
-	color: grey;
+	color: black;
 }
 
 @media (max-width: 760px){
 
 	#sectionGrid{
-		grid-template-columns: 1fr 1fr 1fr;
-		grid-template-rows: 80px; 1fr;
-		grid-template-areas: 
-		"mobileInfo mobileInfo mobileInfo"
-		"msg msg msg"; 
-		grid-auto-rows: minmax(200px, min-content);
+		grid-template-columns: 1fr;
+		grid-auto-rows: minmax(100px, min-content);
 	}
 
 	.msgInfo{
@@ -57,7 +48,7 @@ section{
 	}
 
 	.msg{
-		margin: 10px;
+		margin: 10px 20px;
 	}
 
 	.userInfo{
@@ -66,13 +57,13 @@ section{
 
 	.mobileInfo{
 		display: initial;
-		grid-area: mobileInfo;
-		margin: 30px 10px 10px 10px;
+		height: 30px;
+		margin: 30px 20px 10px 20px;
 		padding: 10px;
 		background-color: rgba(91, 91, 91, 0.5);
 		text-align: center;
 		border: 1.5px solid black;
 		border-radius: 5px;
 		box-shadow: 0px 0px 50px black;
-		color: grey;
+		color: black;
 	}
