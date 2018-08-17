@@ -2,7 +2,7 @@
 
 	body{
 		margin: 0;
-		background-image: url(http://www.noshade.net/imgs/tutoriaux/112_psd/02.jpg);
+		background-image: url("../img/fondvert.png");
 		background-size: cover;
 	}
 
@@ -10,8 +10,8 @@
 
 	.mainGrid{
 		display: grid;
-		grid-template-columns: 1fr 80% 1fr;
-		grid-template-rows: 120px 1fr 50px;
+		grid-template-columns: 1fr 85% 1fr;
+		grid-template-rows: 150px 1fr 50px;
 		grid-template-areas: 
 		"head head head"
 		". section ."
@@ -20,12 +20,11 @@
 
 	.headerGrid{
 		display: grid;
-		grid-template-columns: 30% 40% 30%;
-		grid-template-rows: 1fr 1fr 1fr;
+		grid-template-columns:  60% 40%;
+		grid-template-rows: 1fr 1fr;
 		grid-template-areas: 
-		"brand nav connect"
-		"brand nav connect"
-		"brand nav connect"
+		"brand connect"
+		"nav nav"
 		;
 	}
 
@@ -35,19 +34,25 @@
 
 	header{
 		grid-area: head;
-		background-color: #383838;
+		background-color: rgba(50, 50, 50, 0.8);
 		border-bottom: 3px solid black;
 		z-index: 20;
 	}
 
 	#branding{
 		grid-area: brand;
-		font-size: 4.5vw;
+	}
+
+	#brandingText{
+		display : inline;
+		color: lightgrey;
+		font-size: 3.9em;
 		font-weight: bold;
-		width: 100%;
-		height: 100%;
 		text-align: center;
 		line-height: 116px;
+
+		margin: 30px;
+		margin-left: calc(5*1vw);
 	}
 
 	#navDesktop{
@@ -74,11 +79,11 @@
 	#connectionDesktop{
 		grid-area: connect;
 		position: relative;
-		margin: 20px 0 auto 2vw;
+		margin: 20px calc(3*5vw) auto auto;
 		text-align:center;
 		padding: 6px;
 		width: 16vw;
-		max-width: 250px;
+		max-width: 200px;
 		background-color: #4e5556;
 		box-shadow: 0 0 10px black;
 	}
@@ -86,7 +91,7 @@
 	#connectedDesktop{
 		grid-area: connect;
 		position: relative;
-		margin: 17px 0 auto 2vw;
+		margin: 17px 30px auto auto;
 		text-align:center;
 		padding: 10px;
 		width: 16vw;
@@ -137,7 +142,7 @@
 
 	section{
 		grid-area: section;
-		background-color: rgba(149, 165, 166,0.5);
+		background-color: rgba(149, 165, 166,0.6);
 		box-shadow: 0 0 20px black;
 		min-height: 400px;
 		z-index: 10;
@@ -206,12 +211,15 @@
 				border: none;
 			}
 
-			#branding{
+			#brandingText{
 				font-size: 4em;
 				line-height: 120px;
 				background-color: #5b5b5b;
 				box-shadow: inset 0 0 40px black;
+				margin: 0;
+				display: block;
 			}
+
 
 			#connectionMobile{
 				display: initial;

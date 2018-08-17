@@ -21,7 +21,7 @@ include("shared/connectDB.php");
 
 	<!--SECTION-->
 		<section class="sectionGrid">
-			<div id="firstContent">Coucou c'est moi le first content</div>
+			<h1>ACCUEIL</h1>
 		</section>
 
 	<!--FOOTER-->

@@ -20,9 +20,14 @@ include("shared/connectDB.php");
 		<?php include("shared/view/header.php") ?>
 
 	<!--SECTION-->
-		<section class="sectionGrid">
-			<h1>HISTOIRE</h1>
+		<section id="sectionGrid">
+			<div class="mobileInfo" hidden></div>
+			<div class="msgInfo"></div>
+			<div class="msg">Coucou c'est moi le first content</div>
+			<div class="userInfo"></div>
 		</section>
+
+
 
 	<!--FOOTER-->
 		<?php include("shared/view/footer.php") ?>

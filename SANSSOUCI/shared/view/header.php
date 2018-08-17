@@ -18,7 +18,7 @@ if (isset($_POST['submitConnect'])) {
 			$_SESSION['connected'] = 'connected';
 			if (basename($_SERVER['PHP_SELF']) == "subscribe.php"){
 				header("Location: home.php");
-			}
+			} 
 		}
 		else{
 			$erreurConnect = "Pseudo ou Mot de passe incorrect !";
@@ -38,8 +38,8 @@ if (isset($_POST['submitConnect'])) {
 ?>
 
 		<header class="headerGrid">
-			<div id="branding" style="cursor: pointer;" onclick="window.location='http://youtube.com';">
-				SANS SOUCI
+			<div id="branding">
+				<div id="brandingText" style="cursor: pointer;" onclick="window.location='home.php';">SANS SOUCI</div>
 			</div>
 			<nav id="navDesktop">
 				<div style="display: inline-block;"><a href="monde.php">MONDE</a>
@@ -69,8 +69,7 @@ if (isset($_POST['submitConnect'])) {
 				echo '
 				<div id="connectedDesktop">
 				<a id="connectedPseudo" href="profil.php">' . $_SESSION['pseudo'] . '</a> (<a href="deconnect.php">Déconnexion</a>)<br/>
-				Statut : -/  Perso : -/<br/>
-				Histoire : -/  Message : -/<br/>
+				Perso
 				
 				</div>
 				';
