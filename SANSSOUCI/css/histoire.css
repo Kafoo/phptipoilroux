@@ -4,19 +4,22 @@ section{
 
 #sectionGrid{
 	display: grid;
-	grid-template-columns: auto 55% auto;
-	grid-auto-rows: minmax(200px, min-content);
+	grid-template-columns: 15vw auto 15vw;
 }
 
 .msgInfo{
 	width: 95px;
-	margin: 30px 10px 30px auto;
+	height: 120px;
+	margin: 15px 2vw 30px auto;
 	padding: 10px;
 	border: 1.5px solid black;
 	border-radius: 5px;
+	background-color: rgba(50, 50, 50, 0.3);
+	box-shadow: 0px 0px 10px black
 }
 
 .msg{
+	position: relative;
 	margin: 30px 10px 30px 10px;
 	padding: 10px;
 	background-color: rgba(3, 33, 2, 0.5);
@@ -27,11 +30,39 @@ section{
 	color: grey;
 }
 
+/*BUBBLE ARROW*/
+@media (min-width: 760px){
+	.msg:before {
+		content: ' ';
+		position: absolute;
+		width: 0;
+		height: 0;
+	  left: -15px;
+		right: auto;
+	  top: -1px;
+		bottom: auto;
+		border: 13px solid;
+		border-color: black transparent transparent transparent;
+	}
+	.msg:after{
+		content: ' ';
+		position: absolute;
+		width: 0;
+		height: 0;
+	  left: -10px;
+		right: auto;
+	  top: 1px;
+		bottom: auto;
+		border: 10px solid;
+		border-color: rgb(56, 76, 59) transparent transparent transparent;
+	}
+}
+/*END BUBBLE ARROW*/
+
 .userInfo{
 	width: 95px;
-	margin: 30px auto 30px 10px;
+	margin: 30px auto 30px 2vw;
 	padding: 10px;
-	border: 1.5px solid black;
 	border-radius: 5px;
 	color: black;
 }
@@ -40,7 +71,6 @@ section{
 
 	#sectionGrid{
 		grid-template-columns: 1fr;
-		grid-auto-rows: minmax(100px, min-content);
 	}
 
 	.msgInfo{

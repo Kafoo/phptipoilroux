@@ -11,7 +11,7 @@
 	.mainGrid{
 		display: grid;
 		grid-template-columns: 1fr 85% 1fr;
-		grid-template-rows: 150px 1fr 50px;
+		grid-template-rows: 150px 1fr 80px;
 		grid-template-areas: 
 		"head head head"
 		". section ."
@@ -154,6 +154,7 @@
 
 	footer{
 		grid-area: foot;
+		margin-bottom: 30px;
 		background-color: rgba(127, 140, 141,0.8);
 		box-shadow: 0 0 20px black;
 		z-index: 10;
