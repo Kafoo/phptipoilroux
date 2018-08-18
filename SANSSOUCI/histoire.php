@@ -24,13 +24,23 @@ include("shared/connectDB.php");
 			<div></div><h1>HISTOIRE</h1><div></div>
 
 			<div class="userInfo">
-			<img src="img/icones/conversgm.png" width="90px" style="cursor: pointer;" onclick="showConversGm()"><br/>
+			<img src="img/icones/conversgm.png" width="70px" style="cursor: pointer;" onclick="showConversGm()"><br/>
 			<img src="img/icones/d20.png" width="60px" style="cursor: pointer;" onclick="showDice()"><br/>
 			Info active user, convers GM, outils divers.</div>
 
 
 
-			<div class="mobileInfo" hidden>Infos minimum mobile</div>
+			<div class="mobileInfo" hidden>
+				<span class="mobileInfoWriter">
+					<a href="" style="font-weight: bold; color: black">ALMA</a> LVL100<br/>
+					Malkavien Sang
+				</span>
+				<span class="mobileInfoUser">
+					<img src="img/icones/conversgm.png" width="30px" style="cursor: pointer;" onclick="showConversGm()">
+			<img src="img/icones/d20.png" width="37px" style="cursor: pointer;" onclick="showDice()">
+				</span>
+
+			</div>
 			<div class="msgInfo">
 				<a href="" style="font-weight: bold; color: black">ALMA</a><br/><br/>
 				LVL100<br/>
@@ -56,7 +66,6 @@ include("shared/connectDB.php");
 			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 			<div></div>
 
-			<div class="mobileInfo" hidden>Infos version mobile</div>
 			<div>
 			</div>
 			<div class="msgGM">Espace narration, message du GM.</div>
@@ -94,7 +103,6 @@ include("shared/connectDB.php");
 			<div class="msg">Lorem flemmard, content minimum.</div>
 			<div></div>
 
-			<div class="mobileInfo" hidden>Infos version mobile</div>
 			<div>
 			</div>
 			<div class="msgGM">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

@@ -47,6 +47,8 @@ if (isset($_POST['submitConnect'])) {
 				<div style="display: inline-block;"><a href="profil.php">PROFIL</a>
 				<a href="autres.php">AUTRES</a></div>			
 			</nav>
+
+
 			<nav class="navMobileGrid" id="navMobile" style="cursor: pointer;">
 				<div id="navMobile1" onclick="window.location='monde.php';">MONDE</div>
 				<div id="navMobile2" onclick="window.location='histoire.php';">HISTOIRE</div>
