@@ -32,10 +32,21 @@ function change(carac){
 	}
 }
 
-function show(source,info){
 
-	/*Cache le clanInfo fixe*/
-	var shown = document.querySelectorAll("div[shown]");
+
+function showHelp(x){
+	document.getElementById("help"+x).removeAttribute("hidden");
+}
+
+function hideHelp(x){
+	document.getElementById("help"+x).setAttribute("hidden", true);
+}
+
+
+function show(what,source,info){
+
+	/*Cache le Fixe*/
+	var shown = document.querySelectorAll("div["+what+"Shown]");
 	shown[0].setAttribute("hidden", true);
 	/*Affiche ce sur quoi l'utilisateur a la souris*/
 	var tempShown = document.getElementById(info);
@@ -44,34 +55,34 @@ function show(source,info){
 	document.getElementById(source).style.backgroundColor = "lightgrey";
 }
 
-function hide(source,info){
+function hide(what,source,info){
 
 	/*Cache le tempShown*/
 	var tempShown = document.getElementById(info);
 	tempShown.setAttribute("hidden", true);
-	/*Raffiche le clanInfo fixe*/
-	var shown = document.querySelectorAll("div[shown]");
+	/*Raffiche le Fixe*/
+	var shown = document.querySelectorAll("div["+what+"Shown]");
 	shown[0].removeAttribute("hidden");
 	/*Remet l'icone en transparent*/
 	document.getElementById(source).style.backgroundColor = "transparent";
 }
 
-function chooseClan(clan){
+function choose(what,choix){
 
-	/*Cache le clanInfo fixe définitivement */
-	var oldShown = document.querySelectorAll("div[shown]");
+	/*Cache le Fixe définitivement */
+	var oldShown = document.querySelectorAll("div["+what+"Shown]");
 	oldShown[0].setAttribute("hidden", true);
-	oldShown[0].removeAttribute("shown");
-	/*Défini un nouveau clanInfo fixe (le clan choisi)*/
-	newShown = document.getElementById("info"+clan);
+	oldShown[0].removeAttribute(what+"Shown");
+	/*Défini un nouveau Fixe*/
+	newShown = document.getElementById("info"+choix);
 	newShown.removeAttribute("hidden");
-	newShown.setAttribute("shown", true);
+	newShown.setAttribute(what+"Shown", true);
 	/*Enlève le contour et l'attribut currentLogo du choix précédent*/
-	var oldCurrent = document.querySelectorAll("div[currentLogo]");
+	var oldCurrent = document.querySelectorAll("div[current"+what+"Logo]");
 	oldCurrent[0].style.boxShadow = "inset 0 0 10px 1px black";
-	oldCurrent[0].removeAttribute("currentLogo");
+	oldCurrent[0].removeAttribute("current"+what+"Logo");
 	/*Applique l'attribut au nouveau currentLogo*/
-	var newCurrent = document.getElementById("logo"+clan);
-	newCurrent.setAttribute("currentLogo", true);
+	var newCurrent = document.getElementById("logo"+choix);
+	newCurrent.setAttribute("current"+what+"Logo", true);
 	newCurrent.style.boxShadow = "inset 0 0 30px 1px white";
 }

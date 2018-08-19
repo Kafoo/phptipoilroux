@@ -34,23 +34,32 @@ include("shared/connectDB.php");
 					<table id="formBases">
 						<tr>
 							<td><label for="persoNom" style="font-weight: bold">Nom :</label></td>
-							<td><input type="text" name="persoNom"></td>
+							<td><input type="text" name="persoNom" placeholder="Nom du perso"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td><label for="persoNature">Nature :</label></td>
-							<td><input type="text" name="persoNature"></td>
-							<td><img src="img/help.png"></td>
+							<td><input type="text" name="persoNature" placeholder="1 adjectif"></td>
+							<td>
+								<img src="img/help.png" onmouseover="showHelp('Nature')" onmouseout="hideHelp('Nature')">
+								<div class="helpDiv" id="helpNature" hidden>La nature d'un personnage est sa véritable personnalité, ce qu'il est fondamentalement. <br/><i>Exemples : joueur, démoniaque, passionné, intéressé, altruiste, pervers...</i></div>
+							</td>
 						</tr>
 						<tr>
 							<td><label for="persoAttitude">Attitude :</label></td>
-							<td><input type="text" name="persoAttitude"></td>
-							<td><img src="img/help.png"></td>
+							<td><input type="text" name="persoAttitude" placeholder="1 adjectif"></td>
+							<td>
+								<img src="img/help.png" onmouseover="showHelp('Attitude')" onmouseout="hideHelp('Attitude')">
+								<div class="helpDiv" id="helpAttitude" hidden>L'attitude d'un personnage est ce qu'il montre de sa personnalité. Plus elle est contraire à sa nature, plus le personnage cache son jeu.<br/><i>Exemples : joueur, démoniaque, passionné, intéressé, altruiste, pervers...</i></div>
+							</td>
 						</tr>
 						<tr>
 							<td><label for="persoConcept">Concept :</label></td>
-							<td><input type="text" name="persoConcept"></td>
-							<td><img src="img/help.png"></td>
+							<td><input type="text" name="persoConcept" placeholder="1 concept"></td>
+							<td>
+								<img src="img/help.png" onmouseover="showHelp('Concept')" onmouseout="hideHelp('Concept')">
+								<div class="helpDiv" id="helpConcept" hidden>Le concept d'un personnage est ce qui prépondère le plus dans sa vie d'humain (avant l'Etreinte) : son métier, sa passion, ou encore sa position sociale.<br/><i>Exemples : drogue addict, charpentier, boxer, hermite...</i></div>
+							</td>
 						</tr>
 					</table>
 					
@@ -66,118 +75,118 @@ include("shared/connectDB.php");
 							<div
 							class="logoClan" 
 							id="logoGen" 
-							style="cursor: pointer;"
-							onmouseover="show('logoGen','infoGen')"
-							onmouseout="hide('logoGen','infoGen')"
-							currentLogo="true">
+							style="background-image: url('img/info.png');cursor: pointer;"
+							onmouseover="show('clan','logoGen','infoGen')"
+							onmouseout="hide('clan','logoGen','infoGen')"
+							currentclanLogo="true">
 							</div>
 							<div 
 							class="logoClan" 
 							id="logoVentrue" 
 							style="background-image: url('img/logoClans/ventrue.png');cursor: pointer;"
-							onmouseover="show('logoVentrue','infoVentrue')"
-							onmouseout="hide('logoVentrue','infoVentrue')"
-							onclick= "chooseClan('Ventrue')">
+							onmouseover="show('clan','logoVentrue','infoVentrue')"
+							onmouseout="hide('clan','logoVentrue','infoVentrue')"
+							onclick= "choose('clan','Ventrue')">
 							</div>
 							<div 
 							class="logoClan"
 							id="logoMalkavian" 
 							style="background-image: url('img/logoClans/malkavian.png');cursor: pointer;"
-							onmouseover="show('logoMalkavian','infoMalkavian')"
-							onmouseout="hide('logoMalkavian','infoMalkavian')"
-							onclick= "chooseClan('Malkavian')">
+							onmouseover="show('clan','logoMalkavian','infoMalkavian')"
+							onmouseout="hide('clan','logoMalkavian','infoMalkavian')"
+							onclick= "choose('clan','Malkavian')">
 							</div>
 							<div 
 							class="logoClan" 
 							id="logoToreador" 
 							style="background-image: url('img/logoClans/toreador.png');cursor: pointer;"
-							onmouseover="show('logoToreador','infoToreador')"
-							onmouseout="hide('logoToreador','infoToreador')"
-							onclick= "chooseClan('Toreador')">
+							onmouseover="show('clan','logoToreador','infoToreador')"
+							onmouseout="hide('clan','logoToreador','infoToreador')"
+							onclick= "choose('clan','Toreador')">
 							</div>
 							<div 
 							class="logoClan"
 							id="logoGangrel" 
 							style="background-image: url('img/logoClans/gangrel.png');cursor: pointer;"
-							onmouseover="show('logoGangrel','infoGangrel')"
-							onmouseout="hide('logoGangrel','infoGangrel')"
-							onclick= "chooseClan('Gangrel')">
+							onmouseover="show('clan','logoGangrel','infoGangrel')"
+							onmouseout="hide('clan','logoGangrel','infoGangrel')"
+							onclick= "choose('clan','Gangrel')">
 							</div>
 							<div 
 							class="logoClan" 
 							id="logoBrujah" 
 							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclanbrujah.png?w=193&h=197');cursor: pointer;"
-							onmouseover="show('logoBrujah','infoBrujah')" 
-							onmouseout="hide('logoBrujah','infoBrujah')"
-							onclick= "chooseClan('Brujah')">
+							onmouseover="show('clan','logoBrujah','infoBrujah')" 
+							onmouseout="hide('clan','logoBrujah','infoBrujah')"
+							onclick= "choose('clan','Brujah')">
 							</div>
 							<div 
 							class="logoClan" 
 							id="logoTremere" 
 							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclantremere.png?w=176&h=175');cursor: pointer;"
-							onmouseover="show('logoTremere','infoTremere')" 
-							onmouseout="hide('logoTremere','infoTremere')"
-							onclick= "chooseClan('Tremere')">
+							onmouseover="show('clan','logoTremere','infoTremere')" 
+							onmouseout="hide('clan','logoTremere','infoTremere')"
+							onclick= "choose('clan','Tremere')">
 							</div>
 							<div 
 							class="logoClan" 
 							id="logoNosferatu" 
 							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclannosferatu.png?w=151&h=184');cursor: pointer;"
-							onmouseover="show('logoNosferatu','infoNosferatu')" 
-							onmouseout="hide('logoNosferatu','infoNosferatu')"
-							onclick= "chooseClan('Nosferatu')">
+							onmouseover="show('clan','logoNosferatu','infoNosferatu')" 
+							onmouseout="hide('clan','logoNosferatu','infoNosferatu')"
+							onclick= "choose('clan','Nosferatu')">
 							</div>
 							<div 
 							class="logoClan" 
 							id="logoRavnos" 
 							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclanravnos.png?w=135&h=149');cursor: pointer;"
-							onmouseover="show('logoRavnos','infoRavnos')" 
-							onmouseout="hide('logoRavnos','infoRavnos')"
-							onclick= "chooseClan('Ravnos')">
+							onmouseover="show('clan','logoRavnos','infoRavnos')" 
+							onmouseout="hide('clan','logoRavnos','infoRavnos')"
+							onclick= "choose('clan','Ravnos')">
 							</div>
 							<div 
 							class="logoClan" 
 							id="logoGiovanni" 
 							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclangiovanni.png?w=146&h=143');cursor: pointer;"
-							onmouseover="show('logoGiovanni','infoGiovanni')" 
-							onmouseout="hide('logoGiovanni','infoGiovanni')"
-							onclick= "chooseClan('Giovanni')">
+							onmouseover="show('clan','logoGiovanni','infoGiovanni')" 
+							onmouseout="hide('clan','logoGiovanni','infoGiovanni')"
+							onclick= "choose('clan','Giovanni')">
 							</div>
 							<div 
 							class="logoClan" 
 							id="logoAssamite" 
 							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclanassamite.png?w=195&h=95');cursor: pointer;"
-							onmouseover="show('logoAssamite','infoAssamite')" 
-							onmouseout="hide('logoAssamite','infoAssamite')"
-							onclick= "chooseClan('Assamite')">
+							onmouseover="show('clan','logoAssamite','infoAssamite')" 
+							onmouseout="hide('clan','logoAssamite','infoAssamite')"
+							onclick= "choose('clan','Assamite')">
 							</div>
 							<div 
 							class="logoClan" 
 							id="logoSethite" 
 							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclanfollowersofset.png?w=139&h=147');cursor: pointer;"
-							onmouseover="show('logoSethite','infoSethite')" 
-							onmouseout="hide('logoSethite','infoSethite')"
-							onclick= "chooseClan('Sethite')">
+							onmouseover="show('clan','logoSethite','infoSethite')" 
+							onmouseout="hide('clan','logoSethite','infoSethite')"
+							onclick= "choose('clan','Sethite')">
 							</div>
 							<div 
 							class="logoClan" 
 							id="logoLasombra" 
 							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclanlasombra.png?w=146&h=130');cursor: pointer;"
-							onmouseover="show('logoLasombra','infoLasombra')" 
-							onmouseout="hide('logoLasombra','infoLasombra')"
-							onclick= "chooseClan('Lasombra')">
+							onmouseover="show('clan','logoLasombra','infoLasombra')" 
+							onmouseout="hide('clan','logoLasombra','infoLasombra')"
+							onclick= "choose('clan','Lasombra')">
 							</div>
 							<div 
 							class="logoClan" 
 							id="logoTzimisce" 
 							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclantzimisce.png?w=118&h=125');cursor: pointer;"
-							onmouseover="show('logoTzimisce','infoTzimisce')" 
-							onmouseout="hide('logoTzimisce','infoTzimisce')"
-							onclick= "chooseClan('Tzimisce')">
+							onmouseover="show('clan','logoTzimisce','infoTzimisce')" 
+							onmouseout="hide('clan','logoTzimisce','infoTzimisce')"
+							onclick= "choose('clan','Tzimisce')">
 							</div>
 						</div>
 
-						<div class="infoClan" id="infoGen" shown="true">
+						<div class="infoClan" id="infoGen" clanShown="true">
 							<img src="https://img.etsystatic.com/il/678f26/1388933820/il_570xN.1388933820_646q.jpg?version=1">
 							<h1>LES CLANS</h1>
 							Selon le mythe des Antédiluviens, Caïn a engendré un certain nombre de descendants, qui ont engendré à leur tour. <br><br>Ces infants, la Troisième Génération, étaient les créateurs des clans modernes, et tous les vampires qui en descendent partagent des traits et des caractéristiques communes. Ceci est certainement vrai à un degré ou à un autre, puisque chaque clan dispose d'un certain nombre de pouvoirs que ses membres apprennent plus facilement que les autres, et chaque clan a également des faiblesses et des traits de caractères qui permettent d'en identifier les membres. <br><br>Le respect dû à un vampire provient autant de son clan que de sa génération, et même le vampire le plus mal embouché recevra un minimum de marques de respect si son héritage l'impose. Il existe 13 clans connus, chacun censé descendre d'un Antédiluvien. Il est largement accepté que parmi les 13 "grands" clans, sept appartiennent à la Camarilla, deux au Sabbat et les quatre derniers restent en dehors des sectes.<br><br><b>Clique sur l'icone d'un clan pour le choisir !</b>
@@ -272,24 +281,24 @@ include("shared/connectDB.php");
 						</tr>
 						<tr>
 							<td>
-								<label for="persoAdresse">Adresse :</label>
+								<label for="persoDexterité">Dexterité :</label>
 							</td>
 							<td>
-								<input id="valAdresse" type="range" min="1" max="10" value="1" name="persoAdresse" oninput="change('Adresse')">
+								<input id="valDexterité" type="range" min="1" max="10" value="1" name="persoDexterité" oninput="change('Dexterité')">
 							</td>
 							<td>
-								<span id="displayAdresse" class="displayCarac">1</span>
+								<span id="displayDexterité" class="displayCarac">1</span>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<label for="persoMagie">Magie :</label>
+								<label for="persoIntelligence">Intelligence :</label>
 							</td>
 							<td>
-								<input id="valMagie" type="range" min="1" max="10" value="1" name="persoMagie" oninput="change('Magie')">
+								<input id="valIntelligence" type="range" min="1" max="10" value="1" name="persoIntelligence" oninput="change('Intelligence')">
 							</td>
 							<td>
-								<span id="displayMagie" class="displayCarac">1</span>
+								<span id="displayIntelligence" class="displayCarac">1</span>
 							</td>
 						</tr>
 						<tr>
@@ -305,13 +314,13 @@ include("shared/connectDB.php");
 						</tr>
 						<tr>
 							<td>
-								<label for="persoChance">Chance :</label>
+								<label for="persoPerception">Perception :</label>
 							</td>
 							<td>
-								<input id="valChance" type="range" min="1" max="10" value="1" name="persoChance" oninput="change('Chance')">
+								<input id="valPerception" type="range" min="1" max="10" value="1" name="persoPerception" oninput="change('Perception')">
 							</td>
 							<td>
-								<span id="displayChance" class="displayCarac">1</span>
+								<span id="displayPerception" class="displayCarac">1</span>
 							</td>
 						</tr>
 						<tr>
@@ -323,22 +332,82 @@ include("shared/connectDB.php");
 					<br><br>
 					<h3><u>Discipline de base</u></h2>
 
-					<div class="discipline">Discipline 1</div>
-					<div class="discipline">Discipline 2</div>
-					<div class="discipline">Discipline 3</div>
-					<div class="discipline">Discipline 4</div>
+					<div
+					class="logoDisc" 
+					id="logoDiscGen" 
+					style="cursor: pointer;width: 20px"
+					onmouseover="show('disc','logoDiscGen','infoDiscGen')"
+					onmouseout="hide('disc','logoDiscGen','infoDiscGen')"
+					currentdiscLogo="true"
+					>?</div>
 
-					<div id="infoDiscipline">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					<div
+					class="logoDisc" 
+					id="logoDisc1" 
+					style="cursor: pointer;"
+					onmouseover="show('disc','logoDisc1','infoDisc1')"
+					onmouseout="hide('disc','logoDisc1','infoDisc1')"
+					onclick= "choose('disc','Disc1')">
+						Discipline 1</div>
+					<div
+					class="logoDisc" 
+					id="logoDisc2" 
+					style="cursor: pointer;"
+					onmouseover="show('disc','logoDisc2','infoDisc2')"
+					onmouseout="hide('disc','logoDisc2','infoDisc2')"
+					onclick= "choose('disc','Disc2')">
+						Discipline 2</div>
+					<div
+					class="logoDisc" 
+					id="logoDisc3" 
+					style="cursor: pointer;"
+					onmouseover="show('disc','logoDisc3','infoDisc3')"
+					onmouseout="hide('disc','logoDisc3','infoDisc3')"
+					onclick= "choose('disc','Disc3')">
+						Discipline 3</div>
+					<div
+					class="logoDisc" 
+					id="logoDisc4" 
+					style="cursor: pointer;"
+					onmouseover="show('disc','logoDisc4','infoDisc4')"
+					onmouseout="hide('disc','logoDisc4','infoDisc4')"
+					onclick= "choose('disc','Disc4')">
+						Discipline 4</div>
+
+
+
+					<div class="infoDisc" id="infoDiscGen" discShown="true">[Explication des disciplines, plus tard tu en auras en fonction de ton clan et expérience, blabla]</div>
+
+					<div class="infoDisc" id="infoDisc1" hidden>ure dolor in repreheniatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+					<div class="infoDisc" id="infoDisc2" hidden>int occaecat cuquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 
+					<div class="infoDisc" id="infoDisc3" hidden>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariuis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+					<div class="infoDisc" id="infoDisc4" hidden>citation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure do ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+					<div class="infoDisc" id="infoDisc1" hidden>Discipline 1</div>
+
+
 					<div class="titre">QUEL EST TON HISTOIRE ?</div>
 					
-					<textarea id="lore" placeholder="Raconte-moi tout."></textarea>
 
+					<div id="descriptionLore">
+						C'est ici que tu vas décrire librement ton personnage, ce qu'il a vécu, ce qui fait qu'il est ce qu'il est aujourd'hui.<br><br>Quel âge a-t-il ? A-t-il un travail, de la famille, des amis ? Quel a été son premier contact avec le monde des vampires ? Qui est son Sire, son Etreinte a-t-elle été agréable ? Où est-il réfugié depuis, et que pense-t-il de tout ça ?<br><br>Libre à toi d'écrire 3 lignes, ou un bouquin ;-)
+						<textarea id="lore" placeholder="Allez, raconte-nous tout."></textarea>
+					</div>
 
 					<br>
 

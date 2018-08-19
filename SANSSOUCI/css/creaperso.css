@@ -5,7 +5,7 @@ section{
 
 .titre{
 	width: 85%;
-	margin: 20px auto;
+	margin: 50px auto 40px auto;
 	padding: 10px;
 	font-size: 1.8em;
 	color: grey;
@@ -23,13 +23,29 @@ section{
 	width: 20px;
 }
 
+#formBases td{
+	position: relative;
+}
+
+.helpDiv{
+	position: absolute;
+	width: 1000%;
+	text-align: left;
+	background-color: lightgrey;
+	padding: 5px;
+	border: 1px solid black;
+	left: 25px;
+	top: 25px;
+}
+
+
 /*---CHOIX CLAN---*/
 
 #clanBox{
 	display: grid;
 	grid-template-columns: 40% 60%;
 	width: 95%;
-	height: calc(710px - 20vw);
+	height: calc(710px - 17vw);
 }
 
 /*A GAUCHE*/
@@ -60,12 +76,16 @@ section{
 
 .infoClan{
 	width: 95%;
-	margin: ;
 	border: 2px solid black;
 	border-radius: 3px;
 	padding: 10px;
 	background-color: #4e5556;
 	overflow: auto;
+}
+
+/*Cache la scroll bar du infoClan*/
+.infoClan::-webkit-scrollbar {
+    width: 5px;
 }
 
 .infoClan img{
@@ -95,8 +115,10 @@ form td{
 	text-align: right;
 }
 
-.discipline{
+.logoDisc{
 	display: inline-block;
+	background-size: cover;
+	background-repeat: no-repeat;
 	height: 40px;
 	line-height: 40px;
 	margin: 10px;
@@ -106,14 +128,22 @@ form td{
 	box-shadow: inset 0 0 10px 1px black;
 }
 
-#infoDiscipline{
+.infoDisc{
 	width: 40%;
+	height: 150px;
 	margin: 10px auto;
 	padding: 20px;
 	border: 2px solid black;
 	border-radius: 10px;
 	box-shadow: inset 0 0 10px 1px black;
+	overflow: auto;
 }
+
+/*Cache la scroll bar du infoClan*/
+.infoDisc::-webkit-scrollbar {
+    width: 5px;
+}
+
 
 #submitAll{
 	width: 60%;
@@ -152,7 +182,17 @@ form td{
 	color: blue;
 }
 
-#lore{
+#descriptionLore{
 	width: 50%;
+	border: 2px solid black;
+	border-radius: 3px;
+	margin: 20px auto;
+	padding: 20px;
+	background-color: #4e5556;
+}
+
+#lore{
+	width: 80%;
+	margin: 20px auto 5px auto;
 	height: 100px;
 }
