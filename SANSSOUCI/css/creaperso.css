@@ -5,7 +5,7 @@ section{
 
 .titre{
 	width: 85%;
-	margin: 50px auto 40px auto;
+	margin: 70px auto 40px auto;
 	padding: 10px;
 	font-size: 1.8em;
 	color: grey;
@@ -13,7 +13,15 @@ section{
 	border-radius: 5px;
 }
 
-
+.soustitre{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	margin: 0 auto 25px auto;
+	font-size: 1.3em;
+	background-color: rgba(78, 85, 86,0.9);
+	color: lightgrey;
+}
 
 #formBases tr{
 	height: 40px;
@@ -45,7 +53,7 @@ section{
 	display: grid;
 	grid-template-columns: 40% 60%;
 	width: 95%;
-	height: calc(710px - 17vw);
+	height: calc(600px - 17vw);
 }
 
 /*A GAUCHE*/
@@ -56,7 +64,7 @@ section{
 	padding-top: 2vw;
 	overflow: auto;
 	margin: auto;
-	padding: 0 40px;
+	padding: 0 10px;
 	
 }
 
@@ -105,56 +113,7 @@ section{
 }
 
 
-/*---SUITE---*/
-
-table{
-	display: inline-block;
-}
-
-form td{
-	text-align: right;
-}
-
-.logoDisc{
-	display: inline-block;
-	background-size: cover;
-	background-repeat: no-repeat;
-	height: 40px;
-	line-height: 40px;
-	margin: 10px;
-	padding: 0 10px;
-	border: 2px solid black;
-	border-radius: 10px;
-	box-shadow: inset 0 0 10px 1px black;
-}
-
-.infoDisc{
-	width: 40%;
-	height: 150px;
-	margin: 10px auto;
-	padding: 20px;
-	border: 2px solid black;
-	border-radius: 10px;
-	box-shadow: inset 0 0 10px 1px black;
-	overflow: auto;
-}
-
-/*Cache la scroll bar du infoClan*/
-.infoDisc::-webkit-scrollbar {
-    width: 5px;
-}
-
-
-#submitAll{
-	width: 60%;
-	margin: 20px auto;
-	padding: 10px;
-	font-size: 1.2em;
-	color: black;
-	background-color: grey;
-	border: 3px solid black;
-	border-radius: 5px;
-}
+/*---T'AS QUOI DANS LE VENTRE---*/
 
 .displayCarac{
 	display: inline-block;
@@ -170,6 +129,7 @@ form td{
 
 #totalCarac{
 	display: inline-block;
+	margin: 15px;
 	width: 30px;
 	height: 30px;
 	text-align: center;
@@ -182,8 +142,86 @@ form td{
 	color: blue;
 }
 
+.ventreBox{
+	width: 60%;
+	margin: 30px auto;
+	border: 1px solid black;
+	border-radius: 3px;
+	background-color: rgba(78, 85, 86,0.5);
+	overflow: auto;
+}
+
+table{
+	display: inline-block;
+}
+
+form td{
+	text-align: right;
+}
+
+.logoDisc{
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	font-size: 1.2em;
+	margin: 10px;
+	padding: 0 15px;
+	border: 2px solid black;
+	border-radius: 10px;
+	box-shadow: inset 0 0 10px 1px black;
+}
+
+#logoDiscGen{
+	position: absolute;
+	margin: 0;
+	top: 0;
+	right: 0;
+	border-radius: 0;
+	height: 30px;
+	line-height: 30px;
+	border: none;
+	box-shadow: none;
+	border-radius: 10px;
+}
+
+.infoDisc{
+	position: relative;
+	width: 70%;
+	height: calc(280px - 10vw);
+	margin: 20px auto 40px auto;
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 3px;
+	background-color: #515151;
+	overflow: auto;
+	overflow: auto;
+}
+
+h4{
+	margin: 0px;
+	padding: 0px;
+}
+
+/*Cache la scroll bar du infoDisc*/
+.infoDisc::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+#submitAll{
+	width: 40%;
+	min-width: 200px;
+	margin: 20px auto;
+	padding: 10px;
+	font-size: 1.2em;
+	color: black;
+	background-color: grey;
+	border: 3px solid black;
+	border-radius: 5px;
+}
+
 #descriptionLore{
-	width: 50%;
+	width: 60%;
 	border: 2px solid black;
 	border-radius: 3px;
 	margin: 20px auto;
@@ -195,4 +233,29 @@ form td{
 	width: 80%;
 	margin: 20px auto 5px auto;
 	height: 100px;
+}
+
+@media (max-width: 760px){
+
+	.ventreBox{
+		width: 100%;
+	}
+	.titre{
+		width: 100%;
+		margin-left: 0;
+		padding-left: 0
+	}
+	#descriptionLore{
+		width: 80%;
+	}
+	#clanBox{
+		display: initial;
+	}
+	#logoBox{
+		padding: 0;
+	}
+	.infoClan{
+		width: 90%;
+		margin: auto;
+	}
 }

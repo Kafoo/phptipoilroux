@@ -39,7 +39,7 @@ section{
 		height: 0;
 	  left: -15px;
 		right: auto;
-	  top: -1px;
+	  top: -1.5px;
 		bottom: auto;
 		border: 13px solid;
 		border-color: black transparent transparent transparent;
@@ -51,7 +51,7 @@ section{
 		height: 0;
 	  left: -10px;
 		right: auto;
-	  top: 1px;
+	  top: 0.5px;
 		bottom: auto;
 		border: 10px solid;
 		border-color: rgb(56, 76, 59) transparent transparent transparent;

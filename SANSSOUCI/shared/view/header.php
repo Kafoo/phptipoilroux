@@ -39,7 +39,7 @@ if (isset($_POST['submitConnect'])) {
 
 		<header class="headerGrid">
 			<div id="branding">
-				<div id="brandingText" style="cursor: pointer;" onclick="window.location='home.php';">SANS SOUCI</div>
+				<div id="brandingText" style="cursor: pointer;" onclick="window.location='home.php';">VAMPIRE</div>
 			</div>
 			<nav id="navDesktop">
 				<div style="display: inline-block;"><a href="monde.php">MONDE</a>
@@ -62,7 +62,7 @@ if (isset($_POST['submitConnect'])) {
 			if (isset($erreurConnect)) {
 				echo '
 				<div id="connectionDesktop">
-				' . $erreurConnect . '<br/><a href="home.php">Réessayer</a>
+				' . $erreurConnect . '<br/><a href="">Réessayer</a>
 				</div>
 				';
 			}

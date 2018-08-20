@@ -136,6 +136,9 @@ include("shared/connectDB.php");
 			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
 			<div></div>
 
+
+			<textarea style="margin: auto; display: inline-block;"></textarea>>
+
 		</section>
 
 
