@@ -33,7 +33,7 @@ include("shared/connectDB.php");
 			<div class="mobileInfo" hidden>
 				<span class="mobileInfoWriter">
 					<a href="" style="font-weight: bold; color: black">ALMA</a> LVL100<br/>
-					Malkavien Sang
+					Malkavien - Célérité
 				</span>
 				<span class="mobileInfoUser">
 					<img src="img/icones/conversgm.png" width="30px" style="cursor: pointer;" onclick="showConversGm()">
@@ -45,7 +45,7 @@ include("shared/connectDB.php");
 				<a href="" style="font-weight: bold; color: black">ALMA</a><br/><br/>
 				LVL100<br/>
 				Malkavien<br/>
-				Sang<br/><br/>
+				Célérité<br/><br/>
 				messages : 42
 			</div>
 			<div class="msg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -76,7 +76,7 @@ include("shared/connectDB.php");
 				<a href="" style="font-weight: bold; color: black">ALMA</a><br/><br/>
 				LVL100<br/>
 				Malkavien<br/>
-				Sang<br/><br/>
+				Célérité<br/><br/>
 				messages : 42
 			</div>
 			<div class="msg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -97,7 +97,7 @@ include("shared/connectDB.php");
 				<a href="" style="font-weight: bold; color: black">ALMA</a><br/><br/>
 				LVL100<br/>
 				Malkavien<br/>
-				Sang<br/><br/>
+				Célérité<br/><br/>
 				messages : 42
 			</div>
 			<div class="msg">Lorem flemmard, content minimum.</div>
@@ -120,7 +120,7 @@ include("shared/connectDB.php");
 				<a href="" style="font-weight: bold; color: black">ALMA</a><br/><br/>
 				LVL100<br/>
 				Malkavien<br/>
-				Sang<br/><br/>
+				Célérité<br/><br/>
 				messages : 42
 			</div>
 			<div class="msg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
