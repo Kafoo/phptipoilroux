@@ -28,15 +28,23 @@ include("shared/connectDB.php");
 
 			<?php
 
-			if (isset($_SESSION['id'])){
+			if (isset($_SESSION['connected'])){
 				echo '
 
 				<h2><?=$_SESSION["pseudo"];?></h2>
 
 				<table>
 					<tr>
-						<td align="right">Statut :</td>
-						<td align="left"><span class="infoMembre">Membre</span></td>
+						<td align="right">Messages postés :</td>
+						<td align="left"><span class="infoMembre">'.
+							$_SESSION['nombremsg']
+						.'</span></td>
+					</tr>
+					<tr>
+						<td align="right">Grade :</td>
+						<td align="left"><span class="infoMembre">'.
+							$_SESSION['grade']
+						.'</span></td>
 					</tr>
 					<tr>
 						<td align="right">Perso :</td>
@@ -45,14 +53,10 @@ include("shared/connectDB.php");
 								echo $_SESSION['nomPerso'];
 							}
 							else{
-								echo '<a class="infoMembre" href="creaperso.php">Créer un nouveau perso !</a>';
+								echo '<a class="infoMembre" href="creaperso.php">Créer un perso</a>';
 							}
 						echo '
 						</td>
-					</tr>
-					<tr>
-						<td align="right">Histoire actuelle :</td>
-						<td align="left"></td>
 					</tr>
 				</table>
 

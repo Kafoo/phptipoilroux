@@ -14,8 +14,24 @@ section{
 
 form td{
 	text-align: right;
+	position: relative;
+}
+
+form img{
+	width: 15px;
 }
 
 input[type="submit"]{
 	width: 60%;
+}
+
+#help{
+	position: absolute;
+	width: 1000%;
+	text-align: left;
+	background-color: lightgrey;
+	padding: 5px;
+	border: 1px solid black;
+	left: 25px;
+	top: 25px;
 }

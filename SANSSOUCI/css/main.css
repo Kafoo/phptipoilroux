@@ -88,6 +88,22 @@
 		box-shadow: 0 0 10px black;
 	}
 
+	#connecterrorDesktop{
+		grid-area: connect;
+		position: relative;
+		margin: 20px calc(3*5vw) auto auto;
+		text-align:center;
+		padding: 6px;
+		width: 16vw;
+		max-width: 200px;
+		background-color: #4e5556;
+		box-shadow: 0 0 10px black;
+	}
+
+	#connecterrorDesktop a{
+		color: lightgrey;
+	}
+
 	#connectedDesktop{
 		grid-area: connect;
 		position: relative;
@@ -100,7 +116,7 @@
 		box-shadow: 0 0 10px black;
 	}
 
-	#connectedPseudo{
+	#connectedDesktop a{
 		color: lightgrey;
 		font-weight: bold;
 		line-height: 1.8em;
@@ -108,6 +124,10 @@
 
 	#connectedDesktop a[href="deconnect.php"]{
 		color: grey;
+	}
+
+	#connectedDesktop a[href="creaperso.php"]{
+		font-weight: initial;
 	}
 
 	#connectionDesktop input{
@@ -187,7 +207,7 @@
 		/*STRUCTURE*/
 
 			.mainGrid{
-				grid-template-rows: 250px 1fr 50px;
+				grid-template-rows: 250px 1fr 80px;
 				grid-template-areas: 
 				"head head head"
 				"section section section"

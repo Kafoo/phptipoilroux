@@ -85,4 +85,8 @@ function choose(what,choix){
 	var newCurrent = document.getElementById("logo"+choix);
 	newCurrent.setAttribute("current"+what+"Logo", true);
 	newCurrent.style.boxShadow = "inset 0 0 30px 1px white";
+	/*Rentre le choix dans le formulaire*/
+	var stock = document.getElementById(what+"Stock")
+	stock.innerHTML = choix;
+	stock.setAttribute("value", choix);
 }

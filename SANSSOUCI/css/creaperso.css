@@ -2,6 +2,20 @@ section{
 	text-align: center;
 }
 
+#erreur{
+	width: 30%;
+	padding: 10px;
+	margin: auto;
+	color: lightgrey;
+	border : 1px solid black;
+	background-color: rgba(38, 0, 0, 0.3)
+}
+
+@media (max-width: 760px){
+	#erreur{
+		width: 70%;
+	}
+}
 
 .titre{
 	width: 85%;
@@ -53,7 +67,8 @@ section{
 	display: grid;
 	grid-template-columns: 40% 60%;
 	width: 95%;
-	height: calc(600px - 17vw);
+	height: calc(500px - 10vw);
+
 }
 
 /*A GAUCHE*/

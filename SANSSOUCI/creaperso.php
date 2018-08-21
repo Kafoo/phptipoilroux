@@ -2,6 +2,63 @@
 include("shared/refresh.php");
 include("shared/connectDB.php");
 
+//VERIFICATION DE LA BONNE CREATION
+if (isset($_POST['submit'])){
+
+	if (!empty($_POST['persoNom']) AND 
+		!empty($_POST['persoNature']) AND 
+		!empty($_POST['persoAttitude']) AND 
+		!empty($_POST['persoConcept']) AND 
+		!empty($_POST['persoDefaut']) AND 
+		!empty($_POST['persoPhysique']) AND 
+		!empty($_POST['persoClan']) AND 
+		!empty($_POST['persoForce']) AND 
+		!empty($_POST['persoDexterite']) AND 
+		!empty($_POST['persoIntelligence']) AND 
+		!empty($_POST['persoCharisme']) AND 
+		!empty($_POST['persoPerception']) AND 
+		!empty($_POST['persoDisc']) AND 
+		!empty($_POST['persoLore']) ) {
+
+		$persoNom = htmlspecialchars($_POST['persoNom']);
+		$persoNature = htmlspecialchars($_POST['persoNature']);
+		$persoAttitude = htmlspecialchars($_POST['persoAttitude']);
+		$persoConcept = htmlspecialchars($_POST['persoConcept']);
+		$persoDefaut = htmlspecialchars($_POST['persoDefaut']);
+		$persoPhysique = htmlspecialchars($_POST['persoPhysique']);
+		$persoClan = htmlspecialchars($_POST['persoClan']);
+		$persoForce = htmlspecialchars($_POST['persoForce']);
+		$persoDexterite = htmlspecialchars($_POST['persoDexterite']);
+		$persoIntelligence = htmlspecialchars($_POST['persoIntelligence']);
+		$persoCharisme = htmlspecialchars($_POST['persoCharisme']);
+		$persoPerception = htmlspecialchars($_POST['persoPerception']);
+		$persoDisc = htmlspecialchars($_POST['persoDisc']);
+		$persoLore = htmlspecialchars($_POST['persoLore']);
+
+		$reqNomPerso = $bdd->prepare("SELECT * FROM ss_persos WHERE nom = ?");
+		$reqNomPerso->execute(array($persoNom));
+		$nomPersoExist = $reqNomPerso->rowCount();
+
+		if ($nomPersoExist == 0) {
+
+			if ($persoForce + $persoDexterite + $persoIntelligence + $persoCharisme + $persoPerception == 25) {
+				//Insert le perso dans la BDD
+				$bdd -> query ("INSERT INTO ss_persos (membreID, nom, nature, attitude, concept, defaut, physique, clan, forc, dexterite, intelligence, charisme, perception, lore) VALUES ('4','$persoNom','$persoNature','$persoAttitude','$persoConcept','$persoDefaut','$persoPhysique','$persoClan','$persoForce','$persoDexterite','$persoIntelligence','$persoCharisme','$persoPerception','$persoLore')" );
+				header("Location: profil.php");
+			}
+			else{
+				$errorCrea = "La somme de tes caractéristiques doit être 25 !";
+			}
+		}
+		else{
+			$errorCrea = "Ce nom de personnage est déjà pris !";
+		}
+	}
+	else{
+		$errorCrea = "Tous les champs doivent être complétés ! (n'oublie pas de séléctionner un clan et une discipline)";
+	}
+}
+
 ?>
 
 
@@ -27,41 +84,63 @@ include("shared/connectDB.php");
 			<div id="subscribeBlock">
 				<div id="ariane">CREATION DE PERSONNAGE</div>
 
+
+				<?php
+					if (isset($errorCrea)) {
+						echo '
+						<div id="erreur">
+							<h3 style="margin-top:5px;">Oups !</h3>
+							'.$errorCrea.'
+						</div>';
+					}
+				?>
+
 				<form method="POST" action="">
 
 					<div class="titre">QUI ES-TU ?</div>
 
 					<table id="formBases">
 						<tr>
-							<td><label for="persoNom" style="font-weight: bold">Nom :</label></td>
-							<td><input type="text" name="persoNom" placeholder="Nom du perso"></td>
+							<td><label for="persoNom"><b>Nom :</b></label></td>
+							<td><input type="text" name="persoNom" placeholder="Nom du perso" value="<?php if (isset($_POST['persoNom'])){echo $_POST['persoNom'];}else{echo'';}?>"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td><label for="persoNature">Nature :</label></td>
-							<td><input type="text" name="persoNature" placeholder="1 adjectif"></td>
+							<td><input type="text" name="persoNature" placeholder="1 adjectif" value="<?php if (isset($_POST['persoNature'])){echo $_POST['persoNature'];}else{echo'';}?>"></td>
 							<td>
 								<img src="img/help.png" onmouseover="showHelp('Nature')" onmouseout="hideHelp('Nature')">
-								<div class="helpDiv" id="helpNature" hidden>La nature d'un personnage est sa véritable personnalité, ce qu'il est fondamentalement. <br/><i>Exemples : joueur, démoniaque, passionné, intéressé, altruiste, pervers...</i></div>
+								<div class="helpDiv" id="helpNature" hidden>La nature d'un personnage est sa véritable personnalité, ce qu'il est fondamentalement. <br/><i>Exemples : simplet, démoniaque, passionné, intéressé, altruiste, pervers...</i></div>
 							</td>
 						</tr>
 						<tr>
 							<td><label for="persoAttitude">Attitude :</label></td>
-							<td><input type="text" name="persoAttitude" placeholder="1 adjectif"></td>
+							<td><input type="text" name="persoAttitude" placeholder="1 adjectif" value="<?php if (isset($_POST['persoAttitude'])){echo $_POST['persoAttitude'];}else{echo'';}?>"></td>
 							<td>
 								<img src="img/help.png" onmouseover="showHelp('Attitude')" onmouseout="hideHelp('Attitude')">
-								<div class="helpDiv" id="helpAttitude" hidden>L'attitude d'un personnage est ce qu'il montre de sa personnalité. Plus elle est contraire à sa nature, plus le personnage cache son jeu.<br/><i>Exemples : joueur, démoniaque, passionné, intéressé, altruiste, pervers...</i></div>
+								<div class="helpDiv" id="helpAttitude" hidden>L'attitude d'un personnage est ce qu'il montre de sa personnalité. Plus elle est contraire à sa nature, plus le personnage cache son jeu.<br/><i>Exemples : simplet, démoniaque, passionné, intéressé, altruiste, pervers...</i></div>
 							</td>
 						</tr>
 						<tr>
 							<td><label for="persoConcept">Concept :</label></td>
-							<td><input type="text" name="persoConcept" placeholder="1 concept"></td>
+							<td><input type="text" name="persoConcept" placeholder="1 concept" value="<?php if (isset($_POST['persoConcept'])){echo $_POST['persoConcept'];}else{echo'';}?>"></td>
 							<td>
 								<img src="img/help.png" onmouseover="showHelp('Concept')" onmouseout="hideHelp('Concept')">
 								<div class="helpDiv" id="helpConcept" hidden>Le concept d'un personnage est ce qui prépondère le plus dans sa vie d'humain (avant l'Etreinte) : son métier, sa passion, ou encore sa position sociale.<br/><i>Exemples : drogue addict, charpentier, boxer, hermite...</i></div>
 							</td>
 						</tr>
+						<tr>
+							<td><label for="persoDefaut">Défaut :</label></td>
+							<td><input type="text" name="persoDefaut" placeholder="Ton défaut" value="<?php if (isset($_POST['persoDefaut'])){echo $_POST['persoDefaut'];}else{echo'';}?>"></td>
+							<td>
+								<img src="img/help.png" onmouseover="showHelp('Defaut')" onmouseout="hideHelp('Defaut')">
+								<div class="helpDiv" id="helpDefaut" hidden>Un petit défaut de ton choix, pour donner un peu de réalisme à ton perso !</i></div>
+							</td>
+						</tr>
 					</table>
+
+					<br><br><label for="persoPhysique">Physique :</label><br>
+						<textarea name="persoPhysique" placeholder="Rapidement, à quoi tu ressembles ?" style="width: 280px; height: 80px; margin-top: 10px;"><?php if (isset($_POST['persoPhysique'])){echo $_POST['persoPhysique'];}else{echo'';}?></textarea>
 					
 
 
@@ -258,10 +337,9 @@ include("shared/connectDB.php");
 							Autrefois tyrans de l'Europe de l'Est, les Tzimisces ont été chassés de leurs anciens territoires et se sont réfugiés dans les replis du Sabbat.<br><br>Possédant une certaine noblesse, associée à un caractère maléfique dépassant l'imagination, le Clan Tzimisce conduit le Sabbat dans son rejet de tout ce qui est humain. Certains récits apocryphes racontent que les Tzimisces étaient autrefois le clan le plus puissant, mais que l'histoire et les conspirations des autres vampires l'ont conduit à sa déchéance actuelle.<br><br>Bien plus que tous les autres vampires, les Tzimisces arborent leur monstruosité. Ils pratiquent une discipline de "sculpture sur chair" pour défigurer leurs ennemis et se fabriquer des corps d'une beauté terrifiante. 
 						</div>
 
+						<input id="clanStock" type="text" name="persoClan" hidden>
 
 					</div>
-
-
 
 					<div class="titre">T'AS QUOI DANS LE VENTRE ?</div>
 
@@ -283,13 +361,13 @@ include("shared/connectDB.php");
 							</tr>
 							<tr>
 								<td>
-									<label for="persoDexterité">Dexterité :</label>
+									<label for="persoDexterite">Dexterité :</label>
 								</td>
 								<td>
-									<input id="valDexterité" type="range" min="1" max="10" value="1" name="persoDexterité" oninput="change('Dexterité')">
+									<input id="valDexterite" type="range" min="1" max="10" value="1" name="persoDexterite" oninput="change('Dexterite')">
 								</td>
 								<td>
-									<span id="displayDexterité" class="displayCarac">1</span>
+									<span id="displayDexterite" class="displayCarac">1</span>
 								</td>
 							</tr>
 							<tr>
@@ -426,26 +504,22 @@ include("shared/connectDB.php");
 							>?</div>
 						</div>
 
-						
+						<input id="discStock" type="text" name="persoDisc" hidden>
 
 					</div>
 
 					<div class="titre">QUEL EST TON HISTOIRE ?</div>
 					
-
 					<div id="descriptionLore">
 						<b>C'est ici que tu vas décrire librement ton personnage, ce qu'il a vécu, ce qui fait ce qu'il est aujourd'hui.</b><br><br>Quel âge a-t-il ? A-t-il un travail, de la famille, des amis ? Quel a été son premier contact avec le monde des vampires ? Qui est son Sire, son Etreinte a-t-elle été agréable ? Où est-il réfugié depuis, et que pense-t-il de tout ça ?<br><br>Libre à toi d'écrire 3 lignes, ou un bouquin ;-)
-						<textarea id="lore" placeholder="Allez, raconte-nous tout."></textarea>
+						<textarea id="lore" name="persoLore" placeholder="Allez, raconte-nous tout."><?php if (isset($_POST['persoLore'])){echo $_POST['persoLore'];}else{echo'';}?></textarea>
 					</div>
 
-					<br>
-
 					<input id="submitAll" type="submit" name="submit" value="C'est parti !">
+
 				</form>
-				<br/>
 
 			</div>
-			<br><br><br><br><br><br><br><br><br><br><br><br>
 
 		</section>
 

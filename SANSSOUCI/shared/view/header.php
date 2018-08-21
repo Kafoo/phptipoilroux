@@ -15,6 +15,8 @@ if (isset($_POST['submitConnect'])) {
 			$_SESSION['id'] = $userInfo['id'];
 			$_SESSION['pseudo'] = $userInfo['pseudo'];
 			$_SESSION['password'] = $userInfo['password'];
+			$_SESSION['grade'] = $userInfo['grade'];
+			$_SESSION['nombremsg'] = $userInfo['nombremsg'];
 			$_SESSION['connected'] = 'connected';
 			if (basename($_SERVER['PHP_SELF']) == "subscribe.php"){
 				header("Location: home.php");
@@ -25,13 +27,13 @@ if (isset($_POST['submitConnect'])) {
 		}
 	}
 	elseif (!empty($_POST['passwordConnect'])){
-		$erreurConnect = "Pseudo ?";
+		$erreurConnect = "Rentre ton pseudo, ça marchera mieux =P";
 	}
 	elseif (!empty($pseudoConnect)){
-		$erreurConnect = "Mot de passe ?";
+		$erreurConnect = "Rentre ton mot de passe, ça marchera mieux =P";
 	}
 	else{
-		$erreurConnect = "Rempli quelque chose wesh";
+		$erreurConnect = "Va falloir me donner un peu plus d'infos que ça !";
 	}
 }
 
@@ -42,18 +44,18 @@ if (isset($_POST['submitConnect'])) {
 				<div id="brandingText" style="cursor: pointer;" onclick="window.location='home.php';">VAMPIRE</div>
 			</div>
 			<nav id="navDesktop">
-				<div style="display: inline-block;"><a href="monde.php">MONDE</a>
+				<div style="display: inline-block;"><a href="accueil.php">ACCUEIL</a>
 				<a href="histoire.php">HISTOIRE</a></div>
 				<div style="display: inline-block;"><a href="profil.php">PROFIL</a>
-				<a href="autres.php">AUTRES</a></div>			
+				<a href="help.php">HELP</a></div>			
 			</nav>
 
 
 			<nav class="navMobileGrid" id="navMobile" style="cursor: pointer;">
-				<div id="navMobile1" onclick="window.location='monde.php';">MONDE</div>
+				<div id="navMobile1" onclick="window.location='accueil.php';">ACCUEIL</div>
 				<div id="navMobile2" onclick="window.location='histoire.php';">HISTOIRE</div>
 				<div id="navMobile3" onclick="window.location='profil.php';">PROFIL</div>
-				<div id="navMobile4" onclick="window.location='autres.php';">AUTRES</div>
+				<div id="navMobile4" onclick="window.location='help.php';">HELP</div>
 			</nav>
 
 			
@@ -61,7 +63,7 @@ if (isset($_POST['submitConnect'])) {
 			//ERREUR DE CONNEXION
 			if (isset($erreurConnect)) {
 				echo '
-				<div id="connectionDesktop">
+				<div id="connecterrorDesktop">
 				' . $erreurConnect . '<br/><a href="">Réessayer</a>
 				</div>
 				';
@@ -71,9 +73,15 @@ if (isset($_POST['submitConnect'])) {
 				echo '
 				<div id="connectedDesktop">
 				<a id="connectedPseudo" href="profil.php">' . $_SESSION['pseudo'] . '</a> (<a href="deconnect.php">Déconnexion</a>)<br/>
-				Perso<br/>
-				Quelques stats ?
+				Grade : '.$_SESSION['grade'].'<br/>';
+				if (isset($_SESSION['currentPerso'])) {
+					echo 'Perso : '.$_SESSION['currentPerso'];
+				}
+				else{
+					echo '<a href="creaperso.php"> Créer un perso !</a>';
+				}
 				
+				echo '				
 				</div>
 				';
 			}

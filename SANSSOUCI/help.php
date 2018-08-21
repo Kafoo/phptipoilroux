@@ -9,7 +9,7 @@ include("shared/connectDB.php");
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/home.css">
+	<link rel="stylesheet" type="text/css" href="css/help.css">
 	<title>SANS SOUCI</title>
 </head>
 <body>
@@ -21,7 +21,12 @@ include("shared/connectDB.php");
 
 	<!--SECTION-->
 		<section class="sectionGrid">
-			<h1>ACCUEIL</h1>
+			<h1>HELP</h1>
+
+			LEXIQUE ?<br>
+			RECHERCHES ?<br>
+			CONVERSATION AVEC GM ?<br>
+			PLUS D'INFOS LORE ?
 		</section>
 
 	<!--FOOTER-->

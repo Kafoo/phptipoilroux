@@ -9,3 +9,7 @@ section{
 table{
 	margin: auto;
 }
+
+table td{
+	padding: 5px;
+}
