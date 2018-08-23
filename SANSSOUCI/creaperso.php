@@ -26,13 +26,13 @@ if (isset($_POST['submit'])){
 		$persoConcept = htmlspecialchars($_POST['persoConcept']);
 		$persoDefaut = htmlspecialchars($_POST['persoDefaut']);
 		$persoPhysique = htmlspecialchars($_POST['persoPhysique']);
-		$persoClan = htmlspecialchars($_POST['persoClan']);
+		$persoClan = strtolower(htmlspecialchars($_POST['persoClan']));
 		$persoForce = htmlspecialchars($_POST['persoForce']);
 		$persoDexterite = htmlspecialchars($_POST['persoDexterite']);
 		$persoIntelligence = htmlspecialchars($_POST['persoIntelligence']);
 		$persoCharisme = htmlspecialchars($_POST['persoCharisme']);
 		$persoPerception = htmlspecialchars($_POST['persoPerception']);
-		$persoDisc = htmlspecialchars($_POST['persoDisc']);
+		$persoDisc = strtolower(htmlspecialchars($_POST['persoDisc']));
 		$persoLore = htmlspecialchars($_POST['persoLore']);
 
 		$reqNomPerso = $bdd->prepare("SELECT * FROM ss_persos WHERE nom = ?");
@@ -43,7 +43,7 @@ if (isset($_POST['submit'])){
 
 			if ($persoForce + $persoDexterite + $persoIntelligence + $persoCharisme + $persoPerception == 25) {
 				//Insert le perso dans la BDD
-				$bdd -> query ("INSERT INTO ss_persos (membreID, nom, nature, attitude, concept, defaut, physique, clan, forc, dexterite, intelligence, charisme, perception, lore) VALUES ('4','$persoNom','$persoNature','$persoAttitude','$persoConcept','$persoDefaut','$persoPhysique','$persoClan','$persoForce','$persoDexterite','$persoIntelligence','$persoCharisme','$persoPerception','$persoLore')" );
+				$bdd -> query ("INSERT INTO ss_persos (membreID, nom, nature, attitude, concept, defaut, physique, clan, forc, dexterite, intelligence, charisme, perception, lore, premDisc) VALUES ('72','$persoNom','$persoNature','$persoAttitude','$persoConcept','$persoDefaut','$persoPhysique','$persoClan','$persoForce','$persoDexterite','$persoIntelligence','$persoCharisme','$persoPerception','$persoLore','$persoDisc')" );
 				header("Location: profil.php");
 			}
 			else{
@@ -169,11 +169,11 @@ if (isset($_POST['submit'])){
 							</div>
 							<div 
 							class="logoClan"
-							id="logoMalkavian" 
-							style="background-image: url('img/logoClans/malkavian.png');cursor: pointer;"
-							onmouseover="show('clan','logoMalkavian','infoMalkavian')"
-							onmouseout="hide('clan','logoMalkavian','infoMalkavian')"
-							onclick= "choose('clan','Malkavian')">
+							id="logoMalkavien" 
+							style="background-image: url('img/logoClans/malkavien.png');cursor: pointer;"
+							onmouseover="show('clan','logoMalkavien','infoMalkavien')"
+							onmouseout="hide('clan','logoMalkavien','infoMalkavien')"
+							onclick= "choose('clan','Malkavien')">
 							</div>
 							<div 
 							class="logoClan" 
@@ -277,7 +277,7 @@ if (isset($_POST['submit'])){
 							Véritable chef de file de la Camarilla, le Clan Ventrue prétend lui avoir donné naissance et soutenir la secte depuis toujours. Il suspecte un membre du Clan Brujah d'avoir détruit son fondateur, ce qui est une blessure d'orgueil très cruelle.<br><br>Quelle qu'en soit la raison historique, le clan n'a plus de fondateur, et a de ce fait gagné son indépendance par rapport aux Antédiluviens. Toutefois, le Clan Ventrue est très actif dans le Jyhad, et peut exercer sa formidable influence sur les faits et gestes du bétail.<br><br>Les vampires sont très curieux de connaître ce qui se passe à l'intérieur de ce clan très bien organisé, et des rumeurs de sombres mystères et d'Aïeuls en sommeil s'échappent parfois de la façade austère des Ventrues. 
 						</div>
 
-						<div class="infoClan" id="infoMalkavian" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/5936731353_bb131dd0fe_z.jpg?w=312&h=476"> 
+						<div class="infoClan" id="infoMalkavien" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/5936731353_bb131dd0fe_z.jpg?w=312&h=476"> 
 							<h1>MALKAVIAN - LA FOLIE</h1>
 							Le Clan Malkavien a souffert tout au long de son histoire et continue à souffrir chaque nuit. Chaque membre de ce clan est affligé de folie, et tous sont esclaves de leurs lubies.<br><br>Le fondateur du Clan Malkavien était, selon la rumeur, un des vampires les plus importants de l'époque, mais il aurait commis un crime impardonnable. Caïn aurait alors maudit sa descendance. Durant l'histoire caïnite, les Malkaviens ont été tour à tour craints pour leurs comportements étranges et recherchés pour leur perspicacité encore plus étrange.<br><br>Bien les Malkaviens aient été historiquement dispersés et désorganisé, de récentes vagues migratoires et d'inexplicables rassemblements font s'interroger — et s'inquiéter — de nombreux anciens futur du clan dément.
 						</div>

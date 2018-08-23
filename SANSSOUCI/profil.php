@@ -21,40 +21,33 @@ include("shared/connectDB.php");
 
 	<!--SECTION-->
 		<section class="sectionGrid">
-			<h1>PROFIL</h1>
-			_______________
+			<h1>Profil de <?php if (isset($_SESSION['connected'])) {echo $_SESSION["pseudo"] ;}?> </h1>
+			___________________________________________________
 			<br/>
 			<br/>
 
 			<?php
 
 			if (isset($_SESSION['connected'])){
+
 				echo '
-
-				<h2><?=$_SESSION["pseudo"];?></h2>
-
 				<table>
 					<tr>
 						<td align="right">Messages postés :</td>
-						<td align="left"><span class="infoMembre">'.
-							$_SESSION['nombremsg']
-						.'</span></td>
+						<td align="left"><span class="infoMembre">';
+						$membreID = $_SESSION['id'];
+						echo getInfoMembre("$membreID","nombremsg");echo '</span></td>
 					</tr>
 					<tr>
 						<td align="right">Grade :</td>
-						<td align="left"><span class="infoMembre">'.
-							$_SESSION['grade']
-						.'</span></td>
+						<td align="left"><span class="infoMembre">';
+						$membreID = $_SESSION['id'];
+						echo getInfoMembre("$membreID","grade");echo '</span></td>
 					</tr>
 					<tr>
 						<td align="right">Perso :</td>
 						<td align="left">';
-							if (isset($_SESSION['nomPerso'])){
-								echo $_SESSION['nomPerso'];
-							}
-							else{
-								echo '<a class="infoMembre" href="creaperso.php">Créer un perso</a>';
-							}
+							getPersos();
 						echo '
 						</td>
 					</tr>
@@ -66,6 +59,7 @@ include("shared/connectDB.php");
 			else{
 				echo "Connecte-toi d'abord ! ;-)";
 			}
+
 			?>
 
 

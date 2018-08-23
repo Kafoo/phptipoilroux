@@ -1,4 +1,5 @@
 <?php
+include("php/functions.php");
 //-----------SI TENTATIVE DE CONNEXION :-----------
 if (isset($_POST['submitConnect'])) {
 
@@ -70,17 +71,14 @@ if (isset($_POST['submitConnect'])) {
 			}
 			//MEMBRE CONNECTE
 			elseif (isset($_SESSION['connected'])) {
+					$membreID = $_SESSION['id'];
 				echo '
 				<div id="connectedDesktop">
 				<a id="connectedPseudo" href="profil.php">' . $_SESSION['pseudo'] . '</a> (<a href="deconnect.php">Déconnexion</a>)<br/>
-				Grade : '.$_SESSION['grade'].'<br/>';
-				if (isset($_SESSION['currentPerso'])) {
-					echo 'Perso : '.$_SESSION['currentPerso'];
-				}
-				else{
-					echo '<a href="creaperso.php"> Créer un perso !</a>';
-				}
-				
+				Grade : ';
+						$membreID = $_SESSION['id'];
+						echo getInfoMembre("$membreID","grade");echo '<br/>';
+				getPersos();
 				echo '				
 				</div>
 				';

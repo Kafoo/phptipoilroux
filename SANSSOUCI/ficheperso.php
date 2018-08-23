@@ -27,21 +27,34 @@ include("shared/connectDB.php");
 
 			<div id="ariane">FICHE PERSONNAGE</div>
 
+
+<?php
+
+
+	if (isset($_GET['persoID']) AND !empty($_GET['persoID'])){
+
+		$persoID = $_GET['persoID'];
+		echo '
+
 			<div id="ficheContainer">
 					
 					<div class="ficheBox">
-						Nom<br>
-						Nature<br>
-						Attitude<br>
-						Concept<br>
-						Physique<br><br>
-						Et d'autres trucs
+
+						<b>Nom</b> : ';echo getInfoPerso("$persoID","nom");echo'<br><br>
+						<b>Nature : </b>';echo getInfoPerso("$persoID","nature");echo'<br><br>
+						<b>Attitude : </b>';echo getInfoPerso("$persoID","attitude");echo'<br><br>
+						<b>Concept : </b>';echo getInfoPerso("$persoID","concept");echo'<br><br>
+						<b>Physique : </b>';echo getInfoPerso("$persoID","physique");echo'<br><br>
+
 					</div>
 
+
 					<div class="ficheBox">
-						<img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/2.jpg?w=309&h=471">
-						<h1>TU ES BRUJAH</h1>
-						Selon leur histoire, les Brujahs étaient autrefois les rois-philosophes de la Mésopotamie, de la Perse et de Babylone.<br><br>Dans leur recherche de liberté et d'illumination, ils tuèrent cependant leur fondateur. Pour cela, Caïn les chassa de la Première Cité. Depuis, les Brujahs ont connu un déclin inéluctable. Ils sont considérés comme des enfants gâtés qui n'ont ni fierté, ni sens de l'histoire.<br><br>Bien que membre de la Camarilla, le Clan Brujah est l'agitateur et le trublion de la secte, toujours à la limite des Traditions et se rebellant sans cesse au nom de toutes les causes. De nombreux Brujahs sont des anarchs proscrits, défiant les autorités et ne servant aucun prince.
+
+						<img src="img/illusClans/'; echo getInfoPerso("$persoID","clan"); echo '.jpg">
+						<h1>TU ES ';echo strtoupper(getInfoPerso("$persoID","clan"));echo'</h1>'
+						;echo getClanDesc(getInfoPerso("$persoID","clan"));echo'
+
 					</div>
 
 
@@ -55,7 +68,7 @@ include("shared/connectDB.php");
 									<label for="persoForce">Force</label>
 								</td>
 								<td>
-									<span id="displayForce" class="displayCarac">1</span>
+									<span id="displayForce" class="displayCarac">';echo getInfoPerso("$persoID","forc");echo '</span>
 								</td>
 							</tr>
 							<tr>
@@ -63,7 +76,7 @@ include("shared/connectDB.php");
 									<label for="persoDexterité">Dexterité</label>
 								</td>
 								<td>
-									<span id="displayDexterité" class="displayCarac">1</span>
+									<span id="displayDexterité" class="displayCarac">';echo getInfoPerso("$persoID","dexterite");echo '</span>
 								</td>
 							</tr>
 							<tr>
@@ -72,7 +85,7 @@ include("shared/connectDB.php");
 								</td>
 
 								<td>
-									<span id="displayIntelligence" class="displayCarac">1</span>
+									<span id="displayIntelligence" class="displayCarac">';echo getInfoPerso("$persoID","intelligence");echo '</span>
 								</td>
 							</tr>
 							<tr>
@@ -81,7 +94,7 @@ include("shared/connectDB.php");
 								</td>
 
 								<td>
-									<span id="displayCharisme" class="displayCarac">1</span>
+									<span id="displayCharisme" class="displayCarac">';echo getInfoPerso("$persoID","charisme");echo '</span>
 								</td>
 							</tr>
 							<tr>
@@ -90,7 +103,7 @@ include("shared/connectDB.php");
 								</td>
 
 								<td>
-									<span id="displayPerception" class="displayCarac">1</span>
+									<span id="displayPerception" class="displayCarac">';echo getInfoPerso("$persoID","perception");echo '</span>
 								</td>
 							</tr>
 						</table>
@@ -102,23 +115,25 @@ include("shared/connectDB.php");
 
 						<h3 class="soustitre">Tes disciplines</h3>
 
-						<div class="infoDisc"><h4>Animalisme</h4><br>La discipline de l’animalisme offre au caïnite une intense empathie et un grand pouvoir sur le règne animal. Permettant d’appeler, de discuter avec les animaux, son plus grand pouvoir est celui qu’elle offre sur la Bête qu’il y a en chaque mortel et en chaque Vampire.
+						<div class="infoDisc"><h4>';echo strtoupper(getInfoPerso("$persoID","premDisc"));echo '</h4><br>';echo getInfoDisc(getInfoPerso("$persoID","premDisc"));echo '
 						</div>
 
 					</div>
 
 					<div class="ficheBox" style="grid-column: 1/3">
-						<h3>HISTOIRE</h3><br>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						<h3>TON HISTOIRE</h3><br>
+						';echo getInfoPerso("$persoID","lore");echo '
 					</div>
 
-			</div>
+			</div>'
+			;
+	}
 
+	else{
+		echo "erreur";
+	}
+
+?>
 
 		</section>
 

@@ -82,8 +82,7 @@
 		margin: 20px calc(3*5vw) auto auto;
 		text-align:center;
 		padding: 6px;
-		width: 16vw;
-		max-width: 200px;
+		width: 270px;
 		background-color: #4e5556;
 		box-shadow: 0 0 10px black;
 	}
@@ -94,8 +93,7 @@
 		margin: 20px calc(3*5vw) auto auto;
 		text-align:center;
 		padding: 6px;
-		width: 16vw;
-		max-width: 200px;
+		width: 270px;
 		background-color: #4e5556;
 		box-shadow: 0 0 10px black;
 	}
@@ -110,8 +108,7 @@
 		margin: 20px calc(3*5vw) auto auto;
 		text-align:center;
 		padding: 10px;
-		width: 17vw;
-		max-width: 250px;
+		width: 270px;
 		background-color: #4e5556;
 		box-shadow: 0 0 10px black;
 	}
