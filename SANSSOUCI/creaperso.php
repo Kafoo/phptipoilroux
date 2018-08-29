@@ -43,7 +43,8 @@ if (isset($_POST['submit'])){
 
 			if ($persoForce + $persoDexterite + $persoIntelligence + $persoCharisme + $persoPerception == 25) {
 				//Insert le perso dans la BDD
-				$bdd -> query ("INSERT INTO ss_persos (membreID, nom, nature, attitude, concept, defaut, physique, clan, forc, dexterite, intelligence, charisme, perception, lore, premDisc) VALUES ('72','$persoNom','$persoNature','$persoAttitude','$persoConcept','$persoDefaut','$persoPhysique','$persoClan','$persoForce','$persoDexterite','$persoIntelligence','$persoCharisme','$persoPerception','$persoLore','$persoDisc')" );
+				$membreID = $_SESSION['id'];
+				$bdd -> query ("INSERT INTO ss_persos (membreID, nom, nature, attitude, concept, defaut, physique, clan, forc, dexterite, intelligence, charisme, perception, lore, premDisc) VALUES ('$membreID','$persoNom','$persoNature','$persoAttitude','$persoConcept','$persoDefaut','$persoPhysique','$persoClan','$persoForce','$persoDexterite','$persoIntelligence','$persoCharisme','$persoPerception','$persoLore','$persoDisc')" );
 				header("Location: profil.php");
 			}
 			else{
