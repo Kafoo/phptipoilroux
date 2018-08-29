@@ -194,7 +194,7 @@ if (isset($_POST['submit'])){
 							<div 
 							class="logoClan" 
 							id="logoBrujah" 
-							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclanbrujah.png?w=193&h=197');cursor: pointer;"
+							style="background-image: url('img/logoClans/brujah.png');cursor: pointer;"
 							onmouseover="show('clan','logoBrujah','infoBrujah')" 
 							onmouseout="hide('clan','logoBrujah','infoBrujah')"
 							onclick= "choose('clan','Brujah')">
@@ -202,7 +202,7 @@ if (isset($_POST['submit'])){
 							<div 
 							class="logoClan" 
 							id="logoTremere" 
-							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclantremere.png?w=176&h=175');cursor: pointer;"
+							style="background-image: url('img/logoClans/tremere.png');cursor: pointer;"
 							onmouseover="show('clan','logoTremere','infoTremere')" 
 							onmouseout="hide('clan','logoTremere','infoTremere')"
 							onclick= "choose('clan','Tremere')">
@@ -210,7 +210,7 @@ if (isset($_POST['submit'])){
 							<div 
 							class="logoClan" 
 							id="logoNosferatu" 
-							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclannosferatu.png?w=151&h=184');cursor: pointer;"
+							style="background-image: url('img/logoClans/nosferatu.png');cursor: pointer;"
 							onmouseover="show('clan','logoNosferatu','infoNosferatu')" 
 							onmouseout="hide('clan','logoNosferatu','infoNosferatu')"
 							onclick= "choose('clan','Nosferatu')">
@@ -218,7 +218,7 @@ if (isset($_POST['submit'])){
 							<div 
 							class="logoClan" 
 							id="logoRavnos" 
-							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclanravnos.png?w=135&h=149');cursor: pointer;"
+							style="background-image: url('img/logoClans/ravnos.png');cursor: pointer;"
 							onmouseover="show('clan','logoRavnos','infoRavnos')" 
 							onmouseout="hide('clan','logoRavnos','infoRavnos')"
 							onclick= "choose('clan','Ravnos')">
@@ -226,7 +226,7 @@ if (isset($_POST['submit'])){
 							<div 
 							class="logoClan" 
 							id="logoGiovanni" 
-							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclangiovanni.png?w=146&h=143');cursor: pointer;"
+							style="background-image: url('img/logoClans/giovanni.png');cursor: pointer;"
 							onmouseover="show('clan','logoGiovanni','infoGiovanni')" 
 							onmouseout="hide('clan','logoGiovanni','infoGiovanni')"
 							onclick= "choose('clan','Giovanni')">
@@ -234,7 +234,7 @@ if (isset($_POST['submit'])){
 							<div 
 							class="logoClan" 
 							id="logoAssamite" 
-							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclanassamite.png?w=195&h=95');cursor: pointer;"
+							style="background-image: url('img/logoClans/assamite.png');cursor: pointer;"
 							onmouseover="show('clan','logoAssamite','infoAssamite')" 
 							onmouseout="hide('clan','logoAssamite','infoAssamite')"
 							onclick= "choose('clan','Assamite')">
@@ -242,7 +242,7 @@ if (isset($_POST['submit'])){
 							<div 
 							class="logoClan" 
 							id="logoSethite" 
-							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclanfollowersofset.png?w=139&h=147');cursor: pointer;"
+							style="background-image: url('img/logoClans/sethite.png');cursor: pointer;"
 							onmouseover="show('clan','logoSethite','infoSethite')" 
 							onmouseout="hide('clan','logoSethite','infoSethite')"
 							onclick= "choose('clan','Sethite')">
@@ -250,7 +250,7 @@ if (isset($_POST['submit'])){
 							<div 
 							class="logoClan" 
 							id="logoLasombra" 
-							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclanlasombra.png?w=146&h=130');cursor: pointer;"
+							style="background-image: url('img/logoClans/lasombra.png');cursor: pointer;"
 							onmouseover="show('clan','logoLasombra','infoLasombra')" 
 							onmouseout="hide('clan','logoLasombra','infoLasombra')"
 							onclick= "choose('clan','Lasombra')">
@@ -258,7 +258,7 @@ if (isset($_POST['submit'])){
 							<div 
 							class="logoClan" 
 							id="logoTzimisce" 
-							style="background-image: url('https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/logoclantzimisce.png?w=118&h=125');cursor: pointer;"
+							style="background-image: url('img/logoClans/tzimisce.png');cursor: pointer;"
 							onmouseover="show('clan','logoTzimisce','infoTzimisce')" 
 							onmouseout="hide('clan','logoTzimisce','infoTzimisce')"
 							onclick= "choose('clan','Tzimisce')">
@@ -272,7 +272,7 @@ if (isset($_POST['submit'])){
 						</div>
 
 						<div class="infoClan" id="infoVentrue" hidden>
-							<img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/5937288904_b9c1a24e0f_b.jpg?w=308&h=469">
+							<img src="img/illusClans/ventrue.jpg">
 							<h1>VENTRUE - L'ELITE</h1>
 							Véritable chef de file de la Camarilla, le Clan Ventrue prétend lui avoir donné naissance et soutenir la secte depuis toujours. Il suspecte un membre du Clan Brujah d'avoir détruit son fondateur, ce qui est une blessure d'orgueil très cruelle.<br><br>Quelle qu'en soit la raison historique, le clan n'a plus de fondateur, et a de ce fait gagné son indépendance par rapport aux Antédiluviens. Toutefois, le Clan Ventrue est très actif dans le Jyhad, et peut exercer sa formidable influence sur les faits et gestes du bétail.<br><br>Les vampires sont très curieux de connaître ce qui se passe à l'intérieur de ce clan très bien organisé, et des rumeurs de sombres mystères et d'Aïeuls en sommeil s'échappent parfois de la façade austère des Ventrues. 
 						</div>
