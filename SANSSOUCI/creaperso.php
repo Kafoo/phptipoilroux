@@ -272,7 +272,7 @@ if (isset($_POST['submit'])){
 						</div>
 
 						<div class="infoClan" id="infoVentrue" hidden>
-							<img src="img/illusClans/ventrue.jpg">
+							<img src="img/illusClans/ventrue.JPG">
 							<h1>VENTRUE - L'ELITE</h1>
 							Véritable chef de file de la Camarilla, le Clan Ventrue prétend lui avoir donné naissance et soutenir la secte depuis toujours. Il suspecte un membre du Clan Brujah d'avoir détruit son fondateur, ce qui est une blessure d'orgueil très cruelle.<br><br>Quelle qu'en soit la raison historique, le clan n'a plus de fondateur, et a de ce fait gagné son indépendance par rapport aux Antédiluviens. Toutefois, le Clan Ventrue est très actif dans le Jyhad, et peut exercer sa formidable influence sur les faits et gestes du bétail.<br><br>Les vampires sont très curieux de connaître ce qui se passe à l'intérieur de ce clan très bien organisé, et des rumeurs de sombres mystères et d'Aïeuls en sommeil s'échappent parfois de la façade austère des Ventrues. 
 						</div>
