@@ -272,67 +272,67 @@ if (isset($_POST['submit'])){
 						</div>
 
 						<div class="infoClan" id="infoVentrue" hidden>
-							<img src="img/illusClans/ventrue.png">
+							<img src="img/illusClans/ventrue.jpg">
 							<h1>VENTRUE - L'ELITE</h1>
 							Véritable chef de file de la Camarilla, le Clan Ventrue prétend lui avoir donné naissance et soutenir la secte depuis toujours. Il suspecte un membre du Clan Brujah d'avoir détruit son fondateur, ce qui est une blessure d'orgueil très cruelle.<br><br>Quelle qu'en soit la raison historique, le clan n'a plus de fondateur, et a de ce fait gagné son indépendance par rapport aux Antédiluviens. Toutefois, le Clan Ventrue est très actif dans le Jyhad, et peut exercer sa formidable influence sur les faits et gestes du bétail.<br><br>Les vampires sont très curieux de connaître ce qui se passe à l'intérieur de ce clan très bien organisé, et des rumeurs de sombres mystères et d'Aïeuls en sommeil s'échappent parfois de la façade austère des Ventrues. 
 						</div>
 
-						<div class="infoClan" id="infoMalkavien" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/5936731353_bb131dd0fe_z.jpg?w=312&h=476"> 
-							<h1>MALKAVIAN - LA FOLIE</h1>
+						<div class="infoClan" id="infoMalkavien" hidden><img src="img/illusClans/malkavien.jpg"> 
+							<h1>MALKAVIEN - LA FOLIE</h1>
 							Le Clan Malkavien a souffert tout au long de son histoire et continue à souffrir chaque nuit. Chaque membre de ce clan est affligé de folie, et tous sont esclaves de leurs lubies.<br><br>Le fondateur du Clan Malkavien était, selon la rumeur, un des vampires les plus importants de l'époque, mais il aurait commis un crime impardonnable. Caïn aurait alors maudit sa descendance. Durant l'histoire caïnite, les Malkaviens ont été tour à tour craints pour leurs comportements étranges et recherchés pour leur perspicacité encore plus étrange.<br><br>Bien les Malkaviens aient été historiquement dispersés et désorganisé, de récentes vagues migratoires et d'inexplicables rassemblements font s'interroger — et s'inquiéter — de nombreux anciens futur du clan dément.
 						</div>
 
-						<div class="infoClan" id="infoToreador" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/13eb76986f60e1d96c7405fef7daa251.jpg">
+						<div class="infoClan" id="infoToreador" hidden><img src="img/illusClans/toreador.jpg">
 							<h1>TOREADOR - L'ART</h1>
 							Les plus prodigues des vampires, les Toréadors aiment les excès et la décadence, tout en affirmant être les protecteurs de l'art.<br><br>Ce mécénat est une réalité, le clan comptant dans ses rangs de nombreux artistes de talent, musiciens, poètes, écrivains et autres créateurs. D'un autre côté, il y a également beaucoup de poseurs, qui se donnent des allures de grands esthètes, mais sont incapables de créer quoi que ce soit.<br><br>Ils passent souvent des siècles dans la frustration d’accomplir une nouvelle oeuvre. Ils considèrent qu’ils se doivent de cultiver ce qui est le mieux pour l’humanité. Ils leur arrivent donc d’Etreindre un être doué dans son art pour conserver son talent pour l’éternité. Mais chaque Toreador a bien évidemment son sens du talent.
 						</div>
 
-						<div class="infoClan" id="infoGangrel" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/4a70bac86e1ea503f2cf31ef4cad17f3.jpg?w=300&h=458">
+						<div class="infoClan" id="infoGangrel" hidden><img src="img/illusClans/gangrel.jpg">
 							<h1>GANGREL - L'ANIMAL</h1>
 							Les Gangrels, maraudeurs nocturnes, sont des vampires féroces, avec de déplaisantes caractéristiques et tendances animales. Restant rarement en place, ce sont des nomades qui ne trouvent du plaisir qu'en voyageant seuls sous la lune.<br><br>Selon la légende, leur fondateur était un barbare, au contraire des autres, et c'est pour cette raison que les Gangrels donnent parfois l'Étreinte à des étrangers. Distants, fiers et sauvages, les Gangrels sont souvent tragiques. Bien que beaucoup haïssent les villes étouffantes et grouillantes, la présence de garous hostiles empêche les Gangrels d'y échapper.<br><br>Ils ne semblent soutenir la Camarilla que parce qu'elle intervient moins dans leur existence que le Sabbat.
 						</div>
 
-						<div class="infoClan" id="infoBrujah" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/2.jpg?w=309&h=471">
+						<div class="infoClan" id="infoBrujah" hidden><img src="img/illusClans/brujah.jpg">
 							<h1>BRUJAH - L'ANARCHIE</h1>
 							Selon leur histoire, les Brujahs étaient autrefois les rois-philosophes de la Mésopotamie, de la Perse et de Babylone.<br><br>Dans leur recherche de liberté et d'illumination, ils tuèrent cependant leur fondateur. Pour cela, Caïn les chassa de la Première Cité. Depuis, les Brujahs ont connu un déclin inéluctable. Ils sont considérés comme des enfants gâtés qui n'ont ni fierté, ni sens de l'histoire.<br><br>Bien que membre de la Camarilla, le Clan Brujah est l'agitateur et le trublion de la secte, toujours à la limite des Traditions et se rebellant sans cesse au nom de toutes les causes. De nombreux Brujahs sont des anarchs proscrits, défiant les autorités et ne servant aucun prince.
 						</div>
 
-						<div class="infoClan" id="infoTremere" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/bradstreet-new-image-tremere-20th-anniv-ed.jpg?w=322&h=491">
+						<div class="infoClan" id="infoTremere" hidden><img src="img/illusClans/tremere.jpg">
 							<h1>TREMERE - LA SORCELLERIE</h1>
 							Aucun clan n'est entouré d'autant de secret que celui des Tremeres. Inventeurs et adeptes d'une terrible magie du sang, les mystérieux Tremeres se sont donné une structure très rigide, basée sur le pouvoir et une loyauté fanatique pour le clan, concept inconnu de tous les autres vampires.<br><br>Certains vampires pensent que les Tremeres ne sont pas de véritables vampires, mais des magiciens mortels qui se sont condamnés pour l'éternité en tentant de percer les secrets de l'immortalité.<br><br>Une des rumeurs les plus tenaces veut que le fondateur, Tremere lui-même, ait entrepris une horrible mutation et se transformerait en quelque chose d'autre. Le clan Tremere reste silencieux sur le sujet, et considère avec méfiance ceux qui prétendent connaître ses secrets. 
 						</div>
 
-						<div class="infoClan" id="infoNosferatu" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/russell-nosferatu.jpg?w=312&h=475">
+						<div class="infoClan" id="infoNosferatu" hidden><img src="img/illusClans/nosferatu.jpg">
 							<h1>NOSFERATU - LA PESTE</h1>
 							Les membres du Clan Nosferatu souffrent de la malédiction la plus visible. L'Étreinte les déforme de façon hideuse, les métamorphosant en créatures littéralement monstrueuses.<br><br>Les légendes disent que les Nosferatus ont été corrompus en châtiment de la dégénérescence de leur fondateur et du comportement pervers de ses descendants. Mais aujourd'hui, les Nosferatus sont bien connus pour leur pondération et leur calme face à l'adversité.<br><br>Ils ont la réputation d'être des informateurs de premier ordre et les gardiens de nombreux secrets, car leur apparence horrifiante les a forcés à développer leurs capacités de dissimulation de façon extraordinaire.
 						</div>
 
-						<div class="infoClan" id="infoRavnos" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/ravnos1.jpg?w=316&h=481">
+						<div class="infoClan" id="infoRavnos" hidden><img src="img/illusClans/ravnos.jpg">
 							<h1>RAVNOS - LE MYSTERE</h1>
 							Descendants des gitans et de leurs prédécesseurs d'Inde, les vampires ravnos ont une existence nomade. Comme les gitans historiques, les Ravnos sont poursuivis par une réputation de voleurs et d'escrocs.<br><br>De nombreux princes et chefs du Sabbat les persécutent à cause du chaos qu'ils engendrent. Les Ravnos leur rendent la pareille, considérant la Camarilla et le Sabbat avec un égal mépris. Les Ravnos sont également célèbres pour leur capacité à créer de merveilleuses illusions, la meilleure façon d'éblouir leurs victimes.<br><br>On murmure dans les villes d'Europe et d'Asie que les Mathusalems ravnos se sont éveillés et dirigent à présent le jeu du clan.
 						</div>
 
-						<div class="infoClan" id="infoGiovanni" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/990a35effd4c75f42445ee784950dbb6.jpg?w=324&h=494">
+						<div class="infoClan" id="infoGiovanni" hidden><img src="img/illusClans/giovanni.jpg">
 							<h1>GIOVANNI - LA LUXURE</h1>
 							Le clan des Giovanni est celui des financiers et des nécromants. Les manipulations de l'âme ont donné à ce clan un pouvoir immense, tandis que les manipulations financières l'ont rendu immensément riche.<br><br>Les autres vampires font difficilement confiance aux mercenaires Giovanni, qui semblent toujours utiliser leur influence dans des buts secrets. Une bonne part de la mauvaise réputation du clan Giovanni provient du fait qu'il s'agit d'un clan insulaire, tirant quasiment tous ses membres de la même famille incestueuse et criminelle. Pire encore pour sa réputation est la rumeur qui veut que ses membres aient usurpé leur appartenance à la Famille : peu après son Etreinte, le chef de clan des Giovanni détruisit son sire et sa lignée, recréant le clan à sa propre image. 
 						</div>
 
-						<div class="infoClan" id="infoAssamite" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/38c7e4bf3a1592c5b0102eedf2110ec4.jpg?w=303&h=421">
+						<div class="infoClan" id="infoAssamite" hidden><img src="img/illusClans/assamite.jpg">
 							<h1>ASSAMITE - LE CRIME</h1>
 							Les Assamites sont des assassins redoutés venant des pays d'Orient. Aucun autre clan n'a acquis une telle réputation en diablerie, au point qu'ils louent leurs services aux autres vampires, agissant comme des tueurs à gage.<br><br>Selon leur enseignement, les Assamites boivent le sang des autres vampires pour purifier leur propre flétrissure. Ils étaient tellement craints que durant la Grande Révolte Anarch, les Tremeres lancèrent sur eux une malédiction, leur interdisant de boire le sang d'autres vampires. Toutefois, les Assamites ont récemment réussi à briser cette malédiction.<br><br>Certains pensent que les Assamites agissent à présent sous l'influence de pouvoirs anciens, se préparant peut-être à jouer leur rôle depuis longtemps écrit dans les derniers mouvements du Jyhad.
 						</div>
 
-						<div class="infoClan" id="infoSethite" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/a07acb949290d3fc2f55076ff383dd67.jpg?w=299&h=423">
+						<div class="infoClan" id="infoSethite" hidden><img src="img/illusClans/sethite.jpg">
 							<h1>DISCIPLE DE SETH - LE MYTHE</h1>
 							Originaires d'Egypte, les Séthites adoreraient le dieu-vampire immortel Seth en le servant dans tous leurs actes.<br><br>Les Séthites semblent vouloir corrompre les autres, réduire en esclavage leurs victimes prises dans les anneaux de leurs propres faiblesses, mais nul ne sait dans quels inavouables buts. Les autres vampires exècrent les Disciples de Seth, qui n'ont aucuns alliés. Malgré tout, de nombreux vampires recherchent la compagnie des Séthites, car on raconte qu'ils possèdent des dons et des secrets issus des nuits du passé.<br><br>Inévitablement, le mal et la folie suivent le sillage des Séthites, et de nombreux princes leur refusent l'entrée de leur ville.
 						</div>
 
-						<div class="infoClan" id="infoLasombra" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/30c93b98a55c422d8111956c20b1e09e.jpg">
+						<div class="infoClan" id="infoLasombra" hidden><img src="img/illusClans/lasombra.jpg">
 							<h1>LASOMBRA - LA FOURBERIE</h1>
 							Les Lasombras sont les maîtres des ténèbres et des ombres, et possèdent une aisance de commandement très semblable à celle des Ventrues.<br><br>De fait, nombre de vampires voient dans les Lasombras et les Ventrues un reflet déformé l'un de l'autre. Autrefois, les Lasombras étaient nobles, mais l'histoire chaotique des vampires et la formation du Sabbat ont forcé nombre d'entre eux à tourner le dos à leurs origines.<br><br>A présent, les Lasombras se donnent entièrement à la damnation du vampirisme. Le Sabbat a affecté ce clan aussi profondément que les Lasombras ont affecté le Sabbat, et sans la direction de ces aristocrates déchus, le Sabbat se désagrégerait. 
 						</div>
 
-						<div class="infoClan" id="infoTzimisce" hidden><img src="https://laconfreriedesdeuxtours.files.wordpress.com/2016/06/tzimisce.jpg?w=311&h=473">
+						<div class="infoClan" id="infoTzimisce" hidden><img src="img/illusClans/tzimisce.jpg">
 							<h1>TZIMISCE - LE MALEFICE</h1>
 							Autrefois tyrans de l'Europe de l'Est, les Tzimisces ont été chassés de leurs anciens territoires et se sont réfugiés dans les replis du Sabbat.<br><br>Possédant une certaine noblesse, associée à un caractère maléfique dépassant l'imagination, le Clan Tzimisce conduit le Sabbat dans son rejet de tout ce qui est humain. Certains récits apocryphes racontent que les Tzimisces étaient autrefois le clan le plus puissant, mais que l'histoire et les conspirations des autres vampires l'ont conduit à sa déchéance actuelle.<br><br>Bien plus que tous les autres vampires, les Tzimisces arborent leur monstruosité. Ils pratiquent une discipline de "sculpture sur chair" pour défigurer leurs ennemis et se fabriquer des corps d'une beauté terrifiante. 
 						</div>
