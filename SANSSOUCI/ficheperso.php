@@ -51,7 +51,7 @@ include("shared/connectDB.php");
 
 					<div class="ficheBox">
 
-						<img src="img/illusClans/'; echo getInfoPerso("$persoID","clan"); echo '.jpg">
+						<img src="img/illusClan/'; echo getInfoPerso("$persoID","clan"); echo '.jpg">
 						<h1>TU ES ';echo strtoupper(getInfoPerso("$persoID","clan"));echo'</h1>'
 						;echo getClanDesc(getInfoPerso("$persoID","clan"));echo'
 
