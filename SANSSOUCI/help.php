@@ -23,10 +23,41 @@ include("shared/connectDB.php");
 		<section class="sectionGrid">
 			<h1>HELP</h1>
 
-			LEXIQUE ?<br>
-			RECHERCHES ?<br>
-			CONVERSATION AVEC GM ?<br>
-			PLUS D'INFOS LORE ?
+
+
+			<div id="helpContainer">
+					
+					<div class="helpBox">
+
+						LEXIQUE
+
+					</div>
+
+
+					<div class="helpBox">
+
+						RECHERCHE
+
+					</div>
+
+					<div class="helpBox">
+
+						CONVERSATION PRIVEE AVEC LE GM
+
+					</div>
+
+
+					<div class="helpBox">
+
+						PLUS D'INFOS SUR L'UNIVERS
+
+					</div>
+
+
+
+
+
+
 		</section>
 
 	<!--FOOTER-->

@@ -21,7 +21,10 @@ include("shared/connectDB.php");
 
 	<!--SECTION-->
 		<section class="sectionGrid">
-			<h1>Profil de <?php if (isset($_SESSION['connected'])) {echo $_SESSION["pseudo"] ;}?> </h1>
+			
+
+
+			<h1>PROFIL <?php if (isset($_SESSION['connected'])) {echo "DE ". strtoupper($_SESSION["pseudo"]);}?> </h1>
 			___________________________________________________
 			<br/>
 			<br/>

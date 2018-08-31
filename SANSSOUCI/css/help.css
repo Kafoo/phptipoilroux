@@ -1,3 +1,36 @@
 section{
 	text-align: center;
 }
+
+#helpContainer{
+	display: grid;
+	width: 80%;
+	margin: auto;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.helpBox{
+	padding: 20px;
+	margin: 20px;
+	border: 2px solid black;
+	border-radius: 3px;
+	background-color: #4e5556;
+	overflow: auto;	
+}
+
+@media (max-width: 1080px){
+
+	#helpContainer{
+		width: 90%;
+	}
+
+}
+
+@media (max-width: 760px){
+
+	#helpContainer{
+		width: 100%;
+		display: initial;
+	}
+
+}

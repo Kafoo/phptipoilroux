@@ -23,7 +23,7 @@ include("shared/connectDB.php");
 		<section id="sectionGrid">
 			<div></div><h1>HISTOIRE</h1><div></div>
 
-			<div></div><div style="width: 30%; height: 100px; background-color: lightgrey; margin: auto; line-height: 100px">Bientôt dispo !</div><div></div>
+			<div></div><div style="width: 30%; height: 100px; background-color: grey; margin: auto; line-height: 100px">Bientôt dispo !</div><div></div>
 
 		</section>
 
