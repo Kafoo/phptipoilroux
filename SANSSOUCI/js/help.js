@@ -1,0 +1,1 @@
+$("#navDesk4").addClass("currentNav");

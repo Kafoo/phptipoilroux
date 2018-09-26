@@ -64,12 +64,12 @@ include("shared/connectDB.php");
 			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-			<div></div>
+			<div> <!-- USER INFO SPACE --> </div>
 
 			<div>
 			</div>
 			<div class="msgGM">Espace narration, message du GM.</div>
-			<div></div>
+			<div> <!-- USER INFO SPACE --> </div>
 
 			<div class="mobileInfo" hidden>Infos minimum mobile</div>
 			<div class="msgInfo">

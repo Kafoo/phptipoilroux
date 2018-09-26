@@ -1,6 +1,7 @@
 <?php
 include("shared/refresh.php");
 include("shared/connectDB.php");
+include("php/functions.php");
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +11,8 @@ include("shared/connectDB.php");
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/help.css">
+	<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<script src="shared/jquery"></script>
 	<title>SANS SOUCI</title>
 </head>
 <body>
@@ -66,6 +69,6 @@ include("shared/connectDB.php");
 	</div>
 
 
-
+<script type="text/javascript" src="js/help.js"></script>
 </body>
 </html> 

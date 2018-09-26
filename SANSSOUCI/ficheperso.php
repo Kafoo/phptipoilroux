@@ -1,7 +1,7 @@
 <?php
 include("shared/refresh.php");
 include("shared/connectDB.php");
-
+include("php/functions.php");
 ?>
 
 
@@ -12,7 +12,6 @@ include("shared/connectDB.php");
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/ficheperso.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<title>VAMPIRE - fiche perso</title>
 </head>
 <body>
@@ -122,7 +121,7 @@ include("shared/connectDB.php");
 
 					<div class="ficheBox" style="grid-column: 1/3">
 						<h3>TON HISTOIRE</h3><br>
-						';echo getInfoPerso("$persoID","lore");echo '
+						<span style="font-style: italic">';echo getInfoPerso("$persoID","lore");echo '<span>
 					</div>
 
 			</div>'

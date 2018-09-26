@@ -1,44 +1,18 @@
-<!-- 
-
-
-
-
-get joueur(id)
-get persos(joueur)
-get carac(carac, perso)
-
-
-
-BDD MEMBRE
--> id, pseudo, password, mail, grade
-
-BDD PERSOS
--> id, nom, carac
-
-BDD DISCIPLINES
--> id, nom, description
-
-BDD MESSAGES
--> id, auteur, date, contenu
-
-
-
-
-Nom -> "persoNom"
-Nature -> "persoNature"
-Attitude -> "persoAttitude"
-Concept -> "persoConcept"
-Défaut -> "persoDefaut"
-Physique -> "persoPhysique"
-
-Clan -> "persoClan"
-Carac -> "persoCarac"
-Discipline -> "persoDisc"
-Lore -> "persoLore" -->
-
 <?php
 
-function getPersos(){
+
+function getRealDate(){
+	return
+	sprintf('%02d', getdate()['mday']) . '/' . 
+	sprintf('%02d', getdate()['mon']) . '/' . 
+	getdate()['year'] . ' ' . 
+	sprintf('%02d', (getdate()['hours']+2)) . ':' . 
+	sprintf('%02d', getdate()['minutes']);
+}
+
+
+
+function showPersosList(){
 	//echo une liste des noms de persos séparés par un tiret + lien vers fiche perso, propose d'en créer un s'il n'y en a pas, et echo "membre non connecté" le cas échéant.
 	global $bdd, $membreID;
 	if (!isset($_SESSION['connected'])) {
@@ -56,15 +30,46 @@ function getPersos(){
 
 				$reqPersoID = $bdd->query("SELECT id FROM ss_persos WHERE nom = '$row[0]'");
 
-				echo '<a class="infoMembre" href="ficheperso.php?persoID='.$reqPersoID->fetch()[0].'">'.$row[0].'</a>';
+				echo '
+				<a class="infoMembre" href="ficheperso.php?persoID='.$reqPersoID->fetch()[0].'">'.$row[0].'</a><br>
+				(<a href="">Supprimer</a> - 
+				<a href="">Activer</a>)
+				';
 				if ($i < $nombrePerso) {
-					echo ' - ';
+					echo '<br><br>';
 				}
 				$i++;
 			}
 		}
 	}
 }
+
+
+function getActifPerso(){
+	global $bdd, $membreID;
+	if (!isset($_SESSION['connected'])) {
+		echo "Membre non connecté";
+	}
+	else{
+		$reqNomPerso = $bdd->query("SELECT nom FROM ss_persos WHERE membreID = '$membreID' AND actif = '1' ");
+		$nombrePerso = $reqNomPerso->rowCount();
+		if ($nombrePerso == 0) {
+			echo '<a class="infoMembre" href="creaperso.php">Créer un perso</a>';
+		}
+		else{
+			$i = 1;
+			while ($row = $reqNomPerso->fetch()) {
+
+				$reqPersoID = $bdd->query("SELECT id FROM ss_persos WHERE nom = '$row[0]'");
+
+				echo '<a class="infoMembre" href="ficheperso.php?persoID='.$reqPersoID->fetch()[0].'">'.$row[0].'</a>';
+				$i++;
+			}
+		}
+	}
+}
+
+
 
 function getInfoMembre($membreID, $info){
 	global $bdd;
@@ -75,7 +80,7 @@ function getInfoMembre($membreID, $info){
 function getInfoPerso($persoID, $info){
 	global $bdd;
 	$reqInfoPerso = $bdd->query("SELECT $info FROM ss_persos WHERE id = '$persoID'");
-	return $reqInfoPerso->fetch()[0];
+	return nl2br($reqInfoPerso->fetch()[0]);
 }
 
 function getClanDesc($clan){

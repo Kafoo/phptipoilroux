@@ -1,6 +1,7 @@
 <?php
 include("shared/refresh.php");
 include("shared/connectDB.php");
+include("php/functions.php");
 
 //VERIFICATION DE LA BONNE CREATION
 if (isset($_POST['submit'])){
@@ -42,9 +43,16 @@ if (isset($_POST['submit'])){
 		if ($nomPersoExist == 0) {
 
 			if ($persoForce + $persoDexterite + $persoIntelligence + $persoCharisme + $persoPerception == 25) {
-				//Insert le perso dans la BDD
+
 				$membreID = $_SESSION['id'];
+				//Rend tout les autres persos inactifs
+				$bdd->query("UPDATE ss_persos SET actif = '0' WHERE membreID='123'");
+
+				//Insert le perso dans la BDD
 				$bdd -> query ("INSERT INTO ss_persos (membreID, nom, nature, attitude, concept, defaut, physique, clan, forc, dexterite, intelligence, charisme, perception, lore, premDisc) VALUES ('$membreID','$persoNom','$persoNature','$persoAttitude','$persoConcept','$persoDefaut','$persoPhysique','$persoClan','$persoForce','$persoDexterite','$persoIntelligence','$persoCharisme','$persoPerception','$persoLore','$persoDisc')" );
+
+
+
 				header("Location: profil.php");
 			}
 			else{
@@ -70,7 +78,8 @@ if (isset($_POST['submit'])){
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/creaperso.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<script src="shared/jquery"></script>
 	<title>SANS SOUCI</title>
 </head>
 <body>
@@ -329,12 +338,12 @@ if (isset($_POST['submit'])){
 						</div>
 
 						<div class="infoClan" id="infoLasombra" hidden><img src="img/illusClan/lasombra.jpg">
-							<h1>LASOMBRA - LA FOURBERIE</h1>
+							<h1>LASOMBRA - LA FOURBERIE <span style="font-style: italic; font-size: 0.8em">(Sabbat)</span> </h1>
 							Les Lasombras sont les maîtres des ténèbres et des ombres, et possèdent une aisance de commandement très semblable à celle des Ventrues.<br><br>De fait, nombre de vampires voient dans les Lasombras et les Ventrues un reflet déformé l'un de l'autre. Autrefois, les Lasombras étaient nobles, mais l'histoire chaotique des vampires et la formation du Sabbat ont forcé nombre d'entre eux à tourner le dos à leurs origines.<br><br>A présent, les Lasombras se donnent entièrement à la damnation du vampirisme. Le Sabbat a affecté ce clan aussi profondément que les Lasombras ont affecté le Sabbat, et sans la direction de ces aristocrates déchus, le Sabbat se désagrégerait. 
 						</div>
 
 						<div class="infoClan" id="infoTzimisce" hidden><img src="img/illusClan/tzimisce.jpg">
-							<h1>TZIMISCE - LE MALEFICE</h1>
+							<h1>TZIMISCE - LE MALEFICE <span style="font-style: italic; font-size: 0.8em">(Sabbat)</span></h1>
 							Autrefois tyrans de l'Europe de l'Est, les Tzimisces ont été chassés de leurs anciens territoires et se sont réfugiés dans les replis du Sabbat.<br><br>Possédant une certaine noblesse, associée à un caractère maléfique dépassant l'imagination, le Clan Tzimisce conduit le Sabbat dans son rejet de tout ce qui est humain. Certains récits apocryphes racontent que les Tzimisces étaient autrefois le clan le plus puissant, mais que l'histoire et les conspirations des autres vampires l'ont conduit à sa déchéance actuelle.<br><br>Bien plus que tous les autres vampires, les Tzimisces arborent leur monstruosité. Ils pratiquent une discipline de "sculpture sur chair" pour défigurer leurs ennemis et se fabriquer des corps d'une beauté terrifiante. 
 						</div>
 

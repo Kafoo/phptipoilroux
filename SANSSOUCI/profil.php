@@ -1,6 +1,7 @@
 <?php
 include("shared/refresh.php");
 include("shared/connectDB.php");
+include("php/functions.php");
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +11,8 @@ include("shared/connectDB.php");
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/profil.css">
+	<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<script src="shared/jquery"></script>
 	<title>SANS SOUCI</title>
 </head>
 <body>
@@ -31,39 +34,43 @@ include("shared/connectDB.php");
 
 			<?php
 
-			if (isset($_SESSION['connected'])){
+			if (isset($_SESSION['connected'])){ ?>
 
-				echo '
 				<table>
 					<tr>
 						<td align="right">Messages postés :</td>
-						<td align="left"><span class="infoMembre">';
-						$membreID = $_SESSION['id'];
-						echo getInfoMembre("$membreID","nombremsg");echo '</span></td>
+						<td align="left"><span class="infoMembre">
+						<?php $membreID = $_SESSION['id'];
+						echo getInfoMembre("$membreID","nombremsg"); ?> </span></td>
 					</tr>
 					<tr>
 						<td align="right">Grade :</td>
-						<td align="left"><span class="infoMembre">';
-						$membreID = $_SESSION['id'];
-						echo getInfoMembre("$membreID","grade");echo '</span></td>
-					</tr>
-					<tr>
-						<td align="right">Perso :</td>
-						<td align="left">';
-							getPersos();
-						echo '
-						</td>
+						<td align="left"><span class="infoMembre">
+						<?php $membreID = $_SESSION['id'];
+						echo getInfoMembre("$membreID","grade"); ?> </span></td>
 					</tr>
 				</table>
+				<br>
+				<h3>Persos :</h3>
 
-				';
-			}
-			
-			else{
-				echo "Connecte-toi d'abord ! ;-)";
-			}
+				<?php showPersosList(); ?>
 
-			?>
+				<br><br>
+
+				<?php
+				$reqNomPerso = $bdd->query("SELECT nom FROM ss_persos WHERE membreID = '$membreID' ORDER BY id");
+				$nombrePerso = $reqNomPerso->rowCount();
+				if ($nombrePerso > 0) {
+					echo '<a href="creaperso.php" style="color: #bfbfbf; font-style: italic">Créer un nouveau perso</a>';
+				};
+
+
+			} else{ ?>
+
+				Connecte-toi d'abord ! ;-)
+
+			<?php 
+			} ?>
 
 
 		</section>
@@ -74,6 +81,6 @@ include("shared/connectDB.php");
 	</div>
 
 
-
+<script type="text/javascript" src="js/profil.js"></script>
 </body>
 </html> 

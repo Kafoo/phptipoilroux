@@ -43,15 +43,10 @@
 		grid-area: brand;
 	}
 
-	#brandingText{
-		display : inline;
-		color: lightgrey;
-		font-size: 3.9em;
-		font-weight: bold;
-		text-align: center;
-		line-height: 116px;
-
-		margin: 30px;
+	#branding img{
+		width: 400px;
+		height: 100px;
+		margin-top: 20px;
 		margin-left: calc(5*1vw);
 	}
 
@@ -67,9 +62,13 @@
 
 	}
 
-	#navDesktop a:link, #navDesktop a:visited, #navDesktop a:active{
+	#navDesktop a{
 		color: grey;
 		text-decoration: none;
+	}
+
+	.currentNav{
+		border-bottom: 1px solid grey;
 	}
 
 	#navDesktop a:hover{
@@ -236,13 +235,14 @@
 				border: none;
 			}
 
-			#brandingText{
-				font-size: 4em;
-				line-height: 120px;
-				background-color: #5b5b5b;
-				box-shadow: inset 0 0 40px black;
+			#branding{
+				width: 100%;
+				margin: auto;
+				text-align: center;
+			}
+
+			#branding img{
 				margin: 0;
-				display: block;
 			}
 
 

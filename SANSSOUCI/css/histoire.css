@@ -7,9 +7,25 @@ section{
 	grid-template-columns: 15vw auto 15vw;
 }
 
+.choixAventure{
+	width: 300px;
+	height: 50px;
+	line-height: 50px;
+	margin: 40px auto;
+	color: white;
+	background-color: #4e5556;
+	box-shadow: inset 0 0 10px 1px black;
+	cursor: pointer;
+
+}
+
+.blackLink a{
+	color: black;
+}
+
 .msgInfo{
 	width: 95px;
-	height: 120px;
+	height: max-content;
 	margin: 10px 2vw 30px auto;
 	padding: 10px;
 	border: 1.5px solid black;
@@ -20,15 +36,16 @@ section{
 
 .msg{
 	position: relative;
+	text-align: left;
 	margin: 20px 10px 20px 10px;
-	padding: 10px;
-	background-color: rgba(3, 33, 2, 0.5);
-	text-align: center;
-	border: 1.5px solid black;
+	padding: 15px 20px;
+	background-color: rgba(149, 165, 166,0.5) /*rgba(3, 33, 2, 0.5)*/;
+	border: 1.5px solid rgb(3, 33, 2);
 	border-radius: 5px;
-	box-shadow: 0px 0px 50px black;
-	color: grey;
+	box-shadow: inset 0px 0px 50px rgb(3, 33, 2);
 }
+
+
 
 /*BUBBLE ARROW*/
 @media (min-width: 760px){
@@ -74,6 +91,7 @@ section{
 .userInfo{
 	position: fixed;
 	width: 8vw;
+	min-width: max-content;	
 	padding: 10px;
 	top: 250px;
 	right: 13%;
@@ -81,6 +99,12 @@ section{
 	border: 1px solid black;
 	color: black;
 }
+
+#mytextarea{
+	width: 90%;
+	min-height: 100px;
+}
+
 
 
 /*---MEDIA QUERIES---*/

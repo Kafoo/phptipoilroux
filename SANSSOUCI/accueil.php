@@ -1,6 +1,7 @@
 <?php
 include("shared/refresh.php");
 include("shared/connectDB.php");
+include("php/functions.php");
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +11,8 @@ include("shared/connectDB.php");
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/accueil.css">
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<script src="shared/jquery"></script>
 	<title>SANS SOUCI</title>
 </head>
 <body>
@@ -23,19 +26,47 @@ include("shared/connectDB.php");
 		<section class="sectionGrid">
 
 			<div id="bienvenue">
-				<h1>BIENVENUE</h1>
 
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
-				ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				
+				<div id="ongletBlock">
+
+					<div class="allonglet" 
+					id="ongletgg"
+					onmouseover="this.style.backgroundColor='rgba(211,211,211,0.5)';"
+					onmouseout="this.style.backgroundColor='transparent';"
+					onclick="choose('gg')" 
+					>Le Jyhad</div>
+					<div class="allonglet" 
+					id="ongletg"
+					onmouseover="this.style.backgroundColor='rgba(211,211,211,0.5)';"
+					onmouseout="this.style.backgroundColor='transparent';"
+					onclick="choose('g')" 
+					>Les vampires</div>
+					<div class="allonglet currentOnglet" 
+					id="ongletc"
+					onmouseover="this.style.backgroundColor='rgba(211,211,211,0.5)';"
+					onmouseout="this.style.backgroundColor='transparent';"
+					onclick="choose('c')"
+					>L'univers</div>
+					<div class="allonglet" 
+					id="ongletd"
+					onmouseover="this.style.backgroundColor='rgba(211,211,211,0.5)';"
+					onmouseout="this.style.backgroundColor='transparent';"
+					onclick="choose('d')" 
+					>La géhenne</div>
+					<div class="allonglet" 
+					id="ongletdd"
+					onmouseover="this.style.backgroundColor='rgba(211,211,211,0.5)';"
+					onmouseout="this.style.backgroundColor='transparent';"
+					onclick="choose('dd')" 
+					>Vous</div>
+			
+				</div>
+
+
+				<div id="infosAccueil">
+					Univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers 
+				</div>
+
 			</div>
 
 		</section>
@@ -45,7 +76,6 @@ include("shared/connectDB.php");
 
 	</div>
 
-
-
+<script type="text/javascript" src="js/accueil.js"></script>
 </body>
 </html> 

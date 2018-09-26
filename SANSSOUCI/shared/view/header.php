@@ -1,5 +1,4 @@
 <?php
-include("php/functions.php");
 //-----------SI TENTATIVE DE CONNEXION :-----------
 if (isset($_POST['submitConnect'])) {
 
@@ -20,7 +19,7 @@ if (isset($_POST['submitConnect'])) {
 			$_SESSION['nombremsg'] = $userInfo['nombremsg'];
 			$_SESSION['connected'] = 'connected';
 			if (basename($_SERVER['PHP_SELF']) == "subscribe.php"){
-				header("Location: home.php");
+				header("Location: accueil.php");
 			} 
 		}
 		else{
@@ -42,13 +41,17 @@ if (isset($_POST['submitConnect'])) {
 
 		<header class="headerGrid">
 			<div id="branding">
-				<div id="brandingText" style="cursor: pointer;" onclick="window.location='home.php';">VAMPIRE</div>
+				<img src="./img/header_title.png" id="headerTitle" style="cursor: pointer;" onclick="window.location='home.php';">
 			</div>
 			<nav id="navDesktop">
-				<div style="display: inline-block;"><a href="accueil.php">ACCUEIL</a>
-				<a href="histoire.php">HISTOIRE</a></div>
-				<div style="display: inline-block;"><a href="profil.php">PROFIL</a>
-				<a href="help.php">HELP</a></div>			
+				<div style="display: inline-block;">
+					<a id="navDesk1" href="accueil.php">ACCUEIL</a>
+					<a id="navDesk2" href="histoire.php">HISTOIRE</a>
+				</div>
+				<div style="display: inline-block;">
+					<a id="navDesk3" href="profil.php">PROFIL</a>
+					<a id="navDesk4" href="help.php">HELP</a>
+				</div>			
 			</nav>
 
 
@@ -78,7 +81,8 @@ if (isset($_POST['submitConnect'])) {
 				Grade : ';
 						$membreID = $_SESSION['id'];
 						echo getInfoMembre("$membreID","grade");echo '<br/>';
-				getPersos();
+				echo 'Perso actif : '; 
+				getActifPerso();
 				echo '				
 				</div>
 				';
@@ -100,5 +104,9 @@ if (isset($_POST['submitConnect'])) {
 			?>
 
 			
-			<div id="connectionMobile" style="cursor: pointer;" onclick="window.location='http://youtube.com';">CONNEXION</div>
+			<div id="connectionMobile" style="cursor: pointer;" onclick="window.location='http://youtube.com';">
+
+				CONNEXION
+
+			</div>
 		</header>
