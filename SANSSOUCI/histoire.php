@@ -77,11 +77,9 @@ tinymce.init({
 
 			if (isset($_SESSION['connected'])) {
 
-
-				echo '<div></div><h1>HISTOIRES</h1><div></div>';
-
-
 				if (!isset($_GET['avID'])) {  
+
+					echo '<div></div><h1>HISTOIRES</h1><div></div>';
 
 					$reqAventures = $bdd->query("SELECT DISTINCT nom, aventureID FROM ss_aventures ORDER BY id");
 					while ($row = $reqAventures->fetch()) {
@@ -106,12 +104,12 @@ tinymce.init({
 					<div></div><span><?php if (isset($error)) {echo $error;} ?></span><div></div>
 
 					<div class="userInfo">
-						Persos :<br>
+					
 						<?php 
 						$aventureID = $_GET['avID']; 
 						$reqPersos = $bdd->query("SELECT perso FROM ss_aventures WHERE aventureID ='$aventureID' ");
 						while ($row = $reqPersos->fetch()) {
-							echo $row[0].'<br>';
+							echo '<img src="img/icones/perso.png" style=\'width:30px\'>'.$row[0].'<br>';
 						}
 						?>
 						<br>

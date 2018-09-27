@@ -112,12 +112,12 @@ if (isset($_POST['submit'])){
 					<table id="formBases">
 						<tr>
 							<td><label for="persoNom"><b>Nom :</b></label></td>
-							<td><input type="text" name="persoNom" placeholder="Nom du perso" value="<?php if (isset($_POST['persoNom'])){echo $_POST['persoNom'];}else{echo'';}?>"></td>
+							<td><input type="text" name="persoNom" placeholder="Nom du perso" maxlength="20" value="<?php if (isset($_POST['persoNom'])){echo $_POST['persoNom'];}else{echo'';}?>"></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td><label for="persoNature">Nature :</label></td>
-							<td><input type="text" name="persoNature" placeholder="1 adjectif" value="<?php if (isset($_POST['persoNature'])){echo $_POST['persoNature'];}else{echo'';}?>"></td>
+							<td><input type="text" name="persoNature" placeholder="1 adjectif" maxlength="20" value="<?php if (isset($_POST['persoNature'])){echo $_POST['persoNature'];}else{echo'';}?>"></td>
 							<td>
 								<img src="img/help.png" onmouseover="showHelp('Nature')" onmouseout="hideHelp('Nature')">
 								<div class="helpDiv" id="helpNature" hidden>La nature d'un personnage est sa véritable personnalité, ce qu'il est fondamentalement. <br/><i>Exemples : simplet, démoniaque, passionné, intéressé, altruiste, pervers...</i></div>
@@ -125,7 +125,7 @@ if (isset($_POST['submit'])){
 						</tr>
 						<tr>
 							<td><label for="persoAttitude">Attitude :</label></td>
-							<td><input type="text" name="persoAttitude" placeholder="1 adjectif" value="<?php if (isset($_POST['persoAttitude'])){echo $_POST['persoAttitude'];}else{echo'';}?>"></td>
+							<td><input type="text" name="persoAttitude" placeholder="1 adjectif" maxlength="20" value="<?php if (isset($_POST['persoAttitude'])){echo $_POST['persoAttitude'];}else{echo'';}?>"></td>
 							<td>
 								<img src="img/help.png" onmouseover="showHelp('Attitude')" onmouseout="hideHelp('Attitude')">
 								<div class="helpDiv" id="helpAttitude" hidden>L'attitude d'un personnage est ce qu'il montre de sa personnalité. Plus elle est contraire à sa nature, plus le personnage cache son jeu.<br/><i>Exemples : simplet, démoniaque, passionné, intéressé, altruiste, pervers...</i></div>
@@ -133,7 +133,7 @@ if (isset($_POST['submit'])){
 						</tr>
 						<tr>
 							<td><label for="persoConcept">Concept :</label></td>
-							<td><input type="text" name="persoConcept" placeholder="1 concept" value="<?php if (isset($_POST['persoConcept'])){echo $_POST['persoConcept'];}else{echo'';}?>"></td>
+							<td><input type="text" name="persoConcept" placeholder="1 concept" maxlength="20" value="<?php if (isset($_POST['persoConcept'])){echo $_POST['persoConcept'];}else{echo'';}?>"></td>
 							<td>
 								<img src="img/help.png" onmouseover="showHelp('Concept')" onmouseout="hideHelp('Concept')">
 								<div class="helpDiv" id="helpConcept" hidden>Le concept d'un personnage est ce qui prépondère le plus dans sa vie d'humain (avant l'Etreinte) : son métier, sa passion, ou encore sa position sociale.<br/><i>Exemples : drogue addict, charpentier, boxer, hermite...</i></div>
@@ -141,7 +141,7 @@ if (isset($_POST['submit'])){
 						</tr>
 						<tr>
 							<td><label for="persoDefaut">Défaut :</label></td>
-							<td><input type="text" name="persoDefaut" placeholder="Ton défaut" value="<?php if (isset($_POST['persoDefaut'])){echo $_POST['persoDefaut'];}else{echo'';}?>"></td>
+							<td><input type="text" name="persoDefaut" placeholder="Ton défaut" maxlength="30" value="<?php if (isset($_POST['persoDefaut'])){echo $_POST['persoDefaut'];}else{echo'';}?>"></td>
 							<td>
 								<img src="img/help.png" onmouseover="showHelp('Defaut')" onmouseout="hideHelp('Defaut')">
 								<div class="helpDiv" id="helpDefaut" hidden>Un petit défaut de ton choix, pour donner un peu de réalisme à ton perso !</i></div>
@@ -150,7 +150,7 @@ if (isset($_POST['submit'])){
 					</table>
 
 					<br><br><label for="persoPhysique">Physique :</label><br>
-						<textarea name="persoPhysique" placeholder="Rapidement, à quoi tu ressembles ?" style="width: 280px; height: 80px; margin-top: 10px;"><?php if (isset($_POST['persoPhysique'])){echo $_POST['persoPhysique'];}else{echo'';}?></textarea>
+						<textarea name="persoPhysique" placeholder="Rapidement, à quoi tu ressembles ?" maxlength="400" style="width: 280px; height: 80px; margin-top: 10px;"><?php if (isset($_POST['persoPhysique'])){echo $_POST['persoPhysique'];}else{echo'';}?></textarea>
 					
 
 
@@ -158,7 +158,6 @@ if (isset($_POST['submit'])){
 
 
 					<div id="clanBox">
-
 
 						<div id="logoBox">
 							<div
@@ -363,7 +362,9 @@ if (isset($_POST['submit'])){
 									<label for="persoForce">Force :</label>
 								</td>
 								<td>
-									<input id="valForce" type="range" min="1" max="10" value="1" name="persoForce" oninput="change('Force')">
+									<input id="valForce" type="range" min="1" max="10" 
+									value="1" 
+									name="persoForce" oninput="change('Force')">
 								</td>
 								<td>
 									<span id="displayForce" class="displayCarac">1</span>

@@ -13,7 +13,7 @@ function getRealDate(){
 
 
 function showPersosList(){
-	//echo une liste des noms de persos séparés par un tiret + lien vers fiche perso, propose d'en créer un s'il n'y en a pas, et echo "membre non connecté" le cas échéant.
+	//echo une liste des noms de persos séparés par des saut de ligne, avec la possibilité de les supprimer ou de les activer. Propose d'en créer un s'il n'y en a pas, et echo "membre non connecté" le cas échéant.
 	global $bdd, $membreID;
 	if (!isset($_SESSION['connected'])) {
 		echo "Membre non connecté";
@@ -29,11 +29,12 @@ function showPersosList(){
 			while ($row = $reqNomPerso->fetch()) {
 
 				$reqPersoID = $bdd->query("SELECT id FROM ss_persos WHERE nom = '$row[0]'");
+				$persoID = $reqPersoID->fetch()[0];
 
 				echo '
-				<a class="infoMembre" href="ficheperso.php?persoID='.$reqPersoID->fetch()[0].'">'.$row[0].'</a><br>
-				(<a href="">Supprimer</a> - 
-				<a href="">Activer</a>)
+				<a class="infoMembre" href="ficheperso.php?persoID='.$persoID.'">'.$row[0].'</a><br>
+				(<a id="supp" onclick="confirmSupp()" href="SERVER_UPDATES.php?action=supprimePerso&persoID='.$persoID.'">Supprimer</a> - 
+				<a href="SERVER_UPDATES.php?action=activePerso&persoID='.$persoID.'">Activer</a>)
 				';
 				if ($i < $nombrePerso) {
 					echo '<br><br>';

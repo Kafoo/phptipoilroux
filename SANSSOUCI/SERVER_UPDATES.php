@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Server updates</title>
+</head>
+<body>
+
+<?php 
+
+include("shared/connectDB.php");
+
+
+
+//SUPPRIME PERSO (action, persoID)
+if (isset($_GET['action']) AND $_GET['action']=='supprimePerso') {
+	$persoID = $_GET['persoID'];
+	//Si le perso supprimé était l'actif, on prend le premier perso du compte pour actif
+	$reqCheckActif = $bdd->query("SELECT * FROM ss_persos WHERE id ='$persoID' AND actif='1' ")->rowCount();
+	if ($reqCheckActif == 1) {
+		$premier = $bdd->query("SELECT id FROM ss_persos ORDER BY id ")->fetch()[0];
+		$bdd->query("UPDATE ss_persos SET actif='1' WHERE id='$premier' ");
+	}
+	$bdd->query("DELETE FROM ss_persos WHERE id ='$persoID' ");
+	header("Location: profil.php");
+}
+
+
+//ACTIVE PERSO (action, persoID)
+if (isset($_GET['action']) AND $_GET['action']=='activePerso') {
+	$persoID = $_GET['persoID'];
+	$bdd->query("UPDATE ss_persos SET actif='0' WHERE actif='1' ");
+	$bdd->query("UPDATE ss_persos SET actif='1' WHERE id='$persoID' ");
+	header("Location: profil.php");
+}
+
+
+
+?>
+
+</body>
+</html>
