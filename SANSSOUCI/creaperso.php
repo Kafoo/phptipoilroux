@@ -46,7 +46,7 @@ if (isset($_POST['submit'])){
 
 				$membreID = $_SESSION['id'];
 				//Rend tout les autres persos inactifs
-				$bdd->query("UPDATE ss_persos SET actif = '0' WHERE membreID='123'");
+				$bdd->query("UPDATE ss_persos SET actif = '0' WHERE membreID='$membreID'");
 
 				//Insert le perso dans la BDD
 				$bdd -> query ("INSERT INTO ss_persos (membreID, nom, nature, attitude, concept, defaut, physique, clan, forc, dexterite, intelligence, charisme, perception, lore, premDisc) VALUES ('$membreID','$persoNom','$persoNature','$persoAttitude','$persoConcept','$persoDefaut','$persoPhysique','$persoClan','$persoForce','$persoDexterite','$persoIntelligence','$persoCharisme','$persoPerception','$persoLore','$persoDisc')" );

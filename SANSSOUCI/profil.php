@@ -24,8 +24,6 @@ include("php/functions.php");
 
 	<!--SECTION-->
 		<section class="sectionGrid">
-			
-
 
 			<h1>PROFIL <?php if (isset($_SESSION['connected'])) {echo "DE ". strtoupper($_SESSION["pseudo"]);}?> </h1>
 			___________________________________________________

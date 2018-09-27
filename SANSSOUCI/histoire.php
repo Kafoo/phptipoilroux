@@ -7,19 +7,27 @@ if (isset($_POST['submit'])) {
 	
 	if (isset($_POST['message']) AND !empty($_POST['message'])) {
 		
-		$dat = getRealDate();
-		$auteurID = $_SESSION['id'];
-		$contenu = htmlspecialchars($_POST['message']);
 		$membreID = $_SESSION['id'];
-		$reqActifPerso = $bdd->query("SELECT nom FROM ss_persos WHERE membreID = '$membreID' AND actif = '1' ");
-		$perso = $reqActifPerso->fetch()[0];
-		$aventureID = $_GET['avID'];
-		$bdd->query("INSERT INTO ss_messages_aventure (dat, auteurID, contenu, perso, aventureID) VALUES ('$dat', '$auteurID', '$contenu', '$perso', '$aventureID')");
-		/*Incrémente de 1 le nombre de message postés pour ce compte*/
-		$bdd->query("UPDATE ss_membres SET nombremsg=nombremsg+1 WHERE id=$auteurID");
+		$reqActif = $bdd->query("SELECT nom FROM ss_persos WHERE membreID = '$membreID' AND actif = '1' ");
+		$CheckActif = $reqActif->rowCount();
+		if ($CheckActif == 1) {
+			
+			$dat = getRealDate();
+			$auteurID = $_SESSION['id'];
+			$contenu = str_replace("'", "''", htmlspecialchars($_POST['message']));
+			$membreID = $_SESSION['id'];
+			$reqActifPerso = $bdd->query("SELECT nom FROM ss_persos WHERE membreID = '$membreID' AND actif = '1' ");
+			$perso = $reqActifPerso->fetch()[0];
+			$aventureID = $_GET['avID'];
+			$bdd->query("INSERT INTO ss_messages_aventure (dat, auteurID, contenu, perso, aventureID) VALUES ('$dat', '$auteurID', '$contenu', '$perso', '$aventureID')");
+			/*Incrémente de 1 le nombre de message postés pour ce compte*/
+			$bdd->query("UPDATE ss_membres SET nombremsg=nombremsg+1 WHERE id=$auteurID");
 
-	}
-	else{
+		}else{
+			$error = "Tu dois avoir un personnage actif avant d'écrire un message =)";
+		}
+
+	}else{
 		$error = "Tu dois écrire quelque chose !";
 	}
 }
@@ -37,7 +45,7 @@ if (isset($_POST['submit'])) {
 	<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 	<script src="shared/jquery"></script>
 
-<!--   
+ 
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g"></script>
 
 <script>
@@ -50,14 +58,14 @@ tinymce.init({
   plugins: [
     'advlist autolink lists link image charmap print preview anchor textcolor',
     'searchreplace visualblocks code fullscreen',
-    'insertdatetime media table contextmenu paste code help wordcount'
+    'insertdatetime media table contextmenu paste code help'
   ],
   toolbar: 'undo redo |  formatselect | bold italic backcolor forecolor  | alignleft aligncenter alignright alignjustify | bullist numlist 	| image | help',
   content_css: [
     '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
     '//www.tinymce.com/css/codepen.min.css']
 });
-  </script> -->
+  </script>
 
 
 	<title>SANS SOUCI</title>
@@ -101,7 +109,13 @@ tinymce.init({
 						?>
 					</h1><div></div>
 
-					<div></div><span><?php if (isset($error)) {echo $error;} ?></span><div></div>
+					<div></div><span><?php if (isset($error)) {
+						echo '
+						<div id="erreur">
+							<h3 style="margin-top:5px;">Oups !</h3>
+							'.$error.'
+						</div>';
+					} ?></span><div></div>
 
 					<div class="userInfo">
 					
@@ -142,10 +156,13 @@ tinymce.init({
 							<a href="" style="font-weight: bold; color: black"><?=getInfoMembre($m['auteurID'], 'pseudo')?></a><br/>
 							<?=getInfoMembre($m['auteurID'], 'grade')?><br/><br/>
 							Perso :<br/>
-							<span class="blackLink"><?php getActifPerso() ?></span><br/><br/>
+							<span class="blackLink"><?=getInfoMessage($m['id'], 'perso')?></span><br/><br/>
 							<span style="font-size: 0.8em;"><?=$m['dat'];?></span>
 						</div>
-						<div class="msg"><?=  htmlspecialchars_decode(nl2br($m['contenu'])); ?></div>
+						<div class="msg">
+							<div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?= $m['id'] ?>">X</a></div>
+							<span id="contenu"><?=  str_replace('&nbsp;', ' ', htmlspecialchars_decode(nl2br($m['contenu']))); ?></span>
+						</div>
 						<div> <!-- USER INFO SPACE --> </div>
 
 

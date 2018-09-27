@@ -33,8 +33,8 @@ function showPersosList(){
 
 				echo '
 				<a class="infoMembre" href="ficheperso.php?persoID='.$persoID.'">'.$row[0].'</a><br>
-				(<a id="supp" onclick="confirmSupp()" href="SERVER_UPDATES.php?action=supprimePerso&persoID='.$persoID.'">Supprimer</a> - 
-				<a href="SERVER_UPDATES.php?action=activePerso&persoID='.$persoID.'">Activer</a>)
+				(<a class="confirm" href="SERVER_UPDATES.php?action=supprimePerso&membreID='.$membreID.'&persoID='.$persoID.'">Supprimer</a> - 
+				<a href="SERVER_UPDATES.php?action=activePerso&membreID='.$membreID.'&persoID='.$persoID.'">Activer</a>)
 				';
 				if ($i < $nombrePerso) {
 					echo '<br><br>';
@@ -82,6 +82,12 @@ function getInfoPerso($persoID, $info){
 	global $bdd;
 	$reqInfoPerso = $bdd->query("SELECT $info FROM ss_persos WHERE id = '$persoID'");
 	return nl2br($reqInfoPerso->fetch()[0]);
+}
+
+function getInfoMessage($messageID, $info){
+	global $bdd;
+	$reqInfoMessage = $bdd->query("SELECT $info FROM ss_messages_aventure WHERE id = '$messageID'");
+	return nl2br($reqInfoMessage->fetch()[0]);
 }
 
 function getClanDesc($clan){
