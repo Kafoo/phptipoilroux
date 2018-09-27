@@ -41,7 +41,7 @@ if (isset($_POST['submitConnect'])) {
 
 		<header class="headerGrid">
 			<div id="branding">
-				<img src="./img/header_title.png" id="headerTitle" style="cursor: pointer;" onclick="window.location='home.php';">
+				<img src="./img/header_title.png" id="headerTitle" style="cursor: pointer;" onclick="window.location='accueil.php';">
 			</div>
 			<nav id="navDesktop">
 				<div style="display: inline-block;">
