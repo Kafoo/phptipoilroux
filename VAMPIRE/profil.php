@@ -13,7 +13,7 @@ include("php/functions.php");
 	<link rel="stylesheet" type="text/css" href="css/profil.css">
 	<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 	<script src="shared/jquery"></script>
-	<title>SANS SOUCI</title>
+	<title>VAMPIRE - Profil</title>
 </head>
 <body>
 

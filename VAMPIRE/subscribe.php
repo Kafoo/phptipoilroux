@@ -63,7 +63,7 @@ if (isset($_POST['submit'])){
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/subscribe.css">
-	<title>SANS SOUCI</title>
+	<title>VAMPIRE - Inscription</title>
 </head>
 <body>
 

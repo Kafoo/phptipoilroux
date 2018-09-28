@@ -13,7 +13,7 @@ include("php/functions.php");
 	<link rel="stylesheet" type="text/css" href="css/accueil.css">
 <!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 	<script src="shared/jquery"></script>
-	<title>SANS SOUCI</title>
+	<title>VAMPIRE - Accueil</title>
 </head>
 <body>
 
@@ -29,30 +29,24 @@ include("php/functions.php");
 
 				<div id="ongletBlock">
 
-					<div class="allonglet" 
+					<div class="allonglet currentOnglet" 
 					id="ongletgg"
 					onmouseover="this.style.backgroundColor='rgba(211,211,211,0.5)';"
 					onmouseout="this.style.backgroundColor='transparent';"
 					onclick="choose('gg')" 
-					>Le Jyhad</div>
+					>Univers</div>
 					<div class="allonglet" 
 					id="ongletg"
 					onmouseover="this.style.backgroundColor='rgba(211,211,211,0.5)';"
 					onmouseout="this.style.backgroundColor='transparent';"
 					onclick="choose('g')" 
-					>Les vampires</div>
-					<div class="allonglet currentOnglet" 
-					id="ongletc"
-					onmouseover="this.style.backgroundColor='rgba(211,211,211,0.5)';"
-					onmouseout="this.style.backgroundColor='transparent';"
-					onclick="choose('c')"
-					>L'univers</div>
+					>Vampires</div>
 					<div class="allonglet" 
 					id="ongletd"
 					onmouseover="this.style.backgroundColor='rgba(211,211,211,0.5)';"
 					onmouseout="this.style.backgroundColor='transparent';"
 					onclick="choose('d')" 
-					>La géhenne</div>
+					>Traditions</div>
 					<div class="allonglet" 
 					id="ongletdd"
 					onmouseover="this.style.backgroundColor='rgba(211,211,211,0.5)';"
@@ -64,7 +58,6 @@ include("php/functions.php");
 
 
 				<div id="infosAccueil">
-					Univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers univers 
 				</div>
 
 			</div>

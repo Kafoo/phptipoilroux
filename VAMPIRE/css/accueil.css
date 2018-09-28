@@ -1,11 +1,12 @@
 section{
 	text-align: center;
+	min-height: 1000px;
 }
 
 #bienvenue{
 	position : relative;
 	width: 70%;
-	height: 400px;
+	height: max-content;
 	padding: 20px;
 	margin: 100px auto;
 	border: 2px solid black;
@@ -35,4 +36,14 @@ section{
 
 .currentOnglet{
 	box-shadow: inset 0 0 30px 1px lightgrey;
+}
+
+dt{
+	display: inline;
+	margin: 0;
+	text-decoration: underline;
+}
+
+dd{
+	display: inline;
 }

@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/histoire.css">
-	<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="shared/jquery"></script>
 
  
@@ -68,7 +68,7 @@ tinymce.init({
   </script>
 
 
-	<title>SANS SOUCI</title>
+	<title>VAMPIRE - Histoire</title>
 </head>
 <body>
 

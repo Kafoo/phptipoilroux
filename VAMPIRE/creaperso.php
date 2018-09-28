@@ -80,7 +80,7 @@ if (isset($_POST['submit'])){
 	<link rel="stylesheet" type="text/css" href="css/creaperso.css">
 <!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 	<script src="shared/jquery"></script>
-	<title>SANS SOUCI</title>
+	<title>VAMPIRE - Création de perso</title>
 </head>
 <body>
 

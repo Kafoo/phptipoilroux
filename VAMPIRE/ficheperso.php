@@ -12,7 +12,7 @@ include("php/functions.php");
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/ficheperso.css">
-	<title>VAMPIRE - fiche perso</title>
+	<title>VAMPIRE - Fiche Perso</title>
 </head>
 <body>
 
