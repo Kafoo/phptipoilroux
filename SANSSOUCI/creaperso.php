@@ -21,20 +21,20 @@ if (isset($_POST['submit'])){
 		!empty($_POST['persoDisc']) AND 
 		!empty($_POST['persoLore']) ) {
 
-		$persoNom = htmlspecialchars($_POST['persoNom']);
-		$persoNature = htmlspecialchars($_POST['persoNature']);
-		$persoAttitude = htmlspecialchars($_POST['persoAttitude']);
-		$persoConcept = htmlspecialchars($_POST['persoConcept']);
-		$persoDefaut = htmlspecialchars($_POST['persoDefaut']);
-		$persoPhysique = htmlspecialchars($_POST['persoPhysique']);
-		$persoClan = strtolower(htmlspecialchars($_POST['persoClan']));
-		$persoForce = htmlspecialchars($_POST['persoForce']);
-		$persoDexterite = htmlspecialchars($_POST['persoDexterite']);
-		$persoIntelligence = htmlspecialchars($_POST['persoIntelligence']);
-		$persoCharisme = htmlspecialchars($_POST['persoCharisme']);
-		$persoPerception = htmlspecialchars($_POST['persoPerception']);
-		$persoDisc = strtolower(htmlspecialchars($_POST['persoDisc']));
-		$persoLore = htmlspecialchars($_POST['persoLore']);
+		$persoNom = htmlspecialchars($_POST['persoNom'], ENT_QUOTES);
+		$persoNature = htmlspecialchars($_POST['persoNature'], ENT_QUOTES);
+		$persoAttitude = htmlspecialchars($_POST['persoAttitude'], ENT_QUOTES);
+		$persoConcept = htmlspecialchars($_POST['persoConcept'], ENT_QUOTES);
+		$persoDefaut = htmlspecialchars($_POST['persoDefaut'], ENT_QUOTES);
+		$persoPhysique = htmlspecialchars($_POST['persoPhysique'], ENT_QUOTES);
+		$persoClan = strtolower(htmlspecialchars($_POST['persoClan'], ENT_QUOTES));
+		$persoForce = htmlspecialchars($_POST['persoForce'], ENT_QUOTES);
+		$persoDexterite = htmlspecialchars($_POST['persoDexterite'], ENT_QUOTES);
+		$persoIntelligence = htmlspecialchars($_POST['persoIntelligence'], ENT_QUOTES);
+		$persoCharisme = htmlspecialchars($_POST['persoCharisme'], ENT_QUOTES);
+		$persoPerception = htmlspecialchars($_POST['persoPerception'], ENT_QUOTES);
+		$persoDisc = strtolower(htmlspecialchars($_POST['persoDisc'], ENT_QUOTES));
+		$persoLore = htmlspecialchars($_POST['persoLore'], ENT_QUOTES);
 
 		$reqNomPerso = $bdd->prepare("SELECT * FROM ss_persos WHERE nom = ?");
 		$reqNomPerso->execute(array($persoNom));

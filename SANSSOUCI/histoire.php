@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
 			
 			$dat = getRealDate();
 			$auteurID = $_SESSION['id'];
-			$contenu = str_replace("'", "''", htmlspecialchars($_POST['message']));
+			$contenu = htmlspecialchars($_POST['message'], ENT_QUOTES);
 			$membreID = $_SESSION['id'];
 			$reqActifPerso = $bdd->query("SELECT nom FROM ss_persos WHERE membreID = '$membreID' AND actif = '1' ");
 			$perso = $reqActifPerso->fetch()[0];
