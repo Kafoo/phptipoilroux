@@ -43,9 +43,9 @@ if (isset($_POST['submit'])) {
 
 	?>
 	<link rel="stylesheet" type="text/css" href="css/histoire.css">
- <!-- 
+  
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g"></script>
- -->
+ 
 <script>
 tinymce.init({
   selector: 'textarea',
@@ -99,13 +99,16 @@ tinymce.init({
 				else { ?>
 
 
-					<div></div><h1>
+					<div></div>
+					<h1>
 						<?php
 						$aventureID = $_GET['avID'];
 						$nomAv = $bdd->query("SELECT nom FROM ss_aventures WHERE aventureID = '$aventureID' ");
-						echo $nomAv->fetch()[0];
+						echo $nomAv->fetch()[0]."bouh";
 						?>
-					</h1><div></div>
+					</h1>
+
+					<div></div>
 
 					<div></div><span><?php if (isset($error)) {
 						echo '
