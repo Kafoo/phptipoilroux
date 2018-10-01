@@ -138,5 +138,7 @@ include("php/functions.php");
 		<?php include("shared/view/footer.php"); ?>
 
 	</div>
+
+<script type="text/javascript" src="js/ficheperso.js"></script>
 </body>
 </html> 

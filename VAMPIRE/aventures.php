@@ -39,13 +39,13 @@ if (isset($_POST['submit'])) {
 <html>
 <head>
 	<?php include("shared/headconfig.php");
-	$_SESSION['currentStoryPage'] = $_SERVER['REQUEST_URI'];
+	$_SESSION['currentStoryURL'] = $_SERVER['REQUEST_URI'];
 
 	?>
-	<link rel="stylesheet" type="text/css" href="css/histoire.css">
+	<link rel="stylesheet" type="text/css" href="css/aventures.css">
   
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g"></script>
- 
+
 <script>
 tinymce.init({
   selector: 'textarea',
@@ -66,7 +66,7 @@ tinymce.init({
   </script>
 
 
-	<title>VAMPIRE - Histoire</title>
+	<title>VAMPIRE - Aventures</title>
 </head>
 <body>
 
@@ -78,38 +78,64 @@ tinymce.init({
 	<!--SECTION-->
 		<section id="sectionGrid">
 
-
 			<?php
 
 			if (isset($_SESSION['connected'])) {
 
+
+				//------------- PAS D'AVENTURE PRECISEE : LISTE DES AVENTURES -------------
 				if (!isset($_GET['avID'])) {  
 
-					echo '<div></div><h1>HISTOIRES</h1><div></div>';
+					echo '<h1>AVENTURES</h1>';
 
 					$reqAventures = $bdd->query("SELECT DISTINCT nom, aventureID FROM ss_aventures ORDER BY id");
 					while ($row = $reqAventures->fetch()) {
-						echo '
-						<div></div>
-						<div class="choixAventure" onclick="window.location=\'histoire.php?avID='.$row['aventureID'].'\'"; >'.$row['nom'].'</div>
-						<div></div>';
+
+						$aventureID = $row['aventureID'];
+						$reqPersosAventure = $bdd->query("SELECT perso FROM ss_aventures WHERE aventureID = '$aventureID'");
+						$activePerso = getActivePerso();
+						$checkActivePerso = $bdd->query("SELECT * FROM ss_aventures WHERE aventureID = '$aventureID' AND perso = '$activePerso' ")->rowCount();
+						if ($checkActivePerso === 0	) {
+							echo '
+							<div></div>
+								<div class="choixAventure">
+								'.$row['nom'].'
+									<a class="goAv joinAv" href=\'aventures.php?avID='.$row['aventureID'].'\'">
+										Rejoindre l\'aventure !
+									</a>
+								</div>
+							<div></div>';
+						}
+						else{
+							echo '
+							<div></div>
+								<div class="choixAventure">
+								'.$row['nom'].'
+									<a class="goAv" href=\'aventures.php?avID='.$row['aventureID'].'\'">
+										Continuer avec '.$activePerso.'
+									</a>
+								</div>
+							<div></div>';	
+						}
 					}
-
+				//------------- AVENTURE PRECISEE : AFFICHAGE DES MESSAGES -------------
 				}
-				else { ?>
+				if (isset($_GET['avID'])) {	
 
+					//Si activePerso pas encore là, le rajouter
+					$aventureID = $_GET['avID'];
+					$aventureNom = $bdd->query("SELECT nom FROM ss_aventures WHERE aventureID = '$aventureID' ")->fetch()[0];
+					$activePerso = getActivePerso();
+					$checkActivePerso = $bdd->query("SELECT * FROM ss_aventures WHERE aventureID = '$aventureID' AND perso = '$activePerso' ")->rowCount();
+					if ($checkActivePerso === 0	) {
+						$bdd->query("INSERT INTO ss_aventures (aventureID, nom, perso) VALUES ('$aventureID', '$aventureNom', '$activePerso')");
+					}
+					?>
 
-					<div></div>
-					<h1>
-						<?php
-						$aventureID = $_GET['avID'];
-						$nomAv = $bdd->query("SELECT nom FROM ss_aventures WHERE aventureID = '$aventureID' ");
-						echo $nomAv->fetch()[0]."bouh";
-						?>
-					</h1>
+					<!-- NOM DE L'AVENTURE -->
+					<h1><?= $aventureNom; ?></h1>
 
-					<div></div>
-
+					<!-- MESSAGE D'ERREUR -->
 					<div></div><span><?php if (isset($error)) {
 						echo '
 						<div id="erreur">
@@ -118,11 +144,12 @@ tinymce.init({
 						</div>';
 					} ?></span><div></div>
 
+					<!-- INFOS FIXES DE L'AVENTURE (DESKTOP)-->
 					<div class="userInfo">
-					
 						<?php 
 						$aventureID = $_GET['avID']; 
 						$reqPersos = $bdd->query("SELECT perso FROM ss_aventures WHERE aventureID ='$aventureID' ");
+
 						while ($row = $reqPersos->fetch()) {
 							echo '<img src="img/icones/perso.png" style=\'width:30px\'>'.$row[0].'<br>';
 						}
@@ -131,17 +158,45 @@ tinymce.init({
 						<img src="img/icones/conversgm.png" width="70px" style="cursor: pointer;" onclick="showConversGm()"><br>
 					</div>
 
-
-
-
+					<!-- GENERATION DES MESSAGES -->
 					<?php 
 					$aventureID = $_GET['avID'];
-					$reqMessages = $bdd->query("SELECT * FROM ss_messages_aventure WHERE aventureID='$aventureID' ");
+					//PAGINATION
+					$messagesParPage = 10;
+					$reqNbrMessages = $bdd->query("SELECT * FROM ss_messages_aventure WHERE aventureID='$aventureID'");
+					$NbrMessages = $reqNbrMessages->rowCount();
+					$NbrPages = ceil($NbrMessages/$messagesParPage);
+					//On défini la page courante
+					if (isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0) {
+						$_GET['page']=intval($_GET['page']);
+						$currentPage = $_GET['page'];
+					}
+					else{
+						$currentPage = 1;
+					}
+					//On défini où on en est sur cette page
+					$start = ($currentPage-1)*$messagesParPage;
 
+					$reqMessages = $bdd->query("SELECT * FROM ss_messages_aventure WHERE aventureID='$aventureID' LIMIT ".$start.",".$messagesParPage."	"); ?>
+
+
+					<div></div>
+					<div class ="pagination"> Pages :
+					<?php
+					//SELECTION DE PAGE	
+					for ($i=1; $i <= $NbrPages ; $i++) { 
+						echo "<a href='aventures.php?avID=1&page=".$i."'>".$i." </a>";
+						if ($i<$NbrPages) {
+							echo "- ";
+						}
+					} ?>
+					</div>
+					<div></div>
+
+					<?php
 					while ($m = $reqMessages->fetch()) {
 					?>
-
-
+						<!-- MOBILE -->
 						<div class="mobileInfo" hidden>
 							<span class="mobileInfoWriter">
 								<a href="" style="font-weight: bold; color: black"><?=getInfoMembre('$m["auteurID"]', 'pseudo')?></a>LVL100<br/>
@@ -149,10 +204,11 @@ tinymce.init({
 							</span>
 							<span class="mobileInfoUser">
 								<img src="img/icones/conversgm.png" width="30px" style="cursor: pointer;" onclick="showConversGm()">
-						<img src="img/icones/d20.png" width="37px" style="cursor: pointer;" onclick="showDice()">
+								<img src="img/icones/d20.png" width="37px" style="cursor: pointer;" onclick="showDice()">
 							</span>
-
 						</div>
+
+						<!-- DESKTOP -->
 						<div class="msgInfo">
 							<a href="" style="font-weight: bold; color: black"><?=getInfoMembre($m['auteurID'], 'pseudo')?></a><br/>
 							<?=getInfoMembre($m['auteurID'], 'grade')?><br/><br/>
@@ -167,36 +223,48 @@ tinymce.init({
 						<div> <!-- USER INFO SPACE --> </div>
 
 
-
 					<?php
 					}
 					?>
 
-
-
 					<div></div>
-					<div>
-					  <form method="post" action="">
-					    <textarea id="mytextarea" name="message"></textarea>
-					    <input type="submit" name="submit">
-					  </form>
+					<div class ="pagination"> Pages :
+					<?php
+					//SELECTION DE PAGE	
+					for ($i=1; $i <= $NbrPages ; $i++) { 
+						echo "<a href='aventures.php?avID=1&page=".$i."'>".$i." </a>";
+						if ($i<$NbrPages) {
+							echo "- ";
+						}
+					} ?>
 					</div>
 					<div></div>
 
 
-				<?php }
 
-			} 
+					<div></div>
+					<div id="tinymceContainer">
+					  <form method="post" action="">
+					    <textarea id="mytextarea" name="message"></textarea>
+					    <input type="submit" name="submit" style="margin: 20px;">
+					  </form>
+					</div>
+					<div></div>
+				
+				<?php
+				} //ENDIF AVENTURE 
+
+			} //ENDIF CONNECTE 
 			else { ?>
 				
 
-				<div></div><h1>HISTOIRE</h1><div></div>
+				<h1>AVENTURES</h1>
 				<div></div><div>Connecte toi d'abord ;-)</div><div></div>
 
 			<?php
 			}
 			?>
-
+			
 		</section>
 
 
@@ -206,6 +274,6 @@ tinymce.init({
 
 	</div>
 
-<script type="text/javascript" src="js/histoire.js"></script>
+<script type="text/javascript" src="js/aventures.js"></script>
 </body>
 </html> 

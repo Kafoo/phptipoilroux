@@ -66,7 +66,7 @@ if (isset($_POST['submitConnect'])) {
 			<nav id="navDesktop">
 				<div style="display: inline-block;">
 					<a id="navDesk1" href="accueil.php">ACCUEIL</a>
-					<a id="navDesk2" href="histoire.php">HISTOIRE</a>
+					<a id="navDesk2" href="aventures.php">AVENTURES</a>
 				</div>
 				<div style="display: inline-block;">
 					<a id="navDesk3" href="profil.php">PROFIL</a>
@@ -101,9 +101,9 @@ if (isset($_POST['submitConnect'])) {
 				Grade : ';
 						$membreID = $_SESSION['id'];
 						echo getInfoMembre("$membreID","grade");echo '<br/>';
-				echo 'Perso actif : '; 
+				echo 'Perso actif : <span id="activePersoStock">'; 
 				getActifPerso();
-				echo '				
+				echo '</span>
 				</div>
 				';
 			}

@@ -68,4 +68,4 @@ include("php/functions.php");
 
 <script type="text/javascript" src="js/accueil.js"></script>
 </body>
-</html> 
+</html> 	

@@ -70,7 +70,23 @@ function getActifPerso(){
 	}
 }
 
-
+function getActivePerso(){
+	global $bdd, $membreID;
+	if (!isset($_SESSION['connected'])) {
+		return "Non-connecté";
+	}
+	else{
+		$reqNomPerso = $bdd->query("SELECT nom FROM ss_persos WHERE membreID = '$membreID' AND actif = '1' ");
+		$nomPerso = $reqNomPerso->fetch()[0];
+		$nombrePerso = $reqNomPerso->rowCount();
+		if ($nombrePerso == 0) {
+			return '<a class="infoMembre" href="creaperso.php">Aucun perso</a>';
+		}
+		else{
+			return $nomPerso;
+		}
+	}
+}
 
 function getInfoMembre($membreID, $info){
 	global $bdd;

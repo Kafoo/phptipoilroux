@@ -6,6 +6,16 @@
 		background-size: 100%;
 	}
 
+	h1{
+	width: 60%;
+	margin: 70px auto 40px auto;
+	padding: 10px;
+	font-size: 1.8em;
+	color: grey;
+	background-color: rgba(50, 50, 50, 0.8);
+	border-radius: 5px;
+	}
+
 /*---------STRUCTURE---------*/
 
 	.mainGrid{
@@ -163,7 +173,7 @@
 		min-height: 400px;
 		z-index: 10;
 		margin-top: 8px;
-		padding: 20px 5px;
+		padding: 20px 5px 80px 5px;
 	}
 
 	#ariane{
