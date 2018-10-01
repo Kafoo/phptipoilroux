@@ -3,7 +3,7 @@
 	body{
 		margin: 0;
 		background-image: url("../img/fondvert.png");
-		background-size: cover;
+		background-size: 100%;
 	}
 
 /*---------STRUCTURE---------*/

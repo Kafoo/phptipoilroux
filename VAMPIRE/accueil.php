@@ -7,12 +7,8 @@ include("php/functions.php");
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<?php include("shared/headconfig.php") ?>
 	<link rel="stylesheet" type="text/css" href="css/accueil.css">
-<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-	<script src="shared/jquery"></script>
 	<title>VAMPIRE - Accueil</title>
 </head>
 <body>
@@ -65,7 +61,8 @@ include("php/functions.php");
 		</section>
 
 	<!--FOOTER-->
-		<?php include("shared/view/footer.php") ?>
+		<?php include("shared/view/footer.php");
+		?>
 
 	</div>
 

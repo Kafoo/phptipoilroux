@@ -8,9 +8,7 @@ include("php/functions.php");
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<?php include("shared/headconfig.php"); ?>
 	<link rel="stylesheet" type="text/css" href="css/ficheperso.css">
 	<title>VAMPIRE - Fiche Perso</title>
 </head>

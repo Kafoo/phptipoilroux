@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,8 +39,9 @@ if (isset($_GET['action']) AND $_GET['action']=='activePerso') {
 //SUPPRIME MESSAGE
 if (isset($_GET['action']) AND $_GET['action']=='supprimeMessage') {
 	$messageID = $_GET['messageID'];
+	$location = $_SESSION['currentStoryPage'];
 	$bdd->query("DELETE FROM ss_messages_aventure WHERE id='$messageID' ");
-	header("Location: histoire.php");
+	header("Location: $location");
 
 }
 

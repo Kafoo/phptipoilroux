@@ -1,4 +1,23 @@
 <?php
+//-----------SI COOKIE :-----------
+if (/*!isset($_SESSION['connected']) AND*/ isset($_COOKIE['auth'])) {
+	$auth = $_COOKIE['auth'];
+	$auth = explode("---", $auth);
+	$checkUser = $bdd->query("SELECT * FROM ss_membres WHERE id='$auth[0]' ")->fetch();
+	$key = sha1($checkUser['pseudo']);
+	if ($key === $auth[1]) {
+		$userID = $checkUser['id'];
+		$reqUser = $bdd->query("SELECT * FROM ss_membres WHERE id='$userID' ");
+			$userInfo = $reqUser->fetch();
+			$_SESSION['id'] = $userInfo['id'];
+			$_SESSION['pseudo'] = $userInfo['pseudo'];
+			$_SESSION['password'] = $userInfo['password'];
+			$_SESSION['grade'] = $userInfo['grade'];
+			$_SESSION['nombremsg'] = $userInfo['nombremsg'];
+			$_SESSION['connected'] = 'connected';
+	}
+}
+
 //-----------SI TENTATIVE DE CONNEXION :-----------
 if (isset($_POST['submitConnect'])) {
 
@@ -18,6 +37,7 @@ if (isset($_POST['submitConnect'])) {
 			$_SESSION['grade'] = $userInfo['grade'];
 			$_SESSION['nombremsg'] = $userInfo['nombremsg'];
 			$_SESSION['connected'] = 'connected';
+			setcookie('auth', $userInfo['id'].'---'.sha1($userInfo['pseudo']), time()+3600*24, null, null, false, true);
 			if (basename($_SERVER['PHP_SELF']) == "subscribe.php"){
 				header("Location: accueil.php");
 			} 

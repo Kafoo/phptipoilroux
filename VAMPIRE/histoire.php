@@ -38,16 +38,14 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<?php include("shared/headconfig.php");
+	$_SESSION['currentStoryPage'] = $_SERVER['REQUEST_URI'];
+
+	?>
 	<link rel="stylesheet" type="text/css" href="css/histoire.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="shared/jquery"></script>
-
- 
+ <!-- 
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g"></script>
-
+ -->
 <script>
 tinymce.init({
   selector: 'textarea',
