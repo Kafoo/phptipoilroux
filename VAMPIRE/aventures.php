@@ -231,8 +231,14 @@ tinymce.init({
 					<div class ="pagination"> Pages :
 					<?php
 					//SELECTION DE PAGE	
-					for ($i=1; $i <= $NbrPages ; $i++) { 
-						echo "<a href='aventures.php?avID=1&page=".$i."'>".$i." </a>";
+					for ($i=1; $i <= $NbrPages ; $i++) {
+
+						if ($i==$currentPage) {
+							echo $i;
+						}
+						else{
+							echo "<a href='aventures.php?avID=1&page=".$i."'>".$i." </a>";
+						}
 						if ($i<$NbrPages) {
 							echo "- ";
 						}
