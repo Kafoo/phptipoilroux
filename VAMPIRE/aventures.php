@@ -88,7 +88,7 @@ tinymce.init({
 
 					echo '<h1>AVENTURES</h1>';
 
-					$reqAventures = $bdd->query("SELECT DISTINCT nom, aventureID FROM ss_aventures ORDER BY id");
+					$reqAventures = $bdd->query("SELECT DISTINCT nom, aventureID FROM ss_aventures ORDER BY aventureID");
 					while ($row = $reqAventures->fetch()) {
 
 						$aventureID = $row['aventureID'];
@@ -184,8 +184,14 @@ tinymce.init({
 					<div class ="pagination"> Pages :
 					<?php
 					//SELECTION DE PAGE	
-					for ($i=1; $i <= $NbrPages ; $i++) { 
-						echo "<a href='aventures.php?avID=1&page=".$i."'>".$i." </a>";
+					for ($i=1; $i <= $NbrPages ; $i++) {
+
+						if ($i==$currentPage) {
+							echo "<span style='color:darkgrey'>".$i."</span>";
+						}
+						else{
+							echo "<a href='aventures.php?avID=1&page=".$i."'>".$i."</a> ";
+						}
 						if ($i<$NbrPages) {
 							echo "- ";
 						}
@@ -234,10 +240,10 @@ tinymce.init({
 					for ($i=1; $i <= $NbrPages ; $i++) {
 
 						if ($i==$currentPage) {
-							echo $i;
+							echo "<span style='color:darkgrey'>".$i."</span>";
 						}
 						else{
-							echo "<a href='aventures.php?avID=1&page=".$i."'>".$i." </a>";
+							echo "<a href='aventures.php?avID=1&page=".$i."'>".$i."</a> ";
 						}
 						if ($i<$NbrPages) {
 							echo "- ";
