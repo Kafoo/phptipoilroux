@@ -44,6 +44,8 @@ include("php/functions.php");
 						echo getInfoMembre("$membreID","grade"); ?> </span></td>
 					</tr>
 				</table>
+				<form type="enc-data"></form>
+				<input type="file" name="">
 				<br>
 				<h3>Persos :</h3>
 

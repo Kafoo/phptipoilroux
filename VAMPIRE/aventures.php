@@ -172,7 +172,7 @@ tinymce.init({
 						$currentPage = $_GET['page'];
 					}
 					else{
-						$currentPage = 1;
+						$currentPage = $NbrPages;
 					}
 					//On défini où on en est sur cette page
 					$start = ($currentPage-1)*$messagesParPage;
