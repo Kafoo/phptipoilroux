@@ -16,6 +16,15 @@
 	border-radius: 5px;
 	}
 
+	#erreur{
+		width: 400px;
+		padding: 10px;
+		margin: 0 auto 20px auto;
+		color: lightgrey;
+		border : 1px solid black;
+		background-color: rgba(38, 0, 0, 0.3)
+	}
+
 /*---------STRUCTURE---------*/
 
 	.mainGrid{
