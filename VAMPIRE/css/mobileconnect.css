@@ -1,0 +1,21 @@
+#connectionMobile input{
+	text-align: center;
+}
+
+#subscribeMobile{
+	width: max-content;
+	margin : 20px auto;
+	padding: 0 20px;
+	background-color: grey;
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: inset -5px -5px 30px 1px rgba(0,0,0,0.2);
+	background-color: #707070;
+	cursor: pointer;
+}
+
+#subscribeMobile a{
+	text-decoration: none;
+	color: white;
+	font-size: 0.8em;
+}

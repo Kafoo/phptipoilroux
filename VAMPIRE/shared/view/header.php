@@ -38,7 +38,7 @@ if (isset($_POST['submitConnect'])) {
 			$_SESSION['nombremsg'] = $userInfo['nombremsg'];
 			$_SESSION['connected'] = 'connected';
 			setcookie('auth', $userInfo['id'].'---'.sha1($userInfo['pseudo']), time()+3600*24, null, null, false, true);
-			if (basename($_SERVER['PHP_SELF']) == "subscribe.php"){
+			if (basename($_SERVER['PHP_SELF']) == "subscribe.php" OR basename($_SERVER['PHP_SELF']) == "mobileconnect.php"){
 				header("Location: accueil.php");
 			} 
 		}
@@ -77,7 +77,7 @@ if (isset($_POST['submitConnect'])) {
 
 			<nav class="navMobileGrid" id="navMobile" style="cursor: pointer;">
 				<div id="navMobile1" onclick="window.location='accueil.php';">ACCUEIL</div>
-				<div id="navMobile2" onclick="window.location='histoire.php';">HISTOIRE</div>
+				<div id="navMobile2" onclick="window.location='aventures.php';">AVENTURES</div>
 				<div id="navMobile3" onclick="window.location='profil.php';">PROFIL</div>
 				<div id="navMobile4" onclick="window.location='help.php';">HELP</div>
 			</nav>
@@ -105,6 +105,17 @@ if (isset($_POST['submitConnect'])) {
 				getActifPerso();
 				echo '</span>
 				</div>
+
+
+				<div id="connectedMobile" style="cursor: pointer;" onclick="window.location=\'profil.php\';">
+
+					<div id="connectedPseudoBox"><a id="connectedPseudo" href="profil.php">' . $_SESSION['pseudo'] . '</a> (<a href="deconnect.php">Deconnect.</a>)</div>Perso : <span id="activePersoStock">';
+					getActifPerso();
+					echo '
+
+				</div>
+
+
 				';
 			}
 			//MEMBRE DECONNECTE
@@ -118,15 +129,16 @@ if (isset($_POST['submitConnect'])) {
 					</form>
 					<div id="subscribe"><a href="subscribe.php">Nouveau ?</a></div>
 				</div>
+
+
+				<div id="connectionMobile" style="cursor: pointer;" onclick="window.location=\'mobileconnect.php\';">
+
+					CONNEXION
+
+				</div>
 				';
 			}
 
 			?>
 
-			
-			<div id="connectionMobile" style="cursor: pointer;" onclick="window.location='http://youtube.com';">
-
-				CONNEXION
-
-			</div>
 		</header>

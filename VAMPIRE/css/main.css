@@ -185,11 +185,6 @@
 		padding: 20px 5px 80px 5px;
 	}
 
-	#ariane{
-		font-size: 2.6em;
-		text-decoration: underline;
-		margin: 15px 0 50px 0;
-	}
 
 /*FOOTER*/
 
@@ -212,12 +207,18 @@
 /*TOGGLE MDE*/
 
 	#connectionMobile{display: none;}
+	#connectedMobile{display: none;}
 	#navMobile{display: none;}
-	#subscribeMobile{display: none;}
 
 /*---------MEDIA QUERIES---------*/
 
 	@media (max-width: 760px){
+		/*GENERAL*/
+
+			h1{
+				width: 90%;
+			}
+
 
 		/*STRUCTURE*/
 
@@ -231,7 +232,7 @@
 
 			.headerGrid{
 				grid-template-columns: 1fr 1fr;
-				grid-template-rows: 120px 50px 80px;
+				grid-template-rows: 1fr 50px 80px;
 				grid-template-areas:
 				"brand brand"
 				"connect connect"
@@ -261,7 +262,8 @@
 			}
 
 			#branding img{
-				margin: 0;
+				width: 90%;
+				margin : auto;
 			}
 
 
@@ -275,16 +277,38 @@
 				box-shadow: inset -1px 0 0 black;
 			}
 
-			#subscribeMobile{
+			#connectedMobile{
 				display: initial;
-				grid-area: subscribe;
-				font-size: 1.5em;
+				grid-area: connect;
+				font-size: 1em;
 				background-color: #7f8c8d;
 				text-align: center;
 				line-height: 50px;
-				border-bottom: none;
-				box-shadow: inset 1px 0 0 black;
+				box-shadow: inset -1px 0 0 black;
 			}
+
+			#connectedPseudoBox{
+				display: inline;
+				padding: 7px 13px;
+				margin: 1px 10px 1px 0;
+				background-color: #4e5556;
+				border-radius: 3px;
+			}
+
+			#connectedMobile a{
+				color: lightgrey;
+				font-weight: bold;
+				line-height: 1.8em;
+			}
+
+			#connectedMobile a[href="deconnect.php"]{
+				color: darkgrey;
+			}
+
+			#connectedMobile a[href="creaperso.php"]{
+				font-weight: initial;
+			}
+
 
 			#navMobile{
 				display: grid;

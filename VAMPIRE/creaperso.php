@@ -86,7 +86,6 @@ if (isset($_POST['submit'])){
 	<!--SECTION-->
 		<section class="sectionGrid">
 			<div id="subscribeBlock">
-				<div id="ariane">CREATION DE PERSONNAGE</div>
 
 
 				<?php

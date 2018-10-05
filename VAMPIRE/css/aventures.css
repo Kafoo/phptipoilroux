@@ -48,6 +48,7 @@ h1{
 
 .pagination{
 	color:white;
+	margin: 30px;
 }
 
 .pagination a{
@@ -122,19 +123,6 @@ h1{
 	color: grey;
 }
 
-
-.msgGM{
-	min-height: 80px;
-	margin: 20px 10px 20px 10px;
-	padding: 10px;
-	background-color: rgba(20, 10, 0, 0.5);
-	text-align: center;
-	border: 1.5px solid black;
-	border-radius: 5px;
-	box-shadow: 0px 0px 50px black;
-	color: grey;
-}
-
 .userInfo{
 	position: fixed;
 	width: 8vw;
@@ -160,30 +148,32 @@ h1{
 /*---MEDIA QUERIES---*/
 @media (max-width: 760px){
 
-	#sectionGrid{
+
+
+	.mainGrid{
 		grid-template-columns: 1fr;
+	}
+
+	#sectionGrid{
+		display: initial;
+	}
+
+	.choixAventure{
+		margin: 40px auto;
 	}
 
 	.msgInfo{
 		display: none;
 	}
-
-	.msg{
-		position: relative;
-		top: -22px;
-		margin: 10px 20px;
-		min-height: 50px;
-	}
-
 	.userInfo{
 		display: none;
 	}
 
 	.mobileInfo{
-		display: initial;
-		height: 40px;
-		margin: 30px 20px 10px 20px;
-		padding: 5px 0 10px 0;
+		display: block;
+		position: relative;
+		margin:  15px 15px 0 15px;
+		padding: 10px 0 10px 0;
 		background-color: rgba(91, 91, 91, 0.5);
 		text-align: center;
 		border: 1.5px solid black;
@@ -193,22 +183,6 @@ h1{
 		color: black;
 	}
 
-	.msgGM{
-		margin: 20px;
-
-	}
-
-	.mobileInfoWriter{
-		display: inline-block;
-		float: left;
-		margin-left: 20px;
-	}
-
-	.mobileInfoUser{
-		display: inline-block;
-		float: right;
-		margin-right: 20px;
-	}
-	.mobileInfoUser img{
-		margin: auto;
+	.msg{
+		margin: 0 15px 30px 15px;
 	}

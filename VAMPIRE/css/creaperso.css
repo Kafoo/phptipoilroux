@@ -123,6 +123,7 @@ section{
 .infoClan h1{
 	margin: 5px 0 10px 30px;
 	padding: 5px;
+	color: black;
 	background-color: grey;
 	border-radius: 5px;
 }

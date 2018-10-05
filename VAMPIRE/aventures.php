@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
 
 	?>
 	<link rel="stylesheet" type="text/css" href="css/aventures.css">
-  
+ 
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g"></script>
 
 <script>
@@ -204,14 +204,9 @@ tinymce.init({
 					?>
 						<!-- MOBILE -->
 						<div class="mobileInfo" hidden>
-							<span class="mobileInfoWriter">
-								<a href="" style="font-weight: bold; color: black"><?=getInfoMembre('$m["auteurID"]', 'pseudo')?></a>LVL100<br/>
-								Malkavien - Célérité
-							</span>
-							<span class="mobileInfoUser">
-								<img src="img/icones/conversgm.png" width="30px" style="cursor: pointer;" onclick="showConversGm()">
-								<img src="img/icones/d20.png" width="37px" style="cursor: pointer;" onclick="showDice()">
-							</span>
+							<a href="" style="font-weight: bold; color: black"><?=getInfoMembre($m['auteurID'], 'pseudo')?></a> |
+							<span class="blackLink"><?=getInfoMessage($m['id'], 'perso')?></span> | 
+							<span style="font-size: 0.8em;"><?=$m['dat'];?></span>
 						</div>
 
 						<!-- DESKTOP -->

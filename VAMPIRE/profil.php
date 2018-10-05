@@ -57,9 +57,6 @@ if (isset($_POST['submit'])) {
 		<section class="sectionGrid">
 
 			<h1>PROFIL <?php if (isset($_SESSION['connected'])) {echo "DE ". strtoupper($_SESSION["pseudo"]);}?> </h1>
-			___________________________________________________
-			<br/>
-			<br/>
 
 			<?php
 		
@@ -89,10 +86,6 @@ if (isset($_POST['submit'])) {
 					</tr>
 				</table>
 
-				<form method="POST" enctype="multipart/form-data" action="">
-					<input type="file" name="avatar">
-					<input type="submit" name="submit">
-				</form>
 
 				<br>
 				<h3>Persos :</h3>

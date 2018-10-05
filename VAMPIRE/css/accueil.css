@@ -47,3 +47,24 @@ dt{
 dd{
 	display: inline;
 }
+
+@media (max-width: 760px){
+
+	#ongletBlock{
+		display: initial;
+		margin: auto;
+		position: initial;
+	}
+
+	.allonglet{
+		margin: 3px auto;
+	}
+
+	#bienvenue{
+		width: 90%;
+		margin: 0;
+		padding: 5%;
+		border: none;
+		position: initial;
+		background-color: transparent;
+	}
