@@ -1,0 +1,49 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+
+.container{
+	width: 80%;
+	margin: auto;
+	padding: 0;
+	background-color: rgba(0, 0, 0, 0.2);
+
+}
+
+header{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.2);
+	min-height: 300px;
+
+}
+
+#branding{
+	margin: auto;
+	padding: 30px;
+	float: left;
+}
+
+#connection{
+	margin: auto;
+	padding: 30px;
+	float: right;
+}
+
+nav{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background-color: rgba(27, 55, 99, 0.2);
+	min-height: 100px;
+}
+
+section{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.2);
+	min-height: 500px;
+}
