@@ -16,3 +16,4 @@ function showInfo(who){
 function hideInfo(who){
 	$("#info"+who).attr("hidden", "true");
 }
+

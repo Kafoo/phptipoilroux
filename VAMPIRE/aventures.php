@@ -170,7 +170,8 @@ tinymce.init({
 										<b>Dextérité : </b>'.$resInfo["dexterite"].'<br>
 										<b>Intelligence : </b>'.$resInfo["intelligence"].'<br>
 										<b>Charisme : </b>'.$resInfo["charisme"].'<br>
-										<b>Perception : </b>'.$resInfo["perception"].'<br>
+										<b>Perception : </b>'.$resInfo["perception"].'<br><br>
+										<b>Discipline : </b>'.ucfirst($resInfo["premDisc"]).'<br>
 									</div>
 								</div>'
 								.$row[0].'
@@ -185,7 +186,7 @@ tinymce.init({
 						<img src="img/icones/conversgm.png" width="70px" style="cursor: pointer;" onclick="showConversGm()"><br>
 					</div>
 
-					<!-- GENERATION DES MESSAGES -->
+
 					<?php 
 					$aventureID = $_GET['avID'];
 					//PAGINATION
@@ -226,32 +227,56 @@ tinymce.init({
 					</div>
 					<div></div>
 
+					<!-- GENERATION DES MESSAGES -->
 					<?php
 					while ($m = $reqMessages->fetch()) {
+						$nomPerso = $m['perso'];
+						$persoID = getPersoID($nomPerso);
 					?>
-						<!-- MOBILE -->
-						<div class="mobileInfo" hidden>
-							<a href="" style="font-weight: bold; color: black"><?=getInfoMembre($m['auteurID'], 'pseudo')?></a> |
-							<span class="blackLink"><?=getInfoMessage($m['id'], 'perso')?></span> | 
-							<span style="font-size: 0.8em;"><?=$m['dat'];?></span>
-						</div>
-
-						<!-- DESKTOP -->
-						<div class="msgInfo">
-							<a href="" style="font-weight: bold; color: black"><?=getInfoMembre($m['auteurID'], 'pseudo')?></a><br/>
-							<?=getInfoMembre($m['auteurID'], 'grade')?><br/><br/>
-							Perso :<br/>
-							<span class="blackLink"><?=getInfoMessage($m['id'], 'perso')?></span><br/><br/>
-							<span style="font-size: 0.8em;"><?=$m['dat'];?></span>
-						</div>
-						<div class="msg">
-							<div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?= $m['id'] ?>">X</a></div>
-							<span id="contenu"><?=  str_replace('&nbsp;', ' ', htmlspecialchars_decode(nl2br($m['contenu']))); ?></span>
-						</div>
-						<div> <!-- USER INFO SPACE --> </div>
+						<!-- Message du GM -->
+						<?php
+						if ($m['perso']=='GM') {
+						?>
+							<div>
+							</div>
 
 
-					<?php
+							<div class="msg msgGM">
+								<div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?= $m['id'] ?>">X</a></div>
+								<span id="contenu"><?=  str_replace('&nbsp;', ' ', htmlspecialchars_decode(nl2br($m['contenu']))); ?></span>
+							</div>
+							<div> <!-- USER INFO SPACE --> </div>
+							
+						<!-- Message d'un joueur -->
+						<?php
+						} else{
+						?>
+
+							<div class="mobileInfo" hidden>
+								<b><?=getInfoMembre($m['auteurID'], 'pseudo')?></b> |
+								<span><?=getInfoMessage($m['id'], 'perso')?></span> | 
+								<span style="font-size: 0.8em;"><?=$m['dat'];?></span>
+							</div>
+
+							<div class="msgInfo" style="background-image: url('img/avatars/<?=$persoID?>.jpg');">
+								<div class="layer">
+									<b><?=getInfoMembre($m['auteurID'], 'pseudo')?></b><br/>
+									<i>(<?=getInfoMembre($m['auteurID'], 'grade')?>)</i><br/><br/>
+									Perso :<br/>
+									<b> <?=$m['perso']?></b>
+										<br/><br/>
+									<span style="font-size: 0.8em;"><?=$m['dat'];?></span>
+								</div>
+							</div>
+
+
+							<div class="msg">
+								<div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?= $m['id'] ?>">X</a></div>
+								<span id="contenu"><?=  str_replace('&nbsp;', ' ', htmlspecialchars_decode(nl2br($m['contenu']))); ?></span>
+							</div>
+							<div> <!-- USER INFO SPACE --> </div>
+						<?php
+						}
 					}
 					?>
 

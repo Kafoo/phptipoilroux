@@ -100,6 +100,12 @@ function getInfoPerso($persoID, $info){
 	return nl2br($reqInfoPerso->fetch()[0]);
 }
 
+function getPersoID($nomPerso){
+	global $bdd;
+	$reqPersoID = $bdd->query("SELECT id FROM ss_persos WHERE nom = '$nomPerso'");
+	return $reqPersoID->fetch()[0];
+}
+
 function getInfoMessage($messageID, $info){
 	global $bdd;
 	$reqInfoMessage = $bdd->query("SELECT $info FROM ss_messages_aventure WHERE id = '$messageID'");

@@ -42,10 +42,6 @@ h1{
 	box-shadow: none;
 }
 
-.blackLink a{
-	color: black;
-}
-
 .pagination{
 	color:white;
 	margin: 30px;
@@ -56,15 +52,35 @@ h1{
 }
 
 .msgInfo{
-	width: 95px;
 	height: max-content;
-	margin: 10px 2vw 30px auto;
-	padding: 10px;
+	background-size: 100%;
+	margin: 20px 2vw 30px auto;
 	border: 1.5px solid black;
 	border-radius: 5px;
-	background-color: rgba(50, 50, 50, 0.3);
 	box-shadow: 0px 0px 10px black
 }
+
+.layer{
+	width: 95px;
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+	opacity: 0;
+	transition: 0.3s;
+}
+
+.msgInfo:hover .layer{
+	opacity: 1;
+	transition: 0.3s;
+}
+
+.layer a{
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+}
+
 
 .msg{
 	position: relative;
@@ -73,11 +89,16 @@ h1{
 	overflow: auto;
 	margin: 20px 0px 20px 5px;
 	padding: 15px 20px;
-	background-color: rgba(149, 165, 166,0.5) /*rgba(3, 33, 2, 0.5)*/;
+	background-color: rgba(149, 165, 166,0.5);
 	border: 1.5px solid rgb(3, 33, 2);
 	border-radius: 10px;
 	box-shadow: inset 0px 0px 50px rgb(3, 33, 2);
 	z-index: -1;
+}
+
+.msgGM{
+	background-color: rgba(148, 158, 148,0.3);
+	box-shadow: inset 0px 0px 50px rgb(33,18,2);
 }
 
 .confirm{
@@ -86,35 +107,6 @@ h1{
 	padding: 1px;
 	border: 1px solid black;
 }
-
-/*BUBBLE ARROW*/
-@media (min-width: 760px){
-	.msg:before {
-		content: ' ';
-		position: absolute;
-		width: 0;
-		height: 0;
-	  left: -15px;
-		right: auto;
-	  top: -1.5px;
-		bottom: auto;
-		border: 13px solid;
-		border-color: black transparent transparent transparent;
-	}
-	.msg:after{
-		content: ' ';
-		position: absolute;
-		width: 0;
-		height: 0;
-	  left: -10px;
-		right: auto;
-	  top: 0.5px;
-		bottom: auto;
-		border: 10px solid;
-		border-color: rgb(56, 76, 59) transparent transparent transparent;
-	}
-}
-/*END BUBBLE ARROW*/
 
 #suppButton{
 	position: absolute;
@@ -127,6 +119,8 @@ h1{
 .userInfo{
 	position: fixed;
 	width: 8vw;
+	background-color: rgba(200,200,200,0.2);
+	box-shadow: 4px 4px 20px 1px rgba(0,0,0,0.4);
 	min-width: max-content;	
 	padding: 10px;
 	top: 250px;
@@ -147,7 +141,8 @@ h1{
 	top : 18px;
 	width: 200px;
 	border: 1px solid black;
-	padding: 3px;
+	border-radius: 3px;
+	padding: 10px;
 	background-color: lightgrey;
 	z-index: 100;
 }
