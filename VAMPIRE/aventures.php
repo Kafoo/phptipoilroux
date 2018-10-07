@@ -150,10 +150,37 @@ tinymce.init({
 						$aventureID = $_GET['avID']; 
 						$reqPersos = $bdd->query("SELECT perso FROM ss_aventures WHERE aventureID ='$aventureID' ");
 
-						while ($row = $reqPersos->fetch()) {
-							echo '<img src="img/icones/perso.png" style=\'width:30px\'>'.$row[0].'<br>';
-						}
 						?>
+						<div style="text-align: left">
+							<?php
+							$i=1;
+							while ($row = $reqPersos->fetch()) {
+								$resInfo = $bdd->query("SELECT * FROM ss_persos WHERE nom = '$row[0]' ")->fetch();
+								echo '
+								<div class="logoBox">
+									<img src="img/icones/perso.png" style="width:30px" onmouseover="showInfo(\''.$i.'\')" onmouseout="hideInfo(\''.$i.'\')">
+									<div class="infoPerso" id="info'.$i.'" hidden>
+
+										<b>Clan : </b>'.ucfirst($resInfo["clan"]).'<br>
+										<b>Nature : </b>'.$resInfo["nature"].'<br>
+										<b>Attitude : </b>'.$resInfo["attitude"].'<br>
+										<b>Concept : </b>'.$resInfo["attitude"].'<br>
+										<b>Défaut : </b>'.$resInfo["defaut"].'<br><br>
+										<b>Force : </b>'.$resInfo["forc"].'<br>
+										<b>Dextérité : </b>'.$resInfo["dexterite"].'<br>
+										<b>Intelligence : </b>'.$resInfo["intelligence"].'<br>
+										<b>Charisme : </b>'.$resInfo["charisme"].'<br>
+										<b>Perception : </b>'.$resInfo["perception"].'<br>
+									</div>
+								</div>'
+								.$row[0].'
+								<br>';
+								$i++;
+							}
+							?>
+						</div>
+
+
 						<br>
 						<img src="img/icones/conversgm.png" width="70px" style="cursor: pointer;" onclick="showConversGm()"><br>
 					</div>

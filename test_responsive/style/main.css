@@ -1,0 +1,86 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background-image: url("../img/fondcadre.png"), url("../img/fondvert.png");
+	background-size: 100%, 100%;
+	background-position: left calc(145px - 11vw);
+}
+
+/*---- GLOBAL ----*/
+
+.container{
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0.2);
+
+}
+
+.centering{
+	text-align: center;
+}
+
+/*---- HEADER ----*/
+
+header{
+	background-color: rgba(200, 200, 200, 0.8);
+	width: 100%;
+	padding: 20px 0;
+	min-height: 70px;
+
+}
+
+#branding{
+	display: inline-block;
+	padding: 30px;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+#connection{
+	display: inline-block;
+	float: right;
+	margin: auto;
+	padding: 30px;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*---- NAV ----*/
+
+nav{
+	width: 100%;
+	background-color: rgba(100, 100, 100, 0.4);
+	min-height: 30px;
+}
+
+nav ul{
+	display: inline-block;
+	margin: auto;
+}
+
+nav li{
+	display: inline-block;
+	margin: 10px;
+}
+
+/*---- SECTION ----*/
+
+section{
+	width: 70%;
+	margin: auto;
+	margin-top: 15px;
+	background-color: rgba(255, 255, 255, 0.2);
+	min-height: 500px;
+}
+
+
+@media (max-width: 900px){
+	section{
+		width: 100%;
+	}
+	.container{
+		width: 90%;
+	}
+}
