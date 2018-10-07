@@ -2,8 +2,9 @@
 
 	body{
 		margin: 0;
-		background-image: url("../img/fondvert.png");
-		background-size: 100%;
+		background-image: url("../img/fondcadre.png"), url("../img/fondvert.png");
+		background-size: 100%, 100%;
+		background-position: left calc(145px - 11vw);
 	}
 
 	h1{
@@ -53,7 +54,7 @@
 
 	header{
 		grid-area: head;
-		background-color: rgba(50, 50, 50, 0.8);
+		background-color: rgba(50, 50, 50, 0.6);
 		border-bottom: 3px solid black;
 		z-index: 20;
 	}
@@ -214,6 +215,10 @@
 
 	@media (max-width: 760px){
 		/*GENERAL*/
+
+			body{
+				background-image: url("../img/fondvert.png")
+			}
 
 			h1{
 				width: 90%;

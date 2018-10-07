@@ -8,37 +8,13 @@
 </head>
 <body>
 
-<!-- -------- HEADER -------- -->
-<header>
-
-		<div id="branding">
-			BRANDING
-		</div>
-
-
-		<div id="connection">
-			CONNECTION
-		</div>
-
-</header>
-
-<!-- -------- NAVIGATION -------- -->
-<nav>
-	<div class="container">
-		<ul>
-			<li>HOME</li>
-			<li>AVENTURES</li>
-			<li>PROFIL</li>
-			<li>HELP</li>
-		</ul>
-	</div>
-</nav>
+<?php include('view/header.php') ?>
 
 <!-- -------- CONTENU -------- -->
 <section>
 	
 	<div class="container">
-		
+		yo
 	</div>
 
 	<div class="container">
@@ -50,9 +26,6 @@
 	</div>
 
 </section>
-
-
-
 
 
 </body>
