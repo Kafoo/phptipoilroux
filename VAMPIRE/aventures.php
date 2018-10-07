@@ -164,7 +164,7 @@ tinymce.init({
 										<b>Clan : </b>'.ucfirst($resInfo["clan"]).'<br>
 										<b>Nature : </b>'.$resInfo["nature"].'<br>
 										<b>Attitude : </b>'.$resInfo["attitude"].'<br>
-										<b>Concept : </b>'.$resInfo["attitude"].'<br>
+										<b>Concept : </b>'.$resInfo["concept"].'<br>
 										<b>Défaut : </b>'.$resInfo["defaut"].'<br><br>
 										<b>Force : </b>'.$resInfo["forc"].'<br>
 										<b>Dextérité : </b>'.$resInfo["dexterite"].'<br>
@@ -246,7 +246,7 @@ tinymce.init({
 								<span id="contenu"><?=  str_replace('&nbsp;', ' ', htmlspecialchars_decode(nl2br($m['contenu']))); ?></span>
 							</div>
 							<div> <!-- USER INFO SPACE --> </div>
-							
+
 						<!-- Message d'un joueur -->
 						<?php
 						} else{
