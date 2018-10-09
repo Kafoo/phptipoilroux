@@ -53,7 +53,7 @@ h1{
 
 .msgInfo{
 	height: max-content;
-	background-size: 100%;
+	background-size: cover;
 	margin: 20px 2vw 30px auto;
 	border: 1.5px solid black;
 	border-radius: 5px;

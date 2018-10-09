@@ -229,75 +229,82 @@ tinymce.init({
 
 					<!-- GENERATION DES MESSAGES -->
 					<?php
-					while ($m = $reqMessages->fetch()) {
-						$nomPerso = $m['perso'];
-						$persoID = getPersoID($nomPerso);
-					?>
-						<!-- Message du GM -->
-						<?php
-						if ($m['perso']=='GM') {
+					if ($reqMessages) {
+
+						while ($m = $reqMessages->fetch()) {
+							$nomPerso = $m['perso'];
+							$persoID = getPersoID($nomPerso);
 						?>
-							<div>
-							</div>
+							<!-- Message du GM -->
+							<?php
+							if ($m['perso']=='GM') {
+							?>
+								<div>
+								</div>
 
 
-							<div class="msg msgGM">
-								<div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?= $m['id'] ?>">X</a></div>
-								<span id="contenu"><?=  str_replace('&nbsp;', ' ', htmlspecialchars_decode(nl2br($m['contenu']))); ?></span>
-							</div>
-							<div> <!-- USER INFO SPACE --> </div>
+								<div class="msg msgGM">
+									<div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?= $m['id'] ?>">X</a></div>
+									<span id="contenu"><?=  str_replace('&nbsp;', ' ', htmlspecialchars_decode(nl2br($m['contenu']))); ?></span>
+								</div>
+								<div> <!-- USER INFO SPACE --> </div>
 
-						<!-- Message d'un joueur -->
-						<?php
-						} else{
-						?>
+							<!-- Message d'un joueur -->
+							<?php
+							} else{
+							?>
 
-							<div class="mobileInfo" hidden>
-								<b><?=getInfoMembre($m['auteurID'], 'pseudo')?></b> |
-								<span><?=getInfoMessage($m['id'], 'perso')?></span> | 
-								<span style="font-size: 0.8em;"><?=$m['dat'];?></span>
-							</div>
-
-							<div class="msgInfo" style="background-image: url('img/avatars/<?=$persoID?>.jpg');">
-								<div class="layer">
-									<b><?=getInfoMembre($m['auteurID'], 'pseudo')?></b><br/>
-									<i>(<?=getInfoMembre($m['auteurID'], 'grade')?>)</i><br/><br/>
-									Perso :<br/>
-									<b> <?=$m['perso']?></b>
-										<br/><br/>
+								<div class="mobileInfo" hidden>
+									<b><?=getInfoMembre($m['auteurID'], 'pseudo')?></b> |
+									<span><?=getInfoMessage($m['id'], 'perso')?></span> | 
 									<span style="font-size: 0.8em;"><?=$m['dat'];?></span>
 								</div>
-							</div>
+
+								<div class="msgInfo" style="background-image: url('img/avatars/<?=$persoID?>.jpg');">
+									<div class="layer">
+										<b><?=getInfoMembre($m['auteurID'], 'pseudo')?></b><br/>
+										<i>(<?=getInfoMembre($m['auteurID'], 'grade')?>)</i><br/><br/>
+										Perso :<br/>
+										<b> <?=$m['perso']?></b>
+											<br/><br/>
+										<span style="font-size: 0.8em;"><?=$m['dat'];?></span>
+									</div>
+								</div>
 
 
-							<div class="msg">
-								<div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?= $m['id'] ?>">X</a></div>
-								<span id="contenu"><?=  str_replace('&nbsp;', ' ', htmlspecialchars_decode(nl2br($m['contenu']))); ?></span>
-							</div>
-							<div> <!-- USER INFO SPACE --> </div>
+								<div class="msg">
+									<div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?= $m['id'] ?>">X</a></div>
+									<span id="contenu"><?=  str_replace('&nbsp;', ' ', htmlspecialchars_decode(nl2br($m['contenu']))); ?></span>
+								</div>
+								<div> <!-- USER INFO SPACE --> </div>
+							<?php
+							}
+						}
+						?>
+
+						<div></div>
+						<div class ="pagination"> Pages :
 						<?php
-						}
-					}
-					?>
+						//SELECTION DE PAGE	
+						for ($i=1; $i <= $NbrPages ; $i++) {
 
-					<div></div>
-					<div class ="pagination"> Pages :
+							if ($i==$currentPage) {
+								echo "<span style='color:darkgrey'>".$i."</span>";
+							}
+							else{
+								echo "<a href='aventures.php?avID=1&page=".$i."'>".$i."</a> ";
+							}
+							if ($i<$NbrPages) {
+								echo "- ";
+							}
+						} ?>
+						</div>
+						<div></div>
 					<?php
-					//SELECTION DE PAGE	
-					for ($i=1; $i <= $NbrPages ; $i++) {
-
-						if ($i==$currentPage) {
-							echo "<span style='color:darkgrey'>".$i."</span>";
-						}
-						else{
-							echo "<a href='aventures.php?avID=1&page=".$i."'>".$i."</a> ";
-						}
-						if ($i<$NbrPages) {
-							echo "- ";
-						}
-					} ?>
-					</div>
-					<div></div>
+				}else{
+					echo "<div></div>Pas encore de message dans cette aventure !<div></div>";
+				}
+					?>
 
 
 
