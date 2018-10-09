@@ -101,7 +101,7 @@ tinymce.init({
 								<div class="choixAventure">
 								'.$row['nom'].'
 									<a class="goAv joinAv" href=\'aventures.php?avID='.$row['aventureID'].'\'">
-										Ca arrive... ;-)
+										Rejoindre l\'aventure !
 									</a>
 								</div>
 							<div></div>';
@@ -301,15 +301,9 @@ tinymce.init({
 						</div>
 						<div></div>
 					<?php
-				}else{
+					}else{
 					echo "<div></div>Pas encore de message dans cette aventure !<div></div>";
-				}
-				}else if (isset($_GET['avID']) AND !in_array($_GET['avID'], $checkAventures)){
-					echo "<div></div><h3>Tu  t'es perdu, un peu, p'tit malin ;-) [Elo arrête de refresh wesh XD Je sais tout !]</h3><div></div>"
-					?>
-
-
-
+					}?>
 					<div></div>
 					<div id="tinymceContainer">
 					  <form method="post" action="">
@@ -318,9 +312,15 @@ tinymce.init({
 					  </form>
 					</div>
 					<div></div>
+				<?php	
+				//ENDIF AVENTURE
+				}
+
+				else if (isset($_GET['avID']) AND !in_array($_GET['avID'], $checkAventures)){
+					echo "<div></div><h3>Tu  t'es perdu, un peu, p'tit malin ;-)</h3><div></div>";
+					}?>
 				
-				<?php
-				} //ENDIF AVENTURE 
+				<?php 
 
 			} //ENDIF CONNECTE 
 			else { ?>
