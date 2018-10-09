@@ -21,6 +21,8 @@ include("php/functions.php");
 	<!--SECTION-->
 		<section class="sectionGrid">
 
+			<h1>ACCUEIL</h1>
+
 			<div id="bienvenue">
 
 				<div id="ongletBlock">

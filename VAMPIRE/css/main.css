@@ -8,13 +8,13 @@
 	}
 
 	h1{
-	width: 60%;
-	margin: 70px auto 40px auto;
-	padding: 10px;
-	font-size: 1.8em;
-	color: grey;
-	background-color: rgba(50, 50, 50, 0.8);
-	border-radius: 5px;
+		width: 60%;
+		margin: 70px auto 40px auto;
+		padding: 10px;
+		font-size: 1.8em;
+		color: grey;
+		background-color: rgba(50, 50, 50, 0.8);
+		border-radius: 5px;
 	}
 
 	#erreur{
@@ -180,7 +180,7 @@
 		grid-area: section;
 		background-color: rgba(149, 165, 166,0.6);
 		box-shadow: 0 0 20px black;
-		min-height: 400px;
+		min-height: 200px;
 		z-index: 10;
 		margin-top: 8px;
 		padding: 20px 5px 80px 5px;

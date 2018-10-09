@@ -101,7 +101,7 @@ tinymce.init({
 								<div class="choixAventure">
 								'.$row['nom'].'
 									<a class="goAv joinAv" href=\'aventures.php?avID='.$row['aventureID'].'\'">
-										Rejoindre l\'aventure !
+										Ca arrive... ;-)
 									</a>
 								</div>
 							<div></div>';
@@ -239,12 +239,8 @@ tinymce.init({
 							<?php
 							if ($m['perso']=='GM') {
 							?>
-								<div>
-								</div>
-
 
 								<div class="msg msgGM">
-									<div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?= $m['id'] ?>">X</a></div>
 									<span id="contenu"><?=  str_replace('&nbsp;', ' ', htmlspecialchars_decode(nl2br($m['contenu']))); ?></span>
 								</div>
 								<div> <!-- USER INFO SPACE --> </div>
@@ -273,7 +269,10 @@ tinymce.init({
 
 
 								<div class="msg">
-									<div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?= $m['id'] ?>">X</a></div>
+									
+									<?php if ($_SESSION['id']==$m['auteurID']) {
+										echo' <div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?= $m[\'id\'] ?>">X</a></div>';
+									}?>
 									<span id="contenu"><?=  str_replace('&nbsp;', ' ', htmlspecialchars_decode(nl2br($m['contenu']))); ?></span>
 								</div>
 								<div> <!-- USER INFO SPACE --> </div>
@@ -330,7 +329,6 @@ tinymce.init({
 			<?php
 			}
 			?>
-			
 		</section>
 
 

@@ -22,7 +22,7 @@ include("php/functions.php");
 	<!--SECTION-->
 		<section class="sectionGrid">
 
-			<div id="ariane">FICHE PERSONNAGE</div>
+			<h1>FICHE PERSONNAGE</h1>
 
 
 <?php
