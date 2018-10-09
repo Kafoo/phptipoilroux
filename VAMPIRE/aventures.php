@@ -120,7 +120,8 @@ tinymce.init({
 					}
 				//------------- AVENTURE PRECISEE : AFFICHAGE DES MESSAGES -------------
 				}
-				if (isset($_GET['avID'])) {	
+				$checkAventures = $bdd->query("SELECT aventureID from ss_aventures")->fetch();
+				if (isset($_GET['avID']) AND in_array($_GET['avID'], $checkAventures)){	
 
 					//Si activePerso pas encore là, le rajouter
 					$aventureID = $_GET['avID'];
@@ -303,6 +304,8 @@ tinymce.init({
 				}else{
 					echo "<div></div>Pas encore de message dans cette aventure !<div></div>";
 				}
+				}else if (isset($_GET['avID']) AND !in_array($_GET['avID'], $checkAventures)){
+					echo "<div></div><h3>Tu  t'es perdu, un peu, p'tit malin ;-) [Elo arrête de refresh wesh XD Je sais tout !]</h3><div></div>"
 					?>
 
 
