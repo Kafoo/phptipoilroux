@@ -96,6 +96,11 @@ h1{
 	z-index: -1;
 }
 
+.msg img{
+	width: 90%;
+	height: auto;
+}
+
 .msgGM{
 	background-color: rgba(148, 158, 148,0.3);
 	box-shadow: inset 0px 0px 50px rgb(33,18,2);

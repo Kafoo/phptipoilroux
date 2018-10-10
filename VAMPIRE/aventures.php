@@ -156,28 +156,31 @@ tinymce.init({
 							<?php
 							$i=1;
 							while ($row = $reqPersos->fetch()) {
-								$resInfo = $bdd->query("SELECT * FROM ss_persos WHERE nom = '$row[0]' ")->fetch();
-								echo '
-								<div class="logoBox">
-									<img src="img/icones/perso.png" style="width:30px" onmouseover="showInfo(\''.$i.'\')" onmouseout="hideInfo(\''.$i.'\')">
-									<div class="infoPerso" id="info'.$i.'" hidden>
 
-										<b>Clan : </b>'.ucfirst($resInfo["clan"]).'<br>
-										<b>Nature : </b>'.$resInfo["nature"].'<br>
-										<b>Attitude : </b>'.$resInfo["attitude"].'<br>
-										<b>Concept : </b>'.$resInfo["concept"].'<br>
-										<b>Défaut : </b>'.$resInfo["defaut"].'<br><br>
-										<b>Force : </b>'.$resInfo["forc"].'<br>
-										<b>Dextérité : </b>'.$resInfo["dexterite"].'<br>
-										<b>Intelligence : </b>'.$resInfo["intelligence"].'<br>
-										<b>Charisme : </b>'.$resInfo["charisme"].'<br>
-										<b>Perception : </b>'.$resInfo["perception"].'<br><br>
-										<b>Discipline : </b>'.ucfirst($resInfo["premDisc"]).'<br>
-									</div>
-								</div>'
-								.$row[0].'
-								<br>';
-								$i++;
+								if ($row[0]!='GM') {
+									$resInfo = $bdd->query("SELECT * FROM ss_persos WHERE nom = '$row[0]' ")->fetch();
+									echo '
+									<div class="logoBox">
+										<img src="img/icones/perso.png" style="width:30px" onmouseover="showInfo(\''.$i.'\')" onmouseout="hideInfo(\''.$i.'\')">
+										<div class="infoPerso" id="info'.$i.'" hidden>
+
+											<b>Clan : </b>'.ucfirst($resInfo["clan"]).'<br>
+											<b>Nature : </b>'.$resInfo["nature"].'<br>
+											<b>Attitude : </b>'.$resInfo["attitude"].'<br>
+											<b>Concept : </b>'.$resInfo["concept"].'<br>
+											<b>Défaut : </b>'.$resInfo["defaut"].'<br><br>
+											<b>Force : </b>'.$resInfo["forc"].'<br>
+											<b>Dextérité : </b>'.$resInfo["dexterite"].'<br>
+											<b>Intelligence : </b>'.$resInfo["intelligence"].'<br>
+											<b>Charisme : </b>'.$resInfo["charisme"].'<br>
+											<b>Perception : </b>'.$resInfo["perception"].'<br><br>
+											<b>Discipline : </b>'.ucfirst($resInfo["premDisc"]).'<br>
+										</div>
+									</div>'
+									.$row[0].'
+									<br>';
+									$i++;
+								}
 							}
 							?>
 						</div>

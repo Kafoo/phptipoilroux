@@ -3,6 +3,7 @@
 	body{
 		margin: 0;
 		background-image: url("../img/fondcadre.png"), url("../img/fondvert.png");
+		background-repeat: no-repeat, repeat;
 		background-size: 100%, 100%;
 		background-position: left calc(145px - 11vw);
 	}
