@@ -218,7 +218,8 @@
 		/*GENERAL*/
 
 			body{
-				background-image: url("../img/fondvert.png")
+				background-image: url("../img/fondvert.png");
+				background-repeat: repeat;
 			}
 
 			h1{
