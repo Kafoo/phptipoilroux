@@ -307,7 +307,6 @@ tinymce.init({
 					}else{
 					echo "<div></div>Pas encore de message dans cette aventure !<div></div>";
 					}?>
-					<div></div>
 					<div id="tinymceContainer">
 					  <form method="post" action="">
 					    <textarea id="mytextarea" name="message"></textarea>
