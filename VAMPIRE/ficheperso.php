@@ -49,7 +49,7 @@ include("php/functions.php");
 					<div class="ficheBox">
 
 						<img src="img/illusClan/'; echo getInfoPerso("$persoID","clan"); echo '.jpg">
-						<h1>TU ES ';echo strtoupper(getInfoPerso("$persoID","clan"));echo'</h1>'
+						<h3 class="soustitre">TU ES ';echo strtoupper(getInfoPerso("$persoID","clan"));echo'</h3>'
 						;echo getClanDesc(getInfoPerso("$persoID","clan"));echo'
 
 					</div>
@@ -59,7 +59,7 @@ include("php/functions.php");
 
 						<h3 class="soustitre">Caractéristiques</h3>
 
-						<table>
+						<table id="carac">
 							<tr>
 								<td>
 									<label for="persoForce">Force</label>
@@ -118,7 +118,7 @@ include("php/functions.php");
 					</div>
 
 					<div class="ficheBox" style="grid-column: 1/3">
-						<h3>TON HISTOIRE</h3><br>
+						<h3 class="soustitre">TON HISTOIRE</h3><br>
 						<span style="font-style: italic">';echo getInfoPerso("$persoID","lore");echo '<span>
 					</div>
 

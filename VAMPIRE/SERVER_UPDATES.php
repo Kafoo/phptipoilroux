@@ -41,7 +41,7 @@ if (isset($_GET['action']) AND $_GET['action']=='supprimeMessage') {
 	$messageID = $_GET['messageID'];
 	$location = $_SESSION['currentStoryURL'];
 	$bdd->query("DELETE FROM ss_messages_aventure WHERE id='$messageID' ");
-	header("Location: $location");
+
 
 }
 

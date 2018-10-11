@@ -62,8 +62,9 @@ table{
 	display: inline-block;
 }
 
-form td{
+#carac td{
 	text-align: right;
+	padding-right: 5px;
 }
 
 /*---DISCIPLINES---*/

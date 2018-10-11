@@ -153,6 +153,7 @@ tinymce.init({
 
 						?>
 						<div style="text-align: left">
+
 							<?php
 							$i=1;
 							while ($row = $reqPersos->fetch()) {
@@ -162,7 +163,7 @@ tinymce.init({
 									echo '
 									<div class="logoBox">
 										<img src="img/icones/perso.png" style="width:30px" onmouseover="showInfo(\''.$i.'\')" onmouseout="hideInfo(\''.$i.'\')">
-										<div class="infoPerso" id="info'.$i.'" hidden>
+										<div class="infoPerso" id="info'.$i.'">
 
 											<b>Clan : </b>'.ucfirst($resInfo["clan"]).'<br>
 											<b>Nature : </b>'.$resInfo["nature"].'<br>
@@ -274,9 +275,9 @@ tinymce.init({
 
 								<div class="msg">
 									
-									<?php if ($_SESSION['id']==$m['auteurID']) {
-										echo' <div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?= $m[\'id\'] ?>">X</a></div>';
-									}?>
+									<?php if ($_SESSION['id']==$m['auteurID']) {?>
+										<div id="suppButton"><a class="confirm" href="SERVER_UPDATES.php?action=supprimeMessage&messageID=<?=$m['id']?>">X</a></div>
+									<?php }?>
 									<span id="contenu"><?=  str_replace('&nbsp;', ' ', htmlspecialchars_decode(nl2br($m['contenu']))); ?></span>
 								</div>
 								<div> <!-- USER INFO SPACE --> </div>
