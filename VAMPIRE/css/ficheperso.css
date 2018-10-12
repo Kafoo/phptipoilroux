@@ -32,6 +32,14 @@ h4{
 	margin: 0
 }
 
+#editPhysiqueBlock{
+	width: 80%;
+	margin: auto;
+}
+
+#editPhysiqueArea{
+	width: 100%;
+}
 
 /*---CARACTERISTIQUES---*/
 
@@ -67,6 +75,8 @@ table{
 	padding-right: 5px;
 }
 
+
+
 /*---DISCIPLINES---*/
 
 .infoDisc{
@@ -83,7 +93,32 @@ table{
 
 /*---HISTOIRE---*/
 
+#persoLore{
+	font-style: italic;
+	display: inline-block;
+}
 
+.editButton{
+	display: inline;
+	margin: 7px;
+	padding: 3px 5px;
+	border: 1px solid black;
+	background-color: grey;
+	border-radius: 3px;
+	font-size: 0.7em;
+	font-style: italic;
+	color: black;
+	cursor: pointer;
+}
+
+#editLoreBlock{
+	width: 80%;
+	margin: auto;
+}
+
+#editLoreArea{
+	width: 100%;
+}
 
 /*---MEDIA QUERIES---*/
 

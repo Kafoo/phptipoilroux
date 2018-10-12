@@ -36,13 +36,28 @@ if (isset($_GET['action']) AND $_GET['action']=='activePerso') {
 }
 
 
-//SUPPRIME MESSAGE
+//SUPPRIME MESSAGE (messageID)
 if (isset($_GET['action']) AND $_GET['action']=='supprimeMessage') {
 	$messageID = $_GET['messageID'];
 	$location = $_SESSION['currentStoryURL'];
 	$bdd->query("DELETE FROM ss_messages_aventure WHERE id='$messageID' ");
+	header("Location: $location");
+}
 
+//UPDATE PERSO LORE (persoID)
+if (isset($_GET['action']) AND $_GET['action']=='updatePersoLore') {
+	$persoID = $_GET['persoID'];
+	$content = htmlspecialchars($_POST['contentEditLore'], ENT_QUOTES);
+	$bdd->query("UPDATE ss_persos SET lore='$content' WHERE id='$persoID'");
+	header("Location: ficheperso.php?persoID=$persoID");
+}
 
+//UPDATE PERSO Physique (persoID)
+if (isset($_GET['action']) AND $_GET['action']=='updatePersoPhysique') {
+	$persoID = $_GET['persoID'];
+	$content = htmlspecialchars($_POST['contentEditPhysique'], ENT_QUOTES);
+	$bdd->query("UPDATE ss_persos SET physique='$content' WHERE id='$persoID'");
+	header("Location: ficheperso.php?persoID=$persoID");
 }
 
 

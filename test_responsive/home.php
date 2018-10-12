@@ -12,9 +12,6 @@
 
 <!-- -------- CONTENU -------- -->
 <section>
-	
-
-
 
 	<div class="container">
 		

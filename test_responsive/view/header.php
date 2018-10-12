@@ -17,7 +17,7 @@
 
 <!-- -------- NAVIGATION -------- -->
 <nav>
-	<div class="centering">
+	<div class="centeringText">
 		<ul>
 			<li><a href="home.php">ACCUEIL</a></li>
 			<li>AVENTURES</li>

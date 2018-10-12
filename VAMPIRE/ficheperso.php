@@ -30,27 +30,34 @@ include("php/functions.php");
 
 	if (isset($_GET['persoID']) AND !empty($_GET['persoID'])){
 
-		$persoID = $_GET['persoID'];
-		echo '
+		$persoID = $_GET['persoID'];?>
 
 			<div id="ficheContainer">
 					
 					<div class="ficheBox">
 
-						<b>Nom</b> : ';echo getInfoPerso("$persoID","nom");echo'<br><br>
-						<b>Nature : </b>';echo getInfoPerso("$persoID","nature");echo'<br><br>
-						<b>Attitude : </b>';echo getInfoPerso("$persoID","attitude");echo'<br><br>
-						<b>Concept : </b>';echo getInfoPerso("$persoID","concept");echo'<br><br>
-						<b>Physique : </b>';echo getInfoPerso("$persoID","physique");echo'<br><br>
+						<b>Nom</b> : <?=getInfoPerso("$persoID","nom")?><br><br>
+						<b>Nature : </b><?=getInfoPerso("$persoID","nature")?><br><br>
+						<b>Attitude : </b><?=getInfoPerso("$persoID","attitude")?><br><br>
+						<b>Concept : </b><?=getInfoPerso("$persoID","concept")?><br><br>
+						<div class="editButton" id="editButtonPhysique">éditer</div><b>Physique : </b><br><br>
+						<span id="persoPhysique"><?=getInfoPerso("$persoID","physique")?></span>
+						<div id="editPhysiqueBlock" hidden>
+							<form method="POST" action="SERVER_UPDATES.php?action=updatePersoPhysique&persoID=<?=$_GET['persoID']?>">
+								<textarea id="editPhysiqueArea" name="contentEditPhysique"></textarea>
+								<input type="submit" name="submitEditPhysique" value="J'édite mon physique !">
+							</form>
+						</div>
+						<br><br>
 
 					</div>
 
 
 					<div class="ficheBox">
 
-						<img src="img/illusClan/'; echo getInfoPerso("$persoID","clan"); echo '.jpg">
-						<h3 class="soustitre">TU ES ';echo strtoupper(getInfoPerso("$persoID","clan"));echo'</h3>'
-						;echo getClanDesc(getInfoPerso("$persoID","clan"));echo'
+						<img src="img/illusClan/<?=getInfoPerso("$persoID","clan")?>.jpg">
+						<h3 class="soustitre">TU ES <?=strtoupper(getInfoPerso("$persoID","clan"))?></h3>
+						<?=getClanDesc(getInfoPerso("$persoID","clan"))?>
 
 					</div>
 
@@ -65,7 +72,7 @@ include("php/functions.php");
 									<label for="persoForce">Force</label>
 								</td>
 								<td>
-									<span id="displayForce" class="displayCarac">';echo getInfoPerso("$persoID","forc");echo '</span>
+									<span id="displayForce" class="displayCarac"><?=getInfoPerso("$persoID","forc")?></span>
 								</td>
 							</tr>
 							<tr>
@@ -73,7 +80,7 @@ include("php/functions.php");
 									<label for="persoDexterité">Dexterité</label>
 								</td>
 								<td>
-									<span id="displayDexterité" class="displayCarac">';echo getInfoPerso("$persoID","dexterite");echo '</span>
+									<span id="displayDexterité" class="displayCarac"><?=getInfoPerso("$persoID","dexterite")?></span>
 								</td>
 							</tr>
 							<tr>
@@ -82,7 +89,7 @@ include("php/functions.php");
 								</td>
 
 								<td>
-									<span id="displayIntelligence" class="displayCarac">';echo getInfoPerso("$persoID","intelligence");echo '</span>
+									<span id="displayIntelligence" class="displayCarac"><?=getInfoPerso("$persoID","intelligence")?></span>
 								</td>
 							</tr>
 							<tr>
@@ -91,7 +98,7 @@ include("php/functions.php");
 								</td>
 
 								<td>
-									<span id="displayCharisme" class="displayCarac">';echo getInfoPerso("$persoID","charisme");echo '</span>
+									<span id="displayCharisme" class="displayCarac"><?=getInfoPerso("$persoID","charisme")?></span>
 								</td>
 							</tr>
 							<tr>
@@ -100,7 +107,7 @@ include("php/functions.php");
 								</td>
 
 								<td>
-									<span id="displayPerception" class="displayCarac">';echo getInfoPerso("$persoID","perception");echo '</span>
+									<span id="displayPerception" class="displayCarac"><?=getInfoPerso("$persoID","perception")?></span>
 								</td>
 							</tr>
 						</table>
@@ -112,18 +119,24 @@ include("php/functions.php");
 
 						<h3 class="soustitre">Tes disciplines</h3>
 
-						<div class="infoDisc"><h4>';echo strtoupper(getInfoPerso("$persoID","premDisc"));echo '</h4><br>';echo getInfoDisc(getInfoPerso("$persoID","premDisc"));echo '
+						<div class="infoDisc"><h4><?=strtoupper(getInfoPerso("$persoID","premDisc"))?></h4><br><?=getInfoDisc(getInfoPerso("$persoID","premDisc"))?>
 						</div>
 
 					</div>
 
 					<div class="ficheBox" style="grid-column: 1/3">
-						<h3 class="soustitre">TON HISTOIRE</h3><br>
-						<span style="font-style: italic">';echo getInfoPerso("$persoID","lore");echo '<span>
+						<h3 class="soustitre">TON HISTOIRE <div class="editButton" id="editButtonLore">éditer</div></h3><br>
+						<span id="persoLore"><?=getInfoPerso("$persoID","lore")?></span>
+						<div id="editLoreBlock" hidden>
+							<form method="POST" action="SERVER_UPDATES.php?action=updatePersoLore&persoID=<?=$_GET['persoID']?>">
+								<textarea id="editLoreArea" name="contentEditLore"></textarea>
+								<input type="submit" name="submitEditLore" value="J'édite mon histoire !">
+							</form>
+						</div>
 					</div>
 
-			</div>'
-			;
+			</div>
+	<?php
 	}
 
 	else{
