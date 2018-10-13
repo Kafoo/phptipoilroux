@@ -1,84 +1,137 @@
-*{
-	margin: 0;
-	padding: 0;
-}
-
-body{
-	background-image: url("../img/fondcadre.png"), url("../img/fondvert.png");
-	background-size: 100%, 100%;
-	background-position: left calc(145px - 11vw);
-}
-
 /*---- GLOBAL ----*/
 
-.container{
-	width: 80%;
-	margin: auto;
-	overflow: hidden;
-	background-color: rgba(255, 255, 255, 0.2);
+	*{
+		margin: 0;
+		padding: 0;
+	}
 
-}
+	body{
+		background-image: url("../img/global/fondcadre.png"), url("../img/global/fondvert.png");
+		background-size: 100%, 100%;
+		background-position: left calc(150px - 11vw);
+	}
 
-.centeringText{
-	text-align: center;
-}
+	h1{
+		width: 60%;
+		margin: 40px auto;
+		padding: 15px;
+		background-color: rgba(0,0,0,0.12);
+		box-shadow: inset 0 0 15px 1px rgba(0,0,0,0.8);
+		border: 1px solid black;
+		color: white;
+		text-shadow: 2px 2px 5px black;
+		text-align: center;
+	}
+
+	h3{
+		text-align: center;
+		margin: 0 auto 20px auto;
+		font-size: 1.5em;
+	}
+
+	.test{
+		margin: 10px;
+		padding: 30px;
+		background-color: rgba(141, 145, 123, 0.72);
+		border: 1.5px solid black;
+		border-radius: 2px;
+		box-shadow: inset -3px -3px 20px 0.5px rgba(0,0,0,0.1);
+	}
+
+	.centering{
+		text-align: center;
+	}
+
+	a{
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.container{
+		width: 80%;
+		margin: auto;
+		overflow: hidden;
+	}
 
 /*---- HEADER ----*/
 
 header{
-	background-color: rgba(200, 200, 200, 0.8);
+	background-color: rgba(0, 0, 0, 0.4);
 	width: 100%;
-	padding: 20px 0;
-	min-height: 70px;
 
 }
 
 #branding{
 	display: inline-block;
-	padding: 30px;
-	background-color: rgba(0, 0, 0, 0.2);
+	margin : 20px 0 0 6vw;
+}
+
+#branding img{
+	width: 375px;
+	height: 95px;
 }
 
 #connection{
 	display: inline-block;
 	float: right;
-	margin: auto;
-	padding: 30px;
-	background-color: rgba(0, 0, 0, 0.2);
+	margin: 20px 10vw 5px 0;
+	padding: 35px;
+	background-color: rgba(68, 121, 65, 0.5);
+	border: 1.5px solid black;
+	border-radius: 5px;
+	box-shadow: 0 0 50px 2px rgba(222,222,222,0.6);
+	color: rgb(200,200,200);
 }
 
 /*---- NAV ----*/
 
 nav{
 	width: 100%;
-	background-color: rgba(100, 100, 100, 0.4);
-	min-height: 30px;
+	background-color: rgba(0, 0, 0, 0.4);
+	border-bottom: 3px solid black;
 }
 
 nav ul{
 	display: inline-block;
 	margin: auto;
+	color: rgb(189, 189, 189);
+	text-decoration: none;
+	font-size: 1.4em;
 }
 
 nav li{
 	display: inline-block;
-	margin: 10px;
+	margin: 5px 15px;
+	cursor: pointer;
+}
+
+nav li:hover, .currentNav{
+	color: white;
 }
 
 /*---- SECTION ----*/
 
 section{
-	width: 70%;
-	margin: auto;
-	margin-top: 15px;
-	background-color: rgba(255, 255, 255, 0.2);
+	width: 80%;
 	min-height: 500px;
+	margin: 15px auto;
+	padding: 1px 0 70px 0;
+	background-color: rgba(255, 255, 255, 0.2);
+	box-shadow: 0 0 10px 1px rgba(0,0,0,1);
+
 }
 
 
 @media (max-width: 900px){
+
+	body{
+		background-image: url("../img/global/fondvert.png");
+		background-position: 0;
+	}
+
 	section{
 		width: 100%;
+		margin: 0;
 	}
 	.container{
 		width: 90%;

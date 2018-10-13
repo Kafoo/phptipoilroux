@@ -43,9 +43,9 @@ if (isset($_POST['submit'])) {
 
 	?>
 	<link rel="stylesheet" type="text/css" href="css/aventures.css">
- 
+ <!-- 
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g"></script>
-
+ -->
 <script>
 tinymce.init({
   selector: 'textarea',

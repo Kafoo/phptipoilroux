@@ -1,0 +1,7 @@
+#gridFichePerso{
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	grid-template-areas: 'avatar infos disciplines disciplines'
+	'carac infos disciplines disciplines'
+	'carac autres autres autres';
+}

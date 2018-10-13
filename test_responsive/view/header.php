@@ -1,28 +1,24 @@
 <!-- -------- HEADER -------- -->
 <header>
 
-	<div class="container">
-
 		<div id="branding">
-			---- BRANDING ----
+			<img src="img/global/header_title.png" id="headerTitle" style="cursor: pointer;" onclick="window.location='accueil.php';">
 		</div>
 
 		<div id="connection">
-			---- CONNECTION ----
+			-------- CONNECTION --------
 		</div>
-
-	</div>
 
 </header>
 
 <!-- -------- NAVIGATION -------- -->
 <nav>
-	<div class="centeringText">
+	<div class="centering">
 		<ul>
-			<li><a href="home.php">ACCUEIL</a></li>
-			<li>AVENTURES</li>
-			<li><a href="persos.php">PERSOS</a></li>
-			<li>PROFIL</li>
+			<li><a href="home.php">ACCUEIL</a></li>|
+			<li>AVENTURES</li>|
+			<li>SOCIAL</li>|
+			<li><a href="profil.php">PROFIL</a></li>|
 			<li>HELP</li>
 		</ul>
 	</div>
