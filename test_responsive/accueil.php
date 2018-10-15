@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+	<?php include("config/headconfig.php"); ?>
 	<link rel="stylesheet" type="text/css" href="style/main.css">
 	<title>Vampire - Home</title>
 </head>
@@ -30,6 +29,7 @@
 
 </section>
 
+<?php include("config/scripts.php"); ?>
 
 </body>
 </html>

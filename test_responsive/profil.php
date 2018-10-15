@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" type="text/css" href="style/main.css">
+	<?php include("config/headconfig.php"); ?>
 	<link rel="stylesheet" type="text/css" href="style/profil.css">
 	<title>Vampire - Social</title>
 </head>
@@ -22,8 +20,28 @@
 
 		<h1>PROFIL DE KAFOO</h1>
 
-		<div class="container">
-			<div class="test"><a href="profil.php?persoID=1">Yo</a></div>
+		<div class="container centering	">
+
+
+			<table>
+				<tr>
+					<td align="right">Messages postés :</td>
+					<td align="left">
+						<span class="infoMembre">12</span></td>
+				</tr>
+				<tr>
+					<td align="right">Grade :</td>
+					<td align="left"><span class="infoMembre">Goule</span></td>
+				</tr>
+			</table>
+
+
+			<br>
+			<h3>Persos :</h3>
+
+			Alma
+
+
 		</div>
 		
 
@@ -104,6 +122,7 @@
 
 </section>
 
+<?php include("config/scripts.php"); ?>
 
 </body>
 </html>

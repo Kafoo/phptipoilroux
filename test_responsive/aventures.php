@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" type="text/css" href="style/main.css">
+	<?php include("config/headconfig.php"); ?>
 	<link rel="stylesheet" type="text/css" href="style/aventures.css">
 	<title>Vampire - Aventures</title>
 </head>
@@ -42,29 +40,79 @@
 
 		<h2>OEIL POUR OEIL</h2>
 
-		<div class="fixInfo">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip </div>
 
-		<div class="container">
-			
 			<div id="gridAv">
 
-				<div class="writerInfo" style="background-image: url(img/avatars/test.jpg);">
-					<div class="layer">
-						Blabloup
+
+				<!-- MESSAGE GM -->
+				<div class="writerInfoSlider">
+					<div class="writerInfo" style="background-image: url(img/avatars/test.jpg);">
+						<div class="layer">
+							Blabloup<br>Blabloup<br>Blabloup<br>
+						</div>
 					</div>
+				</div>	
+
+				<div class="msg msgGM">
+					LOREM IPSUM<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</div>
 
+				<div class="fixInfo">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip.
+				</div>
+
+				<!-- MESSAGE 2 -->
+				<div class="writerInfoSlider">
+					<div class="writerInfo" style="background-image: url(img/avatars/test.jpg);">
+						<div class="layer">
+							Blabloup<br>Blabloup<br>Blabloup<br>
+						</div>
+					</div>
+				</div>	
+
 				<div class="msg">
-					
+					LOREM IPSUM<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</div>
+
+				<div class="fixSpace"></div>
+
+				<!-- MESSAGE 3 -->
+				<div class="writerInfoSlider">
+					<div class="writerInfo" style="background-image: url(img/avatars/test.jpg);">
+						<div class="layer">
+							Blabloup<br>Blabloup<br>Blabloup<br>
+						</div>
+					</div>
+				</div>	
+
+				<div class="msg">
+					LOREM IPSUM<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</div>
 
 				<div class="fixSpace"></div>
 
 			</div>
 
-		</div>
 
 
 
@@ -83,6 +131,7 @@
 
 </section>
 
+<?php include("config/scripts.php"); ?>
 
 </body>
 </html>

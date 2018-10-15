@@ -5,3 +5,15 @@
 	'carac infos disciplines disciplines'
 	'carac autres autres autres';
 }
+
+.infoMembre{
+	color : lightgrey;
+}
+
+table{
+	margin: auto;
+}
+
+table td{
+	padding: 5px;
+}

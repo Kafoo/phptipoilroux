@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" type="text/css" href="style/main.css">
+	<?php include("config/headconfig.php"); ?>
 	<link rel="stylesheet" type="text/css" href="style/social.css">
 	<title>Vampire - Aventures</title>
 </head>
@@ -26,6 +24,8 @@
 	</div>
 
 </section>
+
+<?php include("config/scripts.php"); ?>
 
 
 </body>

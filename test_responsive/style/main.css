@@ -7,21 +7,35 @@
 
 	body{
 		background-image: url("../img/global/fondcadre.png"), url("../img/global/fondvert.png");
+		background-repeat: no-repeat, repeat;
 		background-size: 100%, 100%;
 		background-position: left calc(150px - 11vw);
 	}
 
+	section{
+		width: 80%;
+		min-height: 500px;
+		margin: 2vw auto;
+		padding: 1px 0 70px 0;
+		background-color: rgba(255, 255, 255, 0.2);
+		box-shadow: 0 0 10px 1px rgba(0,0,0,1);
+	}
+
+	.container{
+		width: 80%;
+		margin: auto;
+	}
+
 	h1{
-		width: 50%;
-		overflow: hidden;
-		margin: 40px auto;
-		padding: 15px;
-		background-color: rgba(60, 54, 48,0.8);
-		box-shadow: inset -2px -2px 10px 1px rgba(0,0,0,0.3);
-		border: 1.5px solid black;
-		color: lightgrey;
-		text-shadow: 2px 2px 5px black;
-		text-align: center;
+	    width: 60%;
+	    margin: 40px auto;
+	    padding: 15px;
+	    background-color: rgba(0,0,0,0.12);
+	    box-shadow: inset 0 0 15px 1px rgba(0,0,0,0.8);
+	    border: 1px solid black;
+	    color: white;
+	    text-shadow: 2px 2px 5px black;
+	    text-align: center;
 	}
 
 	h2{
@@ -56,127 +70,115 @@
 		color: inherit;
 	}
 
-	.container{
-		width: 80%;
-		margin: auto;
-		overflow: hidden;
-	}
-
 /*---- HEADER ----*/
 
-header{
-	background-color: rgba(0, 0, 0, 0.5);
-	width: 100%;
-}
+	#headerDesktop{
+		background-color: rgba(0, 0, 0, 0.5);
+		width: 100%;
+	}
 
 /*BRANDING*/
-#branding{
-	display: inline-block;
-	margin: 25px 0 15px 10vw;
-	width: 375px;
-	height: 90px;
-	padding: 10px 0;
-	border: 1.5px solid black;
-	border-radius: 5px;
-	box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.6);
-    background-color: rgba(0,0,0,0.5);
-}
+
+	#branding{
+		display: inline-block;
+		margin: 25px 0 15px 10vw;
+		width: 375px;
+		height: 90px;
+		padding: 10px 0;
+		border: 1.5px solid black;
+		border-radius: 5px;
+		box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.6);
+	    background-color: rgba(0,0,0,0.5);
+	}
 
 /*CONNECTION*/
-#connection{
-	display: inline-block;
-	float: right;
-	width: 250px;
-	min-height: 70px;
-	margin: 25px 10vw 0 0;
-	padding: 5px 5px 0 5px;
-	background-color: rgba(68, 121, 65, 0.5);
-	border: 1.5px solid black;
-	box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.6);
-	color: rgb(200,200,200);
-}
+	#connectionDesktop{
+		float: right;
+		width: 250px;
+		min-height: 70px;
+		margin: 25px 10vw 0 0;
+		padding: 5px 5px 0 5px;
+		background-color: rgba(68, 121, 65, 0.5);
+		border: 1.5px solid black;
+		box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.6);
+		color: rgb(200,200,200);
+	}
 
-#connection input{
-	display: block;
-	width: 95%;
-	margin: 5px auto;
-	text-align: center;
-}
+	#connectionDesktop input{
+		display: block;
+		width: 95%;
+		margin: 5px auto;
+		text-align: center;
+	}
 
-#connection input[type='submit']{
-	width: 96.8%;
-}
+	#connectionDesktop input[type='submit']{
+		width: 96.8%;
+	}
 
-#connection #nouveau{
-	width: max-content;
-	margin: 5px auto 0 auto;
-	padding: 4px 30px 2px 30px;
-	background-color: rgba(5, 41, 13, 0.77);
-	border-radius: 10px 10px 0px 0px;
-	border: 1px solid black;
-	box-shadow: inset -2px 2px 5px 1px rgba(0,0,0,0.3);
-	cursor: pointer;
-	color: rgb(180,180,180);
-}
+	#connectionDesktop #nouveau{
+		width: max-content;
+		margin: 5px auto 0 auto;
+		padding: 4px 30px 2px 30px;
+		background-color: rgba(5, 41, 13, 0.77);
+		border-radius: 10px 10px 0px 0px;
+		border: 1px solid black;
+		box-shadow: inset -2px 2px 5px 1px rgba(0,0,0,0.3);
+		cursor: pointer;
+		color: rgb(180,180,180);
+	}
 
-#connection #nouveau:hover{
-	box-shadow: none;
-	color: white;
-}
+	#connectionDesktop #nouveau:hover{
+		box-shadow: none;
+		color: white;
+	}
 
 /*---- NAV ----*/
 
-nav{
-	position: sticky;
-  	position: -webkit-sticky;
-	top: 0px;
-	background-color: rgba(0, 0, 0, 0.5);
-	border-bottom: 2px solid black;
-	z-index: 1000;
-}
+	#navDesktop{
+		position: sticky;
+	  	position: -webkit-sticky;
+		top: 0px;
+		background-color: rgba(0, 0, 0, 0.5);
+		border-bottom: 2px solid black;
+		z-index: 1000;
+	}
 
-nav ul{
-	display: inline-block;
-	margin: auto;
-	color: rgb(230,230,230);
-	text-shadow: 2px 2px 3px black;
-	text-decoration: none;
-	font-size: 1.4em;
-}
+	#navDesktop ul{
+		display: inline-block;
+		margin: auto;
+		color: rgb(230,230,230);
+		text-shadow: 2px 2px 3px black;
+		text-decoration: none;
+		font-size: 1.4em;
+	}
 
-nav li{
-	display: inline-block;
-	margin: 5px 15px;
-	cursor: pointer;
-}
+	#navDesktop li{
+		display: inline-block;
+		margin: 5px 15px;
+		cursor: pointer;
+	}
 
-nav li:hover, .currentNav{
-	color: rgb(155,155,155);
-}
+	#navDesktop li:hover, .currentNav{
+		color: rgb(155,155,155);
+	}
 
-/*---- SECTION ----*/
+/*--MOBILE TOGGLE--*/
+	.mobile{display: none;}
 
-section{
-	width: 80%;
-	min-height: 500px;
-	margin: 2vw auto;
-	padding: 1px 0 70px 0;
-	background-color: rgba(255, 255, 255, 0.2);
-	box-shadow: 0 0 10px 1px rgba(0,0,0,1);
-
-}
-
+/*------ MEDIA 900PX ------*/
 
 @media (max-width: 900px){
 
 	body{
 		background-image: url("../img/global/fondvert.png");
+		background-repeat: repeat;
 		background-position: 0;
 	}
 
 	section{
 		width: 100%;
 		margin: 0;
+		box-shadow: none;
 	}
 	.container{
 		width: 90%;
@@ -184,8 +186,91 @@ section{
 
 	#branding{
 		margin: 0;
-		border: none;
 		width: 100%;
 		height: auto;
 	}
+}
+
+/*------ MEDIA 720PX ------*/
+
+@media (max-width: 720px){
+
+	.desktop{display: none;}
+	.mobile{display: initial;}
+
+	#headerMobile{
+		display: block;
+		position: sticky;
+		top: 0;
+		width: 100%;
+		height: 47px;
+		background-color: green;
+		border-bottom: 1px solid black;
+		box-shadow: 0 0	10px 1px rgba(0,0,0,0.7);
+	}
+
+	.container{
+		width: 100%;
+	}
+
+	h1{
+		width: 100%;
+		margin: 0;
+		padding: 15px 0;
+		border: none;
+		box-shadow: none;
+		background-color: rgba(0, 0, 0, 0.33);
+	}
+
+	#navLogo{
+		width: 50px;
+		margin: 10px 0 0 3px;
+	}
+
+	#brandingBox{
+		position: absolute;
+		top: 3px;
+		width:100%;
+		text-align: center;
+	}
+
+	#brandingMobile{
+		width: 120px;
+		margin: auto;
+	}
+
+	#userLogo{
+		width: 38px;
+		float: right;
+		margin: 5px 8px 0 0;
+	}
+
+	#croix{
+		width: 30px;
+		margin: 8px;
+	}
+
+	#navMobile{
+		position: absolute;
+		top: 0;	
+
+	}
+
+	#navMobileHead{
+		height: 45px;
+		border-bottom: 1px solid black;
+		background-color: rgba(0,0,0,0);
+	}
+
+	#navMobile ul{
+		padding: 20px;
+		background-color: rgba(56, 142, 60,1.0);
+	}
+
+	#navMobile li{
+		display: block;
+		margin: 10px auto;
+		font-size: 1.3em;
+	}
+
 }
