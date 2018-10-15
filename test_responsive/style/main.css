@@ -205,6 +205,10 @@
 		width: 100%;
 		height: 47px;
 		background-color: green;
+		background-image: url(../img/global/header_title_black.png);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 100px;
 		border-bottom: 1px solid black;
 		box-shadow: 0 0	10px 1px rgba(0,0,0,0.7);
 	}

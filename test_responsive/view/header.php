@@ -1,9 +1,6 @@
 <!------- HEADER MOBILE ------->
 <header id="headerMobile" class="mobile">
-	<img id="navLogo" src="img/mobile/menu.png">
-	<div id="brandingBox">	
-		<img id="brandingMobile" src="img/global/header_title_black.png">
-	</div>
+	<img id="navLogo" src="img/mobile/menu.png">	
 	<img id="userLogo" src="img/mobile/userlogo.png">
 
 
