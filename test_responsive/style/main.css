@@ -70,7 +70,7 @@
 		color: inherit;
 	}
 
-/*---- HEADER ----*/
+/*--------- HEADER ---------*/
 
 	#headerDesktop{
 		background-color: rgba(0, 0, 0, 0.5);
@@ -82,7 +82,7 @@
 	#branding{
 		display: inline-block;
 		margin: 25px 0 15px 10vw;
-		width: 375px;
+		width: 280px;
 		height: 90px;
 		padding: 10px 0;
 		border: 1.5px solid black;
@@ -184,11 +184,6 @@
 		width: 90%;
 	}
 
-	#branding{
-		margin: 0;
-		width: 100%;
-		height: auto;
-	}
 }
 
 /*------ MEDIA 720PX ------*/
@@ -198,19 +193,25 @@
 	.desktop{display: none;}
 	.mobile{display: initial;}
 
+
+	section{
+		padding: 1px 0 50px 0;
+	}
+
 	#headerMobile{
 		display: block;
 		position: sticky;
 		top: 0;
 		width: 100%;
 		height: 47px;
-		background-color: green;
+		background-color: rgb(43, 86, 43);
 		background-image: url(../img/global/header_title_black.png);
-		background-position: center;
+		background-position: center top 5px;
 		background-repeat: no-repeat;
-		background-size: 100px;
+		background-size: 120px;
 		border-bottom: 1px solid black;
 		box-shadow: 0 0	10px 1px rgba(0,0,0,0.7);
+		z-index: 1000;
 	}
 
 	.container{
@@ -226,9 +227,36 @@
 		background-color: rgba(0, 0, 0, 0.33);
 	}
 
+	h2{
+		margin: 35px 0 60px 0;
+	}
+
 	#navLogo{
 		width: 50px;
-		margin: 10px 0 0 3px;
+		margin: 13px 0 0 5px;
+	}
+
+	#croixNav{
+		width: 30px;
+		margin: 8px 13px;
+	}
+
+	#navMobile{
+		position: absolute;
+		top: 46px;
+		z-index: 500;
+		box-shadow: 0 0 5px 1px rgba(0,0,0,0.4);
+		padding: 20px;
+		background-color: rgb(9, 111, 14);;
+	}
+
+
+	#navMobile li{
+		display: block;
+		margin: 10px auto;
+		font-size: 1.3em;
+		font-weight: bold;
+		color: rgb(200,200,200);
 	}
 
 	#brandingBox{
@@ -238,43 +266,50 @@
 		text-align: center;
 	}
 
-	#brandingMobile{
-		width: 120px;
-		margin: auto;
-	}
-
-	#userLogo{
+	#connectionLogo{
 		width: 38px;
 		float: right;
-		margin: 5px 8px 0 0;
+		margin: 5px 10px 0 0;
 	}
 
-	#croix{
+	#croixConnection{
 		width: 30px;
-		margin: 8px;
+		margin: 8px 13px;
+		float: right;
 	}
 
-	#navMobile{
+	#connectionMobile{
 		position: absolute;
-		top: 0;	
-
-	}
-
-	#navMobileHead{
-		height: 45px;
-		border-bottom: 1px solid black;
-		background-color: rgba(0,0,0,0);
-	}
-
-	#navMobile ul{
+		top: 46px;
+		right: 0;
+		z-index: 500;
+		box-shadow: 0 0 5px 1px rgba(0,0,0,0.4);
 		padding: 20px;
-		background-color: rgba(56, 142, 60,1.0);
+		background-color: rgb(9, 111, 14);;
 	}
 
-	#navMobile li{
+	#connectionMobile input{
 		display: block;
-		margin: 10px auto;
-		font-size: 1.3em;
+		width: 95%;
+		margin: 5px auto;
+		text-align: center;
 	}
+
+	#connectionMobile input[type='submit']{
+		width: 96.8%;
+	}
+
+	#connectionMobile #nouveau{
+		width: max-content;
+		margin: 10px auto 0 auto;
+		padding: 4px 30px 2px 30px;
+		background-color: rgb(90, 90, 90);
+		border-radius: 10px;
+		border: 1px solid black;
+		box-shadow: inset -2px 2px 5px 1px rgba(0,0,0,0.3);
+		cursor: pointer;
+		color: rgb(180,180,180);
+	}
+
 
 }

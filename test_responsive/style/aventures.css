@@ -50,16 +50,17 @@
 	grid-template-columns: 140px 1fr 160px;
 }
 
-.writerInfoSlider{
+.writerAvatarSlider{
 	margin: 60px 0 80px 0;
 }
 
-.writerInfo{
+.writerAvatar{
 	position: sticky;
 	top: 100px;
 	height: max-content;
 	background-size: cover;
-	border: 2px solid black, 0, 0, 0;
+	border: 1.5px solid rgb(0, 0, 0);
+	border-right: none;
 	border-radius: 10px 0 0 10px;
 	box-shadow: 0px 0px 10px black;
 	z-index: 10;
@@ -76,13 +77,15 @@
 	transition: 0.3s;
 }
 
-.writerInfo:hover .layer{
-	opacity: 1;
-	transition: 0.3s;
+@media (min-width: 720px){
+	.writerAvatar:hover .layer{
+		opacity: 1;
+		transition: 0.3s;
+	}
 }
 
 .msg{
-	min-height: 500px;
+	min-height: 100px;
 	margin: 10px 0 30px 0;
 	padding: 25px;
     background-color: rgba(178, 192, 180, 0.43);
@@ -111,4 +114,73 @@
 	border-radius: 5px;
 	border: 1px solid black;
 	color: black;
+}
+
+
+
+
+@media (max-width: 720px){
+
+	#gridAv{
+		grid-template-columns: 1fr;
+		width: 100%;
+		margin: 0;
+	}
+
+	.writerAvatarSlider{
+		position: relative;
+		margin: 0;
+	}
+
+	.writerAvatar{
+		position: absolute;
+		top: -15px;
+		left: 5vw;
+		width: max-content;
+		height: max-content;
+		background-size: cover;
+		border: 1px solid rgb(0,0,0);
+		border-radius: 40px;
+		box-shadow: 0px 0px 10px black;
+		z-index: 400;
+	}
+
+	.layer{
+		position: relative;
+		width: 30px;
+		height: 30px;
+		background-color: rgba(0,0,0,0.5);
+		color: white;
+		padding: 20px;
+		border: 1px solid black;
+		border-radius: 40px;
+		opacity: 0;
+		transition: 0.3s;
+	}
+
+	.croixAvatar{
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		width: 30px;
+	}
+
+	.msg{
+		position: relative;
+		margin: 0;
+		padding: 70px 25px 30px 25px;
+		border: none;
+		border-bottom: 1px solid black;
+		border-top: 1px solid black;
+		border-radius:0;
+	}
+
+	.dateMsg{
+		position: absolute;
+		top: 10px;
+		right:20px;
+		color: rgb(55,55,55);
+		font-style: italic;
+	}
+
 }

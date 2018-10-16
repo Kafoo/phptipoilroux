@@ -45,73 +45,83 @@
 
 
 				<!-- MESSAGE GM -->
-				<div class="writerInfoSlider">
-					<div class="writerInfo" style="background-image: url(img/avatars/test.jpg);">
+				<div class="writerAvatarSlider">
+					<div class="writerAvatar" style="background-image: url(img/avatars/test.jpg);">
 						<div class="layer">
-							Blabloup<br>Blabloup<br>Blabloup<br>
+							<img src="img/mobile/croix.png" class="croixAvatar" hidden>
+							ALMA<br><br>Blabloup<br>Blabloup<br>
 						</div>
 					</div>
 				</div>	
 
 				<div class="msg msgGM">
-					LOREM IPSUM<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					<div class="dateMsg">Kafoo, le 15/10/2018 à 15h34</div>
+					<span class="contenuMsg">
+						LOREM IPSUM<br><br>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</span>
 				</div>
 
-				<div class="fixInfo">
+				<div class="fixInfo desktop">
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris nisi ut aliquip.
 				</div>
 
 				<!-- MESSAGE 2 -->
-				<div class="writerInfoSlider">
-					<div class="writerInfo" style="background-image: url(img/avatars/test.jpg);">
+				<div class="writerAvatarSlider">
+					<div class="writerAvatar" style="background-image: url(img/avatars/test.jpg);">
 						<div class="layer">
-							Blabloup<br>Blabloup<br>Blabloup<br>
+							<img src="img/mobile/croix.png" class="croixAvatar" hidden>
+							ALMA<br><br>Blabloup<br>Blabloup<br>
 						</div>
 					</div>
 				</div>	
 
 				<div class="msg">
-					LOREM IPSUM<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					<div class="dateMsg">Kafoo, le 15/10/2018 à 15h34</div>
+					<span class="contenuMsg">
+						LOREM IPSUM<br><br>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</span>
 				</div>
 
-				<div class="fixSpace"></div>
+				<div></div>
 
 				<!-- MESSAGE 3 -->
-				<div class="writerInfoSlider">
-					<div class="writerInfo" style="background-image: url(img/avatars/test.jpg);">
+				<div class="writerAvatarSlider">
+					<div class="writerAvatar" style="background-image: url(img/avatars/test.jpg);">
 						<div class="layer">
-							Blabloup<br>Blabloup<br>Blabloup<br>
+							<img src="img/mobile/croix.png" class="croixAvatar" hidden>
+							ALMA<br><br>Blabloup<br>Blabloup<br>
 						</div>
 					</div>
 				</div>	
 
 				<div class="msg">
-					LOREM IPSUM<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					<div class="dateMsg">Kafoo, le 15/10/2018 à 15h34</div>
+					<span class="contenuMsg">
+						LOREM IPSUM<br><br>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</span>
 				</div>
 
-				<div class="fixSpace"></div>
-
-			</div>
+				<div></div>
 
 
 
@@ -132,6 +142,8 @@
 </section>
 
 <?php include("config/scripts.php"); ?>
+<script type="text/javascript" src="js/aventures.js"></script>
+
 
 </body>
 </html>

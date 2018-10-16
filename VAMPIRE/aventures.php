@@ -43,9 +43,9 @@ if (isset($_POST['submit'])) {
 
 	?>
 	<link rel="stylesheet" type="text/css" href="css/aventures.css">
- <!-- 
+ 
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g"></script>
- -->
+
 <script>
 tinymce.init({
   selector: 'textarea',
@@ -61,7 +61,13 @@ tinymce.init({
   toolbar: 'undo redo |  formatselect | bold italic strikethrough backcolor forecolor  | alignleft aligncenter alignright alignjustify | bullist numlist 	| image | help',
   content_css: [
     '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-    '//www.tinymce.com/css/codepen.min.css']
+    '//www.tinymce.com/css/codepen.min.css'
+  ],
+  mobile: { theme: 'mobile',
+    plugins: [ 'autosave', 'lists', 'autolink' ],
+    toolbar: [ 'undo', 'bold', 'italic', 'styleselect' ]
+}
+
 });
   </script>
 
