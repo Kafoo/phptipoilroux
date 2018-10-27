@@ -8,31 +8,32 @@ include("_shared_/functions.php");
 <html>
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
-	<link rel="stylesheet" type="text/css" href="style/social.css">
-	<title>Vampire - Aventures</title>
+	<link rel="stylesheet" type="text/css" href="style/tapage.css">
+	<title>Vampire - Ta Page</title>
 </head>
 <body>
 
 <?php include('_shared_/header.php') ?>
 
 
-<!-- -------- CONTENU -------- -->
+<!---------- CONTENU ---------->
 <section>
 
-	<h1>SOCIAL</h1>
+	<h1>TITRE</h1>
 
 	<div class="container">
-		
-	</div>
 
-	<div class="container">
-		
+		<?php
+		$req = $bdd->query("SELECT persoID FROM ss_relation_perso2aventure WHERE aventureID = 52 ")->fetchall(PDO::FETCH_COLUMN); 
+
+		var_dump($req);
+		?>		
 	</div>
 
 </section>
 
 <?php include("_shared_/scripts.php"); ?>
-<script type="text/javascript" src="js/social.js"></script>
+<script type="text/javascript" src="js/tapage.js"></script>
 
 </body>
 </html>

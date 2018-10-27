@@ -1,3 +1,17 @@
+$(".nav2").addClass("currentNav");
+
+/*----------------AVENTURES PAGE----------------*/
+
+/*-----CLIQUE SUR REJOINDRE-----*/
+
+$('.joinAv').click(function(e){
+	$(e.target).children('.joinPerso').show();
+	$(e.target).children('.joinPerso').animate({opacity:'1'},200);
+});
+
+
+/*----------------MESSAGES PAGE----------------*/
+
 /*----- IF MOBILE -----*/
 
 if (window.matchMedia("(max-width: 720px)").matches) {
@@ -21,7 +35,5 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 		$(e.target).parent().parent().css({"box-shadow":"0px 0px 10px black","border-radius":"40px"});
 		$(e.target).hide();
 	});
-
-
 }
 

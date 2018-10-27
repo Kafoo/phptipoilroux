@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
 <html>
 <head>
 	<?php include("shared/headconfig.php");
-	$_SESSION['currentStoryURL'] = $_SERVER['REQUEST_URI'];
+	$_SESSION['currentURL'] = $_SERVER['REQUEST_URI'];
 
 	?>
 	<link rel="stylesheet" type="text/css" href="css/aventures.css">

@@ -1,13 +1,18 @@
+<?php
+include("_shared_/start.php");
+include("_shared_/functions.php");
+/*include("submits/tapage_submit.php");*/
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<?php include("config/headconfig.php"); ?>
-	<link rel="stylesheet" type="text/css" href="style/main.css">
+	<?php include("_shared_/headconfig.php"); ?>
 	<title>Vampire - Home</title>
 </head>
 <body>
 
-<?php include('view/header.php') ?>
+<?php include('_shared_/header.php') ?>
 
 
 <!-- -------- CONTENU -------- -->
@@ -29,7 +34,8 @@
 
 </section>
 
-<?php include("config/scripts.php"); ?>
+<?php include("_shared_/scripts.php"); ?>
+<script type="text/javascript" src="js/accueil.js"></script>
 
 </body>
 </html>

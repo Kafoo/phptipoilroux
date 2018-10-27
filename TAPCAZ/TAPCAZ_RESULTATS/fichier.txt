@@ -46,3 +46,9 @@ Pseudo : bru
 Grille : 8
 Score : 12
 Nouvelle entrée réussie !
+------------
+Page ouverte à 15:11:4
+Pseudo : blop
+Grille : 5
+Score : 14
+Nouvelle entrée réussie !

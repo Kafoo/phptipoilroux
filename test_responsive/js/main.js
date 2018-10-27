@@ -1,3 +1,5 @@
+/*NAVIGATION DEROULANTE MOBILE*/
+
 $('#navLogo').click(function(){
 	$('#navMobile').slideToggle(200);
 	$("#navLogo").hide();
@@ -11,7 +13,7 @@ $('#croixNav').click(function(){
 	});
 });
 
-
+/*CONNEXION DEROULANTE MOBILE*/
 
 $('#connectionLogo').click(function(){
 	$('#connectionMobile').slideToggle(200);

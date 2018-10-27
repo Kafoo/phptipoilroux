@@ -1,0 +1,1 @@
+$(".nav4").addClass("currentNav");

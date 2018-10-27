@@ -1,0 +1,34 @@
+#subscribeBloc{
+	width: max-content;
+	margin: auto;
+	border-spacing: 20px;
+}
+
+#subscribeBloc input{
+	margin: 5px; 
+}
+
+td{
+	position: relative;
+}
+
+#help{
+	position: absolute;
+	width: 250px;
+	text-align: left;
+	background-color: lightgrey;
+	padding: 5px;
+	border: 1px solid black;
+	left: 22px;
+	top: 25px;
+}
+
+input[type='submit']{
+	width: 60%;
+}
+
+.subscribed{
+	text-align: center;
+	width: 300px;
+	margin: 100px auto;
+}
