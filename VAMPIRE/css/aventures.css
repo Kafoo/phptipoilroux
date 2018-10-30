@@ -139,12 +139,10 @@ h1{
 
 .logoBox:hover .infoPerso{
 	display: initial;
-	transition: 0.3s;
 }
 
 .infoPerso{
 	display: none;
-	transition: 0.3s;
 	position: absolute;
 	right: 28px;
 	top : 18px;

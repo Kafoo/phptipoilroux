@@ -73,9 +73,9 @@
 /* ------ GRID DES MESSAGES ------ */
 #gridAv{
 	display: grid;
-	margin: auto 5% auto 5%;
+	margin: auto 3% auto 5%;
 	position: relative;
-	grid-template-columns: 120px 1fr 160px;
+	grid-template-columns: 120px 1fr 200px;
 }
 
 .writerAvatarSlider{
@@ -127,22 +127,73 @@
 	box-shadow: inset -2px -2px 50px rgb(80, 75, 40);
 }
 
+.msgGM img{
+	width: 90%;
+	height: auto;
+}
+
 .fixInfo{
 	position: sticky;
 	height: max-content;
-	overflow: hidden;
 	text-overflow: hidden;
 	background-color: rgba(200,200,200,0.2);
 	box-shadow: 4px 4px 20px 1px rgba(0,0,0,0.4);
-	margin: 50px 0 0 50px;
+	margin: 50px 0 0 35px;
 	padding: 10px;
 	top: 100px;
 	border-radius: 5px;
 	border: 1px solid black;
 	color: black;
+	z-index: 30;
+}
+
+.infoPersoCoterie-logo{
+	display: inline-block;
+	position: relative;
+}
+
+.infoPersoCoterie{
+	display: none;
+	position: absolute;
+	right: 28px;
+	top : 18px;
+	width: 200px;
+	border: 1px solid black;
+	border-radius: 3px;
+	padding: 10px;
+	background-color: lightgrey;
+	box-shadow: 3px 3px 30px 1px rgba(0,0,0,0.4);
+	z-index: 40;
+}
+
+.infoPersoCoterie-logo:hover .infoPersoCoterie{
+	display: initial;
+} 
+
+
+/* ------ MCE TEXT AREA ------ */
+
+
+#mceMainContainer{
+	position: relative;
+	margin: 50px 0;
+	border-radius: 10px;
+	overflow: hidden;
+	border: 1px solid black;
+	box-shadow: 2px 2px 30px 1px rgba(0,0,0,0.5);
+}
+
+#mceMainContainer input[type='submit']{
+	display: inline-block;
+	border: none;
+	margin: 0 !important;
+	padding: 20px;
+	width: 100%;
+	font-weight: bold;
 }
 
 
+/*----------- MOBILE -----------*/
 
 
 @media (max-width: 720px){
@@ -162,8 +213,6 @@
 		position: absolute;
 		top: -15px;
 		left: 5vw;
-		width: max-content;
-		height: max-content;
 		background-size: cover;
 		border: 1px solid rgb(0,0,0);
 		border-radius: 40px;
@@ -171,17 +220,18 @@
 		z-index: 400;
 	}
 
-	.layer{
+	.layer.mobile{
 		position: relative;
+		display: inline-block;
 		width: 30px;
 		height: 30px;
 		background-color: rgba(0,0,0,0.5);
 		color: white;
 		padding: 20px;
-		border: 1px solid black;
 		border-radius: 40px;
 		opacity: 0;
 		transition: 0.3s;
+		overflow: hidden;
 	}
 
 	.croixAvatar{
@@ -203,8 +253,8 @@
 
 	.dateMsg{
 		position: absolute;
-		top: 10px;
-		right:20px;
+		top: 20px;
+		right: 30px;
 		color: rgb(55,55,55);
 		font-style: italic;
 	}
