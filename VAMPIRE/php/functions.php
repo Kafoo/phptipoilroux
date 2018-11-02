@@ -5,7 +5,7 @@ function getRealDate(){
 	return
 	sprintf('%02d', getdate()['mday']) . '/' . 
 	sprintf('%02d', getdate()['mon']) . '/' . 
-	getdate()['year'] . ' ' . 
+	getdate()['year'] . '--' . 
 	sprintf('%02d', (getdate()['hours']+2)) . ':' . 
 	sprintf('%02d', getdate()['minutes']);
 }

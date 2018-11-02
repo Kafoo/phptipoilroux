@@ -94,7 +94,7 @@
 	z-index: 10;
 }
 
-.layer{
+.layer.desktop{
 	height: 130px;
 	background-color: rgba(0,0,0,0.5);
 	color: white;
@@ -102,6 +102,8 @@
 	border-radius: 10px 0 0 10px;
 	opacity: 0;
 	transition: 0.3s;
+	text-align: center;
+	font-size: 0.9em;
 }
 
 @media (min-width: 720px){
@@ -211,10 +213,12 @@
 
 	.writerAvatar{
 		position: absolute;
+		border: 0;
 		top: -15px;
 		left: 5vw;
+		width: 70px;
+		height: 70px;
 		background-size: cover;
-		border: 1px solid rgb(0,0,0);
 		border-radius: 40px;
 		box-shadow: 0px 0px 10px black;
 		z-index: 400;
@@ -222,23 +226,52 @@
 
 	.layer.mobile{
 		position: relative;
-		display: inline-block;
-		width: 30px;
-		height: 30px;
+		pointer-events: none;
+		opacity: 1;
+		border-radius: 10px;
+		height: 87%;
 		background-color: rgba(0,0,0,0.5);
 		color: white;
-		padding: 20px;
-		border-radius: 40px;
-		opacity: 0;
-		transition: 0.3s;
-		overflow: hidden;
+		padding: 8%;
+		font-size: 1em;
+		text-align: left;
+		display: none;
 	}
 
 	.croixAvatar{
+		pointer-events: auto;
 		position: absolute;
 		top: 15px;
 		right: 15px;
 		width: 30px;
+	}
+
+	.layer.mobile .nomPerso{
+		text-decoration: underline;
+		font-weight: bold;
+		font-size: 1.3em;
+	}
+
+	.layer.mobile table.carac{
+		float: right;
+	}
+
+	.layer.mobile td{
+		text-align: right;
+	}
+
+	.layerBox{
+		margin: 8px auto;
+	}
+	.layerBottom{
+		margin: 25px auto;
+	}
+
+	.msg-logo{
+		width: 60px;
+		position: absolute;
+		right: 20px;
+		bottom: 10px
 	}
 
 	.msg{
@@ -257,6 +290,16 @@
 		right: 30px;
 		color: rgb(55,55,55);
 		font-style: italic;
+	}
+
+	/* ------ MCE TEXT AREA ------ */
+
+	#mceMainContainer{
+		margin: 50px 0;
+		border-radius: 0;
+		overflow: hidden;
+		border: 1px solid black;
+		box-shadow: 0;
 	}
 
 }

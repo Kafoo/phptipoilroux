@@ -14,7 +14,7 @@ $('.joinAv').click(function(e){
 
 // TINYMCE INITIALISATION
 
-tinymce.init({
+/*tinymce.init({
     selector: '#mytextarea',
     content_css : "style/tinymce.css",
     height: 300,
@@ -23,7 +23,7 @@ tinymce.init({
     statusbar : false,
     toolbar: 'undo redo | bold italic | link image code forecolor backcolor preview',
     plugins: 'code image textcolor preview'
-});
+});*/
 
 
 /*----- IF MOBILE -----*/
@@ -31,23 +31,31 @@ tinymce.init({
 if (window.matchMedia("(max-width: 720px)").matches) {
 
 	/*----CLIQUE SUR L'AVATAR----*/
-	$('.layer').click(function(e){
+	$('.writerAvatar').click(function(e){
 
-		/*Petit if pour pas que la croix s'agrandisse*/
-	    if($(e.target).is('.croixAvatar')){
+		if ($(e.target).is('.GM')) {
         	e.preventDefault();
         	return;
-    	}
-    	/*endif croix*/
-		$(e.target).children('.croixAvatar').show();
-		$(e.target).animate({width:'170px', height:'220px', opacity:'1', borderRadius:'10px'}, 1);
-		$(e.target).parent().css({"box-shadow":"none","border-radius":"10px"});
+		}
+
+
+		else{
+			/*Petit if pour pas que la croix s'agrandisse*/
+		    if($(e.target).is('.croixAvatar')){
+	        	e.preventDefault();
+	        	return;
+	    	}/*endif croix*/
+
+			$(e.target).animate({width:'80vw', height:'100vw', borderRadius:'10px'}, 200);
+			$(e.target).css('z-index', 400);
+			$(e.target).children('.mobile').show();	
+		}
 	});
 
 	$('.croixAvatar').click(function(e){
-		$(e.target).parent().animate({width:'30px', height:'30px', opacity:'0', borderRadius:'40px'}, 1);
-		$(e.target).parent().parent().css({"box-shadow":"0px 0px 10px black","border-radius":"40px"});
-		$(e.target).hide();
+		$(e.target).parent().parent().animate({width:'70px', height:'70px', border:'1px solid black', borderRadius:'40px'}, 200);
+		$(e.target).parent().parent().css('z-index', 100);
+		$(e.target).parent().parent().children('.mobile').hide(200);
 	});
 }
 

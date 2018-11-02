@@ -1,10 +1,7 @@
 <?php
 include("_shared_/start.php");
 include("_shared_/functions.php");
-/*include("submits/tapage_submit.php");*/
-?>
-
-<?php include("submits/subscribe_submit.php"); ?>
+include("submits/subscribe_submit.php"); ?>
 
 <!DOCTYPE html>
 <html>

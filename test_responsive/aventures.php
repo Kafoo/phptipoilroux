@@ -1,7 +1,7 @@
 <?php
 include("_shared_/start.php");
 include("_shared_/functions.php");
-/*include("submits/tapage_submit.php");*/
+include("submits/aventures_submit.php");
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ include("_shared_/functions.php");
 	<?php include("_shared_/headconfig.php");
 	$_SESSION['currentURL'] = $_SERVER['REQUEST_URI']; ?>
 	<!-- TINYMCE SOURCE -->
-	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
+	<!-- <script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script> -->
 	<!-- END TINYMCE -->
 	<link rel="stylesheet" type="text/css" href="style/aventures.css">
 	<title>Vampire - Aventures</title>
@@ -134,19 +134,84 @@ include("_shared_/functions.php");
 					$info = $infoAv[$i]?>
 			
 					<!------ AVATAR ------>
-					<div class="writerAvatarSlider">
+					<div class="writerAvatarSlider <?php if($info['nom']=='GM'){echo'GM';} ?>">
 						<div class="writerAvatar" style="background-image: url(img/avatars/<?php
 						//Si GM, avatar générique de GM
-						if ($info['nom']=='GM') {echo 'GM';}
+						if ($info['nom']=='GM'){echo'GM';}
 						else{echo $info['persoID'];}
 						?>.jpg);">
 							<div class="layer desktop">
-								<img src="img/mobile/croix.png" class="croixAvatar" hidden>
-								ALMA<br><br>Blabloup<br>Blabloup<br>
+								<b><u><?=strtoupper($info['nom'])?></u><br><br>
+								<?=$info['pseudo']?></b><br>
+								<?=$info['nombremsg']?> messages<br>
+								(<?=$info['grade']?>)<br><br>
+								<?php $date = explode('--', $info['dat']);?>
+								<i>le <?=$date[0]?><br>
+								à <?=$date[1]?></i>
 							</div>
-							<div class="layer mobile">
-								<img src="img/mobile/croix.png" class="croixAvatar" hidden>
-								ALMA<br><br>Blabmoiuqlemrfjbloup<br>Blabloup<br>Blabloup<br>Blabloup
+							<div class="layer mobile" hidden>									
+								<img src="img/mobile/croix.png" class="croixAvatar">
+								<span class="nomPerso">
+									<?=strtoupper($info['nom'])?>
+								</span><br><br>
+									<table class="carac">
+										<tr>
+											<td>
+												Force :
+											</td>
+											<td>
+												5
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Dextérité :
+											</td>
+											<td>
+												5
+											</td>
+										</tr>
+																				<tr>
+											<td>
+												Intelligence :
+											</td>
+											<td>
+												5
+											</td>
+										</tr>
+																				<tr>
+											<td>
+												Charisme :
+											</td>
+											<td>
+												5
+											</td>
+										</tr>
+																				<tr>
+											<td>
+												Perception :
+											</td>
+											<td>
+												5
+											</td>
+										</tr>
+									</table>
+									<div class="layerBox">
+										<b><?=ucfirst($info['clan'])?></b><br>
+										<b>LVL : </b><?=$info['lvl']?><br><br>
+										<?=$info['nature']?><br>
+										/<?=$info['attitude']?><br><br>
+									</div>
+									<div class="centering layerBox">
+										<b>Concept : </b><br><?=$info['concept']?><br>
+										<b>Défaut : </b><br><?=$info['defaut']?><br>
+									</div>
+									<div class="layerBottom">
+										<b>Auteur : </b><?=$info['pseudo']?><br>
+										<i><?=$info['nombremsg']?> messages<br>
+										(<?=$info['grade']?>)</i><br>
+									</div>
+									<img class="msg-logo" src="img/icones/msg.png">
 							</div>
 						</div>
 					</div>	
@@ -186,17 +251,18 @@ include("_shared_/functions.php");
 									<div class="infoPersoCoterie-logo">
 										<img class="logoCoterie" src="img/icones/perso.png" style="width:30px">
 										<div class="infoPersoCoterie" hidden>
-												<b>Clan : </b><?=ucfirst($coterie[$j]['clan'])?><br>
-												<b>Nature : </b><?=$coterie[$j]['nature']?><br>
-												<b>Attitude : </b><?=$coterie[$j]['attitude']?><br>
-												<b>Concept : </b><?=$coterie[$j]['concept']?><br>
-												<b>Défaut : </b><?=$coterie[$j]['defaut']?><br><br>
-												<b>Force : </b><?=$coterie[$j]['forc']?><br>
-												<b>Dextérité : </b><?=$coterie[$j]['dexterite']?><br>
-												<b>Intelligence : </b><?=$coterie[$j]['intelligence']?><br>
-												<b>Charisme : </b><?=$coterie[$j]['charisme']?><br>
-												<b>Perception : </b><?=$coterie[$j]['perception']?><br><br>
-												<b>Discipline : </b><?=ucfirst($coterie[$j]['premDisc'])?><br>
+											<b>LVL : </b><?=$coterie[$j]['lvl']?><br><br>
+											<b>Clan : </b><?=ucfirst($coterie[$j]['clan'])?><br>
+											<b>Nature : </b><?=$coterie[$j]['nature']?><br>
+											<b>Attitude : </b><?=$coterie[$j]['attitude']?><br>
+											<b>Concept : </b><?=$coterie[$j]['concept']?><br>
+											<b>Défaut : </b><?=$coterie[$j]['defaut']?><br><br>
+											<b>Force : </b><?=$coterie[$j]['forc']?><br>
+											<b>Dextérité : </b><?=$coterie[$j]['dexterite']?><br>
+											<b>Intelligence : </b><?=$coterie[$j]['intelligence']?><br>
+											<b>Charisme : </b><?=$coterie[$j]['charisme']?><br>
+											<b>Perception : </b><?=$coterie[$j]['perception']?><br><br>
+											<b>Discipline : </b><?=ucfirst($coterie[$j]['premDisc'])?><br>
 										</div>
 									</div>
 									<?=$coterie[$j]['nom']?><br>
