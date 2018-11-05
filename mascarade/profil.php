@@ -22,9 +22,18 @@ include("_shared_/functions.php");
 
 
 	<?php //IF RIEN PRÉCISÉ
-	if (empty($_GET)){ ?>
+	if (empty($_GET)){
+		$userID = $_SESSION['id'];
+		$req = $bdd->query("
+			SELECT *
+			FROM ss_persos
+			JOIN ss_membres ON ss_membres.id = ss_persos.userID
+			WHERE userID = '$userID'");
+		$infoPerso = $req->fetchall();
+		$infoUser = $infoPerso[0];
+		?>
 
-		<h1>PROFIL DE KAFOO</h1>
+		<h1>PROFIL DE <?=strtoupper($infoUser['pseudo'])?></h1>
 
 		<div class="container centering	">
 
@@ -33,11 +42,11 @@ include("_shared_/functions.php");
 				<tr>
 					<td align="right">Messages postés :</td>
 					<td align="left">
-						<span class="infoMembre">12</span></td>
+						<span class="infoMembre"><?=$infoUser['nombremsg']?></span></td>
 				</tr>
 				<tr>
 					<td align="right">Grade :</td>
-					<td align="left"><span class="infoMembre">Goule</span></td>
+					<td align="left"><span class="infoMembre"><?=$infoUser['grade']?></span></td>
 				</tr>
 			</table>
 
@@ -45,7 +54,13 @@ include("_shared_/functions.php");
 			<br>
 			<h3>Persos :</h3>
 
-			Alma
+			<?php //Affichage des persos
+			for ($i=0; $i < count($infoPerso) ; $i++) {  ?>
+				<a href="profil.php?persoID=<?=$infoPerso[$i][0]?>" class="persoBox button">
+					<?=$infoPerso[$i]['nom']?>
+				</a>
+			<?php
+			} ?>
 
 
 		</div>
@@ -55,18 +70,26 @@ include("_shared_/functions.php");
 
 
 
-	}if(isset($_GET['persoID']) AND !empty($_GET['persoID'])){ //IF PERSO PRÉCISÉ ?>
+	}if(isset($_GET['persoID']) AND !empty($_GET['persoID'])){ //IF PERSO PRÉCISÉ
+		$persoID = $_GET['persoID'];
+		$req = $bdd->query("
+			SELECT *
+			FROM ss_persos
+			WHERE id = '$persoID'");
+		$infoPerso = $req->fetchall()[0];
+		?>
 
 
-		<h1>FICHE PERSO - ALMA</h1>
+		<h1>FICHE PERSO - <?=strtoupper($infoPerso['nom'])?></h1>
 
 		<div class="container" id="gridFichePerso">
 			
-			<div class="test" style="grid-area: avatar">
-				AVATAR
-			</div>
+			<img class="ficheBox ficheBox-avatar" style="grid-area: avatar" src="img/avatars/<?php
+						//Si GM, avatar générique de GM
+						if ($infoPerso['nom']=='GM'){echo'GM';}
+						else{echo $infoPerso['id'];} ?>.jpg">
 
-			<div class="test" style="grid-area: infos">
+			<div class="ficheBox" style="grid-area: infos">
 				<h3>Infos</h3>
 				<p>
 					Nom<br>
@@ -76,7 +99,7 @@ include("_shared_/functions.php");
 				</p> 
 			</div>
 
-			<div class="test" style="grid-area: disciplines">
+			<div class="ficheBox" style="grid-area: disciplines">
 				<h3>Disciplines</h3>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -86,7 +109,7 @@ include("_shared_/functions.php");
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 			</div>
 
-			<div class="test" style="grid-area: carac">
+			<div class="ficheBox" style="grid-area: carac">
 				<h3>Carac</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -94,7 +117,7 @@ include("_shared_/functions.php");
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p> 
 			</div>
 
-			<div class="test" style="grid-area: autres">
+			<div class="ficheBox" style="grid-area: autres">
 				<h3>Autres</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,

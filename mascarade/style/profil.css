@@ -1,0 +1,43 @@
+#gridFichePerso{
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	grid-template-areas: 'avatar infos disciplines disciplines'
+	'carac infos disciplines disciplines'
+	'carac autres autres autres';
+}
+
+.infoMembre{
+	color : lightgrey;
+}
+
+table{
+	margin: auto;
+}
+
+table td{
+	padding: 5px;
+}
+
+.persoBox{
+	display: block;
+	width: 200px;
+	padding: 10px 0;
+	margin: 20px auto;
+	background-color: grey;
+	border: 1px solid black;
+	border-radius: 3px;
+}
+
+.ficheBox{
+	margin: 10px;
+	padding: 30px;
+	background-color: rgba(141, 145, 123, 0.72);
+	border: 1.5px solid black;
+	border-radius: 2px;
+	box-shadow: inset -3px -3px 20px 0.5px rgba(0,0,0,0.1);
+}
+
+.ficheBox-avatar{
+	padding: 0;
+	width: 16vw;
+}

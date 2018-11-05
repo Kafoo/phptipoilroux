@@ -67,15 +67,6 @@
 		font-size: 1.5em;
 	}
 
-	.test{
-		margin: 10px;
-		padding: 30px;
-		background-color: rgba(141, 145, 123, 0.72);
-		border: 1.5px solid black;
-		border-radius: 2px;
-		box-shadow: inset -3px -3px 20px 0.5px rgba(0,0,0,0.1);
-	}
-
 	.centering{
 		text-align: center;
 	}
@@ -87,6 +78,14 @@
 
 	#helpLogo{
 		width: 15px;
+	}
+
+	.button{
+		box-shadow: inset -2px -2px 20px 1px rgba(0,0,0,0.2);
+		cursor: pointer;
+	}
+	.button:hover{
+		box-shadow: none;
 	}
 
 /*--------- HEADER ---------*/
