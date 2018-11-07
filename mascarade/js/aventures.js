@@ -2,11 +2,11 @@ $(".nav2").addClass("currentNav");
 
 /*----------------AVENTURES PAGE----------------*/
 
-/*-----CLIQUE SUR REJOINDRE-----*/
+//CLIQUE SUR REJOINDRE
 
 $('.joinAv').click(function(e){
-	$(e.target).children('.joinPerso').show();
-	$(e.target).children('.joinPerso').animate({opacity:'1'},200);
+	$(e.currentTarget).parent().children('.joinPerso').show();
+	$(e.currentTarget).parent().children('.joinPerso').animate({opacity:'1'},200);
 });
 
 
@@ -14,17 +14,31 @@ $('.joinAv').click(function(e){
 
 // TINYMCE INITIALISATION
 
-/*tinymce.init({
-    selector: '#mytextarea',
-    content_css : "style/tinymce.css",
-    height: 300,
-    menubar: false,
-    forced_root_block : "",
-    statusbar : false,
-    toolbar: 'undo redo | bold italic | link image code forecolor backcolor preview',
-    plugins: 'code image textcolor preview'
-});*/
-
+//Desktop init.
+if (window.matchMedia("(min-width: 720px)").matches) {
+	tinymce.init({
+	    selector: '#mytextarea',
+	    content_css : "style/tinymce.css",
+	    height: 300,
+	    menubar: false,
+	    forced_root_block : "",
+	    statusbar : false,
+	    toolbar: 'undo redo | bold italic | link image code forecolor backcolor preview',
+	    plugins: 'code image textcolor preview'
+	});
+//Mobile init.
+}else{
+	tinymce.init({
+	    selector: '#mytextarea',
+	    content_css : "style/tinymce.css",
+	    height: 300,
+	    menubar: false,
+	    forced_root_block : "",
+	    statusbar : false,
+	    toolbar: 'undo redo | bold italic | link image code forecolor backcolor',
+	    plugins: 'code image textcolor preview'
+	});
+}
 
 /*----- IF MOBILE -----*/
 

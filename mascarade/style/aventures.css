@@ -3,7 +3,7 @@
 .choixAv{
 	position: relative;
 	width: 250px;
-	height: max-content;
+	height: 100px;
 	margin: 30px auto;
 	padding: 30px;
     color: black;
@@ -11,7 +11,7 @@
     font-weight: bold;
     font-size: 1.5em;
     text-align: center;
-    background-color: rgba(83, 84, 93, 0.79);
+    background-color: rgba(139, 131, 128, 0.79);
     box-shadow: 2px 2px 30px 3px rgba(0,0,0,0.5);
     border: 1.5px solid black;
     border-radius: 5px;
@@ -34,7 +34,7 @@
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: inset -5px -5px 20px 1px rgba(0,0,0,0.2);
-    background-color: #707070;
+    background-color: #887f78;
     cursor: pointer;
    }
 
@@ -47,23 +47,20 @@
 }
 
 .joinPerso{
-	display: none;
 	position: absolute;
-	top: -74px;
-	left: -13%;
-	width: 109%;
-	min-height: 122px;
-    padding: 7px 20px;
-    color: black;
-    font-style: initial;
-    font-weight: initial;
-    text-decoration: none;
-    border: 1px solid black;
-    border-radius: 2px;
-    box-shadow: inset -5px -5px 20px 1px rgba(0,0,0,0.2);
-    background-color: #b8ae80;
+	display: none;
 	opacity: 0;
-	cursor: initial;
+	top: 0;
+	left: 0;
+	width: 90%;
+	height: calc(100% - 30px);
+    padding: 15px 5%;
+    color: black;
+    font-size: 0.7em;
+    border-radius: 5px;
+    background-color: rgb(163, 162, 144);
+	z-index: 500;
+	overflow: hidden;
 }
 
 .joinPerso li{
@@ -295,7 +292,7 @@
 	/* ------ MCE TEXT AREA ------ */
 
 	#mceMainContainer{
-		margin: 50px 0;
+		margin: 0;
 		border-radius: 0;
 		overflow: hidden;
 		border: 1px solid black;

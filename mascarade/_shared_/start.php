@@ -84,15 +84,13 @@ if (!isset($_SESSION['connected'])) {
     /*------- DECLARATION DES VARIABLES DE SESSION --------*/
     if (isset($canSetSession) AND $canSetSession==True) {
         $persoID = $userInfo['id'];
-        $reqActifPerso = $bdd->query("SELECT nom from ss_persos WHERE membreID = '$persoID' AND actif = '1'");
         $_SESSION['connected'] = True;
         $_SESSION['id'] = $userInfo['id'];
         $_SESSION['pseudo'] = $userInfo['pseudo'];
         $_SESSION['password'] = $userInfo['password'];
         $_SESSION['grade'] = $userInfo['grade'];
         $_SESSION['nombremsg'] = $userInfo['nombremsg'];
-        $_SESSION['actifPerso'] = $reqActifPerso->fetch()[0];
-
+        
         $canSetSession = False;
     }
 

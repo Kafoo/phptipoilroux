@@ -23,9 +23,9 @@
 		<?php if (isset($_SESSION['connected'])) {
 			?>
 			<div id="connectedDesktop">
-				<a id="connectedPseudo" href="profil.php"><?=$_SESSION['pseudo']?></a> (<a href="SERVER_UPDATES.php?action=disconnect">Déconnexion</a>)<br/>
+				<a id="connectedPseudo" href="profil.php"><b><?=$_SESSION['pseudo']?></b></a> (<a href="SERVER_UPDATES.php?action=disconnect"><i><u>Déconnexion</u></i></a>)<br/>
 				Grade : <?=$_SESSION['grade']?><br/>
-				Perso actif : <?=$_SESSION['actifPerso']?><br>
+				<i>[[some options]]</i>
 			</div>
 		<?php } ?>
 
@@ -87,9 +87,9 @@
 	<?php if (isset($_SESSION['connected'])) {
 		?>
 		<div id="connectedMobile"> 
-			<a id="connectedPseudo" href="profil.php"><?=$_SESSION['pseudo']?></a> (<a href="SERVER_UPDATES.php?action=disconnect">Déconnexion</a>)<br/>
+			<a id="connectedPseudo" href="profil.php"><b><?=$_SESSION['pseudo']?></b></a> (<a href="SERVER_UPDATES.php?action=disconnect"><u><i>Déconnexion</i></u></a>)<br/>
 			Grade : <?=$_SESSION['grade']?><br/>
-			Perso actif : <?=$_SESSION['actifPerso']?>
+			<i>[[some options]]</i>
 		</div>
 	<?php } ?>
 

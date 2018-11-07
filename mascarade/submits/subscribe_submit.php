@@ -9,7 +9,7 @@ if (isset($_POST['submit'])){
 		$pseudolength = strlen($pseudo);
 		if ($pseudolength <= 255){
 
-			$reqPseudo = $bdd->prepare("SELECT * FROM ss_membres WHERE pseudo = ?");
+			$reqPseudo = $bdd->prepare("SELECT * FROM mas_membres WHERE pseudo = ?");
 			$reqPseudo->execute(array($pseudo));
 			$pseudoExist = $reqPseudo->rowCount();
 			if ($pseudoExist == 0) {
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])){
 
 					if ($password == $passwordConfirm) {
 
-						$bdd->query("INSERT INTO ss_membres (pseudo, password, mail) VALUES ('$pseudo','$password','$mail')");
+						$bdd->query("INSERT INTO mas_membres (pseudo, password, mail) VALUES ('$pseudo','$password','$mail')");
 						header("Location: subscribe.php?subscribed");
 					}
 					else{

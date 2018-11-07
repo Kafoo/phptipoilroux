@@ -19,15 +19,13 @@ include("_shared_/functions.php");
 <!-- -------- CONTENU -------- -->
 <section>
 
-
-
 	<?php //IF RIEN PRÉCISÉ
 	if (empty($_GET)){
 		$userID = $_SESSION['id'];
 		$req = $bdd->query("
 			SELECT *
-			FROM ss_persos
-			JOIN ss_membres ON ss_membres.id = ss_persos.userID
+			FROM mas_persos
+			JOIN mas_membres ON mas_membres.id = mas_persos.userID
 			WHERE userID = '$userID'");
 		$infoPerso = $req->fetchall();
 		$infoUser = $infoPerso[0];
@@ -35,8 +33,7 @@ include("_shared_/functions.php");
 
 		<h1>PROFIL DE <?=strtoupper($infoUser['pseudo'])?></h1>
 
-		<div class="container centering	">
-
+		<div class="container centering	infoUser">
 
 			<table>
 				<tr>
@@ -62,23 +59,24 @@ include("_shared_/functions.php");
 			<?php
 			} ?>
 
-
 		</div>
 		
+	<?php //endif rien précisé
 
-	<?php //ENDIF RIEN PRÉCISÉ
-
-
-
-	}if(isset($_GET['persoID']) AND !empty($_GET['persoID'])){ //IF PERSO PRÉCISÉ
+	//IF PERSO PRÉCISÉ
+	}if(isset($_GET['persoID']) AND !empty($_GET['persoID'])){
 		$persoID = $_GET['persoID'];
 		$req = $bdd->query("
 			SELECT *
-			FROM ss_persos
-			WHERE id = '$persoID'");
+			FROM mas_persos
+			LEFT JOIN mas_clanshtml
+			ON mas_persos.clan=mas_clanshtml.nom_clan
+			LEFT JOIN mas_disciplines
+			ON mas_persos.discID=mas_disciplines.id
+			WHERE mas_persos.id = '$persoID'");
 		$infoPerso = $req->fetchall()[0];
-		?>
 
+		?>
 
 		<h1>FICHE PERSO - <?=strtoupper($infoPerso['nom'])?></h1>
 
@@ -87,67 +85,96 @@ include("_shared_/functions.php");
 			<img class="ficheBox ficheBox-avatar" style="grid-area: avatar" src="img/avatars/<?php
 						//Si GM, avatar générique de GM
 						if ($infoPerso['nom']=='GM'){echo'GM';}
-						else{echo $infoPerso['id'];} ?>.jpg">
+						else{echo $infoPerso[0];} ?>.jpg">
 
-			<div class="ficheBox" style="grid-area: infos">
-				<h3>Infos</h3>
-				<p>
-					Nom<br>
-					Nature<br>
-					Attitude<br>
-					Concept<br>
-				</p> 
+			<div class="ficheBox mobile centering" style="grid-area: lvl">
+				<i>XP : soon<br>
+				suivant : soon</i>
+			</div>
+
+			<div class="ficheBox centering" style="grid-area: infos">
+				<h3>"<?=strtoupper($infoPerso['nom'])?>"</h3>
+					<b><u>Nature</u></b><br><?=$infoPerso['nature']?><br><br>
+					<b><u>Attitude</u></b><br><?=$infoPerso['attitude']?><br><br>
+					<b><u>Concept</u></b><br><?=$infoPerso['concept']?><br><br>
+					<b><u>Physique</u></b><br><?=nl2br($infoPerso['physique'])?>
+			</div>
+
+			<div class="ficheBox clanBox" style="grid-area: clan">
+				<img class="logoClan" src="img/clans/<?=$infoPerso['clan']?>.png">
+				<h3>CLAN <?=strtoupper($infoPerso['clan'])?></h3>
+				<?=$infoPerso['description_clan']?>
+			</div>
+
+			<div class="ficheBox carac centering" style="grid-area: carac">
+				<span class="lvl">LVL <?=$infoPerso['lvl']?></span><br>
+				<span class="desktop">
+					<i>XP : soon<br>
+					suivant : soon</i>
+				</span>
+				<br><br>
+				<table>
+					<tr>
+						<td><span class="caracDigit"><?=$infoPerso['forc']?></span></td>
+						<td>Force</td>
+					</tr>
+					<tr>
+						<td><span class="caracDigit"><?=$infoPerso['dexterite']?></span></td>
+						<td>Dextérité</td>
+					</tr>
+					<tr>
+						<td><span class="caracDigit"><?=$infoPerso['intelligence']?></span></td>
+						<td>Intelligence</td>
+					</tr>
+					<tr>
+						<td><span class="caracDigit"><?=$infoPerso['charisme']?></span></td>
+						<td>Charisme</td>
+					</tr>
+					<tr>
+						<td><span class="caracDigit"><?=$infoPerso['perception']?></span></td>
+						<td>Perception</td>
+					</tr>
+				</table>
 			</div>
 
 			<div class="ficheBox" style="grid-area: disciplines">
-				<h3>Disciplines</h3>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				<h3>DISCIPLINES</h3>
+				<!-- Hidden windows des disciplines -->
+				<div class="discWindow discWindow-1 disc1">
+					<img class="croix" src="img/mobile/croix.png">
+					<h3><?=strtoupper($infoPerso['nom_discipline'])?> - lvl 1</h3>
+					<?=$infoPerso['description_discipline']?>
+					<div class="discWindow-box button">
+						level up : <i>soon !</i> 
+					</div>
+				</div>
+				<!-- end -->
+				<div class="discContainer">
+					<div class="discBox button" id="disc1">
+						<b><?=strtoupper($infoPerso['nom_discipline'])?></b><br>
+						<span>lvl 1</span>
+					</div>
+					<div class="discBox discBox-empty">
+						<i>soon</i>
+					</div>
+					<div class="discBox discBox-empty">
+						<i>soon</i>
+					</div>
+					<div class="discBox discBox-empty">
+						<i>soon</i>
+					</div>
+				</div>
 			</div>
 
-			<div class="ficheBox" style="grid-area: carac">
-				<h3>Carac</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p> 
-			</div>
-
-			<div class="ficheBox" style="grid-area: autres">
-				<h3>Autres</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur.dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p> 
+			<div class="ficheBox" style="grid-area: lore">
+				<h3>HISTOIRE</h3>
+				<i><?=nl2br($infoPerso['lore'])?></i> 
 			</div>
 
 		</div>
 
-
-	<?php //ENDIF PERSO PRÉCISÉ
+	<?php //endif perso précisé
 	} ?>
-
-
-
-
-
-
-
-
-	<div class="container">
-		
-	</div>
-
-	<div class="container">
-		
-	</div>
 
 </section>
 

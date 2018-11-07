@@ -24,7 +24,7 @@ include("_shared_/functions.php");
 	<div class="container">
 
 		<?php
-		$req = $bdd->query("SELECT persoID FROM ss_relation_perso2aventure WHERE aventureID = 52 ")->fetchall(PDO::FETCH_COLUMN); 
+		$req = $bdd->query("SELECT persoID FROM mas_relation_perso2aventure WHERE aventureID = 52 ")->fetchall(PDO::FETCH_COLUMN); 
 
 		var_dump($req);
 		?>		

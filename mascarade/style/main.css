@@ -65,6 +65,8 @@
 		text-align: center;
 		margin: 0 auto 20px auto;
 		font-size: 1.5em;
+		color: lightgrey;
+		text-shadow: 2px 2px 2px black;
 	}
 
 	.centering{

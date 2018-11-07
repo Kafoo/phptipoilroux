@@ -10,7 +10,7 @@ include("submits/aventures_submit.php");
 	<?php include("_shared_/headconfig.php");
 	$_SESSION['currentURL'] = $_SERVER['REQUEST_URI']; ?>
 	<!-- TINYMCE SOURCE -->
-	<!-- <script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script> -->
+	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
 	<!-- END TINYMCE -->
 	<link rel="stylesheet" type="text/css" href="style/aventures.css">
 	<title>Vampire - Aventures</title>
@@ -44,13 +44,12 @@ include("submits/aventures_submit.php");
 
 			<h1>AVENTURES</h1>
 
-
 			<div class="container">
 
 				<?php
 				$reqAv = $bdd->query("
 					SELECT * 
-					FROM ss_aventures 
+					FROM mas_aventures 
 					ORDER BY id");
 
 				//~~~ WHILE AVENTURES ~~~
@@ -59,12 +58,12 @@ include("submits/aventures_submit.php");
 					$userID = $_SESSION['id'];
 					//On cherche si un personnage du user est dans l'aventure
 					$req = $bdd->query("
-						SELECT ss_persos.nom
-						FROM ss_persos
-						JOIN ss_relation_perso2aventure 
-						ON ss_persos.id=ss_relation_perso2aventure.persoID
-						WHERE ss_relation_perso2aventure.avID='$avID'
-						AND ss_persos.userID='$userID';
+						SELECT mas_persos.nom
+						FROM mas_persos
+						JOIN mas_relation_perso2aventure 
+						ON mas_persos.id=mas_relation_perso2aventure.persoID
+						WHERE mas_relation_perso2aventure.avID='$avID'
+						AND mas_persos.userID='$userID';
 						");
 					//Si oui, $persoOfAv sera défini par le nom de ce perso
 					$persoOfAv = $req->fetch()['nom']; ?>
@@ -81,26 +80,26 @@ include("submits/aventures_submit.php");
 							</a>
 						<?php
 						}else{ ?>
+							<div class="joinPerso">
+								Tu veux rejoindre cette aventure avec quel personnage ?<br><br>
+								<?php
+								$userID = $_SESSION['id'];
+								$reqPersos = $bdd->query("
+									SELECT nom, id 
+									FROM mas_persos 
+									WHERE userID='$userID'");
+								$persos = $reqPersos->fetchall();
+								for ($i=0; $i < count($persos); $i++) { ?> 
+									<a href="aventures.php?avID=<?=$avID?>&persoID=<?=$persos[$i]['id']?>">
+										<?=$persos[$i]['nom']?>
+									</a>
+								<?php 
+								} ?>
+							</div>
 							<div class="goAv joinAv">
 								<a>
 									Rejoindre l'aventure !
 								</a>
-								<div class="joinPerso">
-									Tu veux rejoindre cette aventure avec quel personnage ?<br><br>
-									<ul class="listPersos">
-									<?php
-										$userID = $_SESSION['id'];
-										$reqPersos = $bdd->query("
-											SELECT nom, id 
-											FROM ss_persos 
-											WHERE userID='$userID'");
-										$persos = $reqPersos->fetchall();
-										for ($i=0; $i < count($persos); $i++) { 
-											echo "<li>".$persos[$i]['nom']."</li>";
-										}
-										?>
-									</ul>
-								</div>
 							</div>
 						<?php }?>
 					</div>
@@ -108,17 +107,36 @@ include("submits/aventures_submit.php");
 			</div>		
 		<?php //endif pas d'aventure précisée
 
-		}else{ //--------- SI AVENTURE PRÉCISÉE ---------?>
+		}else{ //--------- SI AVENTURE PRÉCISÉE ---------
 
-			<?php
+			//On check si un perso du user est déjà dans l'aventure
+			$avID = $_GET['avID'];
+			$userID = $_SESSION['id'];
+			$req = $bdd->query("
+				SELECT *
+				FROM mas_relation_perso2aventure
+				JOIN mas_persos
+				ON mas_relation_perso2aventure.persoID=mas_persos.id
+				WHERE mas_persos.userID='$userID'
+				AND mas_relation_perso2aventure.avID='$avID'");
+			//Si non et qu'il rejoint, on l'ajoute :
+			if (count($req->fetchall())==0 
+				AND isset($_GET['persoID'])){
+				$persoID=$_GET['persoID'];
+				$bdd->query("
+					INSERT INTO mas_relation_perso2aventure (persoID, avID)
+					VALUES ('$persoID','$avID') ");
+			}
+
 			$avID = $_GET['avID'];
 			$req = $bdd->query("
 				SELECT *
-				FROM ss_messages_aventure
-				JOIN ss_persos ON ss_messages_aventure.persoID = ss_persos.id
-				JOIN ss_membres ON ss_persos.userID=ss_membres.id
-				JOIN ss_aventures ON ss_messages_aventure.avID = ss_aventures.id
-				WHERE avID= '$avID'");
+				FROM mas_messages_aventure
+				JOIN mas_persos ON mas_messages_aventure.persoID = mas_persos.id
+				JOIN mas_membres ON mas_persos.userID=mas_membres.id
+				JOIN mas_aventures ON mas_messages_aventure.avID = mas_aventures.id
+				WHERE avID= '$avID'
+				ORDER BY mas_messages_aventure.id ASC");
 			$infoAv = $req->fetchall();
 			?>
 
@@ -156,44 +174,24 @@ include("submits/aventures_submit.php");
 								</span><br><br>
 									<table class="carac">
 										<tr>
-											<td>
-												Force :
-											</td>
-											<td>
-												5
-											</td>
+											<td>Force :</td>
+											<td>5</td>
 										</tr>
 										<tr>
-											<td>
-												Dextérité :
-											</td>
-											<td>
-												5
-											</td>
+											<td>Dextérité :</td>
+											<td>5</td>
 										</tr>
-																				<tr>
-											<td>
-												Intelligence :
-											</td>
-											<td>
-												5
-											</td>
+										<tr>
+											<td>Intelligence :</td>
+											<td>5</td>
 										</tr>
-																				<tr>
-											<td>
-												Charisme :
-											</td>
-											<td>
-												5
-											</td>
+										<tr>
+											<td>Charisme :</td>
+											<td>5</td>
 										</tr>
-																				<tr>
-											<td>
-												Perception :
-											</td>
-											<td>
-												5
-											</td>
+										<tr>
+											<td>Perception :</td>
+											<td>5</td>
 										</tr>
 									</table>
 									<div class="layerBox">
@@ -240,10 +238,12 @@ include("submits/aventures_submit.php");
 							<?php
 							$req = $bdd->query("
 								SELECT * 
-								FROM ss_persos
-								JOIN ss_relation_perso2aventure
-								ON ss_persos.id=ss_relation_perso2aventure.persoID
-								WHERE ss_relation_perso2aventure.avID = 25
+								FROM mas_persos
+								JOIN mas_relation_perso2aventure
+								ON mas_persos.id=mas_relation_perso2aventure.persoID
+								LEFT JOIN mas_disciplines
+								ON mas_persos.discID=mas_disciplines.id
+								WHERE mas_relation_perso2aventure.avID = 25
 								");
 							$coterie = $req->fetchall();
 							for ($j=0; $j < count($coterie); $j++) { 
@@ -262,7 +262,7 @@ include("submits/aventures_submit.php");
 											<b>Intelligence : </b><?=$coterie[$j]['intelligence']?><br>
 											<b>Charisme : </b><?=$coterie[$j]['charisme']?><br>
 											<b>Perception : </b><?=$coterie[$j]['perception']?><br><br>
-											<b>Discipline : </b><?=ucfirst($coterie[$j]['premDisc'])?><br>
+											<b>Discipline : </b><?=ucfirst($coterie[$j]['nom_discipline'])?><br>
 										</div>
 									</div>
 									<?=$coterie[$j]['nom']?><br>
@@ -282,7 +282,7 @@ include("submits/aventures_submit.php");
 				<!-- REPONSE AREA -->
 				<div></div>
 				<div id="mceMainContainer">
-					<form method="post" action="">
+					<form method="POST" action="">
 						<textarea id="mytextarea" name="message"></textarea>
 						<input type="submit" name="submit" value='Je réponds !' style="margin: 20px;">
 					</form>
@@ -297,7 +297,6 @@ include("submits/aventures_submit.php");
 
 	<?php //endif connected user
 	} ?>
-
 
 
 </section>

@@ -9,7 +9,7 @@ if (isset($_GET['action']) and $_GET['action'] == 'getPersos') {
 	$userID = $_SESSION['id'];
 	$req = $bdd->query("
 		SELECT nom, id 
-		FROM ss_persos 
+		FROM mas_persos 
 		WHERE userID='$userID'");
 	$res = $req->fetchall();
 	$jsonres = json_encode($res);

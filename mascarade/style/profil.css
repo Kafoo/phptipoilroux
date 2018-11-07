@@ -1,21 +1,45 @@
 #gridFichePerso{
 	display: grid;
-	grid-template-columns: repeat(4,1fr);
-	grid-template-areas: 'avatar infos disciplines disciplines'
-	'carac infos disciplines disciplines'
-	'carac autres autres autres';
+	grid-template-columns: repeat(6,1fr);
+	grid-template-areas: 'avatar infos infos clan clan clan '
+	'carac infos infos clan clan clan '
+	'carac disciplines disciplines disciplines disciplines disciplines'
+	'lore lore lore lore lore lore ';
 }
 
-.infoMembre{
-	color : lightgrey;
-}
-
-table{
+.infoUser table{
 	margin: auto;
 }
 
-table td{
+.infoUser table td{
 	padding: 5px;
+}
+
+.infoUser table td:nth-child(even){
+	color: lightgrey;
+}
+
+.carac .lvl{
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+.carac table{
+	font-weight: bold;
+}
+
+.carac table td{
+	text-align: left;
+	padding: 5px;
+	line-height: 35px;
+}
+
+.carac table .caracDigit{
+	background-color: grey;
+	border: 1px solid black;
+	border-radius: 3px;
+	color: black;
+	padding: 5px 8px;
 }
 
 .persoBox{
@@ -29,6 +53,7 @@ table td{
 }
 
 .ficheBox{
+	position: relative;
 	margin: 10px;
 	padding: 30px;
 	background-color: rgba(141, 145, 123, 0.72);
@@ -39,5 +64,112 @@ table td{
 
 .ficheBox-avatar{
 	padding: 0;
-	width: 16vw;
+	width: 90%;
+}
+
+.clanBox{
+	overflow: hidden;
+}
+
+.discWindow{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 90%;
+	height: 100%;
+	padding: 0 5%;
+	background-color: grey;
+	display: none;
+	opacity: 0;
+}
+
+.discWindow .croix{
+	position: absolute;
+	width: 30px;
+	top: 15px;
+	right: 18px;
+	cursor: pointer;
+}
+
+.discWindow h3{
+	margin: 20px;
+}
+
+.discWindow-box{
+	width: max-content;
+	margin: 10px auto;
+	padding: 5px 10px;
+	background-color: lightgrey;
+	border-radius: 5px;	
+}
+
+.logoClan{
+	position: absolute;
+	width: 80%;
+	left: 10%;
+	opacity: 0.2;
+}
+
+.discContainer{
+	display: flex;
+}
+
+.discBox{
+	display: inline-block;
+	text-align: center;
+	width: 17%;
+	height: 40px;
+	padding: 17px 15px 13px 15px;
+	background-color: grey;
+	border: 1.5px solid black;
+	border-radius: 5px;
+	margin: auto;
+	overflow: hidden;
+}
+
+.discBox-empty{
+	background-color: rgba(112, 113, 153, 0.1);
+	padding: 20px 15px 10px 15px;
+}
+
+@media (max-width: 1250px){
+	#gridFichePerso{
+		grid-template-areas: 'avatar avatar avatar carac carac carac '
+		'infos infos infos clan clan clan '
+		'disciplines disciplines disciplines disciplines disciplines disciplines'
+		'lore lore lore lore lore lore ';
+	}
+}
+
+@media (max-width: 720px){
+
+	#gridFichePerso{
+		grid-template-areas: 
+		'avatar avatar avatar carac carac carac'
+		'lvl lvl lvl carac carac carac'
+		'infos infos infos infos infos infos'
+		'clan clan clan clan clan clan'
+		'disciplines disciplines disciplines disciplines disciplines disciplines'
+		'lore lore lore lore lore lore ';
+	}	
+
+	.ficheBox{
+		margin: 0;
+		border: 0.5px solid black;
+	}
+
+	.ficheBox-avatar{
+		width: 100%;
+	}
+
+	.discContainer{
+		display: block;
+		text-align: center;
+	}
+
+	.discBox{
+		width: 100px;
+		margin: 10px;
+	}
+
 }
