@@ -23,7 +23,7 @@ if (window.matchMedia("(min-width: 720px)").matches) {
 	    menubar: false,
 	    forced_root_block : "",
 	    statusbar : false,
-	    toolbar: 'undo redo | bold italic | link image code forecolor backcolor preview',
+	    toolbar: 'undo redo | bold italic | link image code forecolor backcolor',
 	    plugins: 'code image textcolor preview'
 	});
 //Mobile init.
