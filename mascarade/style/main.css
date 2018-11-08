@@ -278,7 +278,7 @@
 		z-index: 500;
 		box-shadow: 0 0 5px 1px rgba(0,0,0,0.4);
 		padding: 20px;
-		background-color: rgb(9, 111, 14);;
+		background-color: rgb(0, 74, 4);
 	}
 
 
@@ -310,7 +310,8 @@
 		z-index: 500;
 		box-shadow: 0 0 5px 1px rgba(0,0,0,0.4);
 		padding: 20px;
-		background-color: rgb(9, 111, 14);;
+		background-color: rgb(0, 74, 4);
+		color: white;
 	}
 
 	#connectionMobile input{

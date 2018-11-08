@@ -57,7 +57,7 @@ if (isset($_GET['action']) AND $_GET['action']=='updatePersoLore') {
 	$persoID = $_GET['persoID'];
 	$content = htmlspecialchars($_POST['contentEditLore'], ENT_QUOTES);
 	$bdd->query("UPDATE mas_persos SET lore='$content' WHERE id='$persoID'");
-	header("Location: ficheperso.php?persoID=$persoID");
+	header("Location: profil.php?persoID=$persoID");
 }
 
 //UPDATE PERSO Physique (persoID)
@@ -65,7 +65,7 @@ if (isset($_GET['action']) AND $_GET['action']=='updatePersoPhysique') {
 	$persoID = $_GET['persoID'];
 	$content = htmlspecialchars($_POST['contentEditPhysique'], ENT_QUOTES);
 	$bdd->query("UPDATE mas_persos SET physique='$content' WHERE id='$persoID'");
-	header("Location: ficheperso.php?persoID=$persoID");
+	header("Location: profil.php?persoID=$persoID");
 }
 
 

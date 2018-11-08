@@ -67,6 +67,11 @@
 	width: 90%;
 }
 
+#persoPhysique{
+	display: inline-block;
+	padding: 4px;
+}
+
 .clanBox{
 	overflow: hidden;
 }
@@ -132,6 +137,41 @@
 	padding: 20px 15px 10px 15px;
 }
 
+#persoLore{
+	font-style: italic;
+}
+
+.editButton{
+	display: inline;
+	margin: 7px;
+	padding: 3px 5px;
+	border: 1px solid black;
+	background-color: grey;
+	border-radius: 3px;
+	font-size: 0.6em;
+	font-style: italic;
+	color: black;
+	cursor: pointer;
+	text-shadow: none;
+}
+
+#editLoreBlock{
+	width: 100%;
+	margin: auto;
+}
+
+#editLoreArea,
+#editPhysiqueArea{
+	width: 100%;
+}
+
+#editLoreBlock input[type="submit"],
+#editPhysiqueBlock input[type="submit"]{
+	display: block;
+	margin: auto;
+	padding: 5px;
+}
+
 @media (max-width: 1250px){
 	#gridFichePerso{
 		grid-template-areas: 'avatar avatar avatar carac carac carac '
@@ -162,6 +202,11 @@
 		width: 100%;
 	}
 
+	.ficheBox-lvl{
+		display: inline-block;
+		
+	}
+
 	.discContainer{
 		display: block;
 		text-align: center;
@@ -169,7 +214,7 @@
 
 	.discBox{
 		width: 100px;
-		margin: 10px;
+		margin: 5px;
 	}
 
 }

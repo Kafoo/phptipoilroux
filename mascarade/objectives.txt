@@ -1,3 +1,4 @@
-rentrer le nouveau perso de l'av dans la bdd
+pagination aventures
+alert mail
 
 système d'xp ?

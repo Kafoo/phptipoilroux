@@ -87,7 +87,7 @@ include("_shared_/functions.php");
 						if ($infoPerso['nom']=='GM'){echo'GM';}
 						else{echo $infoPerso[0];} ?>.jpg">
 
-			<div class="ficheBox mobile centering" style="grid-area: lvl">
+			<div class="ficheBox ficheBox-lvl mobile centering" style="grid-area: lvl">
 				<i>XP : soon<br>
 				suivant : soon</i>
 			</div>
@@ -97,7 +97,14 @@ include("_shared_/functions.php");
 					<b><u>Nature</u></b><br><?=$infoPerso['nature']?><br><br>
 					<b><u>Attitude</u></b><br><?=$infoPerso['attitude']?><br><br>
 					<b><u>Concept</u></b><br><?=$infoPerso['concept']?><br><br>
-					<b><u>Physique</u></b><br><?=nl2br($infoPerso['physique'])?>
+					<b><u>Physique</u></b><div class="editButton" id="editButtonPhysique">éditer</div><br>
+					<span id="persoPhysique"><?=nl2br($infoPerso['physique'])?></span>
+					<div id="editPhysiqueBlock" hidden>
+						<form method="POST" action="SERVER_UPDATES.php?action=updatePersoPhysique&persoID=<?=$_GET['persoID']?>">
+							<textarea id="editPhysiqueArea" name="contentEditPhysique"></textarea>
+							<input type="submit" name="submitEditPhysique" value="J'édite mon physique !">
+						</form>
+					</div>
 			</div>
 
 			<div class="ficheBox clanBox" style="grid-area: clan">
@@ -110,9 +117,9 @@ include("_shared_/functions.php");
 				<span class="lvl">LVL <?=$infoPerso['lvl']?></span><br>
 				<span class="desktop">
 					<i>XP : soon<br>
-					suivant : soon</i>
+					suivant : soon</i><br>
 				</span>
-				<br><br>
+				<br>
 				<table>
 					<tr>
 						<td><span class="caracDigit"><?=$infoPerso['forc']?></span></td>
@@ -167,8 +174,14 @@ include("_shared_/functions.php");
 			</div>
 
 			<div class="ficheBox" style="grid-area: lore">
-				<h3>HISTOIRE</h3>
-				<i><?=nl2br($infoPerso['lore'])?></i> 
+				<h3>HISTOIRE<div class="editButton" id="editButtonLore">éditer</div></h3>
+				<span id="persoLore"><?=nl2br($infoPerso['lore'])?></span>
+				<div id="editLoreBlock" hidden>
+					<form method="POST" action="SERVER_UPDATES.php?action=updatePersoLore&persoID=<?=$_GET['persoID']?>">
+						<textarea id="editLoreArea" name="contentEditLore"></textarea>
+						<input type="submit" name="submitEditLore" value="J'édite mon histoire !">
+					</form>
+				</div>
 			</div>
 
 		</div>

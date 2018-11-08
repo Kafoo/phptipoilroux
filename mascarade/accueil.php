@@ -20,8 +20,12 @@ include("_shared_/functions.php");
 
 	<h1>ACCUEIL</h1>
 
-	<div class="container">
+	<div class="container centering">
 
+		Mmh, ouais, alors ça c'est l'accueil<br>
+		Ok c'est pas très sexy pour le moment<br>
+		Mais promis je mets des trucs bientôt ^_^<br><br>
+		Des poutous
 	</div>
 
 	<div class="container">
