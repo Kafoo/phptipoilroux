@@ -1,4 +1,7 @@
 pagination aventures
 alert mail
 
+HELP
+Remettre création de perso
+améliorer Rejoindre Aventure
 système d'xp ?

@@ -17,4 +17,16 @@ if (isset($_GET['action']) and $_GET['action'] == 'getPersos') {
 	echo $jsonres;
 }
 
+
+/*----------- ROLL THE DIE -----------*/
+
+if (isset($_GET['action'])) {
+	$result = $_GET['result'];
+	$rollID = $_GET['rollID'];
+	$bdd->query("
+		UPDATE mas_diceroll
+		SET result='$result'
+		WHERE id='$rollID' ");
+}
+
 ?>

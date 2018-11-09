@@ -40,7 +40,29 @@ if (window.matchMedia("(min-width: 720px)").matches) {
 	});
 }
 
-/*----- IF MOBILE -----*/
+
+// --------- ROLL THE DIE ---------
+
+$('.rollTheDie').one('click', function(e){
+	var result = Math.ceil(Math.random()*10);
+	$(e.currentTarget).html(result);
+	$(e.currentTarget).removeClass('button rollTheDie');
+	$(e.currentTarget).addClass('dieRolled');
+	var refine = $(e.currentTarget).attr('ajax');
+
+	var http = new XMLHttpRequest();
+	http.open('GET', 'server/HTTP_REQUEST.php'+refine+'&result='+result, false);
+	http.send();
+
+
+
+	alert('Tu as fait '+ result +' à ton jet ! ;-) \nTon résultat a bien été enregistré');
+})
+
+
+
+
+/*-------------- IF MOBILE --------------*/
 
 if (window.matchMedia("(max-width: 720px)").matches) {
 

@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
 		sprintf('%02d', (getdate()['hours']+2)) . ':' . 
 		sprintf('%02d', getdate()['minutes']);
 
-		$contenu = htmlspecialchars(str_replace(array('<p>','</p>'), '', $_POST['message']), ENT_QUOTES);
+		$contenu = htmlspecialchars(str_replace(array('<div>','</div>','<p>','</p>'), '', $_POST['message']), ENT_QUOTES);
 		$userID = $_SESSION['id'];
 		$avID = $_GET['avID'];
 

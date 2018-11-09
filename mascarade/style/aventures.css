@@ -67,7 +67,8 @@
 	display: block;
 }
 
-/* ------ GRID DES MESSAGES ------ */
+/* ------ AVENTURE PRÉCISÉE ------ */
+
 #gridAv{
 	display: grid;
 	margin: auto 3% auto 5%;
@@ -129,6 +130,23 @@
 .msgGM img{
 	width: 90%;
 	height: auto;
+}
+
+.diceRoll{
+	display: inline-block;
+	min-width: 150px;
+	padding: 10px;
+	margin: 10px;
+	text-align: center;
+	background-color: grey;
+	border: 1px solid black;
+	border-radius: 4px;
+}
+
+.rollBox{
+	margin: 5px;
+	padding: 3px;
+	background-color: lightgrey;
 }
 
 .fixInfo{
