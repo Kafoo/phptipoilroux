@@ -119,13 +119,18 @@ include("submits/aventures_submit.php");
 				ON mas_relation_perso2aventure.persoID=mas_persos.id
 				WHERE mas_persos.userID='$userID'
 				AND mas_relation_perso2aventure.avID='$avID'");
+			$res = $req->fetchall();
 			//Si non et qu'il rejoint, on l'ajoute :
-			if (count($req->fetchall())==0 
+			if (count($res)==0 
 				AND isset($_GET['persoID'])){
 				$persoID=$_GET['persoID'];
 				$bdd->query("
 					INSERT INTO mas_relation_perso2aventure (persoID, avID)
 					VALUES ('$persoID','$avID') ");
+			//Si oui, on défini quand même le $persoID
+			}else{
+				$persoID = $res[0]['persoID'];
+				
 			}
 
 			$avID = $_GET['avID'];
@@ -188,7 +193,7 @@ include("submits/aventures_submit.php");
 									<i>de <?=$diceRoll['nom']?></i>
 
 									<?php
-									if ($diceRoll['persoID'] == $info['persoID']) {
+									if ($diceRoll['persoID'] == $persoID) {
 										if ($diceRoll['result'] == 0) { ?>
 											<div class="rollBox rollTheDie button"
 											ajax="?action=rollTheDie&rollID=<?=$diceRoll[0]?>"
