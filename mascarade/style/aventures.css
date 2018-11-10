@@ -127,8 +127,8 @@
 	box-shadow: inset -2px -2px 50px rgb(80, 75, 40);
 }
 
-.msgGM img{
-	width: 90%;
+.msg img{
+	max-width: 90%;
 	height: auto;
 }
 
