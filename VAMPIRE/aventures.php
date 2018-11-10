@@ -232,7 +232,7 @@ tinymce.init({
 							echo "<a href='aventures.php?avID=1&page=".$i."'>".$i."</a> ";
 						}
 						if ($i<$NbrPages) {
-							echo "- ";
+							echo " - ";
 						}
 					} ?>
 					</div>

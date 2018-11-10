@@ -130,12 +130,26 @@ include("submits/aventures_submit.php");
 			//Si oui, on défini quand même le $persoID
 			}else{
 				$persoID = $res[0]['persoID'];
-				
 			}
 
 			$avID = $_GET['avID'];
 
-			//On met toutes les infos de chaque message dans $infoAv
+			//PAGINATION
+			$messagesParPage = 6;
+			$req = $bdd->query("SELECT * FROM mas_messages_aventure WHERE avID='$avID'");
+			$NbrMessages = $req->rowCount();
+			$NbrPages = ceil($NbrMessages/$messagesParPage);
+			//On défini la page courante
+			if (isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0) {
+				$_GET['page']=intval($_GET['page']);
+				$currentPage = $_GET['page'];
+			}else{
+				$currentPage = $NbrPages;
+			}
+			//On défini où on en est sur cette page
+			$start = ($currentPage-1)*$messagesParPage;
+
+			//On met toutes les infos de chaque message de la page dans $infoAv
 			$req = $bdd->query("
 				SELECT *
 				FROM mas_messages_aventure
@@ -143,7 +157,8 @@ include("submits/aventures_submit.php");
 				LEFT JOIN mas_membres ON mas_persos.userID=mas_membres.id
 				LEFT JOIN mas_aventures ON mas_messages_aventure.avID = mas_aventures.id
 				WHERE avID= '$avID'
-				ORDER BY mas_messages_aventure.id ASC");
+				ORDER BY mas_messages_aventure.id ASC
+				LIMIT ".$start.",".$messagesParPage." ");
 			$infoAv = $req->fetchall();
 
 			//On met tous les persos présents et leurs infos dans $coterie
@@ -164,6 +179,24 @@ include("submits/aventures_submit.php");
 
 			<div id="gridAv">
 
+				<!-- SELECTION DE PAGE -->	
+				<div></div>
+				<div class ="pagination"> Pages :
+				<?php
+				for ($i=1; $i <= $NbrPages ; $i++) {
+
+					if ($i==$currentPage) {
+						echo "<span style='color:darkgrey'>".$i."</span>";
+					}
+					else{
+						echo "<a href='aventures.php?avID=".$avID."&page=".$i."'>".$i."</a> ";
+					}
+					if ($i<$NbrPages) {
+						echo " - ";
+					}
+				} ?>
+				</div>
+				<div></div>
 
 				<?php // ------- WHILE MESSAGES ------- 
 				for ($i=0; $i < count($infoAv); $i++) { 
@@ -341,6 +374,24 @@ include("submits/aventures_submit.php");
 				<?php //endwhile messages	
 				} ?>
 
+				<!-- SELECTION DE PAGE -->	
+				<div></div>
+				<div class ="pagination"> Pages :
+				<?php
+				for ($i=1; $i <= $NbrPages ; $i++) {
+
+					if ($i==$currentPage) {
+						echo "<span style='color:lightgrey'>".$i."</span>";
+					}
+					else{
+						echo "<a href='aventures.php?avID=".$avID."&page=".$i."'>".$i."</a> ";
+					}
+					if ($i<$NbrPages) {
+						echo " - ";
+					}
+				} ?>
+				</div>
+				<div></div>
 
 				<!-- REPONSE AREA -->
 				<div></div>

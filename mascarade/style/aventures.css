@@ -76,6 +76,15 @@
 	grid-template-columns: 120px 1fr 200px;
 }
 
+.pagination{
+	background-color: grey;
+	padding: 5px;
+	margin: 10px auto;
+	border: 1px solid black;
+	border-radius: 2px;
+	color: white;
+}
+
 .writerAvatarSlider{
 	margin: 60px 0 80px 0;
 }
@@ -219,6 +228,16 @@
 		grid-template-columns: 1fr;
 		width: 100%;
 		margin: 0;
+	}
+
+	.pagination{
+		width: 100%;
+		margin: 0;
+		text-align: center;
+		border: none;
+		background-color: transparent;
+		padding: 20px 0;
+		font-size: 1.2em;
 	}
 
 	.writerAvatarSlider{
