@@ -186,7 +186,7 @@ include("submits/aventures_submit.php");
 				for ($i=1; $i <= $NbrPages ; $i++) {
 
 					if ($i==$currentPage) {
-						echo "<span style='color:darkgrey'>".$i."</span>";
+						echo "<span style='color:#c8c8c8'>".$i."</span>";
 					}
 					else{
 						echo "<a href='aventures.php?avID=".$avID."&page=".$i."'>".$i."</a> ";
