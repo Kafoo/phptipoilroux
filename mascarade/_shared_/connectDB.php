@@ -4,5 +4,3 @@ $bdd = new PDO('mysql:host=eu-cdbr-west-02.cleardb.net;dbname=heroku_3ca6f2b572b
 /*
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=heroku_3ca6f2b572bf369', "root", "");
 */
-
-?>
