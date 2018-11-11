@@ -41,6 +41,27 @@ if (window.matchMedia("(min-width: 720px)").matches) {
 }
 
 
+
+// --------- SUPP MESSAGE ---------
+ 
+$('.suppMsg').click(function(e){
+	var confirmation = confirm("Tu es sûr de vouloir supprimer ce message ? C'est définitif !");
+	if (confirmation == false) {
+		return false;
+	}else{
+
+		var msgID = $(e.currentTarget).attr('msgid');
+		$('.'+msgID).animate({opacity:"0"}, 500, function(){
+		$('.'+msgID).replaceWith('<div></div>');
+		});
+/*
+		var refine = $(e.currentTarget).attr('ajax');
+		var http = new XMLHttpRequest();
+		http.open('GET', 'server/HTTP_REQUEST.php'+refine, false);
+		http.send();*/
+	}
+})
+
 // --------- ROLL THE DIE ---------
 
 $('.rollTheDie').one('click', function(e){
@@ -54,10 +75,10 @@ $('.rollTheDie').one('click', function(e){
 	http.open('GET', 'server/HTTP_REQUEST.php'+refine+'&result='+result, false);
 	http.send();
 
-
-
 	alert('Tu as fait '+ result +' à ton jet ! ;-) \nTon résultat a bien été enregistré');
 })
+
+
 
 
 

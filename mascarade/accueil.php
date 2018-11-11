@@ -18,12 +18,6 @@ include("_shared_/functions.php");
 <!-- -------- CONTENU -------- -->
 <section>
 
-<?php
-
-mail('ant.guillard@gmail.com', 'bouh', 'voilaaaa');
-
-?>
-
 	<h1>ACCUEIL</h1>
 
 	<div class="container centering">
