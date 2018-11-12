@@ -165,6 +165,20 @@
 	color: rgba(62, 42, 16, 1);
 }
 
+.editMsgArea{
+	display: block;
+	width: 90%;
+	margin: auto;
+}
+
+.editMsgBloc input[type="submit"]{
+	display: block;
+	margin: auto;
+	padding: 10px;
+	width: 100%;
+	text-align: center;
+}
+
 .msg img{
 	max-width: 90%;
 	height: auto;
@@ -381,6 +395,8 @@
 		background-color: rgba(101, 85, 65, 0.75);
 		border: 1px solid black;
 		color: lightgrey;
+		display: none;
+		opacity: 0;
 	}
 
 	.suppMsg.mobile{
@@ -395,7 +411,8 @@
 		background-color: rgba(101, 85, 65, 0.75);
 		border: 1px solid black;
 		color: lightgrey;
-
+		display: none;
+		opacity: 0;
 	}
 
 	/* ------ MCE TEXT AREA ------ */
