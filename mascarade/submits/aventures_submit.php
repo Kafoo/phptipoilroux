@@ -28,9 +28,25 @@ if (isset($_POST['submit'])) {
 		$bdd->query("UPDATE mas_membres SET nombremsg=nombremsg+1 WHERE id=$userID");
 
 	}else{
-		$error = "Tu dois écrire quelque chose dans ta réponse !";
+		$error = "Tu dois écrire quelque chose dans ton message !";
 	}
+
 }
 
+if (isset($_POST['editSubmit'])) {
+
+	if (isset($_POST['editedMsg']) AND !empty($_POST['editedMsg'])){
+
+		$contenu = htmlspecialchars(str_replace(array('<div>','</div>','<p>','</p>'), '', $_POST['editedMsg']), ENT_QUOTES);
+		$msgID = $_POST['msgID'];
+		$bdd->query("
+			UPDATE mas_messages_aventure
+			SET contenu = '$contenu'
+			WHERE id = '$msgID' ");
+
+	}else{
+		$error = "Tu dois écrire quelque chose dans ton message !";
+	}
+}
 
 ?>

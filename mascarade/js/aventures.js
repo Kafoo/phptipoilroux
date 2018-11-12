@@ -17,7 +17,7 @@ $('.joinAv').click(function(e){
 //Desktop init.
 if (window.matchMedia("(min-width: 720px)").matches) {
 	tinymce.init({
-	    selector: '#mytextarea',
+	    selector: '.mytextarea',
 	    content_css : "style/tinymce.css",
 	    height: 300,
 	    menubar: false,
@@ -29,7 +29,7 @@ if (window.matchMedia("(min-width: 720px)").matches) {
 //Mobile init.
 }else{
 	tinymce.init({
-	    selector: '#mytextarea',
+	    selector: '.mytextarea',
 	    content_css : "style/tinymce.css",
 	    height: 300,
 	    menubar: false,
@@ -39,6 +39,53 @@ if (window.matchMedia("(min-width: 720px)").matches) {
 	    plugins: 'code image textcolor preview'
 	});
 }
+
+
+
+// --------- SUPP MESSAGE ---------
+ 
+$('.suppMsg').click(function(e){
+	var confirmation = confirm("Tu es sûr de vouloir supprimer ce message ? C'est définitif !");
+	if (confirmation == false) {
+		return false;
+	}else{
+
+		var msgID = $(e.currentTarget).attr('msgid');
+		$('.'+msgID).animate({opacity:"0"}, 500, function(){
+			$('.'+msgID).slideToggle(300, function(){
+				$('.'+msgID).replaceWith('<div></div>');
+			});
+		});
+
+		var refine = $(e.currentTarget).attr('ajax');
+		var http = new XMLHttpRequest();
+		http.open('GET', 'server/HTTP_REQUEST.php'+refine, false);
+		http.send();
+	}
+})
+
+
+// --------- EDIT MESSAGE ---------
+ 
+$('.editMsg').click(function(e){
+
+	var msgID = $(e.currentTarget).attr('msgid');
+	var contenu = $(e.currentTarget).parent().children('.contenuMsg');
+	var editBloc = $(e.currentTarget).parent().children('.editMsgBloc')
+	var editArea = $(e.currentTarget).parent().children('.editMsgBloc').children('.editMsgArea');
+	var contenuHTML = contenu.html();
+	var height = $(e.currentTarget).parent().css("height");
+	if (height < 200) {
+		editArea.height(150);
+		console.log('1');
+	}else{
+		var newheight = parseFloat(height)/2;
+		editArea.height(newheight);
+	}
+	contenu.slideToggle();
+	editBloc.slideToggle();
+	tinymce.get(msgID).setContent(contenuHTML);	
+})
 
 
 // --------- ROLL THE DIE ---------
@@ -54,10 +101,10 @@ $('.rollTheDie').one('click', function(e){
 	http.open('GET', 'server/HTTP_REQUEST.php'+refine+'&result='+result, false);
 	http.send();
 
-
-
 	alert('Tu as fait '+ result +' à ton jet ! ;-) \nTon résultat a bien été enregistré');
 })
+
+
 
 
 
@@ -65,6 +112,18 @@ $('.rollTheDie').one('click', function(e){
 /*-------------- IF MOBILE --------------*/
 
 if (window.matchMedia("(max-width: 720px)").matches) {
+
+	/*----CLIQUE OPTIONS DU MESSAGE----*/	
+
+	$('.msgOption').click(function(e){
+		var msgID = $(e.currentTarget).attr('msgid');
+		var editButton = $(e.currentTarget).parent().children('.editMsg.mobile');
+		var suppButton = $(e.currentTarget).parent().children('.suppMsg.mobile');
+		editButton.show();
+		editButton.animate({opacity:"1"}, 200);
+		suppButton.show();
+		suppButton.animate({opacity:"1"}, 200);
+	})
 
 	/*----CLIQUE SUR L'AVATAR----*/
 	$('.writerAvatar').click(function(e){

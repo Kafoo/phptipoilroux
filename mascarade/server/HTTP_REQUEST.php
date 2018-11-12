@@ -17,10 +17,22 @@ if (isset($_GET['action']) and $_GET['action'] == 'getPersos') {
 	echo $jsonres;
 }
 
+/*----------- SUPP MSG -----------*/
+
+if (isset($_GET['action']) AND $_GET['action'] == 'suppMsg') {
+	$msgID = $_GET['msgID'];
+	$bdd->query("
+		DELETE FROM mas_messages_aventure
+		WHERE id = '$msgID' ");
+}
+
+/*----------- EDIT MSG -----------*/
+
+
 
 /*----------- ROLL THE DIE -----------*/
 
-if (isset($_GET['action'])) {
+if (isset($_GET['action']) AND $_GET['action'] == 'rollTheDie') {
 	$result = $_GET['result'];
 	$rollID = $_GET['rollID'];
 	$bdd->query("

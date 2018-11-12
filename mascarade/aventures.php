@@ -161,6 +161,14 @@ include("submits/aventures_submit.php");
 				LIMIT ".$start.",".$messagesParPage." ");
 			$infoAv = $req->fetchall();
 
+			//On récupère le dernier message du joueur, pour l'édition/suppression
+			$req = $bdd->query("
+				SELECT *
+				FROM mas_messages_aventure
+				WHERE avID= '$avID' AND auteurID='$userID'
+				ORDER BY mas_messages_aventure.id DESC ");
+			$lastMsgID = $req->fetch()[0];
+
 			//On met tous les persos présents et leurs infos dans $coterie
 			$req = $bdd->query("
 				SELECT * 
@@ -258,7 +266,7 @@ include("submits/aventures_submit.php");
 					}else{//IF MESSAGE CLASSIQUE ?>
 
 						<!------ AVATAR ------>
-						<div class="writerAvatarSlider <?php if($info['nom']=='GM'){echo'GM';} ?>">
+						<div class="writerAvatarSlider <?=$info[0]?> <?php if($info['nom']=='GM'){echo'GM';} ?>">
 							<div class="writerAvatar" style="background-image: url(img/avatars/<?php
 							//Si GM, avatar générique de GM
 							if ($info['nom']=='GM'){echo'GM';}
@@ -280,24 +288,19 @@ include("submits/aventures_submit.php");
 									</span><br><br>
 										<table class="carac">
 											<tr>
-												<td>Force :</td>
-												<td>5</td>
+												<td>Force :</td><td><?=$info['forc']?></td>
 											</tr>
 											<tr>
-												<td>Dextérité :</td>
-												<td>5</td>
+												<td>Dextérité :</td><td><?=$info['dexterite']?></td>
 											</tr>
 											<tr>
-												<td>Intelligence :</td>
-												<td>5</td>
+												<td>Intelligence :</td><td><?=$info['intelligence']?></td>
 											</tr>
 											<tr>
-												<td>Charisme :</td>
-												<td>5</td>
+												<td>Charisme :</td><td><?=$info['charisme']?></td>
 											</tr>
 											<tr>
-												<td>Perception :</td>
-												<td>5</td>
+												<td>Perception :</td><td><?=$info['perception']?></td>
 											</tr>
 										</table>
 										<div class="layerBox">
@@ -321,20 +324,46 @@ include("submits/aventures_submit.php");
 						</div>	
 
 						<!------ MESSAGE ------>
-						<?php //Changement de classe si c'est un msgGM
-						if ($info['nom'] == 'GM') {
-							echo"<div class='msg msgGM'>";
-						}else{echo"<div class='msg'>";}
-						?>
+
+						<div class="msg <?=$info[0]?> <?php if($info['nom']=='GM'){echo'msgGM';} ?>">
+							<!-- date -->
 							<div class="dateMsg mobile">
 								<?=$info['pseudo']?>, 
 								<?php
 								$date = explode('--', $info['dat']);
 								echo 'le '.$date[0].' à '.$date[1]?>
 							</div>
+							<!-- Options d'édition et suppression -->
+							<?php if ($info[0] == $lastMsgID) { ?>
+								<div class="suppMsg desktop button" ajax='?action=suppMsg&msgID=<?=$info[0]?>' msgid="<?=$info[0]?>">
+									x
+								</div>
+								<div class="editMsg desktop button" msgid="<?=$info[0]?>">
+									edit
+								</div>
+								<div class="msgOption mobile button">
+									+
+								</div>
+								<div class="suppMsg mobile button" ajax='?action=suppMsg&msgID=<?=$info[0]?>' msgid="<?=$info[0]?>" >
+									supp
+								</div>
+								<div class="editMsg mobile button" msgid="<?=$info[0]?>">
+									edit
+								</div>
+							<?php
+							} ?>
+							<!-- Contenu du message -->
 							<span class="contenuMsg">
 								<?=htmlspecialchars_decode(nl2br($info['contenu']))?>
 							</span>
+							<!-- Bloc d'édition -->
+							<div class="editMsgBloc" hidden>
+								<form method="POST" action="">
+									<input type="text" name="msgID" value="<?=$info[0]?>" hidden>
+									<textarea class="editMsgArea mytextarea" id="<?=$info[0]?>" name="editedMsg"></textarea>
+									<input type="submit" name="editSubmit" class="editMsgSubmit" msgid="<?=$info[0]?>" value="J'édite mon message !">
+								</form>
+							</div>
 						</div>
 
 						<!------ FIXINFO ------>
@@ -368,7 +397,7 @@ include("submits/aventures_submit.php");
 								} ?>
 							</div>		
 						<?php
-						}else{echo"<div></div>";}?>
+						}else{echo"<div class='".$info[0]."'></div>";}?>
 					<?php
 					} ?>
 				<?php //endwhile messages	
@@ -397,29 +426,23 @@ include("submits/aventures_submit.php");
 				<div></div>
 				<div id="mceMainContainer">
 					<form method="POST" action="">
-						<textarea id="mytextarea" name="message"></textarea>
+						<textarea class="mytextarea" name="message"></textarea>
 						<input type="submit" name="submit" value='Je réponds !' style="margin: 20px;">
 					</form>
 				</div>
 				<div></div>
 			</div>
 
-
-
 		<?php //endif aventure précisée
 		} ?>
-
 	<?php //endif connected user
 	} ?>
 
-
 </section>
-
 
 <!---------- SCRIPTS ---------->
 <?php include("_shared_/scripts.php"); ?>
 <script type="text/javascript" src="js/aventures.js"></script>
-
 
 </body>
 </html>
