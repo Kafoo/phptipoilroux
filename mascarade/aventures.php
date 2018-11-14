@@ -265,7 +265,8 @@ include("submits/aventures_submit.php");
 													echo " + ".$diceRoll['malus'];
 												}
 												if ($diceRoll['bonus'] > 0 OR $diceRoll['malus'] > 0) {
-													echo " = ".$diceRoll['result']-$diceRoll['bonus']+$diceRoll['malus'];
+													$result = floatval($diceRoll['result'])-floatval($diceRoll['bonus'])+floatval($diceRoll['malus']);
+													echo " = ".$result;
 												}
 												?>													
 											</div>
