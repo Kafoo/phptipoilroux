@@ -230,7 +230,21 @@ include("submits/aventures_submit.php");
 								$diceRoll = $diceRolls[$j]; ?>
 								
 								<div class="diceRoll">
-									<?=ucfirst($diceRoll['carac'])?><br>
+									<?=ucfirst($diceRoll['carac'])?>
+									<?php
+									if ($diceRoll['bonus'] > 0 OR $diceRoll['malus'] > 0) {
+										echo "(";
+									}
+									if ($diceRoll['bonus'] > 0) {
+										echo "-".$diceRoll['bonus'];
+									}
+									if ($diceRoll['malus'] > 0) {
+										echo "+".$diceRoll['malus'];
+									} 
+									if ($diceRoll['bonus'] > 0 OR $diceRoll['malus'] > 0) {
+										echo ")";
+									}?>
+									<br>
 									<i>de <?=$diceRoll['nom']?></i>
 
 									<?php
@@ -241,7 +255,20 @@ include("submits/aventures_submit.php");
 											>Lance le dé !</div>
 										<?php
 										}else{ ?>
-											<div class="rollBox dieRolled"><?=$diceRoll['result']?></div>
+											<div class="rollBox dieRolled">
+												<?php 
+												echo $diceRoll['result'];
+												if ($diceRoll['bonus'] > 0) {
+													echo " - ".$diceRoll['bonus'];
+												}
+												if ($diceRoll['malus'] > 0) {
+													echo " + ".$diceRoll['malus'];
+												}
+												if ($diceRoll['bonus'] > 0 OR $diceRoll['malus'] > 0) {
+													echo " = ".$diceRoll['result']-$diceRoll['bonus']+$diceRoll['malus'];
+												}
+												?>													
+											</div>
 										<?php
 										}
 									}else{
@@ -249,7 +276,21 @@ include("submits/aventures_submit.php");
 											<div class="rollBox">En attente</div>
 										<?php
 										}else{ ?>
-											<div class="rollBox dieRolled"><?=$diceRoll['result']?></div>
+											<div class="rollBox dieRolled">
+												<?php
+												echo $diceRoll['result'];
+												if ($diceRoll['bonus'] > 0) {
+													echo " - ".$diceRoll['bonus'];
+												}
+												if ($diceRoll['malus'] > 0) {
+													echo " + ".$diceRoll['malus'];
+												}
+												if ($diceRoll['bonus'] > 0 OR $diceRoll['malus'] > 0) {
+													$result = floatval($diceRoll['result'])-floatval($diceRoll['bonus'])+floatval($diceRoll['malus']);
+													echo " = ".$result;
+												}
+												?>			
+											</div>
 										<?php
 										}
 									} ?>

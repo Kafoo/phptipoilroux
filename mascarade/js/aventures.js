@@ -27,7 +27,8 @@ if (window.matchMedia("(min-width: 720px)").matches) {
 	    paste_remove_styles: true,
 	    paste_remove_styles_if_webkit: true,
 	    paste_strip_class_attributes: true,
-	    toolbar: 'undo redo | bold italic | link image code forecolor backcolor',
+	    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
+	    toolbar: 'undo redo | bold italic | link image forecolor backcolor fontsizeselect | code',
 	    plugins: 'code image textcolor preview paste'
 	});
 //Mobile init.
@@ -39,7 +40,12 @@ if (window.matchMedia("(min-width: 720px)").matches) {
 	    menubar: false,
 	    forced_root_block : "",
 	    statusbar : false,
-	    toolbar: 'undo redo | bold italic | link image code forecolor backcolor',
+	    paste_auto_cleanup_on_paste : true,
+	    paste_remove_styles: true,
+	    paste_remove_styles_if_webkit: true,
+	    paste_strip_class_attributes: true,
+	    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
+	    toolbar: 'undo redo | bold italic | link image forecolor backcolor fontsizeselect | code',
 	    plugins: 'code image textcolor preview paste'
 	});
 }
