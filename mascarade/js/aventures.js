@@ -23,8 +23,12 @@ if (window.matchMedia("(min-width: 720px)").matches) {
 	    menubar: false,
 	    forced_root_block : "",
 	    statusbar : false,
+	    paste_auto_cleanup_on_paste : true,
+	    paste_remove_styles: true,
+	    paste_remove_styles_if_webkit: true,
+	    paste_strip_class_attributes: true,
 	    toolbar: 'undo redo | bold italic | link image code forecolor backcolor',
-	    plugins: 'code image textcolor preview'
+	    plugins: 'code image textcolor preview paste'
 	});
 //Mobile init.
 }else{
@@ -36,7 +40,7 @@ if (window.matchMedia("(min-width: 720px)").matches) {
 	    forced_root_block : "",
 	    statusbar : false,
 	    toolbar: 'undo redo | bold italic | link image code forecolor backcolor',
-	    plugins: 'code image textcolor preview'
+	    plugins: 'code image textcolor preview paste'
 	});
 }
 
@@ -84,7 +88,7 @@ $('.editMsg').click(function(e){
 	}
 	contenu.slideToggle();
 	editBloc.slideToggle();
-	tinymce.get(msgID).setContent(contenuHTML);	
+	tinymce.get(msgID).setContent(contenuHTML);
 })
 
 
@@ -128,29 +132,22 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 	/*----CLIQUE SUR L'AVATAR----*/
 	$('.writerAvatar').click(function(e){
 
-		if ($(e.target).is('.GM')) {
+		if ($(e.currentTarget).is('.GM')) {
         	e.preventDefault();
         	return;
 		}
-
-
 		else{
-			/*Petit if pour pas que la croix s'agrandisse*/
-		    if($(e.target).is('.croixAvatar')){
-	        	e.preventDefault();
-	        	return;
-	    	}/*endif croix*/
-
-			$(e.target).animate({width:'80vw', height:'100vw', borderRadius:'10px'}, 200);
-			$(e.target).css('z-index', 400);
-			$(e.target).children('.mobile').show();	
+			$(e.currentTarget).animate({width:'80vw', height:'100vw', borderRadius:'10px'}, 200);
+			$(e.currentTarget).css('z-index', 400);
+			$(e.currentTarget).children('.mobile').show();	
 		}
 	});
 
 	$('.croixAvatar').click(function(e){
-		$(e.target).parent().parent().animate({width:'70px', height:'70px', border:'1px solid black', borderRadius:'40px'}, 200);
-		$(e.target).parent().parent().css('z-index', 100);
-		$(e.target).parent().parent().children('.mobile').hide(200);
+		event.stopPropagation();
+		$(e.currentTarget).parent().parent().animate({width:'70px', height:'70px', border:'1px solid black', borderRadius:'40px'}, 200);
+		$(e.currentTarget).parent().parent().css('z-index', 100);
+		$(e.currentTarget).parent().parent().children('.mobile').hide(200);
 	});
 }
 

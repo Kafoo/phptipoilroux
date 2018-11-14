@@ -24,6 +24,11 @@ if (isset($_GET['action']) AND $_GET['action'] == 'suppMsg') {
 	$bdd->query("
 		DELETE FROM mas_messages_aventure
 		WHERE id = '$msgID' ");
+	// -1 au compteur des messages
+	$bdd->query("
+		UPDATE mas_membres 
+		SET nombremsg=nombremsg-1 
+		WHERE id='$userID' ");
 }
 
 /*----------- EDIT MSG -----------*/

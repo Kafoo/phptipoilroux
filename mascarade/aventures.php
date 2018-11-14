@@ -75,7 +75,7 @@ include("submits/aventures_submit.php");
 						</span>
 						<?php
 						if (isset($persoOfAv)) { ?>
-							<a href="aventures.php?avID=<?=$avID?>" class="goAv">
+							<a href="aventures.php?avID=<?=$avID?>#pmop" class="goAv">
 								Continuer avec <?=$persoOfAv?>
 							</a>
 						<?php
@@ -266,8 +266,8 @@ include("submits/aventures_submit.php");
 					}else{//IF MESSAGE CLASSIQUE ?>
 
 						<!------ AVATAR ------>
-						<div class="writerAvatarSlider <?=$info[0]?> <?php if($info['nom']=='GM'){echo'GM';} ?>">
-							<div class="writerAvatar" style="background-image: url(img/avatars/<?php
+						<div class="writerAvatarSlider <?=$info[0]?>">
+							<div class="writerAvatar <?php if($info['nom']=='GM'){echo'GM';} ?>" style="background-image: url(img/avatars/<?php
 							//Si GM, avatar générique de GM
 							if ($info['nom']=='GM'){echo'GM';}
 							else{echo $info['persoID'];}
@@ -364,6 +364,10 @@ include("submits/aventures_submit.php");
 									<input type="submit" name="editSubmit" class="editMsgSubmit" msgid="<?=$info[0]?>" value="J'édite mon message !">
 								</form>
 							</div>
+							<?php if($i==count($infoAv)-2){ ?>
+								<div id="pmop"></div>
+							<?php
+							}?>
 						</div>
 
 						<!------ FIXINFO ------>
@@ -397,7 +401,9 @@ include("submits/aventures_submit.php");
 								} ?>
 							</div>		
 						<?php
-						}else{echo"<div class='".$info[0]."'></div>";}?>
+						}else{ ?>
+							<div class='<?=$info[0]?>'></div>
+						<?php }?>
 					<?php
 					} ?>
 				<?php //endwhile messages	

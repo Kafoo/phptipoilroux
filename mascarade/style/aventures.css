@@ -364,7 +364,7 @@
 	.dateMsg{
 		position: absolute;
 		top: 20px;
-		left: 30%;
+		right: 10%;
 		color: rgb(55,55,55);
 		font-style: italic;
 	}
