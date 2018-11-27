@@ -20,15 +20,13 @@ if (isset($_GET['action']) and $_GET['action'] == 'getPersos') {
 /*----------- SUPP MSG -----------*/
 
 if (isset($_GET['action']) AND $_GET['action'] == 'suppMsg') {
+	$userID = $_SESSION['id'];
 	$msgID = $_GET['msgID'];
 	$bdd->query("
 		DELETE FROM mas_messages_aventure
 		WHERE id = '$msgID' ");
 	// -1 au compteur des messages
-	$bdd->query("
-		UPDATE mas_membres 
-		SET nombremsg=nombremsg-1 
-		WHERE id='$userID' ");
+	$bdd->query("UPDATE mas_membres SET nombremsg=nombremsg-1 WHERE id='$userID' ");
 }
 
 /*----------- EDIT MSG -----------*/
