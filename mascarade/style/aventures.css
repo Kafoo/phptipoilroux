@@ -85,13 +85,15 @@
 	color: white;
 }
 
+/*MESSAGE RP*/
+
 .writerAvatarSlider{
-	margin: 60px 0 80px 0;
+	margin: 40px 0 60px 0;
 }
 
 .writerAvatar{
 	position: sticky;
-	top: 100px;
+	top: 80px;
 	height: max-content;
 	background-size: cover;
 	border: 1.5px solid rgb(0, 0, 0);
@@ -123,12 +125,12 @@
 .msg{
 	position: relative;
 	min-height: 100px;
-	margin: 10px 0 30px 0;
+	margin: 15px 0;
 	padding: 25px;
-    background-color: rgba(178, 192, 180, 0.43);
+    background-color: rgba(157, 165, 158, 0.59);
 	border: 1.5px solid black;
 	border-radius: 6px;
-	box-shadow: inset -2px -2px 50px rgb(4, 54, 8);
+	box-shadow: inset -2px -2px 50px rgb(43, 81, 46);
 	z-index: 20;
 }
 
@@ -184,27 +186,166 @@
 	height: auto;
 }
 
-.diceRoll{
-	display: inline-block;
-	min-width: 150px;
+/*MESSAGE DICEROLL*/
+
+.diceRoll_icone{
+	width: 100px;
+	margin: 30px 15px;
 	padding: 10px;
+	border-radius: 50px 0 0 50px;
+	background-color: rgb(50,50,50);
+	z-index: -1;
+}
+
+.diceRollBloc{
+	margin: 15px 0;
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: inset 0 0 60px 1px rgb(63, 63, 63);
+	background: inherit;
+	background-color: rgba(94,94,94, 1);
+}
+
+.diceRollTitle{
+	margin: 10px 10px 0 10px;
+	padding: 10px 20px;
+	font-size: 1.2em;
+	font-weight: bold;
+	font-family: sans-serif;
+	font-style: italic;
+	color: lightgrey;
+	background-color: rgb(50,50,50);
+	border-radius: 5px;
+}
+
+.diceRollContent{
+	font-size: 0.8em;
+	font-weight: initial;
+}
+
+.diceRollBox{
 	margin: 10px;
-	text-align: center;
-	background-color: grey;
+	background-color: rgb(135,135,135);
 	border: 1px solid black;
 	border-radius: 4px;
+	overflow: auto;
+}
+
+.diceRollPerso{
+	float: left;
+	display: inline-block;
+	min-width: 140px;
+	margin: 5px;
+	padding: 3px 0px;
+	background-color: rgba(200,200,200,0.5);
+	border: 1px solid black;
+	text-align: center;
+	overflow: hidden;
 }
 
 .rollBox{
-	margin: 5px;
-	padding: 3px;
+	background-image: url(../img/icones/d20black.png), url(../img/icones/d20black.png);
+	background-position: right 3px top 2px, left 3px top 2px;
+	background-size: 17px;
+	background-repeat: no-repeat;
+	margin: 3px 6px;
+	padding: 1px;
+	border : 1px solid black;
 	background-color: lightgrey;
 }
 
-.fixInfo{
+.diceRollDigits{
+	display: inline-block;
+	margin: 15px auto;
+	font-size: 1.8em;
+	overflow: hidden;
+}
+
+.diceRollDigit{
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 50px;
+	font-weight: bolder;
+	color: white;
+	width: 45px;
+	height: 40px;
+	margin: 3px;
+	padding-top: 5px;
+	background-color: #c1c1c1;
+	box-shadow: inset -1px -1px 5px 1px rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+.digit-roll{
+	background-image: url(../img/icones/d20black.png);
+	background-size: cover;
+	background-color: rgb(131, 131, 131);
+	box-shadow: inset -1px -1px 5px 1px rgba(0,0,0,0.5);
+}
+
+.digit-carac{
+	background-image: url(../img/icones/carac/intelligence_black.png);
+	background-color: rgba(164, 102, 221, 0.66);
+	background-size: cover;
+}
+
+.digit-bonus{
+	background-color: rgb(41, 127, 40);
+	background-size: cover;
+}
+
+.digit-malus{
+	background-color: rgb(149, 10, 10);
+	background-size: cover;
+}
+
+.digit-resultFinal{
+	position: relative;
+	width: 70px;
+	background-color: rgb(216,216,216);
+	color: black;
+	margin-right: 20px;
+	padding: 3px 10px;
+	border: 1px solid black;
+	box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.5);
+	border-radius: 3px;
+}
+
+.digit-difficulty{
+	font-size: 0.7em;
+}
+
+.diceRoll-tic{
+	position: absolute;
+	top: -5px;
+	right: -15px;
+	width: 25px;
+}
+
+.resultText{
+	display: inline-block;
+	width: 80px;
+	font-size: 0.8em;	
+}
+
+.resultText .yes{
+	color: #56e756;
+	display: inline-block;
+	font-weight: bolder;
+	text-shadow: 0 0 3px black;
+}
+
+.resultText .no{
+	color: black;
+	display: inline-block;
+	font-weight: bolder;
+}
+
+/*FIXINFOS*/
+
+.fixInfos{
 	position: sticky;
 	height: max-content;
-	text-overflow: hidden;
 	background-color: rgba(200,200,200,0.2);
 	box-shadow: 4px 4px 20px 1px rgba(0,0,0,0.4);
 	margin: 50px 0 0 35px;
@@ -259,6 +400,38 @@
 	padding: 20px;
 	width: 100%;
 	font-weight: bold;
+}
+
+/*----------- 1400px -----------*/
+
+@media (max-width: 1400px){
+	.resultText{display: none;}
+}
+
+/*----------- 1250px -----------*/
+
+@media (max-width: 1250px){
+	.diceRollPerso{
+		float: none;
+		display: block;
+		width: 95%;
+		margin: 5px auto;
+		padding: 3px 0px;
+		background-color: rgba(200,200,200,0.5);
+		border: 1px solid black;
+		text-align: center;
+		overflow: hidden;
+	}
+
+	.diceRollPerso .box{
+		display: inline-block;
+	}
+	.rollBox{
+		padding: 2px 22px;
+	}
+	.diceRollDigits{
+		margin: 0 auto;
+	}
 }
 
 
@@ -413,6 +586,23 @@
 		color: lightgrey;
 		display: none;
 		opacity: 0;
+	}
+
+
+	.diceRollDigits{
+		font-size: 1.5em;
+	}
+	.diceRollDigit{
+		width: 30px;
+		height: 30px;
+		margin: 3px;
+		padding: 2px;
+		box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.5);
+	}
+
+	.digit-resultFinal{
+		width: 60px;
+		margin-right: 10px;
 	}
 
 	/* ------ MCE TEXT AREA ------ */
