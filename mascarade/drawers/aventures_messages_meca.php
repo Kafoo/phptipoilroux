@@ -11,7 +11,7 @@ if ($info['type'] === 'diceRoll_GM') {
 	$diceRolls = $req->fetchall(); ?>
 
 	<div >
-		<img src="img/icones/jet_white"
+		<img src="img/icones/jet_white.png"
 		class="diceRoll_icone desktop">
 	</div>
 	<div class="diceRollBloc">
@@ -128,7 +128,7 @@ if ($info['type'] === 'diceRoll_player') {
 	$diceRolls = $req->fetchall(); ?>
 
 	<div >
-		<img src="img/icones/jet_white"
+		<img src="img/icones/jet_white.png"
 		class="diceRoll_icone desktop">
 	</div>
 	<div class="diceRollBloc">
