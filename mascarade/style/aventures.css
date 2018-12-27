@@ -122,6 +122,11 @@
 	}
 }
 
+.separate{
+	border: 1px solid rgb(80,80,80);
+	margin: 5px 0;
+}
+
 .msg{
 	position: relative;
 	min-height: 100px;
@@ -132,6 +137,7 @@
 	border-radius: 6px;
 	box-shadow: inset -2px -2px 50px rgb(43, 81, 46);
 	z-index: 20;
+	overflow: hidden;
 }
 
 .msgGM{
@@ -141,12 +147,12 @@
 
 .editMsg.desktop{
 	position: absolute;
-	top: 0;
+	bottom: 0;
 	right: 21px;
 	padding: 2px 6px;
 	border-left: 1px solid black;
-	border-bottom: 1px solid black;
-	border-radius: 0 0 0 3px;
+	border-top: 1px solid black;
+	border-radius: 3px 0 0 0;
 	font-family: arial black;
 	font-size: 0.7em;
 	color: rgba(62, 42, 16, 1);
@@ -156,11 +162,11 @@
 	position: absolute;
 	width: 20px;
 	padding: 2px 0;
-	top: 0;
+	bottom: 0;
 	right: 0;
 	border-left: 1px solid black;
-	border-bottom: 1px solid black;
-	border-radius: 0 6px 0 0;
+	border-top: 1px solid black;
+	border-radius: 0 0 6px 0;
 	text-align: center;
 	font-family: arial black;
 	font-size: 0.7em;
@@ -177,13 +183,21 @@
 	display: block;
 	margin: auto;
 	padding: 10px;
-	width: 100%;
+	width: 100.3%;
 	text-align: center;
 }
 
 .msg img{
 	max-width: 90%;
 	height: auto;
+}
+
+.msg .diceRollBox{
+	margin: 10px 0;
+}
+
+.msg .diceRollDigits{
+	margin: 5px 0 0 0;
 }
 
 /*MESSAGE DICEROLL*/
@@ -208,19 +222,12 @@
 
 .diceRollTitle{
 	margin: 10px 10px 0 10px;
-	padding: 10px 20px;
-	font-size: 1.2em;
-	font-weight: bold;
+	padding: 10px 15px;
 	font-family: sans-serif;
 	font-style: italic;
 	color: lightgrey;
 	background-color: rgb(50,50,50);
 	border-radius: 5px;
-}
-
-.diceRollContent{
-	font-size: 0.8em;
-	font-weight: initial;
 }
 
 .diceRollBox{
@@ -234,7 +241,7 @@
 .diceRollPerso{
 	float: left;
 	display: inline-block;
-	font-size: 1.1em;
+	font-size: 1em;
 	min-width: 140px;
 	margin: 5px;
 	padding: 3px 0px;
@@ -257,7 +264,7 @@
 
 .diceRollDigits{
 	display: inline-block;
-	margin: 15px auto;
+	margin: 14px auto 0 auto;
 	font-size: 1.8em;
 	overflow: hidden;
 }
@@ -272,7 +279,6 @@
 	height: 40px;
 	margin: 3px;
 	padding-top: 5px;
-	background-color: #c1c1c1;
 	box-shadow: inset -1px -1px 5px 1px rgba(0,0,0,0.5);
 	text-align: center;
 }
@@ -285,8 +291,6 @@
 }
 
 .digit-carac{
-	background-image: url(../img/icones/carac/intelligence_black.png);
-	background-color: rgba(164, 102, 221, 0.66);
 	background-size: cover;
 }
 
@@ -431,7 +435,7 @@
 		padding: 2px 22px;
 	}
 	.diceRollDigits{
-		margin: 0 auto;
+		margin: 5px auto;
 	}
 }
 
@@ -545,25 +549,26 @@
 
 	.msgOption{
 		position: absolute;
-		top: 0;
+		bottom: 0;
 		right: 0;
 		width: 16px;
 		height: 30px;
+		line-height: 30px;
 		padding: 0 7px;
 		text-align: right;
 		font-family: arial black;
-		border-radius: 0 0 0 50px;
-		border-bottom: 1px solid rgb(50,50,50);
+		border-radius: 50px 0 0 0;
+		border-top: 1px solid rgb(50,50,50);
 		border-left: 1px solid rgb(50,50,50);
 	}
 
 	.editMsg.mobile{
 		position: absolute;
-		top: 0;
+		bottom: 0;
 		right: 30%;
 		width: 30%;
-		height: 50px;
-		line-height: 50px;
+		height: 30px;
+		line-height: 30px;
 		text-align: center;
 		font-family: arial black;
 		background-color: rgba(101, 85, 65, 0.75);
@@ -575,11 +580,11 @@
 
 	.suppMsg.mobile{
 		position: absolute;
-		top: 0;
+		bottom: 0;
 		right: 0;
 		width: 30%;
-		height: 50px;
-		line-height: 50px;
+		height: 30px;
+		line-height: 30px;
 		text-align: center;
 		font-family: arial black;
 		background-color: rgba(101, 85, 65, 0.75);
@@ -589,6 +594,10 @@
 		opacity: 0;
 	}
 
+	.diceRollBloc{
+		margin: 0;
+		border-radius: 0;
+	}
 
 	.diceRollDigits{
 		font-size: 1.5em;

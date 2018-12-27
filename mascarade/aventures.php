@@ -136,7 +136,7 @@ include("submits/aventures_submit.php");
 
 			//PAGINATION
 			$messagesParPage = 6;
-			$req = $bdd->query("SELECT * FROM mas_messages_aventure WHERE avID='$avID'");
+			$req = $bdd->query("SELECT DISTINCT postID FROM mas_messages_aventure WHERE avID='$avID'");
 			$NbrMessages = $req->rowCount();
 			$NbrPages = ceil($NbrMessages/$messagesParPage);
 			//On défini la page courante
@@ -151,14 +151,22 @@ include("submits/aventures_submit.php");
 
 			//On met toutes les infos de chaque message de la page dans $infoAv
 			$req = $bdd->query("
+				SELECT DISTINCT postID 
+				from mas_messages_aventure 
+				ORDER BY id 
+				LIMIT ".$start.",".$messagesParPage."
+				");
+			$postArray = $req->fetchall(PDO::FETCH_COLUMN, 0);
+			$postString = implode("', '", $postArray);
+			$req = $bdd->query("
 				SELECT *
 				FROM mas_messages_aventure
 				LEFT JOIN mas_persos ON mas_messages_aventure.persoID = mas_persos.id
 				LEFT JOIN mas_membres ON mas_persos.userID=mas_membres.id
 				LEFT JOIN mas_aventures ON mas_messages_aventure.avID = mas_aventures.id
 				WHERE avID= '$avID'
-				ORDER BY mas_messages_aventure.id ASC
-				LIMIT ".$start.",".$messagesParPage." ");
+				AND postID IN ('$postString')
+				");
 			$infoAv = $req->fetchall();
 
 			//On récupère le dernier message du joueur, pour l'édition/suppression
@@ -209,13 +217,19 @@ include("submits/aventures_submit.php");
 				<?php // ------- WHILE MESSAGES ------- 
 				for ($i=0; $i < count($infoAv); $i++) { 
 
-					$info = $infoAv[$i]; ?>
-
-					<!-- MESSAGE MECA -->
-					<?php include("drawers/aventures_messages_meca.php");?>
-
-					<!-- MESSAGE REGULAR -->
-					<?php include("drawers/aventures_messages_rp.php");?>
+					$info = $infoAv[$i];
+					$msgInARow = 0;
+					
+					if ($info['type'] === 'RP'){
+						/*MESSAGE REGULAR*/
+						include("drawers/aventures_messages_rp.php");
+					}
+					if ($info['type'] === 'diceRoll_GM') { 
+						/*MESSAGE MECA*/
+						include("drawers/aventures_messages_meca.php");
+					}
+					$i = $i+$msgInARow;
+					?>
 
 				<?php //endwhile messages	
 				} ?>

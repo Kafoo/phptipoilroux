@@ -52,3 +52,9 @@ Pseudo : blop
 Grille : 5
 Score : 14
 Nouvelle entrée réussie !
+------------
+Page ouverte à 24:4:55
+Pseudo : Bliblablou
+Grille : 6
+Score : 10
+Nouvelle entrée réussie !

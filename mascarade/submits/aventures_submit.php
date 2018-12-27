@@ -13,6 +13,7 @@ if (isset($_POST['submit'])) {
 		$userID = $_SESSION['id'];
 		$avID = $_GET['avID'];
 
+		//On récupère le perso lié au message
 		$req = $bdd->query("
 			SELECT mas_persos.id
 			FROM mas_persos
@@ -23,7 +24,22 @@ if (isset($_POST['submit'])) {
 			");
 		$persoID = $req->fetch()['id'];
 
-		$bdd->query("INSERT INTO mas_messages_aventure (dat, auteurID, contenu, persoID, avID) VALUES ('$dat', '$userID', '$contenu', '$persoID', '$avID')");
+		//On défini le postID (incrémentation ou non)
+		$req = $bdd->query("
+			SELECT postID, persoID
+			FROM mas_messages_aventure
+			ORDER BY id DESC
+			LIMIT 1
+			");
+		$res = $req->fetchall()[0];
+		if ($persoID == $res['persoID']) {
+			$postID = $res['postID'];
+		} else {
+			$postID = $res['postID']+1; 
+		}
+
+
+		$bdd->query("INSERT INTO mas_messages_aventure (dat, auteurID, contenu, persoID, avID, postID) VALUES ('$dat', '$userID', '$contenu', '$persoID', '$avID', '$postID')");
 		/*Incrémente de 1 le nombre de message postés pour ce compte*/
 		$bdd->query("UPDATE mas_membres SET nombremsg=nombremsg+1 WHERE id='$userID' ");
 
