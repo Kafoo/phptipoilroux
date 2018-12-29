@@ -76,8 +76,8 @@ $('.suppMsg').click(function(e){
 		if (msgCount > 1) {
 			var lastMsgOfPost = $(e.currentTarget).parent().children('.lastMsgOfPost');
 			var lastSepOfPost = $(e.currentTarget).parent().children('.lastSepOfPost');
-			lastMsgOfPost.slideToggle(300);
-			lastSepOfPost.slideToggle(300);			
+			lastMsgOfPost.slideToggle(500);
+			lastSepOfPost.slideToggle(500);			
 		}
 		
 		$(".msgOption").remove();

@@ -1,55 +1,55 @@
 <!------ AVATAR ------>
-<div class="writerAvatarSlider <?=$info[0]?>">
-	<div class="writerAvatar <?php if($info['nom']=='GM'){echo'GM';} ?>" style="background-image: url(img/avatars/<?php
+<div class="writerAvatarSlider <?=$firstMsgOfPost[0]?>">
+	<div class="writerAvatar <?php if($firstMsgOfPost['nom']=='GM'){echo'GM';} ?>" style="background-image: url(img/avatars/<?php
 	//Si GM, avatar générique de GM
-	if ($info['nom']=='GM'){echo'GM';}
-	else{echo $info['persoID'];}
+	if ($firstMsgOfPost['nom']=='GM'){echo'GM';}
+	else{echo $firstMsgOfPost['persoID'];}
 	?>.jpg);">
 		<div class="layer desktop">
-			<b><u><?=strtoupper($info['nom'])?></u><br><br>
-			<?=$info['pseudo']?></b><br>
-			<?=$info['nombremsg']?> messages<br>
-			(<?=$info['grade']?>)<br><br>
-			<?php $date = explode('--', $info['dat']);?>
+			<b><u><?=strtoupper($firstMsgOfPost['nom'])?></u><br><br>
+			<?=$firstMsgOfPost['pseudo']?></b><br>
+			<?=$firstMsgOfPost['nombremsg']?> messages<br>
+			(<?=$firstMsgOfPost['grade']?>)<br><br>
+			<?php $date = explode('--', $firstMsgOfPost['dat']);?>
 			<i>le <?=$date[0]?><br>
 			à <?=$date[1]?></i>
 		</div>
 		<div class="layer mobile" hidden>									
 			<img src="img/mobile/croix.png" class="croixAvatar">
 			<span class="nomPerso">
-				<?=strtoupper($info['nom'])?>
+				<?=strtoupper($firstMsgOfPost['nom'])?>
 			</span><br><br>
 				<table class="carac">
 					<tr>
-						<td>Force :</td><td><?=$info['forc']?></td>
+						<td>Force :</td><td><?=$firstMsgOfPost['forc']?></td>
 					</tr>
 					<tr>
-						<td>Dextérité :</td><td><?=$info['dexterite']?></td>
+						<td>Dextérité :</td><td><?=$firstMsgOfPost['dexterite']?></td>
 					</tr>
 					<tr>
-						<td>Intelligence :</td><td><?=$info['intelligence']?></td>
+						<td>Intelligence :</td><td><?=$firstMsgOfPost['intelligence']?></td>
 					</tr>
 					<tr>
-						<td>Charisme :</td><td><?=$info['charisme']?></td>
+						<td>Charisme :</td><td><?=$firstMsgOfPost['charisme']?></td>
 					</tr>
 					<tr>
-						<td>Perception :</td><td><?=$info['perception']?></td>
+						<td>Perception :</td><td><?=$firstMsgOfPost['perception']?></td>
 					</tr>
 				</table>
 				<div class="layerBox">
-					<b><?=ucfirst($info['clan'])?></b><br>
-					<b>LVL : </b><?=$info['lvl']?><br><br>
-					<?=$info['nature']?><br>
-					/<?=$info['attitude']?><br><br>
+					<b><?=ucfirst($firstMsgOfPost['clan'])?></b><br>
+					<b>LVL : </b><?=$firstMsgOfPost['lvl']?><br><br>
+					<?=$firstMsgOfPost['nature']?><br>
+					/<?=$firstMsgOfPost['attitude']?><br><br>
 				</div>
 				<div class="centering layerBox">
-					<b>Concept : </b><br><?=$info['concept']?><br>
-					<b>Défaut : </b><br><?=$info['defaut']?><br>
+					<b>Concept : </b><br><?=$firstMsgOfPost['concept']?><br>
+					<b>Défaut : </b><br><?=$firstMsgOfPost['defaut']?><br>
 				</div>
 				<div class="layerBottom">
-					<b>Auteur : </b><?=$info['pseudo']?><br>
-					<i><?=$info['nombremsg']?> messages<br>
-					(<?=$info['grade']?>)</i><br>
+					<b>Auteur : </b><?=$firstMsgOfPost['pseudo']?><br>
+					<i><?=$firstMsgOfPost['nombremsg']?> messages<br>
+					(<?=$firstMsgOfPost['grade']?>)</i><br>
 				</div>
 				<img class="msg-logo" src="img/icones/msg.png">
 		</div>
@@ -58,23 +58,19 @@
 
 <!------ MESSAGE ------>
 
-<div class="msg <?=$info[0]?> <?php if($info['nom']=='GM'){echo'msgGM';} ?>">
+<div class="msg <?=$firstMsgOfPost[0]?> <?php if($firstMsgOfPost['nom']=='GM'){echo'msgGM';} ?>">
 	<!-- date -->
 	<div class="dateMsg mobile">
-		<?=$info['pseudo']?>, 
+		<?=$firstMsgOfPost['pseudo']?>, 
 		<?php
-		$date = explode('--', $info['dat']);
+		$date = explode('--', $firstMsgOfPost['dat']);
 		echo 'le '.$date[0].' à '.$date[1]?>
 	</div>
 
 
 	<?php // On compte le nombre de messages dans le post
-	$msgCount = 0;
-	for ($k=0; $k<6 ; $k++) {
-		if (isset($infoAv[floatval($i)+$k]['persoID']) AND $infoAv[floatval($i)+$k]['persoID'] == $info['persoID']) {
-			$msgCount ++;
-		}
-	} // On stock ce nombre pour le Javascript ?>
+	$msgCount = count($msgOfPost)
+	 // On stock ce nombre pour le Javascript ?>
 	<div hidden class="msgCount" msgcount="<?=$msgCount?>"></div>
 
 
@@ -82,38 +78,48 @@
 
 	<!-- Messages du même perso, mis à la suite -->
 	<?php
-	for ($k=0; $k < $msgCount; $k++) {
+
+	$k = 0;
+	foreach ($msgOfPost as $msgOfPostID) {
+		$msgInfo = $msgS[$msgOfPostID];
+
+		//Check si lastMsgOfPost
+		if ($k==$msgCount-1) {$last=True;}
+		else {$last=False;}
+
 		if ($k>0) {
 			echo "<div style='height: 10px;''></div>";
 		}
-		if (isset($infoAv[floatval($i)+$k-1]) 
-			AND $infoAv[floatval($i)+$k-1]['type'] == 'RP'
-			AND $infoAv[floatval($i)+$k]['type'] == 'RP'
-			AND $k > 0) { ?>
-			<div class="separate <?php if ($k==$msgCount-1){echo "lastSepOfPost";} ?>"></div>
+
+		//Si on est entre 2 messages et qu'aucun des 2 n'est un jet de dés, on met un séparateur
+		if ($k>0
+			AND $msgInfo['type']!=='diceRoll_player'
+			AND $msgS[$msgOfPostID-1]['type']!=='diceRoll_player') { ?>
+			<div class="separate <?php if ($last==True){echo "lastSepOfPost";} ?>"></div>
 		<?php
 		}
+
 		if ($k>0) {
 			echo "<div style='height: 10px;''></div>";
 		}
-		if ($infoAv[floatval($i)+$k]['type'] == 'diceRoll_player') {
-			$info = $infoAv[floatval($i)+$k];
+
+		if ($msgInfo['type'] == 'diceRoll_player') {
 			include ("drawers/aventures_messages_diceroll_player.php");			
 		}
-		if ($infoAv[floatval($i)+$k]['type'] == 'RP') { ?>
-			<span <?php if ($k==$msgCount-1){echo "class='lastMsgOfPost'";} ?> >					
-				<?=htmlspecialchars_decode(nl2br($infoAv[floatval($i)+$k]['contenu']))?>
+		if ($msgInfo['type'] == 'RP') { ?>
+			<span <?php if ($last==True){echo "class='lastMsgOfPost'";} ?> >					
+				<?=htmlspecialchars_decode(nl2br($msgInfo['contenu']))?>
 			</span>
-		<?php	
+
+		<?php
+		$k++;
 		}
-		$msgInARow ++;
 	}
-	$msgInARow --;
 	?>
 	<!-- Options d'édition et suppression -->
 
 	<?php
-	if ($infoAv[$i+$msgInARow][0] == $lastMsgID) { ?>
+	if ($msgInfo[0] == $lastMsgID) { ?>
 		<div class="suppMsg desktop button" ajax='?action=suppMsg&msgID=<?=$lastMsgID?>' msgid="<?=$lastMsgID?>">
 			x
 		</div>
@@ -142,7 +148,7 @@
 	} ?>
 
 
-	<?php if($i==count($infoAv)-2){ ?>
+	<?php if($i==count($msgS)-2){ ?>
 		<div id="pmop"></div>
 	<?php
 	}?>

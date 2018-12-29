@@ -1,5 +1,5 @@
 <?php 
-if ($i == 0) {//Seulement pour le 1er message ?>
+if ($i == 0) {//Seulement pour le 1er post ?>
 	<div class="fixInfos desktop">
 		<?php
 		for ($j=0; $j < count($coterie); $j++) { 
@@ -28,6 +28,6 @@ if ($i == 0) {//Seulement pour le 1er message ?>
 		} ?>
 	</div>
 	<?php	
-	}else{ ?>
-		<div class='<?=$info[0]?>'></div>
-	<?php }?>
+}else{ ?>
+	<div class='<?=$firstMsgOfPost[0]?>'></div>
+<?php }?>

@@ -4,7 +4,7 @@ $req = $bdd->query("
 	FROM mas_diceroll
 	LEFT JOIN mas_persos
 	ON mas_diceroll.persoID=mas_persos.id
-	WHERE msgID = '$info[0]'");
+	WHERE msgID = '$msgInfo[0]'");
 $diceRolls = $req->fetchall(); ?>
 
 

@@ -135,10 +135,10 @@ include("submits/aventures_submit.php");
 			$avID = $_GET['avID'];
 
 			//PAGINATION
-			$messagesParPage = 6;
+			$postsParPage = 6;
 			$req = $bdd->query("SELECT DISTINCT postID FROM mas_messages_aventure WHERE avID='$avID'");
 			$NbrMessages = $req->rowCount();
-			$NbrPages = ceil($NbrMessages/$messagesParPage);
+			$NbrPages = ceil($NbrMessages/$postsParPage);
 			//On défini la page courante
 			if (isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0) {
 				$_GET['page']=intval($_GET['page']);
@@ -147,17 +147,18 @@ include("submits/aventures_submit.php");
 				$currentPage = $NbrPages;
 			}
 			//On défini où on en est sur cette page
-			$start = ($currentPage-1)*$messagesParPage;
+			$start = ($currentPage-1)*$postsParPage;
 
-			//On met toutes les infos de chaque message de la page dans $infoAv
+			//On met toutes les infos de chaque message de la page dans $msgS
 			$req = $bdd->query("
 				SELECT DISTINCT postID 
 				from mas_messages_aventure 
-				ORDER BY id 
-				LIMIT ".$start.",".$messagesParPage."
+				ORDER BY postID 
+				LIMIT ".$start.",".$postsParPage."
 				");
 			$postArray = $req->fetchall(PDO::FETCH_COLUMN, 0);
 			$postString = implode("', '", $postArray);
+
 			$req = $bdd->query("
 				SELECT *
 				FROM mas_messages_aventure
@@ -166,8 +167,9 @@ include("submits/aventures_submit.php");
 				LEFT JOIN mas_aventures ON mas_messages_aventure.avID = mas_aventures.id
 				WHERE avID= '$avID'
 				AND postID IN ('$postString')
+				ORDER BY postID
 				");
-			$infoAv = $req->fetchall();
+			$msgS = $req->fetchall();
 
 			//On récupère le dernier message du joueur, pour l'édition/suppression
 			$req = $bdd->query("
@@ -191,7 +193,7 @@ include("submits/aventures_submit.php");
 			?>
 
 			<!------ TITRE AVENTURE ------>
-			<h2><?=strtoupper($infoAv[0]['nom_aventure'])?></h2>
+			<h2><?=strtoupper($msgS[0]['nom_aventure'])?></h2>
 
 			<div id="gridAv">
 
@@ -215,20 +217,29 @@ include("submits/aventures_submit.php");
 				<div></div>
 
 				<?php // ------- WHILE MESSAGES ------- 
-				for ($i=0; $i < count($infoAv); $i++) { 
 
-					$info = $infoAv[$i];
-					$msgInARow = 0;
+				for ($i=0; $i < count($postArray); $i++) {
+
+					$msgOfPost = array_keys(array_column($msgS, 'postID'), $postArray[$i]);
+					$firstMsgOfPost= $msgS[$msgOfPost[0]];
+						if ($firstMsgOfPost['type'] === 'RP'){
+							//MESSAGE REGULAR
+							include("drawers/aventures_messages_rp.php");
+						}
+						if ($firstMsgOfPost['type'] === 'diceRoll_GM') { 
+							//MESSAGE MECA
+							include("drawers/aventures_messages_meca.php");
+						}
+
+
+
+/*					for ($j=0; $j < ; $j++) { 
+						# code...
+					}
+
+					$info = $msgS[$i];
 					
-					if ($info['type'] === 'RP'){
-						/*MESSAGE REGULAR*/
-						include("drawers/aventures_messages_rp.php");
-					}
-					if ($info['type'] === 'diceRoll_GM') { 
-						/*MESSAGE MECA*/
-						include("drawers/aventures_messages_meca.php");
-					}
-					$i = $i+$msgInARow;
+*/
 					?>
 
 				<?php //endwhile messages	

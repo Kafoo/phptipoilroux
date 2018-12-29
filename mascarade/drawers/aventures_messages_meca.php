@@ -4,7 +4,7 @@ $req = $bdd->query("
 	FROM mas_diceroll
 	LEFT JOIN mas_persos
 	ON mas_diceroll.persoID=mas_persos.id
-	WHERE msgID = '$info[0]'");
+	WHERE msgID = '$firstMsgOfPost[0]'");
 $diceRolls = $req->fetchall(); ?>
 
 <div>
@@ -15,7 +15,7 @@ $diceRolls = $req->fetchall(); ?>
 <div class="diceRollBloc">
 
 	<div class="diceRollTitle centering">
-		- <?=$info['contenu']?> -
+		- <?=$firstMsgOfPost['contenu']?> -
 	</div>
 
 	<?php 
