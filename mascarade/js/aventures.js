@@ -141,7 +141,15 @@ $('.rollTheDie').one('click', function(e){
 })
 
 
+// ---------- REPLY OPTIONS ---------
 
+$(".replyOptions").click(function(e){
+	var height = $("#replyContainer").height();
+	$("#replyContainer").height(height);
+	$("#diceReply").show();
+
+	$("#diceReply").animate({opacity:"1"},300);
+})
 
 
 

@@ -107,7 +107,7 @@
 			include ("drawers/aventures_messages_diceroll_player.php");			
 		}
 		if ($msgInfo['type'] == 'RP') { ?>
-			<span <?php if ($last==True){echo "class='lastMsgOfPost'";} ?> >					
+			<span <?php if ($last==True){echo "class='lastMsgOfPost'";} ?> >
 				<?=htmlspecialchars_decode(nl2br($msgInfo['contenu']))?>
 			</span>
 

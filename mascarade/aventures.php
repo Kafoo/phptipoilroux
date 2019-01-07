@@ -265,11 +265,34 @@ include("submits/aventures_submit.php");
 				<div></div>
 
 				<!-- REPONSE AREA -->
-				<div></div>
-				<div id="mceMainContainer">
+
+				<div class="replyOptions button">
+					Lancé de dés
+				</div>
+
+				<div id="replyContainer">
+					<div id="diceReply" hidden>
+						<div class="closingCross"></div>
+						<form method="POST" action="">
+							<h4>Intitulé</h4>
+								
+							<input id="bouh" type="text" name="title">
+							<h4>Caractéristique</h4>
+
+							<div class="diceReply-caracContainer container centering">	
+								<div class="logo-carac1 diceReply-carac button"></div>
+								<div class="logo-carac2 diceReply-carac button"></div>
+								<div class="logo-carac3 diceReply-carac button"></div>
+								<div class="logo-carac4 diceReply-carac button"></div>
+								<div class="logo-carac5 diceReply-carac button"></div>
+							</div>
+
+							<h4>Difficulté</h4>
+						</form>
+					</div>
 					<form method="POST" action="">
 						<textarea class="mytextarea" name="message"></textarea>
-						<input type="submit" name="submit" value='Je réponds !' style="margin: 20px;">
+						<input type="submit" name="submit" value='Je réponds !'>
 					</form>
 				</div>
 				<div></div>

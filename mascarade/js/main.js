@@ -30,3 +30,8 @@ $('#croixConnection').click(function(){
 
 
 
+$(".closingCross").click(function(e){
+	$(e.currentTarget).parent().animate({opacity:"0"}, function(){
+		$(e.currentTarget).parent().hide();
+	})
+});

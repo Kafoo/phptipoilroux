@@ -62,7 +62,7 @@
 		font-size: 2em;
 		text-align: center;
 		text-decoration: underline;
-		margin: 60px auto;
+		margin: 40px auto;
 	}
 
 	h3{
@@ -71,6 +71,13 @@
 		font-size: 1.5em;
 		color: lightgrey;
 		text-shadow: 2px 2px 2px black;
+	}
+
+	h4{
+		text-align: center;
+		font-size: 1.5em;
+		margin: 10px;
+		text-decoration: underline;
 	}
 
 	.centering{
@@ -92,6 +99,42 @@
 	}
 	.button:hover{
 		box-shadow: none;
+	}
+
+	.logo-carac1{
+		background-image: url(../img/icones/carac/forc_color.png);
+		background-size: cover;
+	}
+
+	.logo-carac2{
+		background-image: url(../img/icones/carac/dexterite_color.png);
+		background-size: cover;
+	}
+
+	.logo-carac3{
+		background-image: url(../img/icones/carac/intelligence_color.png);
+		background-size: cover;
+	}
+
+	.logo-carac4{
+		background-image: url(../img/icones/carac/charisme_color.png);
+		background-size: cover;
+	}
+
+	.logo-carac5{
+		background-image: url(../img/icones/carac/perception_color.png);
+		background-size: cover;
+	}
+
+	.closingCross{
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		top: 10px;
+		right: 10px;
+		background-image: url(../img/icones/closingCross.png);
+		background-size: cover;
+		cursor: pointer;
 	}
 
 /*--------- HEADER ---------*/
