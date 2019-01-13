@@ -265,18 +265,26 @@ include("submits/aventures_submit.php");
 				<div></div>
 
 				<!-- REPONSE AREA -->
-
-				<div class="replyOptions button">
-					Lancé de dés
+				<div>
+					<div style="height: 40px" SPACER></div>			
+					<div class="showingOW replyOption button desktop" OW="diceReply">
+						Lancé de dés
+					</div>
+					<div class="showingOW replyOption button desktop" OW="alloGM">
+						Allô GM
+					</div>
+					<div class="showingOW replyOption button desktop" OW="notes">
+						Notes
+					</div>
 				</div>
 
-				<div id="replyContainer">
-					<div id="diceReply" hidden>
+				<div class="OWContainer" id="replyContainer">
+					<div class="OW" id="diceReply">
 						<div class="closingCross"></div>
 						<form method="POST" action="">
-							<h4>Intitulé</h4>
+							<h4>Titre</h4>
 								
-							<input id="bouh" type="text" name="title">
+							<input type="text" name="title">
 							<h4>Caractéristique</h4>
 
 							<div class="diceReply-caracContainer container centering">	
@@ -290,12 +298,21 @@ include("submits/aventures_submit.php");
 							<h4>Difficulté</h4>
 						</form>
 					</div>
+					<div class="OW" id="alloGM">
+						<div class="closingCross"></div>
+						ALLO GM
+					</div>
+					<div class="OW" id="notes">
+						<div class="closingCross"></div>
+						NOTES
+					</div>
 					<form method="POST" action="">
 						<textarea class="mytextarea" name="message"></textarea>
 						<input type="submit" name="submit" value='Je réponds !'>
 					</form>
 				</div>
-				<div></div>
+
+
 			</div>
 
 		<?php //endif aventure précisée

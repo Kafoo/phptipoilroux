@@ -126,6 +126,15 @@
 		background-size: cover;
 	}
 
+
+	.OW{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 1000;
+		opacity: 0;
+	}
+
 	.closingCross{
 		position: absolute;
 		width: 20px;
@@ -136,6 +145,7 @@
 		background-size: cover;
 		cursor: pointer;
 	}
+
 
 /*--------- HEADER ---------*/
 
