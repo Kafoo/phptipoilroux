@@ -10,7 +10,7 @@ include("submits/aventures_submit.php");
 	<?php include("_shared_/headconfig.php");
 	$_SESSION['currentURL'] = $_SERVER['REQUEST_URI']; ?>
 	<!-- TINYMCE SOURCE -->
-  	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
+   	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
 	<!-- END TINYMCE -->
 	<link rel="stylesheet" type="text/css" href="style/aventures.css">
 	<title>Vampire - Aventures</title>
@@ -230,16 +230,6 @@ include("submits/aventures_submit.php");
 							//MESSAGE MECA
 							include("drawers/aventures_messages_meca.php");
 						}
-
-
-
-/*					for ($j=0; $j < ; $j++) { 
-						# code...
-					}
-
-					$info = $msgS[$i];
-					
-*/
 					?>
 
 				<?php //endwhile messages	
@@ -264,17 +254,19 @@ include("submits/aventures_submit.php");
 				</div>
 				<div></div>
 
+				<div></div><div style="height: 20px" SPACER></div><div></div>
+
 				<!-- REPONSE AREA -->
 				<div>
 					<div style="height: 40px" SPACER></div>			
 					<div class="showingOW replyOption button desktop" OW="diceReply">
-						Lancé de dés
+						<img src="img/icones/d20black.png">
 					</div>
 					<div class="showingOW replyOption button desktop" OW="alloGM">
-						Allô GM
+						<img src="img/icones/allogm.png">
 					</div>
 					<div class="showingOW replyOption button desktop" OW="notes">
-						Notes
+						<img src="img/icones/notes.png">
 					</div>
 				</div>
 
@@ -282,6 +274,7 @@ include("submits/aventures_submit.php");
 					<div class="OW" id="diceReply">
 						<div class="closingCross"></div>
 						<form method="POST" action="">
+							<h2>Lancé de dés</h2>
 							<h4>Titre</h4>
 								
 							<input type="text" name="title">
@@ -304,7 +297,7 @@ include("submits/aventures_submit.php");
 					</div>
 					<div class="OW" id="notes">
 						<div class="closingCross"></div>
-						NOTES
+						NOTES PERSO
 					</div>
 					<form method="POST" action="">
 						<textarea class="mytextarea" name="message"></textarea>

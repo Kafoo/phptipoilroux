@@ -69,7 +69,7 @@
 
 
 	<?php // On compte le nombre de messages dans le post
-	$msgCount = count($msgOfPost)
+	$msgCount = count($msgOfPost);
 	 // On stock ce nombre pour le Javascript ?>
 	<div hidden class="msgCount" msgcount="<?=$msgCount?>"></div>
 
@@ -148,7 +148,7 @@
 	} ?>
 
 
-	<?php if($i==count($msgS)-2){ ?>
+	<?php if($i==count($msgS)-3){ ?>
 		<div id="pmop"></div>
 	<?php
 	}?>
