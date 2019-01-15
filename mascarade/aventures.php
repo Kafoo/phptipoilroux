@@ -255,7 +255,7 @@ include("submits/aventures_submit.php");
 				<div></div>
 
 				<div></div><div style="height: 20px" SPACER></div><div></div>
-
+				
 				<!-- REPONSE AREA -->
 				<div>
 					<div style="height: 40px" SPACER></div>			

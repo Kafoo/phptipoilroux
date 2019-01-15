@@ -20,7 +20,7 @@ if ($i == 0) {//Seulement pour le 1er post ?>
 					</div>
 				</div>
 				<br>
-				<img src="img/rpg/pv_<?=$coterie[$j]['pv']?>" class="hpBar">
+				<img src="img/rpg/pv_<?=$coterie[$j]['pv']?>.png" class="hpBar">
 				<div class="infoPersoCarac logo-carac1"><?=$coterie[$j]['forc']?></div>
 				<div class="infoPersoCarac logo-carac2"><?=$coterie[$j]['dexterite']?></div>
 				<div class="infoPersoCarac logo-carac3"><?=$coterie[$j]['intelligence']?></div>
