@@ -576,7 +576,7 @@ h2 img{
 .notesPaper::-webkit-scrollbar-thumb {
     background: rgba(50,50,50,0.7);
 
-
+}
 /*----------- 1400px -----------*/
 
 @media (max-width: 1400px){
