@@ -143,6 +143,28 @@ $('.rollTheDie').one('click', function(e){
 
 // ---------- REPLY OPTIONS ---------
 
+$('.closingCross').click(function(e){
+	$('.showingOW').removeClass("current");
+})
+
+
+$('.showingNotes').one('click', function() {
+	var http = new XMLHttpRequest;
+    http.onreadystatechange = function() {
+    	if (this.readyState < 4 ) {
+    		$('.notesPaper').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+    	}
+        if (this.readyState == 4 && this.status !== 200) {
+        $('.notesPaper').html('<div class="loading-error"></div>');
+       }
+        if (this.readyState == 4 && this.status == 200) {
+            $('.notesPaper').html(this.responseText);
+       }
+    };
+	http.open('GET','ajax/aventures_notes.php', true);
+	http.send();
+    
+});
 
 /*-------------- IF MOBILE --------------*/
 
@@ -181,4 +203,3 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 		$(e.currentTarget).parent().parent().children('.mobile').hide(200);
 	});
 }
-

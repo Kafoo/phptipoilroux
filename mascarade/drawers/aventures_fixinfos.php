@@ -4,12 +4,9 @@ if ($i == 0) {//Seulement pour le 1er post ?>
 		<?php
 		for ($j=0; $j < count($coterie); $j++) { 
 			if ($coterie[$j]['nom']!=='GM') { //On n'affiche pas le GM ?>
-				<div class="infoPersoNom">
-					<div class="infoPersoLvl" >
-						<?=$coterie[$j]['lvl']?>
-					</div>
-					<b><?=$coterie[$j]['nom']?></b>
-					<div class="infoPersoPU" hidden>
+				<div class="infoPerso">
+					<div class="infoPersoNom"><?=$coterie[$j]['nom']?></div>
+ 					<div class="infoPersoPU" hidden>
 						<b>LVL : </b><?=$coterie[$j]['lvl']?><br><br>
 						<b>Clan : </b><?=ucfirst($coterie[$j]['clan'])?><br>
 						<b>Nature : </b><?=$coterie[$j]['nature']?><br>
@@ -18,17 +15,21 @@ if ($i == 0) {//Seulement pour le 1er post ?>
 						<b>Défaut : </b><?=$coterie[$j]['defaut']?><br><br>
 						<b>Discipline : </b><?=ucfirst($coterie[$j]['nom_discipline'])?><br>
 					</div>
+					<div class="infoPersoDropdown">
+						<img src="img/rpg/pv_<?=$coterie[$j]['pv']?>.png" class="hpBar">
+						<div class="infoPersoLvl">lvl <?=$coterie[$j]['lvl']?></div>
+						<div class="infoPersoXP"></div>
+						<div class="infoPersoCarac logo-carac1"><?=$coterie[$j]['forc']?></div>
+						<div class="infoPersoCarac logo-carac2"><?=$coterie[$j]['dexterite']?></div>
+						<div class="infoPersoCarac logo-carac3"><?=$coterie[$j]['intelligence']?></div>
+						<div class="infoPersoCarac logo-carac4"><?=$coterie[$j]['charisme']?></div>
+						<div class="infoPersoCarac logo-carac5"><?=$coterie[$j]['perception']?></div>
+					</div>
+					<img src="img/icones/dropdown.png" class="dropdownIcone">
 				</div>
-				<br>
-				<img src="img/rpg/pv_<?=$coterie[$j]['pv']?>.png" class="hpBar">
-				<div class="infoPersoCarac logo-carac1"><?=$coterie[$j]['forc']?></div>
-				<div class="infoPersoCarac logo-carac2"><?=$coterie[$j]['dexterite']?></div>
-				<div class="infoPersoCarac logo-carac3"><?=$coterie[$j]['intelligence']?></div>
-				<div class="infoPersoCarac logo-carac4"><?=$coterie[$j]['charisme']?></div>
-				<div class="infoPersoCarac logo-carac5"><?=$coterie[$j]['perception']?></div>
 				<?php // Séparation uniquement entre chaque perso
 				if ($j !== count($coterie)-2) { ?>
-					<div class="separate"></div>
+					<!-- <div class="separate"></div> -->
 				<?php	
 				}
 			} ?>

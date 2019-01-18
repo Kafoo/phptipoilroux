@@ -31,6 +31,7 @@ $('#croixConnection').click(function(){
 
 /*OVER WINDOWS*/
 
+
 $('.showingOW').click(function(e){
 	var OWName = ($(e.currentTarget).attr('OW'));
 	var OW = $(".OW#"+OWName);
@@ -41,6 +42,13 @@ $('.showingOW').click(function(e){
 			otherOW.hide();
 		})
 	});
+
+	//current
+	var showingOW = $(e.currentTarget)
+	var allShowingOW = $(e.currentTarget).parent().children(".showingOW");
+	allShowingOW.removeClass("current");
+	showingOW.addClass("current");
+
 });
 
 $(".closingCross").click(function(e){

@@ -10,7 +10,7 @@ include("submits/aventures_submit.php");
 	<?php include("_shared_/headconfig.php");
 	$_SESSION['currentURL'] = $_SERVER['REQUEST_URI']; ?>
 	<!-- TINYMCE SOURCE -->
-   	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
+     	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
 	<!-- END TINYMCE -->
 	<link rel="stylesheet" type="text/css" href="style/aventures.css">
 	<title>Vampire - Aventures</title>
@@ -193,7 +193,7 @@ include("submits/aventures_submit.php");
 			?>
 
 			<!------ TITRE AVENTURE ------>
-			<h2><?=strtoupper($msgS[0]['nom_aventure'])?></h2>
+			<h2><img src="img/icones/logoAv.png"> <?=$msgS[0]['nom_aventure']?> <img src="img/icones/logoAv.png"></h2>
 
 			<div id="gridAv">
 
@@ -259,13 +259,13 @@ include("submits/aventures_submit.php");
 				<!-- REPONSE AREA -->
 				<div>
 					<div style="height: 40px" SPACER></div>			
-					<div class="showingOW replyOption button desktop" OW="diceReply">
+					<div class="showingOW replyOption desktop" OW="diceReply">
 						<img src="img/icones/d20black.png">
 					</div>
-					<div class="showingOW replyOption button desktop" OW="alloGM">
+					<div class="showingOW replyOption desktop" OW="alloGM">
 						<img src="img/icones/allogm.png">
 					</div>
-					<div class="showingOW replyOption button desktop" OW="notes">
+					<div class="showingOW replyOption desktop showingNotes" OW="notes">
 						<img src="img/icones/notes.png">
 					</div>
 				</div>
@@ -274,11 +274,11 @@ include("submits/aventures_submit.php");
 					<div class="OW" id="diceReply">
 						<div class="closingCross"></div>
 						<form method="POST" action="">
-							<h2>Lancé de dés</h2>
-							<h4>Titre</h4>
+							LANCE DE DES
+							<h3>Titre</h3>
 								
 							<input type="text" name="title">
-							<h4>Caractéristique</h4>
+							<h3>Caractéristique</h3>
 
 							<div class="diceReply-caracContainer container centering">	
 								<div class="logo-carac1 diceReply-carac button"></div>
@@ -288,7 +288,7 @@ include("submits/aventures_submit.php");
 								<div class="logo-carac5 diceReply-carac button"></div>
 							</div>
 
-							<h4>Difficulté</h4>
+							<h3>Difficulté</h3>
 						</form>
 					</div>
 					<div class="OW" id="alloGM">
@@ -296,8 +296,11 @@ include("submits/aventures_submit.php");
 						ALLO GM
 					</div>
 					<div class="OW" id="notes">
-						<div class="closingCross"></div>
-						NOTES PERSO
+					<div class="closingCross"></div>
+					NOTES PERSO
+					<div class="notesPaper">
+						<!-- AJAX -->
+					</div>
 					</div>
 					<form method="POST" action="">
 						<textarea class="mytextarea" name="message"></textarea>

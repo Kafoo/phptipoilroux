@@ -78,7 +78,7 @@ include("_shared_/functions.php");
 
 		?>
 
-		<h1>FICHE PERSO - <?=strtoupper($infoPerso['nom'])?></h1>
+		<h2><?=strtoupper($infoPerso['nom'])?></h2>
 
 		<div class="container" id="gridFichePerso">
 			
@@ -93,11 +93,10 @@ include("_shared_/functions.php");
 			</div>
 
 			<div class="ficheBox centering" style="grid-area: infos">
-				<h3>"<?=strtoupper($infoPerso['nom'])?>"</h3>
-					<b><u>Nature</u></b><br><?=$infoPerso['nature']?><br><br>
-					<b><u>Attitude</u></b><br><?=$infoPerso['attitude']?><br><br>
-					<b><u>Concept</u></b><br><?=$infoPerso['concept']?><br><br>
-					<b><u>Physique</u></b><div class="editButton" id="editButtonPhysique">éditer</div><br>
+					<h4>Nature</h4><b><?=$infoPerso['nature']?></b><br><br>
+					<h4>Attitude</h4><b><?=$infoPerso['attitude']?></b><br><br>
+					<h4>Concept</h4><b><?=$infoPerso['concept']?></b><br><br>
+					<h4>Physique</h4><div class="editButton" id="editButtonPhysique">éditer</div><br>
 					<span id="persoPhysique"><?=nl2br($infoPerso['physique'])?></span>
 					<div id="editPhysiqueBlock" hidden>
 						<form method="POST" action="SERVER_UPDATES.php?action=updatePersoPhysique&persoID=<?=$_GET['persoID']?>">
@@ -114,7 +113,7 @@ include("_shared_/functions.php");
 			</div>
 
 			<div class="ficheBox carac centering" style="grid-area: carac">
-				<span class="lvl">LVL <?=$infoPerso['lvl']?></span><br>
+				<h4>LVL <?=$infoPerso['lvl']?></h4>
 				<span class="desktop">
 					<i>XP : soon<br>
 					suivant : soon</i><br>

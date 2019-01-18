@@ -69,6 +69,10 @@
 
 /* ------ AVENTURE PRÉCISÉE ------ */
 
+h2 img{
+	width: 30px;
+}
+
 #gridAv{
 	display: grid;
 	margin: auto 3% auto 5%;
@@ -354,7 +358,6 @@
 	background-color: rgba(200,200,200,0.2);
 	box-shadow: 4px 4px 20px 1px rgba(0,0,0,0.4);
 	margin: 50px 0 0 35px;
-	padding: 10px 0;
 	top: 100px;
 	border-radius: 5px;
 	border: 1px solid black;
@@ -366,25 +369,42 @@
 
 .infoPersoLvl{
 	display: inline-block;
-	border-right: 1px solid black;
-	height: 100%;
-	padding: 1px 7px;
+	border: 1px solid black;
+	border-radius: 3px;
+	width: max-content;
+	margin: 0 0 5px 0;
+	padding: 0 5px;
 	font-weight: bold;
 	color: white;
 	text-shadow: 1px 1px 2px black;
 	background-color: grey;
-	background-size: cover;
+}
+
+.infoPersoXP{
+	display: inline-block;
+	position: relative;
+	top: 0px;
+	left: -7px;
+	border: 1px solid black;
+	border-radius: 3px;
+	height: 10px;
+	width: 85px;
+	padding: 0 5px;
+	background-color: rgb(26, 35, 126);
+	z-index: -1;
+}
+
+.infoPerso{
+	position: relative;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px black;
+	padding: 5px 0 0 0;
 }
 
 .infoPersoNom{
 	display: inline-block;
-	position: relative;
-	cursor: pointer;
-	border: 1px solid black;
-	border-radius: 3px;
-	padding-right: 5px;
-	margin-bottom: 2px;
-	box-shadow: 1px 1px 1px black;
+	font-size: 1.1em;
+	font-weight: bold;
 }
 
 .infoPersoPU{
@@ -401,8 +421,30 @@
 	z-index: 40;
 }
 
-.infoPersoNom:hover .infoPersoPU{
-	display: initial;
+.dropdownIcone{
+	display: block;
+	width: 40px;
+	margin: auto;
+	padding-bottom: 2px;
+}
+
+.infoPersoDropdown{
+	overflow: hidden;
+	height: 0;
+	transition : height 0.3s;
+}
+
+.infoPerso:hover .infoPersoDropdown{
+	height: 72px;
+	transition: height 0.3s;
+}
+
+.infoPerso:hover .dropdownIcone{
+	opacity: 0;
+}
+
+.infoPerso:hover .infoPersoNom{
+	color: white;
 }
 
 .infoPersoCarac{
@@ -437,6 +479,16 @@
 	border-radius: 10px 0 0 10px;
 	box-shadow: inset 2px -2px 20px rgba(50,50,50, 0.8);
 	z-index: 1;
+	cursor: pointer;
+}
+
+.replyOption:hover {
+	background-color: rgba(180,180,180,0.8);
+}
+
+.replyOption.current{
+	box-shadow: inset 2px -2px 20px rgb(255,255,255);
+
 }
 
 .replyOption img{
@@ -460,7 +512,13 @@
 	margin: 0 !important;
 	padding: 20px;
 	font-weight: bold;
+	cursor: pointer;
 }
+
+#replyContainer input[type='submit']:hover{
+	background-color: rgb(240,240,240);	
+}	
+
 
 #diceReply{
 	background-color: rgb(181, 183, 161);
@@ -481,7 +539,6 @@
 	box-shadow: inset -2px -2px 10px black;
 	border-radius: 4px;
 	margin: 5px;
-
 }
 
 #alloGM{
@@ -490,8 +547,35 @@
 }
 
 #notes{
-	background-color: rgb(161, 183, 161);
+	background-color: rgb(159, 163, 159);
+	text-align: center;
 }
+
+.notesPaper{
+	padding: 0 10px;
+	width: 80%;
+	margin: 40px auto;
+	height: 80%;
+	line-height: 24px;
+	background-image: linear-gradient(transparent 18px, rgb(50,50,50) 20px, transparent 1px),
+	url('../img/paper.jpg');
+	background-size: 100% 24px, cover;
+	background-attachment: local;
+	border: 1px solid black;
+	border-radius: 3px;
+	box-shadow: inset 0 0 30px 1px rgba(0,0,0,0.3);
+	overflow: auto;
+}
+
+.notesPaper::-webkit-scrollbar { 
+  width: 5px;
+  height: 8px;
+  background-color: rgb(225, 199, 151);
+}
+
+.notesPaper::-webkit-scrollbar-thumb {
+    background: rgba(50,50,50,0.7);
+
 
 /*----------- 1400px -----------*/
 
