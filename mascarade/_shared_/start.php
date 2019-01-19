@@ -27,6 +27,15 @@ session_start();
 
     include("connectDB.php");
 
+/* ---------- CHECK LAST UPDATES ---------- */ 
+ 
+if (!isset($_COOKIE['update1'])) { 
+    setcookie('update1', "Coucou c est moi le cookie d update", time()+3600*24*365, null, null, false, true); 
+    if (isset($_SESSION['connected'])) { 
+        header('Location: SERVER_UPDATES.php?action=disconnect'); 
+    } 
+} 
+
 /* ---------- USER CONNECTION ---------- */
 
 if (!isset($_SESSION['connected'])) {
