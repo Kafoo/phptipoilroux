@@ -193,28 +193,29 @@ include("submits/aventures_submit.php");
 			?>
 
 			<!------ TITRE AVENTURE ------>
-			<h2><img src="img/icones/logoAv.png"> <?=$msgS[0]['nom_aventure']?> <img src="img/icones/logoAv.png"></h2>
+			<h2><?=$msgS[0]['nom_aventure']?></h2>
+
+
+			<!-- SELECTION DE PAGE -->	
+			<div></div>
+			<div class ="pagination"> Pages :
+			<?php
+			for ($i=1; $i <= $NbrPages ; $i++) {
+
+				if ($i==$currentPage) {
+					echo "<span style='color:#c8c8c8'>".$i."</span>";
+				}
+				else{
+					echo "<a href='aventures.php?avID=".$avID."&page=".$i."'>".$i."</a> ";
+				}
+				if ($i<$NbrPages) {
+					echo " - ";
+				}
+			} ?>
+			</div>
+			<div></div>
 
 			<div id="gridAv">
-
-				<!-- SELECTION DE PAGE -->	
-				<div></div>
-				<div class ="pagination"> Pages :
-				<?php
-				for ($i=1; $i <= $NbrPages ; $i++) {
-
-					if ($i==$currentPage) {
-						echo "<span style='color:#c8c8c8'>".$i."</span>";
-					}
-					else{
-						echo "<a href='aventures.php?avID=".$avID."&page=".$i."'>".$i."</a> ";
-					}
-					if ($i<$NbrPages) {
-						echo " - ";
-					}
-				} ?>
-				</div>
-				<div></div>
 
 				<?php // ------- WHILE MESSAGES ------- 
 
