@@ -42,6 +42,20 @@
 	padding: 5px 8px;
 }
 
+.infoPersoCarac{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	border-radius: 50px;
+	border: 1px solid black;
+	box-shadow: inset -1px -1px 1px rgb(50,50,50);
+	text-shadow: 1px 1px 1px black;
+	color: white;
+	cursor: default;
+	text-align: center;
+}
+
 .persoBox{
 	display: block;
 	width: 200px;
