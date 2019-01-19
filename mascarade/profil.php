@@ -96,7 +96,13 @@ include("_shared_/functions.php");
 					<h4>Nature</h4><b><?=$infoPerso['nature']?></b><br><br>
 					<h4>Attitude</h4><b><?=$infoPerso['attitude']?></b><br><br>
 					<h4>Concept</h4><b><?=$infoPerso['concept']?></b><br><br>
-					<h4>Physique</h4><div class="editButton" id="editButtonPhysique">éditer</div><br>
+					<h4>Physique</h4>
+					<?php
+					if (in_array($persoID, $_SESSION['persosArray'])) { ?>
+						<div class="editButton" id="editButtonPhysique">éditer</div>
+					<?php 
+					} ?>
+					<br>
 					<span id="persoPhysique"><?=nl2br($infoPerso['physique'])?></span>
 					<div id="editPhysiqueBlock" hidden>
 						<form method="POST" action="SERVER_UPDATES.php?action=updatePersoPhysique&persoID=<?=$_GET['persoID']?>">
@@ -121,23 +127,23 @@ include("_shared_/functions.php");
 				<br>
 				<table>
 					<tr>
-						<td><span class="caracDigit"><?=$infoPerso['forc']?></span></td>
+						<td><span class="infoPersoCarac logo-carac1"><?=$infoPerso['forc']?></span></td>
 						<td>Force</td>
 					</tr>
 					<tr>
-						<td><span class="caracDigit"><?=$infoPerso['dexterite']?></span></td>
+						<td><span class="infoPersoCarac logo-carac2"><?=$infoPerso['dexterite']?></span></td>
 						<td>Dextérité</td>
 					</tr>
 					<tr>
-						<td><span class="caracDigit"><?=$infoPerso['intelligence']?></span></td>
+						<td><span class="infoPersoCarac logo-carac3"><?=$infoPerso['intelligence']?></span></td>
 						<td>Intelligence</td>
 					</tr>
 					<tr>
-						<td><span class="caracDigit"><?=$infoPerso['charisme']?></span></td>
+						<td><span class="infoPersoCarac logo-carac4"><?=$infoPerso['charisme']?></span></td>
 						<td>Charisme</td>
 					</tr>
 					<tr>
-						<td><span class="caracDigit"><?=$infoPerso['perception']?></span></td>
+						<td><span class="infoPersoCarac logo-carac5"><?=$infoPerso['perception']?></span></td>
 						<td>Perception</td>
 					</tr>
 				</table>
@@ -173,7 +179,13 @@ include("_shared_/functions.php");
 			</div>
 
 			<div class="ficheBox" style="grid-area: lore">
-				<h3>HISTOIRE<div class="editButton" id="editButtonLore">éditer</div></h3>
+				<h3>HISTOIRE
+					<?php
+					if (in_array($persoID, $_SESSION['persosArray'])) { ?>
+						<div class="editButton" id="editButtonLore">éditer</div>
+					<?php 
+					} ?>
+				</h3>
 				<span id="persoLore"><?=nl2br($infoPerso['lore'])?></span>
 				<div id="editLoreBlock" hidden>
 					<form method="POST" action="SERVER_UPDATES.php?action=updatePersoLore&persoID=<?=$_GET['persoID']?>">
