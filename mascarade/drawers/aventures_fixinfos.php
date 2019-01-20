@@ -13,7 +13,9 @@ if ($i == 0) {//Seulement pour le 1er post ?>
 					<?php // Etoiles autour du nom si perso du user 
 					if ($coterie[$j]['userID'] === $_SESSION['id']) { ?> 
 						<img src="img/icones/monperso.png" style="width: 10px;"> 
-						<div class="infoPersoNom"><?=$coterie[$j]['nom']?></div> 
+						<div class="infoPersoNom">
+							<a href="profil.php?persoID=<?=$coterie[$j]['persoID']?>"><?=$coterie[$j]['nom']?></a>
+							</div>
 						<img src="img/icones/monperso.png" style="width: 10px;"> 
 					<?php 
 					} else {?> 
