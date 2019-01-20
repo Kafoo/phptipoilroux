@@ -368,6 +368,27 @@ h2 img{
 	text-align: center;
 }
 
+.coterieLogoContainer{
+	width: 100%;
+	position: absolute;
+	top: -22px;
+}
+
+.coterie-logo{
+	min-width: 90px;
+	max-width: max-content;
+	margin: auto;
+	height: 20px;
+	background-color: rgb(120,120,120);
+	border: 1px solid black;
+	border-bottom: none;
+	border-radius: 20px 20px 0 0;
+	background-image: url('../img/icones/coterie.png');
+	background-size: 70px;
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+
 
 .infoPersoLvl{
 	display: inline-block;
@@ -383,7 +404,6 @@ h2 img{
 }
 
 .infoPerso{
-	position: relative;
 	cursor: pointer;
 	box-shadow: 1px 1px 1px black;
 	padding: 5px 0 0 0;
@@ -396,7 +416,6 @@ h2 img{
 	left: -5px;
 	border: 1px solid black;
 	font-size: 0.7em;
-	font-weight: bold;
 	line-height: 14px;
 	border-radius: 3px;
 	height: 14px;
@@ -432,6 +451,7 @@ h2 img{
 	padding-bottom: 2px;
 }
 
+
 .infoPersoDropdown{
 	overflow: hidden;
 	height: 0;
@@ -454,6 +474,7 @@ h2 img{
 
 .infoPersoCarac{
 	display: inline-block;
+	overflow: all;
 	width: 25px;
 	height: 25px;
 	line-height: 25px;
@@ -462,7 +483,16 @@ h2 img{
 	box-shadow: inset -1px -1px 1px rgb(50,50,50);
 	text-shadow: 1px 1px 1px black;
 	color: white;
-	cursor: default;
+}
+
+.puFixInfos{
+	background-color: rgb(120,120,120);
+	padding: 2px 10px 2px 10px;
+	height: 16px;
+	line-height: initial;
+	border-radius: 20px 20px 0 0;
+	font-style: italic;
+	opacity: 0;
 }
 
 .hpBar{

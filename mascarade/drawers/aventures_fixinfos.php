@@ -1,6 +1,11 @@
 <?php 
 if ($i == 0) {//Seulement pour le 1er post ?>
 	<div class="fixInfos desktop">
+		<div class="coterieLogoContainer">		
+			<div class="coterie-logo coterie-pu">
+				<div class="puFixInfos"></div>
+			</div>
+		</div>
 		<?php
 		for ($j=0; $j < count($coterie); $j++) {  
 			if ($coterie[$j]['nom']!=='GM') { //On n'affiche pas le GM ?> 
@@ -34,17 +39,17 @@ if ($i == 0) {//Seulement pour le 1er post ?>
 					?> 
  
 					<div class="infoPersoDropdown"> 
-						<img src="img/rpg/pv_<?=$coterie[$j]['pv']?>.png" class="hpBar"> 
+						<img src="img/rpg/pv_<?=$coterie[$j]['pv']?>.png" class="hpBar" pv="<?=$coterie[$j]['pv']?>"> 
 						<div class="infoPersoLvl">lvl <?=$coterie[$j]['lvl']?></div> 
 						<div class="infoPersoXP"  
 						style="background: linear-gradient(to right, #5154bd <?=$pourcent?>%, rgb(200,200,200) <?=$pourcent?>%);"> 
-							<?=$xp?> / <?=$nextLVL?> XP 
+							<b><?=$xp?></b> / <?=$nextLVL?> XP 
 						</div> 
-						<div class="infoPersoCarac logo-carac1"><?=$coterie[$j]['forc']?></div> 
-						<div class="infoPersoCarac logo-carac2"><?=$coterie[$j]['dexterite']?></div> 
-						<div class="infoPersoCarac logo-carac3"><?=$coterie[$j]['intelligence']?></div> 
-						<div class="infoPersoCarac logo-carac4"><?=$coterie[$j]['charisme']?></div>
-						<div class="infoPersoCarac logo-carac5"><?=$coterie[$j]['perception']?></div>
+						<div class="infoPersoCarac carac1" carac="force"><?=$coterie[$j]['forc']?></div> 
+						<div class="infoPersoCarac carac2" carac="dextérité"><?=$coterie[$j]['dexterite']?></div> 
+						<div class="infoPersoCarac carac3" carac="intelligence"><?=$coterie[$j]['intelligence']?></div> 
+						<div class="infoPersoCarac carac4" carac="charisme"><?=$coterie[$j]['charisme']?></div>
+						<div class="infoPersoCarac carac5" carac="perception"><?=$coterie[$j]['perception']?></div>
 					</div>
 					<img src="img/icones/dropdown.png" class="dropdownIcone">
 				</div>

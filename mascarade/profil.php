@@ -127,23 +127,23 @@ include("_shared_/functions.php");
 				<br>
 				<table>
 					<tr>
-						<td><span class="infoPersoCarac logo-carac1"><?=$infoPerso['forc']?></span></td>
+						<td><span class="infoPersoCarac carac1" carac="carac1"><?=$infoPerso['forc']?></span></td>
 						<td>Force</td>
 					</tr>
 					<tr>
-						<td><span class="infoPersoCarac logo-carac2"><?=$infoPerso['dexterite']?></span></td>
+						<td><span class="infoPersoCarac carac2" carac="carac2"><?=$infoPerso['dexterite']?></span></td>
 						<td>Dextérité</td>
 					</tr>
 					<tr>
-						<td><span class="infoPersoCarac logo-carac3"><?=$infoPerso['intelligence']?></span></td>
+						<td><span class="infoPersoCarac carac3" carac="carac3"><?=$infoPerso['intelligence']?></span></td>
 						<td>Intelligence</td>
 					</tr>
 					<tr>
-						<td><span class="infoPersoCarac logo-carac4"><?=$infoPerso['charisme']?></span></td>
+						<td><span class="infoPersoCarac carac4" carac="carac4"><?=$infoPerso['charisme']?></span></td>
 						<td>Charisme</td>
 					</tr>
 					<tr>
-						<td><span class="infoPersoCarac logo-carac5"><?=$infoPerso['perception']?></span></td>
+						<td><span class="infoPersoCarac carac5" carac="carac5"><?=$infoPerso['perception']?></span></td>
 						<td>Perception</td>
 					</tr>
 				</table>

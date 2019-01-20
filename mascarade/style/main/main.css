@@ -115,27 +115,27 @@ src: url("../font/Cinzel-Regular.ttf");
 		box-shadow: none;
 	}
 
-	.logo-carac1{
+	.carac1{
 		background-image: url(../../img/icones/carac/forc_color.png);
 		background-size: cover;
 	}
 
-	.logo-carac2{
+	.carac2{
 		background-image: url(../../img/icones/carac/dexterite_color.png);
 		background-size: cover;
 	}
 
-	.logo-carac3{
+	.carac3{
 		background-image: url(../../img/icones/carac/intelligence_color.png);
 		background-size: cover;
 	}
 
-	.logo-carac4{
+	.carac4{
 		background-image: url(../../img/icones/carac/charisme_color.png);
 		background-size: cover;
 	}
 
-	.logo-carac5{
+	.carac5{
 		background-image: url(../../img/icones/carac/perception_color.png);
 		background-size: cover;
 	}

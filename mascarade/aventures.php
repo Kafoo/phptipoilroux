@@ -282,11 +282,11 @@ include("submits/aventures_submit.php");
 							<h3>Caractéristique</h3>
 
 							<div class="diceReply-caracContainer container centering">	
-								<div class="logo-carac1 diceReply-carac button"></div>
-								<div class="logo-carac2 diceReply-carac button"></div>
-								<div class="logo-carac3 diceReply-carac button"></div>
-								<div class="logo-carac4 diceReply-carac button"></div>
-								<div class="logo-carac5 diceReply-carac button"></div>
+								<div class="carac1 diceReply-carac button"></div>
+								<div class="carac2 diceReply-carac button"></div>
+								<div class="carac3 diceReply-carac button"></div>
+								<div class="carac4 diceReply-carac button"></div>
+								<div class="carac5 diceReply-carac button"></div>
 							</div>
 
 							<h3>Difficulté</h3>
