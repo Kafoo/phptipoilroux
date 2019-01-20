@@ -44,11 +44,11 @@ if (!isset($_SESSION['connected'])) {
     if (isset($_COOKIE['auth'])) {
         $auth = $_COOKIE['auth'];
         $auth = explode("---", $auth);
-        $checkUser = $bdd->query("SELECT * FROM ss_membres WHERE id='$auth[0]' ")->fetch();
+        $checkUser = $bdd->query("SELECT * FROM mas_membres WHERE id='$auth[0]' ")->fetch();
         $key = sha1($checkUser['pseudo']);
         if ($key === $auth[1]) {
             $userID = $checkUser['id'];
-            $reqUser = $bdd->query("SELECT * FROM ss_membres WHERE id='$userID' ");
+            $reqUser = $bdd->query("SELECT * FROM mas_membres WHERE id='$userID' ");
                 $userInfo = $reqUser->fetch();
                 $canSetSession = True;
         }
@@ -62,7 +62,7 @@ if (!isset($_SESSION['connected'])) {
 
         if (!empty($_POST['pseudoConnect']) AND !empty($_POST['passwordConnect'])) {
 
-            $reqUser = $bdd->prepare("SELECT * FROM ss_membres WHERE pseudo=? AND password=?");
+            $reqUser = $bdd->prepare("SELECT * FROM mas_membres WHERE pseudo=? AND password=?");
             $reqUser->execute(array($pseudoConnect, $passwordConnect));
             $userExist = $reqUser->rowCount();
             if ($userExist == 1) {
