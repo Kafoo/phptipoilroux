@@ -77,6 +77,12 @@ $(".infoPersoNom").mouseover(function(){
 	$('.puFixInfos').animate({opacity:'1'}, 80);
 })
 
+$(".infoPersoXP-container, .infoPersoLvl").mouseover(function(e){
+	$xp = $('.infoPersoXP').attr('xp');
+	$('.puFixInfos').html($xp);
+	$('.puFixInfos').animate({opacity:'1'}, 80);
+})
+
 $(".infoPerso").mouseleave(function(){
 	$('.puFixInfos').animate({opacity:'0'}, 1);
 })

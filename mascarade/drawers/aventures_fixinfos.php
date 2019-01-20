@@ -41,10 +41,13 @@ if ($i == 0) {//Seulement pour le 1er post ?>
 					<div class="infoPersoDropdown"> 
 						<img src="img/rpg/pv_<?=$coterie[$j]['pv']?>.png" class="hpBar" pv="<?=$coterie[$j]['pv']?>"> 
 						<div class="infoPersoLvl">lvl <?=$coterie[$j]['lvl']?></div> 
-						<div class="infoPersoXP"  
-						style="background: linear-gradient(to right, #5154bd <?=$pourcent?>%, rgb(200,200,200) <?=$pourcent?>%);"> 
-							<b><?=$xp?></b> / <?=$nextLVL?> XP 
-						</div> 
+						<div class="infoPersoXP-container">
+							<div class="infoPersoXP"  
+							style="background: linear-gradient(to right, #5154bd <?=$pourcent?>%, rgb(200,200,200) <?=$pourcent?>%);"
+							xp="<b><?=$xp?></b> / <?=$nextLVL?> XP"> 
+								<?=$pourcent?>% 
+							</div> 
+						</div>
 						<div class="infoPersoCarac carac1" carac="force"><?=$coterie[$j]['forc']?></div> 
 						<div class="infoPersoCarac carac2" carac="dextérité"><?=$coterie[$j]['dexterite']?></div> 
 						<div class="infoPersoCarac carac3" carac="intelligence"><?=$coterie[$j]['intelligence']?></div> 
