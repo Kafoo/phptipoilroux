@@ -557,6 +557,9 @@ h2 img{
 	background-color: rgb(240,240,240);	
 }	
 
+.OW{
+	padding: 20px 0 0 0
+}
 
 #diceReply{
 	background-color: rgb(181, 183, 161);
@@ -592,8 +595,8 @@ h2 img{
 .notesPaper{
 	padding: 0 10px;
 	width: 80%;
-	margin: 40px auto;
-	height: 80%;
+	height: 70%;
+	margin: 10px auto;
 	line-height: 24px;
 	background-image: linear-gradient(transparent 18px, rgb(50,50,50) 20px, transparent 1px),
 	url('../img/paper.jpg');

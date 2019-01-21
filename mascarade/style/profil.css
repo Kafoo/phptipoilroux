@@ -156,20 +156,6 @@
 	font-style: italic;
 }
 
-.editButton{
-	display: inline;
-	margin: 7px;
-	padding: 3px 5px;
-	border: 1px solid black;
-	background-color: grey;
-	border-radius: 3px;
-	font-size: 0.6em;
-	font-style: italic;
-	color: black;
-	cursor: pointer;
-	text-shadow: none;
-}
-
 #editLoreBlock{
 	width: 100%;
 	margin: auto;

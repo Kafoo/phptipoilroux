@@ -275,11 +275,11 @@ include("submits/aventures_submit.php");
 					<div class="OW" id="diceReply">
 						<div class="closingCross"></div>
 						<form method="POST" action="">
-							LANCE DE DES
-							<h3>Titre</h3>
+							<h3>LANCE DE DES</h3>
+							<h4>Titre</h4>
 								
 							<input type="text" name="title">
-							<h3>Caractéristique</h3>
+							<h4>Caractéristique</h4>
 
 							<div class="diceReply-caracContainer container centering">	
 								<div class="carac1 diceReply-carac button"></div>
@@ -289,16 +289,17 @@ include("submits/aventures_submit.php");
 								<div class="carac5 diceReply-carac button"></div>
 							</div>
 
-							<h3>Difficulté</h3>
+							<h4>Difficulté</h4>
 						</form>
 					</div>
 					<div class="OW" id="alloGM">
 						<div class="closingCross"></div>
-						ALLO GM
+						<h3>ALLO GM</h3>
 					</div>
 					<div class="OW" id="notes">
 					<div class="closingCross"></div>
-					NOTES PERSO
+					<h3>Notes Perso</h3>
+					<div class="editButton">edit</div>
 					<div class="notesPaper">
 						<!-- AJAX -->
 					</div>
