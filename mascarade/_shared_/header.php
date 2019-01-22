@@ -106,5 +106,5 @@ if (isset($error)) {
 		</div>
 <?php } ?>
 
-<!------ JAVVASCRIPT STOCK ----->
+<!------ JAVASCRIPT STOCK HEADER ----->
 <div id="userID" hidden><?=$_SESSION['id']?></div>

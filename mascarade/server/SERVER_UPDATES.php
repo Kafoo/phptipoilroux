@@ -34,24 +34,6 @@ if (isset($_GET['action']) AND $_GET['action']=='supprimePerso') {
 }
 
 
-//ACTIVE PERSO (action, membreID, persoID)
-if (isset($_GET['action']) AND $_GET['action']=='activePerso') {
-	$persoID = $_GET['persoID'];
-	$membreID = $_GET['membreID'];
-	$bdd->query("UPDATE mas_persos SET actif='0' WHERE membreID='$membreID' AND actif='1' ");
-	$bdd->query("UPDATE mas_persos SET actif='1' WHERE id='$persoID' ");
-	header("Location: profil.php");
-}
-
-
-//SUPPRIME MESSAGE (messageID)
-if (isset($_GET['action']) AND $_GET['action']=='supprimeMessage') {
-	$messageID = $_GET['messageID'];
-	$location = $_SESSION['currentStoryURL'];
-	$bdd->query("DELETE FROM mas_messages_aventure WHERE id='$messageID' ");
-	header("Location: $location");
-}
-
 //UPDATE PERSO LORE (persoID)
 if (isset($_GET['action']) AND $_GET['action']=='updatePersoLore') {
 	$persoID = $_GET['persoID'];

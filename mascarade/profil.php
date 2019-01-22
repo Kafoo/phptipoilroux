@@ -105,7 +105,7 @@ include("_shared_/functions.php");
 					<br>
 					<span id="persoPhysique"><?=nl2br($infoPerso['physique'])?></span>
 					<div id="editPhysiqueBlock" hidden>
-						<form method="POST" action="SERVER_UPDATES.php?action=updatePersoPhysique&persoID=<?=$_GET['persoID']?>">
+						<form method="POST" action="server/SERVER_UPDATES.php?action=updatePersoPhysique&persoID=<?=$_GET['persoID']?>">
 							<textarea id="editPhysiqueArea" name="contentEditPhysique"></textarea>
 							<input type="submit" name="submitEditPhysique" value="J'édite mon physique !">
 						</form>
@@ -188,7 +188,7 @@ include("_shared_/functions.php");
 				</h3>
 				<span id="persoLore"><?=nl2br($infoPerso['lore'])?></span>
 				<div id="editLoreBlock" hidden>
-					<form method="POST" action="SERVER_UPDATES.php?action=updatePersoLore&persoID=<?=$_GET['persoID']?>">
+					<form method="POST" action="server/SERVER_UPDATES.php?action=updatePersoLore&persoID=<?=$_GET['persoID']?>">
 						<textarea id="editLoreArea" name="contentEditLore"></textarea>
 						<input type="submit" name="submitEditLore" value="J'édite mon histoire !">
 					</form>

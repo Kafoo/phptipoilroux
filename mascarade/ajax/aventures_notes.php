@@ -1,11 +1,15 @@
 <?php
 include("../_shared_/connectDB.php");
 
-$req = $bdd->query('SELECT *
-	FROM mas_notes
-	WHERE avID = 25
-	AND persoID = 412');
+$userID = $_POST['userID'];
+$avID = $_POST['avID'];
+
+$req = $bdd->query("SELECT *
+	FROM mas_notes 
+	WHERE avID = '$avID' 
+	AND userID = '$userID' ");
 $notes = $req->fetch();
 ?>
 
 <?=$notes['contenu']?>
+

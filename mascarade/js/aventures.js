@@ -13,44 +13,43 @@ $('.joinAv').click(function(e){
 /*----------------MESSAGES PAGE----------------*/
 
 // TINYMCE INITIALISATION
-
-//Desktop init.
-if (window.matchMedia("(min-width: 720px)").matches) {
-	tinymce.init({
-	    selector: '.mytextarea',
-	    content_css : "style/tinymce.css",
-	    height: 300,
-	    menubar: false,
-	    forced_root_block : "",
-	    statusbar : false,
-	    paste_auto_cleanup_on_paste : true,
-	    paste_remove_styles: true,
-	    paste_remove_styles_if_webkit: true,
-	    paste_strip_class_attributes: true,
-	    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
-	    toolbar: 'undo redo | bold italic | link image forecolor backcolor fontsizeselect | code',
-	    plugins: 'code image textcolor preview paste'
-	});
-//Mobile init.
-}else{
-	tinymce.init({
-	    selector: '.mytextarea',
-	    content_css : "style/tinymce.css",
-	    height: 300,
-	    menubar: false,
-	    forced_root_block : "",
-	    statusbar : false,
-	    paste_auto_cleanup_on_paste : true,
-	    paste_remove_styles: true,
-	    paste_remove_styles_if_webkit: true,
-	    paste_strip_class_attributes: true,
-	    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
-	    toolbar: 'undo redo | bold italic | link image forecolor backcolor fontsizeselect | code',
-	    plugins: 'code image textcolor preview paste'
-	});
+if (typeof marcamillion !== 'undefined') {
+	if (window.matchMedia("(min-width: 720px)").matches) {
+	//Desktop init.
+		tinymce.init({
+		    selector: '.mytextarea',
+		    content_css : "style/tinymce.css",
+		    height: 300,
+		    menubar: false,
+		    forced_root_block : "",
+		    statusbar : false,
+		    paste_auto_cleanup_on_paste : true,
+		    paste_remove_styles: true,
+		    paste_remove_styles_if_webkit: true,
+		    paste_strip_class_attributes: true,
+		    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
+		    toolbar: 'undo redo | bold italic | link image forecolor backcolor fontsizeselect | code',
+		    plugins: 'code image textcolor preview paste'
+		});
+	//Mobile init.
+	}else{
+		tinymce.init({
+		    selector: '.mytextarea',
+		    content_css : "style/tinymce.css",
+		    height: 300,
+		    menubar: false,
+		    forced_root_block : "",
+		    statusbar : false,
+		    paste_auto_cleanup_on_paste : true,
+		    paste_remove_styles: true,
+		    paste_remove_styles_if_webkit: true,
+		    paste_strip_class_attributes: true,
+		    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
+		    toolbar: 'undo redo | bold italic | link image forecolor backcolor fontsizeselect | code',
+		    plugins: 'code image textcolor preview paste'
+		});
+	}
 }
-
-
 
 // --------- SUPP MESSAGE ---------
  
@@ -147,23 +146,27 @@ $('.closingCross').click(function(e){
 	$('.showingOW').removeClass("current");
 })
 
-
+/*NOTES*/
 $('.showingNotes').one('click', function() {
 	var http = new XMLHttpRequest;
     http.onreadystatechange = function() {
     	if (this.readyState < 4 ) {
-    		$('.notesPaper').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+    		$('.notesContent').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
     	}
         if (this.readyState == 4 && this.status !== 200) {
-        $('.notesPaper').html('<div class="loading-error"></div>');
+        $('.notesContent').html('<div class="loading-error"></div>');
        }
         if (this.readyState == 4 && this.status == 200) {
-            $('.notesPaper').html(this.responseText);
+            $('.notesContent').html(this.responseText.trim());
        }
     };
-	http.open('GET','ajax/aventures_notes.php', true);
-	http.send();
-    
+
+    var userID = $('#userID').html();
+    var avID = $('#avID').html();
+
+	http.open('POST','ajax/aventures_notes.php', true);
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.send("userID="+userID+"&avID="+avID);    
 });
 
 /*-------------- IF MOBILE --------------*/
@@ -203,3 +206,40 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 		$(e.currentTarget).parent().parent().children('.mobile').hide(200);
 	});
 }
+
+
+/*EDIT NOTES*/
+
+$("#editButtonNotes").click(function(){
+	var notesContent = $(".notesContent").html();
+	$(".notesPaper").slideToggle(200);
+	$("#editNotesArea").html(notesContent);	
+	$(".editNotesBlock").slideToggle(200);
+})
+
+$(".confirmEditNotes").click(function(){
+	var http = new XMLHttpRequest;
+    http.onreadystatechange = function() {
+    	if (this.readyState < 4 ) {
+    		$('#editNotesArea').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+    	}
+        if (this.readyState == 4 && this.status !== 200) {
+        $('#editNotesArea').html('<div class="loading-error"></div>');
+       }
+        if (this.readyState == 4 && this.status == 200) {
+            $('#editNotesArea').html('ok');
+       }
+    };
+
+    var content =  $('#editNotesArea').val();
+    var userID = $('#userID').html();
+    var avID = $('#avID').html();
+	http.open('POST','server/HTTP_REQUEST.php', true);
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.send("action=editNotes&notesContent="+content+"&userID="+userID+"&avID="+avID);
+
+	$(".notesPaper").html(content);	
+	$(".notesPaper").slideToggle(200);
+	$(".editNotesBlock").slideToggle(200);
+
+})

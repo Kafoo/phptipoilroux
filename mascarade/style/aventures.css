@@ -505,6 +505,13 @@ h2 img{
 
 /* ------ MCE TEXT AREA ------ */
 
+.mytextarea{
+	display: block;
+	width: 100%;
+	height: 350px;
+	margin: 0;
+}
+
 .replyOption{
 	width: 90%;
 	margin : 10px 0 10px 20px;
@@ -592,12 +599,15 @@ h2 img{
 	text-align: center;
 }
 
-.notesPaper{
+.notesPaperStyle{
+	font-family: MarckScript;
+	font-size: 1.2em;
 	padding: 0 10px;
 	width: 80%;
 	height: 70%;
-	margin: 10px auto;
+	margin: auto;
 	line-height: 24px;
+	text-align: center;
 	background-image: linear-gradient(transparent 18px, rgb(50,50,50) 20px, transparent 1px),
 	url('../img/paper.jpg');
 	background-size: 100% 24px, cover;
@@ -608,16 +618,41 @@ h2 img{
 	overflow: auto;
 }
 
-.notesPaper::-webkit-scrollbar { 
+.notesPaperStyle::-webkit-scrollbar { 
   width: 5px;
   height: 8px;
   background-color: rgb(225, 199, 151);
 }
 
-.notesPaper::-webkit-scrollbar-thumb {
+.notesPaperStyle::-webkit-scrollbar-thumb {
     background: rgba(50,50,50,0.7);
 
 }
+
+.notesPaper{
+	position: relative;
+}
+
+#editButtonNotes{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+.editNotesBlock{
+	position: relative;
+	height: 100%;
+}
+
+.confirmEditNotes{
+	width: max-content;
+	margin:auto;
+	padding: 2px 7px;
+	background-color: rgb(93, 155, 92);
+	border: 1px solid black;
+	border-radius: 3px;
+}
+
 /*----------- 1400px -----------*/
 
 @media (max-width: 1400px){

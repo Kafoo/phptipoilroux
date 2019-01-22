@@ -10,8 +10,8 @@ include("submits/aventures_submit.php");
 	<?php include("_shared_/headconfig.php");
 	$_SESSION['currentURL'] = $_SERVER['REQUEST_URI']; ?>
 	<!-- TINYMCE SOURCE -->
-     	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
-	<!-- END TINYMCE -->
+      	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
+ 	<!-- END TINYMCE -->
 	<link rel="stylesheet" type="text/css" href="style/aventures.css">
 	<title>Vampire - Aventures</title>
 </head>
@@ -297,12 +297,18 @@ include("submits/aventures_submit.php");
 						<h3>ALLO GM</h3>
 					</div>
 					<div class="OW" id="notes">
-					<div class="closingCross"></div>
-					<h3>Notes Perso</h3>
-					<div class="editButton">edit</div>
-					<div class="notesPaper">
-						<!-- AJAX -->
-					</div>
+						<div class="closingCross"></div>
+						<h3>Notes Perso</h3>
+						<div class="notesPaper notesPaperStyle">
+							<div class="notesContent">
+								<!-- AJAX -->
+							</div>
+							<div class="editButton" id="editButtonNotes">edit</div>
+						</div>
+						<div class="editNotesBlock" hidden>
+							<textarea class="notesPaperStyle" id="editNotesArea"></textarea>
+							<div class="confirmEditNotes button">OK</div>
+						</div>
 					</div>
 					<form method="POST" action="">
 						<textarea class="mytextarea" name="message"></textarea>
@@ -319,6 +325,9 @@ include("submits/aventures_submit.php");
 	} ?>
 
 </section>
+
+<!-- JAVASCRIPT STOCK -->
+<div id="avID" hidden><?=$_GET['avID']?></div>
 
 <!---------- SCRIPTS ---------->
 <?php include("_shared_/scripts.php"); ?>
