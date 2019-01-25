@@ -13,7 +13,7 @@ $('.joinAv').click(function(e){
 /*----------------MESSAGES PAGE----------------*/
 
 // TINYMCE INITIALISATION
-if (typeof marcamillion !== 'undefined') {
+if (typeof tinymce !== 'undefined') {
 	if (window.matchMedia("(min-width: 720px)").matches) {
 	//Desktop init.
 		tinymce.init({
@@ -157,7 +157,7 @@ $('.showingNotes').one('click', function() {
         $('.notesContent').html('<div class="loading-error"></div>');
        }
         if (this.readyState == 4 && this.status == 200) {
-            $('.notesContent').html(this.responseText.trim());
+            $('.notesContent').html(decodeURIComponent(this.responseText).trim());
        }
     };
 
@@ -210,36 +210,38 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 
 /*EDIT NOTES*/
 
-$("#editButtonNotes").click(function(){
-	var notesContent = $(".notesContent").html();
+$(".editButton").click(function(){
+	var notesContent = $(".notesContent").html().replace(/<br>/g,'');
 	$(".notesPaper").slideToggle(200);
 	$("#editNotesArea").html(notesContent);	
-	$(".editNotesBlock").slideToggle(200);
+	$(".editNotesBlock").slideToggle(200, function(){
+		$("#editNotesArea").focus();	
+	});
 })
 
 $(".confirmEditNotes").click(function(){
 	var http = new XMLHttpRequest;
     http.onreadystatechange = function() {
     	if (this.readyState < 4 ) {
-    		$('#editNotesArea').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+    		$('.notesContent').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
     	}
         if (this.readyState == 4 && this.status !== 200) {
-        $('#editNotesArea').html('<div class="loading-error"></div>');
+        $('.notesContent').html('<div class="loading-error"></div>');
        }
         if (this.readyState == 4 && this.status == 200) {
-            $('#editNotesArea').html('ok');
+            $('.notesContent').html(http.responseText);
        }
     };
 
-    var content =  $('#editNotesArea').val();
+    var content =  encodeURIComponent($('#editNotesArea').val()).replace(/\\n/g, '\n');
     var userID = $('#userID').html();
     var avID = $('#avID').html();
 	http.open('POST','server/HTTP_REQUEST.php', true);
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	http.send("action=editNotes&notesContent="+content+"&userID="+userID+"&avID="+avID);
 
-	$(".notesPaper").html(content);	
+	var decodedContent = decodeURIComponent(content);
 	$(".notesPaper").slideToggle(200);
 	$(".editNotesBlock").slideToggle(200);
-
 })
+

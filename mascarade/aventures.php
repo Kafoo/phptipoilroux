@@ -299,9 +299,9 @@ include("submits/aventures_submit.php");
 					<div class="OW" id="notes">
 						<div class="closingCross"></div>
 						<h3>Notes Perso</h3>
-						<div class="notesPaper notesPaperStyle">
-							<div class="notesContent">
-								<!-- AJAX -->
+						<div class="notesPaper">
+							<div class="notesPaperStyle">
+								<span class="notesContent"></span>
 							</div>
 							<div class="editButton" id="editButtonNotes">edit</div>
 						</div>

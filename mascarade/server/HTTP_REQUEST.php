@@ -31,7 +31,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'rollTheDie') {
 /*----------- EDIT NOTES -----------*/
 
 if (isset($_POST['action']) AND $_POST['action'] == 'editNotes') {
-	$notesContent = $_POST['notesContent'];
+	$notesContent = nl2br($_POST['notesContent']);
 	$userID = $_POST['userID'];
 	$avID = $_POST['avID'];
 	$bdd->query("

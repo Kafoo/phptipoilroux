@@ -602,15 +602,16 @@ h2 img{
 .notesPaperStyle{
 	font-family: MarckScript;
 	font-size: 1.2em;
-	padding: 0 10px;
+	padding: 1px 10px 1px 26px;
 	width: 80%;
 	height: 70%;
 	margin: auto;
 	line-height: 24px;
-	text-align: center;
+	text-align: left;
 	background-image: linear-gradient(transparent 18px, rgb(50,50,50) 20px, transparent 1px),
+	linear-gradient(90deg,transparent 22px, rgba(50,50,50,0.5) 24px, transparent 1px),
 	url('../img/paper.jpg');
-	background-size: 100% 24px, cover;
+	background-size: 100% 24px, 100% 24px, cover;
 	background-attachment: local;
 	border: 1px solid black;
 	border-radius: 3px;
@@ -631,17 +632,20 @@ h2 img{
 
 .notesPaper{
 	position: relative;
+	height: 100%;
 }
 
 #editButtonNotes{
-	position: absolute;
-	right: 0;
-	bottom: 0;
+	display: block;
+	width: max-content;
+	margin: 2px auto;
+	padding: 2px 7px;
 }
 
 .editNotesBlock{
 	position: relative;
 	height: 100%;
+	resize: none;
 }
 
 .confirmEditNotes{
