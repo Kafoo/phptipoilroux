@@ -551,7 +551,8 @@ h2 img{
 	z-index: 10;
 }
 
-#replyContainer input[type='submit']{
+#classicReply input[type='submit']{
+
 	display: inline-block;
 	width: 100%;
 	margin: 0 !important;
@@ -570,12 +571,25 @@ h2 img{
 
 #diceReply{
 	background-color: rgb(181, 183, 161);
+	text-align: center;
 }
 
-#diceReply form input[name='title']{
+#diceReply-error{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background-color: rgb(202, 165, 135);
+	font-size: 1.5em;
+	text-align: center;
+	color: rgb(100,100,100);
+	font-weight: bold;
+}
+
+#diceReply form input[name='diceReply-title']{
 	display: block;
-	width: 240px;
-	margin: auto;
+	width: 300px;
+	margin: 5px auto;
 	text-align: center;
 }
 
@@ -587,6 +601,27 @@ h2 img{
 	box-shadow: inset -2px -2px 10px black;
 	border-radius: 4px;
 	margin: 5px;
+}
+
+.diceReply-diff{
+	display: inline-block;
+	padding: 2px 5px;
+	margin: 2px;
+	border: 1px solid black;
+	border-radius: 2px;
+}
+
+.current, .current:hover{
+	box-shadow: inset 1px 1px 10px 1px white;
+ }
+
+
+#diceReply-submit{
+	margin: 10px auto;
+	width: 300px;
+	height: 30px;
+	line-height: 30px;
+	cursor: pointer;
 }
 
 #alloGM{

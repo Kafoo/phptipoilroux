@@ -10,8 +10,8 @@ include("submits/aventures_submit.php");
 	<?php include("_shared_/headconfig.php");
 	$_SESSION['currentURL'] = $_SERVER['REQUEST_URI']; ?>
 	<!-- TINYMCE SOURCE -->
-      	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
- 	<!-- END TINYMCE -->
+<!--       	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
+ --> 	<!-- END TINYMCE -->
 	<link rel="stylesheet" type="text/css" href="style/aventures.css">
 	<title>Vampire - Aventures</title>
 </head>
@@ -179,6 +179,14 @@ include("submits/aventures_submit.php");
 				ORDER BY mas_messages_aventure.id DESC ");
 			$lastMsgID = $req->fetch()[0];
 
+			//On vérifie sur le dernier message posté est celui du user actif
+			if ($currentPage == $NbrPages 
+			AND $msgS[count($msgS)-1]['userID'] == $userID) {
+				$lastIsUser = True;
+			}else{
+				$lastIsUser = False;
+			}
+
 			//On met tous les persos présents et leurs infos dans $coterie
 			$req = $bdd->query("
 				SELECT * 
@@ -259,10 +267,19 @@ include("submits/aventures_submit.php");
 				
 				<!-- REPONSE AREA -->
 				<div>
-					<div style="height: 40px" SPACER></div>			
+					<div style="height: 40px" SPACER></div>
+					<?php
+					if ($lastIsUser == True) { //diceReply possible ou non?>
 					<div class="showingOW replyOption desktop" OW="diceReply">
 						<img src="img/icones/d20black.png">
 					</div>
+					<?php
+					} else{ ?>
+					<div class="showingOW replyOption desktop" OW="diceReply-error">
+						<img src="img/icones/d20black.png">
+					</div>
+					<?php
+					}?>	
 					<div class="showingOW replyOption desktop" OW="alloGM">
 						<img src="img/icones/allogm.png">
 					</div>
@@ -272,30 +289,62 @@ include("submits/aventures_submit.php");
 				</div>
 
 				<div class="OWContainer" id="replyContainer">
+
+
+					<!-- LANCER DE DES -->
 					<div class="OW" id="diceReply">
 						<div class="closingCross"></div>
 						<form method="POST" action="">
 							<h3>LANCE DE DES</h3>
-							<h4>Titre</h4>
-								
-							<input type="text" name="title">
-							<h4>Caractéristique</h4>
 
+							<h4>Titre</h4>
+							<input type="text" name="diceReply-title">
+
+							<h4>Caractéristique</h4>
 							<div class="diceReply-caracContainer container centering">	
-								<div class="carac1 diceReply-carac button"></div>
-								<div class="carac2 diceReply-carac button"></div>
-								<div class="carac3 diceReply-carac button"></div>
-								<div class="carac4 diceReply-carac button"></div>
-								<div class="carac5 diceReply-carac button"></div>
+								<div class="carac1 diceReply-carac button"
+								onclick="choose('carac', '1')"></div>
+								<div class="carac2 diceReply-carac button" 
+								onclick="choose('carac', '2')"></div>
+								<div class="carac3 diceReply-carac button" 
+								onclick="choose('carac', '3')"></div>
+								<div class="carac4 diceReply-carac button" 
+								onclick="choose('carac', '4')"></div>
+								<div class="carac5 diceReply-carac button" 
+								onclick="choose('carac', '5')"></div>
 							</div>
+							<input id="caracStock" type="text" name="diceReply-carac" hidden>
 
 							<h4>Difficulté</h4>
+							<div class="diff8 diceReply-diff button"
+							onclick="choose('diff','8')">Facile</div>
+							<div class="diff10 diceReply-diff button"
+							onclick="choose('diff','10')">Normal</div>
+							<div class="diff12 diceReply-diff button"
+							onclick="choose('diff','12')">Difficile</div>
+							<input id="diffStock" type="text" name="diceReply-diff" hidden>
+							<br>
+							<input id="resultStock" type="text" name="diceReply-result" hidden>
+
+							<input id="diceReply-submit"  type="submit" name="diceReply-submit" value="Je lance mon dé !">
 						</form>
 					</div>
+					<div class="OW" id="diceReply-error">
+						<div class="closingCross"></div>
+						<div class="container">
+							<br>
+							Avant de lancer un dé, tu dois écrire et poster un message qui décrit ton action ! ;-)
+						</div>
+					</div>
+
+
+
+					<!-- ALLO GM -->
 					<div class="OW" id="alloGM">
 						<div class="closingCross"></div>
 						<h3>ALLO GM</h3>
 					</div>
+					<!-- NOTES PERSOS -->
 					<div class="OW" id="notes">
 						<div class="closingCross"></div>
 						<h3>Notes Perso</h3>
@@ -310,7 +359,8 @@ include("submits/aventures_submit.php");
 							<div class="confirmEditNotes button">OK</div>
 						</div>
 					</div>
-					<form method="POST" action="">
+					<!-- REPONSE TEXTE -->
+					<form id="classicReply" method="POST" action="">
 						<textarea class="mytextarea" name="message"></textarea>
 						<input type="submit" name="submit" value='Je réponds !'>
 					</form>

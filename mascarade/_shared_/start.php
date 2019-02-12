@@ -29,8 +29,8 @@ session_start();
 
 /* ---------- CHECK LAST UPDATES ---------- */ 
  
-if (!isset($_COOKIE['update1'])) { 
-    setcookie('update1', "Coucou c est moi le cookie d update", time()+3600*24*365, null, null, false, true); 
+if (!isset($_COOKIE['update2'])) { 
+    setcookie('update2', "Coucou c est moi le cookie d update", time()+3600*24*365, null, null, false, true); 
     if (isset($_SESSION['connected'])) { 
         header('Location: SERVER_UPDATES.php?action=disconnect'); 
     } 
@@ -92,9 +92,20 @@ if (!isset($_SESSION['connected'])) {
 
     /*------- DECLARATION DES VARIABLES DE SESSION --------*/
     if (isset($canSetSession) AND $canSetSession==True) {
-        $persoID = $userInfo['id'];
+
+        //On met la liste des persoID du user dans un array de session
+        $_SESSION['persosArray'] = array();
+        $userID = $userInfo['id'];
+        $req = $bdd->query("SELECT id
+            FROM mas_persos
+            WHERE userID = '$userID'");
+        $res = $req->fetchall();
+        foreach ($res as $perso) {
+            array_push($_SESSION['persosArray'], $perso['id']);
+        }
+
         $_SESSION['connected'] = True;
-        $_SESSION['id'] = $userInfo['id'];
+        $_SESSION['id'] = $userID;
         $_SESSION['pseudo'] = $userInfo['pseudo'];
         $_SESSION['password'] = $userInfo['password'];
         $_SESSION['grade'] = $userInfo['grade'];

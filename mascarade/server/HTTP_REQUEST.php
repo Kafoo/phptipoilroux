@@ -31,13 +31,14 @@ if (isset($_GET['action']) AND $_GET['action'] == 'rollTheDie') {
 /*----------- EDIT NOTES -----------*/
 
 if (isset($_POST['action']) AND $_POST['action'] == 'editNotes') {
-	$notesContent = nl2br($_POST['notesContent']);
+	$notesContent = nl2br(htmlspecialchars(($_POST['notesContent'])));
 	$userID = $_POST['userID'];
 	$avID = $_POST['avID'];
-	$bdd->query("
+	$req = $bdd->prepare("
 		UPDATE mas_notes
-		SET contenu = '$notesContent' 
+		SET contenu = ? 
 		WHERE userID = '$userID' AND avID = '$avID' ");
+	$req->execute([$notesContent]);
 	echo $notesContent;
 }
 

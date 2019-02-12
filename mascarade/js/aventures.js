@@ -146,6 +146,21 @@ $('.closingCross').click(function(e){
 	$('.showingOW').removeClass("current");
 })
 
+
+/*DICE REPLY*/
+
+function choose(what, choice){
+	$(".diceReply-"+what).removeClass('current');
+	$(".diceReply-"+what+"."+what+choice).addClass('current');
+	$('#'+what+'Stock')[0].setAttribute("value", choice);
+}
+
+$("#diceReply-submit").click(function(){
+	var result = Math.ceil(Math.random()*10);
+	alert(result);
+	$("#resultStock")[0].setAttribute("value", result);
+})
+
 /*NOTES*/
 $('.showingNotes').one('click', function() {
 	var http = new XMLHttpRequest;
@@ -157,7 +172,7 @@ $('.showingNotes').one('click', function() {
         $('.notesContent').html('<div class="loading-error"></div>');
        }
         if (this.readyState == 4 && this.status == 200) {
-            $('.notesContent').html(decodeURIComponent(this.responseText).trim());
+            $('.notesContent').html(this.responseText.trim());
        }
     };
 
@@ -168,6 +183,41 @@ $('.showingNotes').one('click', function() {
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	http.send("userID="+userID+"&avID="+avID);    
 });
+
+/*EDIT NOTES*/
+$(".editButton").click(function(){
+	var notesContent = $(".notesContent").html().replace(/<br>/g,'');
+	$(".notesPaper").slideToggle(200);
+	$("#editNotesArea").html(notesContent);	
+	$(".editNotesBlock").slideToggle(200, function(){
+		$("#editNotesArea").focus();	
+	});
+})
+
+$(".confirmEditNotes").click(function(){
+	var http = new XMLHttpRequest;
+    http.onreadystatechange = function() {
+    	if (this.readyState < 4 ) {
+    		$('.notesContent').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+    	}
+        if (this.readyState == 4 && this.status !== 200) {
+        $('.notesContent').html('<div class="loading-error"></div>');
+       }
+        if (this.readyState == 4 && this.status == 200) {
+            $('.notesContent').html(http.responseText);
+       }
+    };
+
+    var content =  encodeURIComponent($('#editNotesArea').val().replace(/\\n/g, '\n'));
+    var userID = $('#userID').html();
+    var avID = $('#avID').html();
+	http.open('POST','server/HTTP_REQUEST.php', true);
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.send("action=editNotes&notesContent="+content+"&userID="+userID+"&avID="+avID);
+
+	$(".notesPaper").slideToggle(200);
+	$(".editNotesBlock").slideToggle(200);
+})
 
 /*-------------- IF MOBILE --------------*/
 
@@ -208,40 +258,4 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 }
 
 
-/*EDIT NOTES*/
-
-$(".editButton").click(function(){
-	var notesContent = $(".notesContent").html().replace(/<br>/g,'');
-	$(".notesPaper").slideToggle(200);
-	$("#editNotesArea").html(notesContent);	
-	$(".editNotesBlock").slideToggle(200, function(){
-		$("#editNotesArea").focus();	
-	});
-})
-
-$(".confirmEditNotes").click(function(){
-	var http = new XMLHttpRequest;
-    http.onreadystatechange = function() {
-    	if (this.readyState < 4 ) {
-    		$('.notesContent').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
-    	}
-        if (this.readyState == 4 && this.status !== 200) {
-        $('.notesContent').html('<div class="loading-error"></div>');
-       }
-        if (this.readyState == 4 && this.status == 200) {
-            $('.notesContent').html(http.responseText);
-       }
-    };
-
-    var content =  encodeURIComponent($('#editNotesArea').val()).replace(/\\n/g, '\n');
-    var userID = $('#userID').html();
-    var avID = $('#avID').html();
-	http.open('POST','server/HTTP_REQUEST.php', true);
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.send("action=editNotes&notesContent="+content+"&userID="+userID+"&avID="+avID);
-
-	var decodedContent = decodeURIComponent(content);
-	$(".notesPaper").slideToggle(200);
-	$(".editNotesBlock").slideToggle(200);
-})
 

@@ -8,8 +8,7 @@ $req = $bdd->query("SELECT *
 	FROM mas_notes 
 	WHERE avID = '$avID' 
 	AND userID = '$userID' ");
-$notes = $req->fetch();
+$notes = htmlspecialchars_decode($req->fetch()['contenu']);
 ?>
 
-<?=$notes['contenu']?>
-
+<?=$notes?>
