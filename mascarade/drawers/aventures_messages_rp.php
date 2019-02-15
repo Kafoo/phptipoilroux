@@ -21,19 +21,19 @@
 			</span><br><br>
 				<table class="carac">
 					<tr>
-						<td>Force :</td><td><?=$firstMsgOfPost['forc']?></td>
+						<td>Force :</td><td><?=$firstMsgOfPost['c1']?></td>
 					</tr>
 					<tr>
-						<td>Dextérité :</td><td><?=$firstMsgOfPost['dexterite']?></td>
+						<td>Dextérité :</td><td><?=$firstMsgOfPost['c2']?></td>
 					</tr>
 					<tr>
-						<td>Intelligence :</td><td><?=$firstMsgOfPost['intelligence']?></td>
+						<td>Intelligence :</td><td><?=$firstMsgOfPost['c3']?></td>
 					</tr>
 					<tr>
-						<td>Charisme :</td><td><?=$firstMsgOfPost['charisme']?></td>
+						<td>Charisme :</td><td><?=$firstMsgOfPost['c4']?></td>
 					</tr>
 					<tr>
-						<td>Perception :</td><td><?=$firstMsgOfPost['perception']?></td>
+						<td>Perception :</td><td><?=$firstMsgOfPost['c5']?></td>
 					</tr>
 				</table>
 				<div class="layerBox">
@@ -119,7 +119,7 @@
 	<!-- Options d'édition et suppression -->
 
 	<?php
-	if ($msgInfo[0] == $lastMsgID) { ?>
+	if ($msgInfo[0] == $lastMsgID AND $msgInfo['type'] == 'RP') { ?>
 		<div class="suppMsg desktop button" ajax='?action=suppMsg&msgID=<?=$lastMsgID?>' msgid="<?=$lastMsgID?>">
 			x
 		</div>

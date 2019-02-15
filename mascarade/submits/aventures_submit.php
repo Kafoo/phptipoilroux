@@ -117,7 +117,7 @@ if (isset($_POST['diceReply-submit']) AND !empty($_POST['diceReply-submit'])) {
 
 				$req = $bdd->query('SELECT id FROM mas_messages_aventure ORDER BY id DESC LIMIT 1');
 				$msgID = $req->fetch()[0];
-				$carac = $_POST['diceReply-carac'];
+				$carac = 'c'.$_POST['diceReply-carac'];
 
 				$diff = $_POST ['diceReply-diff'];
 				$result = $_POST ['diceReply-result'];

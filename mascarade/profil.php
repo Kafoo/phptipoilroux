@@ -127,23 +127,23 @@ include("_shared_/functions.php");
 				<br>
 				<table>
 					<tr>
-						<td><span class="infoPersoCarac carac1" carac="carac1"><?=$infoPerso['forc']?></span></td>
+						<td><span class="infoPersoCarac carac1" carac="carac1"><?=$infoPerso['c1']?></span></td>
 						<td>Force</td>
 					</tr>
 					<tr>
-						<td><span class="infoPersoCarac carac2" carac="carac2"><?=$infoPerso['dexterite']?></span></td>
+						<td><span class="infoPersoCarac carac2" carac="carac2"><?=$infoPerso['c2']?></span></td>
 						<td>Dextérité</td>
 					</tr>
 					<tr>
-						<td><span class="infoPersoCarac carac3" carac="carac3"><?=$infoPerso['intelligence']?></span></td>
+						<td><span class="infoPersoCarac carac3" carac="carac3"><?=$infoPerso['c3']?></span></td>
 						<td>Intelligence</td>
 					</tr>
 					<tr>
-						<td><span class="infoPersoCarac carac4" carac="carac4"><?=$infoPerso['charisme']?></span></td>
+						<td><span class="infoPersoCarac carac4" carac="carac4"><?=$infoPerso['c4']?></span></td>
 						<td>Charisme</td>
 					</tr>
 					<tr>
-						<td><span class="infoPersoCarac carac5" carac="carac5"><?=$infoPerso['perception']?></span></td>
+						<td><span class="infoPersoCarac carac5" carac="carac5"><?=$infoPerso['c5']?></span></td>
 						<td>Perception</td>
 					</tr>
 				</table>

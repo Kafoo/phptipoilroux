@@ -14,6 +14,7 @@ for ($j=0; $j < count($diceRolls); $j++) {
 
 	$diceRoll = $diceRolls[$j];
 	$perso = $diceRoll['nom'];
+	$title = $msgInfo['contenu'];
 	$carac = $diceRoll['carac'];
 	$valCarac = $diceRoll[$carac];
 	$result = $diceRoll['result'];
@@ -27,6 +28,7 @@ for ($j=0; $j < count($diceRolls); $j++) {
 
 	?>
 	
+	<div class="diceRollTitle-player">- <?=$title?> -</div>
 	<div class="diceRollBox">
 		<div class="centering">
 			<div class="diceRollDigits">

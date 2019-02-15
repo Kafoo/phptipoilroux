@@ -50,11 +50,18 @@ if ($i == 0) {//Seulement pour le 1er post ?>
 								<?=$pourcent?>% 
 							</div> 
 						</div>
-						<div class="infoPersoCarac carac1" carac="force"><?=$coterie[$j]['forc']?></div> 
-						<div class="infoPersoCarac carac2" carac="dextérité"><?=$coterie[$j]['dexterite']?></div> 
-						<div class="infoPersoCarac carac3" carac="intelligence"><?=$coterie[$j]['intelligence']?></div> 
-						<div class="infoPersoCarac carac4" carac="charisme"><?=$coterie[$j]['charisme']?></div>
-						<div class="infoPersoCarac carac5" carac="perception"><?=$coterie[$j]['perception']?></div>
+						<div class="infoPersoCarac carac1" carac="force"><?=$coterie[$j]['c1']?></div> 
+						<div class="infoPersoCarac carac2" carac="dextérité"><?=$coterie[$j]['c2']?></div> 
+						<div class="infoPersoCarac carac3" carac="intelligence"><?=$coterie[$j]['c3']?></div> 
+						<div class="infoPersoCarac carac4" carac="charisme"><?=$coterie[$j]['c4']?></div>
+						<div class="infoPersoCarac carac5" carac="perception"><?=$coterie[$j]['c5']?></div>
+						<div class="infoPersoInventory">
+							- <br>
+							- <br>
+							- <br>
+							- <br>
+							- <br>
+						</div>
 					</div>
 					<img src="img/icones/dropdown.png" class="dropdownIcone">
 				</div>
