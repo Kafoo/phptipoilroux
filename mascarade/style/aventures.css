@@ -646,6 +646,84 @@ h2 img{
 	resize: both
 }
 
+.alloGM-content{
+	width: 90%;
+	margin: auto;
+	height: 225px;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.1);
+	padding: 5px;
+	border-radius: 3px;
+}
+
+.alloGM-content::-webkit-scrollbar { 
+  width: 8px;
+  height: 8px;
+  background-color: rgb(100, 100, 100);
+}
+
+.alloGM-content::-webkit-scrollbar-thumb {
+    background: rgba(50,50,50,0.7);
+}
+
+.alloGM-content .msg-user{
+	background-color: rgb(106, 106, 255);
+	border: 1px solid black;
+	border-radius: 4px;
+	width: max-content;
+	max-width: 70%;
+	padding: 2px 5px;
+	margin: 8px 15px 8px auto;
+}
+
+.alloGM-content .msg-GM{
+	background-color: rgb(164, 200, 46);
+	border: 1px solid black;
+	border-radius: 4px;
+	width: max-content;
+	max-width: 70%;
+	padding: 2px 5px;
+	margin: 8px 15px;
+}
+
+.alloGM-textArea{
+	display: inline-block;
+	width: calc(90% - 70px);
+	height: 75px;
+	margin: 10px 0 10px calc(5% - 5px);
+	border-radius: 5px;
+	resize: none;
+}
+
+.alloGM-submit{
+	display: inline-block;
+	width: 75px;
+	height: 75px;
+	line-height: 75px;
+	margin: 10px auto 10px 0;
+	background-color: rgba(237, 237, 237, 0.57);
+	border-radius: 5px;
+	vertical-align: top;
+	background-image: url(../img/icones/sendingArrow.png);
+	background-size: 45px;
+	background-position: top 15px left 15px;
+	background-repeat: no-repeat;
+}
+
+.loading{
+	display: inline-block;
+	width: 75px;
+	height: 75px;
+	line-height: 75px;
+	margin: 10px auto 10px 0;
+	background-color: rgba(237, 237, 237, 0.57);
+	border-radius: 5px;
+	vertical-align: top;
+	background-size: 45px;
+	background-position: top 15px left 15px;
+	background-repeat: no-repeat;
+}
+
 #notes{
 	background-color: rgb(159, 163, 159);
 	text-align: center;
@@ -656,7 +734,7 @@ h2 img{
 	font-size: 1.2em;
 	padding: 1px 10px 1px 26px;
 	width: 80%;
-	height: 70%;
+	height: 75%;
 	margin: auto;
 	line-height: 24px;
 	text-align: left;

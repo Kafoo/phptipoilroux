@@ -81,7 +81,7 @@ if (isset($_POST['diceReply-submit']) AND !empty($_POST['diceReply-submit'])) {
 				$type = 'diceRoll_player';
 				$auteurID = $_SESSION['id'];
 				$userID = $_SESSION['id'];
-				$contenu = $_POST['diceReply-title'];
+				$contenu = htmlspecialchars($_POST['diceReply-title'], ENT_QUOTES);
 
 				//On récupère le perso lié au message
 				$req = $bdd->query("

@@ -10,8 +10,8 @@ include("submits/aventures_submit.php");
 	<?php include("_shared_/headconfig.php");
 	$_SESSION['currentURL'] = $_SERVER['REQUEST_URI']; ?>
 	<!-- TINYMCE SOURCE -->
-<!--        	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
- -->  	<!-- END TINYMCE -->
+        	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
+   	<!-- END TINYMCE -->
 	<link rel="stylesheet" type="text/css" href="style/aventures.css">
 	<title>Vampire - Aventures</title>
 </head>
@@ -123,7 +123,7 @@ include("submits/aventures_submit.php");
 			//Si non et qu'il rejoint, on l'ajoute :
 			if (count($res)==0 
 				AND isset($_GET['persoID'])){
-				$persoID=$_GET['persoID'];
+				$persoID = $_GET['persoID'];
 				$bdd->query("
 					INSERT INTO mas_relation_perso2aventure (persoID, avID)
 					VALUES ('$persoID','$avID') ");
@@ -170,6 +170,13 @@ include("submits/aventures_submit.php");
 				ORDER BY postID
 				");
 			$msgS = $req->fetchall();
+
+			//On cherche si le user est le GM
+			if ($msgS[0]['gmID'] == $userID) {
+				$GM = "1";
+			} else {
+				$GM = "0";
+			}
 
 			//On récupère le dernier message du joueur, pour l'édition/suppression
 			$req = $bdd->query("
@@ -280,7 +287,7 @@ include("submits/aventures_submit.php");
 					</div>
 					<?php
 					}?>	
-					<div class="showingOW replyOption desktop" OW="alloGM">
+					<div class="showingOW replyOption desktop showingAlloGM" OW="alloGM">
 						<img src="img/icones/allogm.png">
 					</div>
 					<div class="showingOW replyOption desktop showingNotes" OW="notes">
@@ -338,12 +345,19 @@ include("submits/aventures_submit.php");
 					</div>
 
 
-
 					<!-- ALLO GM -->
 					<div class="OW" id="alloGM">
 						<div class="closingCross"></div>
 						<h3>ALLO GM</h3>
+						<!-- ajax -->
+						<div class="alloGM-content">
+						</div>
+						<textarea class="alloGM-textArea"></textarea>
+						<div class="alloGM-submit button"></div>
+						<div id='GMStock' gm='<?=$GM?>'></div>
 					</div>
+
+
 					<!-- NOTES PERSOS -->
 					<div class="OW" id="notes">
 						<div class="closingCross"></div>

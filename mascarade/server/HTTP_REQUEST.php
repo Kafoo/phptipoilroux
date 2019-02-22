@@ -42,4 +42,30 @@ if (isset($_POST['action']) AND $_POST['action'] == 'editNotes') {
 	echo $notesContent;
 }
 
+/*----------- ALLO GM -----------*/
+
+if (isset($_POST['action']) AND $_POST['action'] == 'alloGM') {
+	$content = nl2br(htmlspecialchars(($_POST['content'])));
+	$userID = $_POST['userID'];
+	$avID = $_POST['avID'];
+	$GM = $_POST['GM'];
+
+
+
+	//Message GM
+	if (isset($_POST['GM']) AND $_POST['GM'] == 1) {
+
+		$bdd->query("INSERT INTO mas_allogm
+			(avID, userID, GM, content, seenByGM)
+			VALUES ('$avID','$userID', '$GM', '$content', '1')
+			");
+
+		echo '<div class="msg-GM">'.$content.'</div>';
+	}
+	//Message user
+	else {
+		echo '<div class="msg-user">'.$content.'</div>';
+	}
+}
+
 ?>

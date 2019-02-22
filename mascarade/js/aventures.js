@@ -76,12 +76,12 @@ $('.suppMsg').click(function(e){
 			var lastMsgOfPost = $(e.currentTarget).parent().children('.lastMsgOfPost');
 			var lastSepOfPost = $(e.currentTarget).parent().children('.lastSepOfPost');
 			lastMsgOfPost.slideToggle(500);
-			lastSepOfPost.slideToggle(500);			
+			lastSepOfPost.slideToggle(500);
 		}
-		
 		$(".msgOption").remove();
 		$(".editMsg").remove();
-		$(".suppMsg").remove();
+		$(".suppMsg").remove();		
+		
 
 		var refine = $(e.currentTarget).attr('ajax');
 		var http = new XMLHttpRequest();
@@ -159,6 +159,66 @@ $("#diceReply-submit").click(function(){
 	var result = Math.ceil(Math.random()*10);
 	alert(result);
 	$("#resultStock")[0].setAttribute("value", result);
+})
+
+/*ALLO GM*/
+
+//Showing
+$('.showingAlloGM').one('click', function() {
+	var http = new XMLHttpRequest;
+    http.onreadystatechange = function() {
+    	if (this.readyState < 4 ) {
+    		$('.alloGM-content').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+    	}
+        if (this.readyState == 4 && this.status !== 200) {
+        $('.alloGM-content').html('<div class="loading-error"></div>');
+       }
+        if (this.readyState == 4 && this.status == 200) {
+            $('.alloGM-content').html(this.responseText.trim());
+       }
+    };
+
+    var userID = $('#userID').html();
+    var avID = $('#avID').html();
+
+	http.open('POST','ajax/aventures_allogm.php', true);
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.send("userID="+userID+"&avID="+avID);    
+});
+
+//Sending
+
+$('.alloGM-textArea').on('keypress', function (e) {
+         if(e.which === 13){
+         	$('#alloGM-submit').trigger('click');
+         }
+   });
+
+$('.alloGM-submit').click(function(){
+	var http = new XMLHttpRequest;
+    http.onreadystatechange = function() {
+    	if (this.readyState < 4 ) {
+    		$('.alloGM-submit').addClass('alloGM-loading');
+    		$('.alloGM-loading').removeClass('alloGM-submit button');
+    	}
+        if (this.readyState == 4 && this.status !== 200) {
+        //code
+       }
+        if (this.readyState == 4 && this.status == 200) {
+        	$('.alloGM-loading').addClass('alloGM-submit button');
+        	$('.alloGM-submit').removeClass('alloGM-loading');
+            $('.alloGM-content').append(http.responseText);
+            $('.alloGM-textArea').val('');
+       }
+    };
+
+    var content =  encodeURIComponent($('.alloGM-textArea').val().replace(/\\n/g, '\n'));
+    var GM = $('#GMStock').attr('gm');
+    var userID = $('#userID').html();
+    var avID = $('#avID').html();
+	http.open('POST','server/HTTP_REQUEST.php', true);
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.send("action=alloGM&content="+content+"&GM="+GM+"&userID="+userID+"&avID="+avID);	
 })
 
 /*NOTES*/

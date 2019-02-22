@@ -86,7 +86,7 @@ src: url("../font/Cinzel-Regular.ttf");
 	h3{ 
 		font-family: Cinzel;
 		text-align: center;
-		margin: 0 auto 20px auto;
+		margin: 0 auto 10px auto;
 		font-size: 1.5em;
 		text-shadow: 0 0 50px #ffffffa1;
 		text-decoration: underline;

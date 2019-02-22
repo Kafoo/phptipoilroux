@@ -82,14 +82,9 @@
 	$k = 0;
 	foreach ($msgOfPost as $msgOfPostID) {
 		$msgInfo = $msgS[$msgOfPostID];
-
 		//Check si lastMsgOfPost
 		if ($k==$msgCount-1) {$last=True;}
 		else {$last=False;}
-
-		if ($k>0) {
-			echo "<div style='height: 10px;''></div>";
-		}
 
 		//Si on est entre 2 messages et qu'aucun des 2 n'est un jet de dés, on met un séparateur
 		if ($k>0
@@ -97,10 +92,6 @@
 			AND $msgS[$msgOfPostID-1]['type']!=='diceRoll_player') { ?>
 			<div class="separate <?php if ($last==True){echo "lastSepOfPost";} ?>"></div>
 		<?php
-		}
-
-		if ($k>0) {
-			echo "<div style='height: 10px;''></div>";
 		}
 
 		if ($msgInfo['type'] == 'diceRoll_player') {
@@ -112,8 +103,8 @@
 			</span>
 
 		<?php
-		$k++;
 		}
+		$k++;
 	}
 	?>
 	<!-- Options d'édition et suppression -->
@@ -148,7 +139,7 @@
 	} ?>
 
 
-	<?php if($i==count($msgS)-3){ ?>
+	<?php if($i==count($postArray)-2){ ?>
 		<div id="pmop"></div>
 	<?php
 	}?>

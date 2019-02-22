@@ -14,7 +14,7 @@ for ($j=0; $j < count($diceRolls); $j++) {
 
 	$diceRoll = $diceRolls[$j];
 	$perso = $diceRoll['nom'];
-	$title = $msgInfo['contenu'];
+	$title = htmlspecialchars_decode($msgInfo['contenu']);
 	$carac = $diceRoll['carac'];
 	$valCarac = $diceRoll[$carac];
 	$result = $diceRoll['result'];
