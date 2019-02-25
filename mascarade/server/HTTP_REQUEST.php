@@ -91,7 +91,6 @@ if (isset($_GET['action']) AND $_GET['action'] == 'alloRefresh') {
 		FROM mas_allogm
 		WHERE id > '$lastMsgID'
 		AND avID = '$avID'
-		AND userID = '$userID'
 		");
 	$res = $req->fetchall();
 
