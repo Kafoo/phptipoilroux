@@ -54,18 +54,52 @@ if (isset($_POST['action']) AND $_POST['action'] == 'alloGM') {
 
 	//Message GM
 	if (isset($_POST['GM']) AND $_POST['GM'] == 1) {
-
 		$bdd->query("INSERT INTO mas_allogm
 			(avID, userID, GM, content, seenByGM)
 			VALUES ('$avID','$userID', '$GM', '$content', '1')
 			");
 
-		echo '<div class="msg-GM">'.$content.'</div>';
 	}
 	//Message user
 	else {
-		echo '<div class="msg-user">'.$content.'</div>';
+		$bdd->query("INSERT INTO mas_allogm
+			(avID, userID, GM, content, seenByPlayer)
+			VALUES ('$avID','$userID', '$GM', '$content', '1')
+			");
+
 	}
+
+	$req = $bdd->query("
+		SELECT id
+		FROM mas_alloGM
+		ORDER BY id DESC
+		");
+	$msgID = $req->fetch()[0];
+
+	echo '<div class="alloGM-msg msg-user" id="'.$msgID.'">'.$content.'</div>';
+}
+
+/*REFRESH*/
+if (isset($_GET['action']) AND $_GET['action'] == 'alloRefresh') {
+
+	$lastMsgID = $_GET['lastMsgID'];
+	$avID = $_GET['avID'];
+	$userID = $_GET['userID'];
+
+	$req = $bdd->query("
+		SELECT *
+		FROM mas_allogm
+		WHERE id > '$lastMsgID'
+		AND avID = '$avID'
+		AND userID = '$userID'
+		");
+	$res = $req->fetchall();
+
+	foreach ($res as $msg) { ?>
+		<div class="alloGM-msg msg-other" id="<?=$msg['id']?>"><?=$msg['content']?></div>		
+	<?php
+	}
+
 }
 
 ?>

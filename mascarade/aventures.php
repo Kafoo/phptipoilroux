@@ -10,7 +10,7 @@ include("submits/aventures_submit.php");
 	<?php include("_shared_/headconfig.php");
 	$_SESSION['currentURL'] = $_SERVER['REQUEST_URI']; ?>
 	<!-- TINYMCE SOURCE -->
-        	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
+         	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
    	<!-- END TINYMCE -->
 	<link rel="stylesheet" type="text/css" href="style/aventures.css">
 	<title>Vampire - Aventures</title>
@@ -173,9 +173,9 @@ include("submits/aventures_submit.php");
 
 			//On cherche si le user est le GM
 			if ($msgS[0]['gmID'] == $userID) {
-				$GM = "1";
+				$_SESSION['GM'] = "1";
 			} else {
-				$GM = "0";
+				$_SESSION['GM'] = "0";
 			}
 
 			//On récupère le dernier message du joueur, pour l'édition/suppression
@@ -354,7 +354,7 @@ include("submits/aventures_submit.php");
 						</div>
 						<textarea class="alloGM-textArea"></textarea>
 						<div class="alloGM-submit button"></div>
-						<div id='GMStock' gm='<?=$GM?>'></div>
+						<div id='GMStock' gm="<?=$_SESSION['GM']?>"></div>
 					</div>
 
 

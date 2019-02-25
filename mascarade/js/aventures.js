@@ -190,7 +190,8 @@ $('.showingAlloGM').one('click', function() {
 
 $('.alloGM-textArea').on('keypress', function (e) {
          if(e.which === 13){
-         	$('#alloGM-submit').trigger('click');
+         	$('.alloGM-submit').click();
+         	return false;
          }
    });
 
@@ -209,6 +210,8 @@ $('.alloGM-submit').click(function(){
         	$('.alloGM-submit').removeClass('alloGM-loading');
             $('.alloGM-content').append(http.responseText);
             $('.alloGM-textArea').val('');
+           	$('.alloGM-content').scrollTop(9999);
+
        }
     };
 
