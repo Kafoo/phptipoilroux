@@ -31,7 +31,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'rollTheDie') {
 /*----------- EDIT NOTES -----------*/
 
 if (isset($_POST['action']) AND $_POST['action'] == 'editNotes') {
-	$notesContent = nl2br(htmlspecialchars(($_POST['notesContent'])));
+	$notesContent = nl2br(htmlspecialchars(($_POST['notesContent']), ENT_QUOTES));
 	$userID = $_POST['userID'];
 	$avID = $_POST['avID'];
 	$req = $bdd->prepare("
@@ -45,7 +45,7 @@ if (isset($_POST['action']) AND $_POST['action'] == 'editNotes') {
 /*----------- ALLO GM -----------*/
 
 if (isset($_POST['action']) AND $_POST['action'] == 'alloGM') {
-	$content = nl2br(htmlspecialchars(($_POST['content'])));
+	$content = nl2br(htmlspecialchars(($_POST['content']), ENT_QUOTES));
 	$userID = $_POST['userID'];
 	$avID = $_POST['avID'];
 	$GM = $_POST['GM'];
@@ -85,20 +85,41 @@ if (isset($_GET['action']) AND $_GET['action'] == 'alloRefresh') {
 	$lastMsgID = $_GET['lastMsgID'];
 	$avID = $_GET['avID'];
 	$userID = $_GET['userID'];
+	$GM = $_GET['GM'];
 
-	$req = $bdd->query("
-		SELECT *
-		FROM mas_allogm
-		WHERE id > '$lastMsgID'
-		AND avID = '$avID'
-		");
-	$res = $req->fetchall();
+	if ($GM == 1) {
+		$req = $bdd->query("
+			SELECT *
+			FROM mas_allogm
+			WHERE id > '$lastMsgID'
+			AND userID = '$userID'
+			AND avID = '$avID'
+			AND GM = 0
+			");
+		$res = $req->fetchall();
 
-	foreach ($res as $msg) { ?>
-		<div class="alloGM-msg msg-other" id="<?=$msg['id']?>"><?=$msg['content']?></div>		
-	<?php
+		foreach ($res as $msg) { ?>
+			<div class="alloGM-msg msg-other" id="<?=$msg['id']?>"><?=$msg['content']?></div>		
+		<?php
+		} 
 	}
 
-}
+	if ($GM == 0) {
+		$req = $bdd->query("
+			SELECT *
+			FROM mas_allogm
+			WHERE id > '$lastMsgID'
+			AND avID = '$avID'
+			AND GM = 1
+			");
+		$res = $req->fetchall();
 
+		foreach ($res as $msg) { ?>
+			<div class="alloGM-msg msg-other" id="<?=$msg['id']?>"><?=$msg['content']?></div>		
+		<?php
+		} 
+	}
+
+
+}
 ?>

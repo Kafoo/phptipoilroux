@@ -114,7 +114,7 @@ $('.editMsg').click(function(e){
 	//Si mobile, on cache les options du message
 	if (window.matchMedia("(max-width: 720px)").matches) {
 		var editButton = $(e.currentTarget).parent().children('.editMsg.mobile');
-		var suppButton = $(e.currentTarget).parent().children('.suppMsg.mobile');
+		var suppButton = $(e.currentTarget).parent().children('.suppMsg.mobile'); 
 		editButton.hide();
 		editButton.animate({opacity:"0"}, 200);
 		suppButton.hide();
@@ -163,7 +163,7 @@ $("#diceReply-submit").click(function(){
 
 /*ALLO GM*/
 
-//Showing
+//Showing if player
 $('.showingAlloGM').one('click', function() {
 	var http = new XMLHttpRequest;
     http.onreadystatechange = function() {
@@ -179,6 +179,41 @@ $('.showingAlloGM').one('click', function() {
     };
 
     var userID = $('#userID').html();
+    var avID = $('#avID').html();
+
+	http.open('POST','ajax/aventures_allogm.php', true);
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	http.send("userID="+userID+"&avID="+avID);    
+});
+
+//Showing if GM
+
+$('.alloGM-playerChoice').click(function(e) {
+
+	var OW = $(".OW#alloGM");
+	var otherOW = OW.parent().children('.OW').not(OW);
+	OW.show();
+	OW.animate({opacity:"1"},100, function(){
+		otherOW.animate({opacity:"0"}, 100, function(){
+			otherOW.hide();
+		})
+	});
+
+
+	var http = new XMLHttpRequest;
+    http.onreadystatechange = function() {
+    	if (this.readyState < 4 ) {
+    		$('.alloGM-content').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+    	}
+        if (this.readyState == 4 && this.status !== 200) {
+        $('.alloGM-content').html('<div class="loading-error"></div>');
+       }
+        if (this.readyState == 4 && this.status == 200) {
+            $('.alloGM-content').html(this.responseText.trim());
+       }
+    };
+
+    var userID = $(e.currentTarget).attr('id');
     var avID = $('#avID').html();
 
 	http.open('POST','ajax/aventures_allogm.php', true);
@@ -217,7 +252,7 @@ $('.alloGM-submit').click(function(){
 
     var content =  encodeURIComponent($('.alloGM-textArea').val().replace(/\\n/g, '\n'));
     var GM = $('#GMStock').attr('gm');
-    var userID = $('#userID').html();
+    var userID = $('#alloGM-userID').attr('userID');
     var avID = $('#avID').html();
 	http.open('POST','server/HTTP_REQUEST.php', true);
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -253,7 +288,7 @@ $(".editButton").click(function(){
 	$(".notesPaper").slideToggle(200);
 	$("#editNotesArea").html(notesContent);	
 	$(".editNotesBlock").slideToggle(200, function(){
-		$("#editNotesArea").focus();	
+	$("#editNotesArea").focus();	
 	});
 })
 

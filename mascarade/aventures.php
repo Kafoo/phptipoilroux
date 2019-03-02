@@ -10,7 +10,7 @@ include("submits/aventures_submit.php");
 	<?php include("_shared_/headconfig.php");
 	$_SESSION['currentURL'] = $_SERVER['REQUEST_URI']; ?>
 	<!-- TINYMCE SOURCE -->
-          	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
+           	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
     	<!-- END TINYMCE -->
 	<link rel="stylesheet" type="text/css" href="style/aventures.css">
 	<title>Vampire - Aventures</title>
@@ -288,7 +288,7 @@ include("submits/aventures_submit.php");
 					<?php
 					}
 					if ($_SESSION['GM'] == 1) { //Si GM, choix des players?>
-						<div class="showingOW replyOption desktop showingAlloGM" OW="alloGM">
+						<div class="showingOW replyOption desktop showingAlloGM-menu" OW="alloGM-menu">
 							<img src="img/icones/allogm.png">
 						</div>
 					<?php
@@ -356,6 +356,21 @@ include("submits/aventures_submit.php");
 
 
 					<!-- ALLO GM -->
+					<div class="OW" id="alloGM-menu">
+						<div class="closingCross"></div>
+						<h3>ALLO GM</h3>
+						<div style="height: 30px" SPACER></div>
+						<?php
+						foreach ($coterie as $perso) {
+							if ($perso['nom'] !== "GM") { ?>
+								<div class="alloGM-playerChoice choice-gen button" id="<?=$perso['userID']?>">
+									<?=$perso['nom']?>
+								</div>
+							<?php
+							}
+						}
+						?>
+					</div>
 					<div class="OW" id="alloGM">
 						<div class="closingCross"></div>
 						<h3>ALLO GM</h3>

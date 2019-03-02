@@ -181,6 +181,15 @@ src: url("../font/Cinzel-Regular.ttf");
 	    text-shadow: none;
 	}
 
+	.choice-gen{
+		width: max-content;
+		margin: 10px auto;
+		padding: 5px 8px;
+		background-color: grey;
+		border: 1px solid black;
+		border-radius: 3px;
+	}
+
 /*--------- HEADER ---------*/
 
 	#headerDesktop{

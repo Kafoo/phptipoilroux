@@ -641,7 +641,7 @@ h2 img{
 	cursor: pointer;
 }
 
-#alloGM{
+#alloGM, #alloGM-menu{
 	background-color: rgb(162, 161, 183);
 	resize: both
 }

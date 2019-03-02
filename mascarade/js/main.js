@@ -31,7 +31,6 @@ $('#croixConnection').click(function(){
 
 /*OVER WINDOWS*/
 
-
 $('.showingOW').click(function(e){
 	var OWName = ($(e.currentTarget).attr('OW'));
 	var OW = $(".OW#"+OWName);
