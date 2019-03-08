@@ -231,33 +231,40 @@ $('.alloGM-textArea').on('keypress', function (e) {
    });
 
 $('.alloGM-submit').click(function(){
-	var http = new XMLHttpRequest;
-    http.onreadystatechange = function() {
-    	if (this.readyState < 4 ) {
-    		$('.alloGM-submit').addClass('alloGM-loading');
-    		$('.alloGM-loading').removeClass('alloGM-submit button');
-    	}
-        if (this.readyState == 4 && this.status !== 200) {
-        //code
-       }
-        if (this.readyState == 4 && this.status == 200) {
-        	$('.alloGM-loading').addClass('alloGM-submit button');
-        	$('.alloGM-submit').removeClass('alloGM-loading');
-            $('.alloGM-content').append(http.responseText);
-            $('.alloGM-textArea').val('');
-           	$('.alloGM-content').scrollTop(9999);
 
-       }
-    };
+	if ($(".alloGM-textArea").val().trim() !== "") {
 
-    var content =  encodeURIComponent($('.alloGM-textArea').val().replace(/\\n/g, '\n'));
-    var GM = $('#GMStock').attr('gm');
-    var userID = $('#alloGM-userID').attr('userID');
-    var avID = $('#avID').html();
-	http.open('POST','server/HTTP_REQUEST.php', true);
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.send("action=alloGM&content="+content+"&GM="+GM+"&userID="+userID+"&avID="+avID);	
+
+		var http = new XMLHttpRequest;
+	    http.onreadystatechange = function() {
+	    	if (this.readyState < 4 ) {
+	    		$('.alloGM-submit').addClass('alloGM-loading');
+	    		$('.alloGM-loading').removeClass('alloGM-submit button');
+	    	}
+	        if (this.readyState == 4 && this.status !== 200) {
+	        //code
+	       }
+	        if (this.readyState == 4 && this.status == 200) {
+	        	$('.alloGM-loading').addClass('alloGM-submit button');
+	        	$('.alloGM-submit').removeClass('alloGM-loading');
+	            $('.alloGM-content').append(http.responseText);
+	            $('.alloGM-textArea').val('');
+	           	$('.alloGM-content').scrollTop(9999);
+
+	       }
+	    };
+
+	    var content =  encodeURIComponent($('.alloGM-textArea').val().replace(/\\n/g, '\n'));
+	    var GM = $('#GMStock').attr('gm');
+	    var userID = $('#alloGM-userID').attr('userID');
+	    var avID = $('#avID').html();
+		http.open('POST','server/HTTP_REQUEST.php', true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		http.send("action=alloGM&content="+content+"&GM="+GM+"&userID="+userID+"&avID="+avID);	
+	}
 })
+	
+
 
 /*NOTES*/
 $('.showingNotes').one('click', function() {
