@@ -28,8 +28,7 @@ include("_shared_/functions.php");
 		Des poutous
 	</div>
 
-	<div class="container">
-
+	<div class="container centering">
 	</div>
 
 	<div class="container">

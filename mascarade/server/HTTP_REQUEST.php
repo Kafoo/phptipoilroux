@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("../_shared_/connectDB.php");
+include("mailer.php");
 
 
 /*----------- SUPP MSG -----------*/
@@ -40,6 +41,10 @@ if (isset($_POST['action']) AND $_POST['action'] == 'editNotes') {
 		WHERE userID = '$userID' AND avID = '$avID' ");
 	$req->execute([$notesContent]);
 	echo $notesContent;
+
+
+
+	send_mail(['ant.guillard@gmail.com'], 'test alloGM', 'body test', 'body test');
 }
 
 /*----------- ALLO GM -----------*/
@@ -59,8 +64,17 @@ if (isset($_POST['action']) AND $_POST['action'] == 'alloGM') {
 			VALUES ('$avID','$userID', '$GM', '$content', '1')
 			");
 
+		//Send message to player
+		?>
+		<script type="text/javascript">
+			var http = new XMLHttpRequest;
+			http.open('GET','server/mailer.php?type=alloGM&toGM=0&avID=<?=$avID?>&userID=<?=$userID?>',true);
+			http.send();
+		</script>
+		<?php
+
 	}
-	//Message user
+	//Message player
 	else {
 		$bdd->query("INSERT INTO mas_allogm
 			(avID, userID, GM, content, seenByPlayer)
