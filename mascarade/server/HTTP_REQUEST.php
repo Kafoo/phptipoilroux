@@ -41,56 +41,52 @@ if (isset($_POST['action']) AND $_POST['action'] == 'editNotes') {
 		WHERE userID = '$userID' AND avID = '$avID' ");
 	$req->execute([$notesContent]);
 	echo $notesContent;
-
-
-
-	send_mail(['ant.guillard@gmail.com'], 'test alloGM', 'body test', 'body test');
 }
 
 /*----------- ALLO GM -----------*/
 
 if (isset($_POST['action']) AND $_POST['action'] == 'alloGM') {
+
 	$content = nl2br(htmlspecialchars(($_POST['content']), ENT_QUOTES));
-	$userID = $_POST['userID'];
+	$fromID = $_POST['userID'];
+	$toID = $_POST['otherID'];
 	$avID = $_POST['avID'];
-	$GM = $_POST['GM'];
 
+	//On vérifie s'il n'y a pas d'autre unseen pour le mailer
+	$req = $bdd->query("
+		SELECT * 
+		FROM mas_allogm
+		WHERE avID = '$avID'
+		AND toID = '$toID'
+		");
+	$res = $req->fetchall();
 
+	foreach ($res as $key) {
+		if ($key['seen'] == 0) {
+			$mailer = True;
+		}
+	}
 
-	//Message GM
-	if (isset($_POST['GM']) AND $_POST['GM'] == 1) {
-		$bdd->query("INSERT INTO mas_allogm
-			(avID, userID, GM, content, seenByGM)
-			VALUES ('$avID','$userID', '$GM', '$content', '1')
-			");
+	//INSERT MSG
+	$bdd->query("INSERT INTO mas_allogm
+		(avID, fromID, toID, content)
+		VALUES ('$avID','$fromID', '$toID', '$content')
+		");
 
-		//Send message to player
-		?>
+	//SEND MAIL
+	if ($mailer==True) { ?>
 		<script type="text/javascript">
 			var http = new XMLHttpRequest;
-			http.open('GET','server/mailer.php?type=alloGM&toGM=0&avID=<?=$avID?>&userID=<?=$userID?>',true);
+			http.open('GET','server/mailer.php?type=alloGM&avID=<?=$avID?>&userID=<?=$toID?>',true);
 			http.send();
 		</script>
-		<?php
-
+	<?php
 	}
-	//Message player
-	else {
-		$bdd->query("INSERT INTO mas_allogm
-			(avID, userID, GM, content, seenByPlayer)
-			VALUES ('$avID','$userID', '$GM', '$content', '1')
-			");
+	?>
+		
+	<?php
 
-	}
-
-	$req = $bdd->query("
-		SELECT id
-		FROM mas_alloGM
-		ORDER BY id DESC
-		");
-	$msgID = $req->fetch()[0];
-
-	echo '<div class="alloGM-msg msg-user" id="'.$msgID.'">'.$content.'</div>';
+	echo 'success';
 }
 
 /*REFRESH*/
@@ -99,41 +95,66 @@ if (isset($_GET['action']) AND $_GET['action'] == 'alloRefresh') {
 	$lastMsgID = $_GET['lastMsgID'];
 	$avID = $_GET['avID'];
 	$userID = $_GET['userID'];
-	$GM = $_GET['GM'];
+	$otherID = $_GET['otherID'];
 
-	if ($GM == 1) {
-		$req = $bdd->query("
-			SELECT *
-			FROM mas_allogm
-			WHERE id > '$lastMsgID'
-			AND userID = '$userID'
-			AND avID = '$avID'
-			AND GM = 0
-			");
-		$res = $req->fetchall();
+	$req = $bdd->query("
+		SELECT *
+		FROM mas_allogm
+		WHERE id > '$lastMsgID'
+		AND avID = '$avID'
+		AND fromID IN('$userID', '$otherID')
+		AND toID IN('$userID', '$otherID')
+		");
+	$res = $req->fetchall();
 
-		foreach ($res as $msg) { ?>
+	foreach ($res as $msg) {
+		//if from user
+		if ($msg['fromID'] == $userID) { ?>
+			<div class="alloGM-msg msg-user" id="<?=$msg['id']?>"><?=$msg['content']?></div>
+		<?php
+		}
+		//if to user
+		if ($msg['toID'] == $userID) { ?>
 			<div class="alloGM-msg msg-other" id="<?=$msg['id']?>"><?=$msg['content']?></div>		
 		<?php
-		} 
+		}
+	} 
+
+	//SET MSG TO SEEN
+	$bdd->query("
+		UPDATE mas_allogm
+		SET seen = '1' 
+		WHERE avID = '$avID'
+		AND fromID = '$otherID'
+		AND toID = '$userID'
+		");
+}
+
+/*NOTIFICATIONS UNSEEN*/
+
+if (isset($_GET['action']) AND $_GET['action'] == 'notifUnseen') {
+
+
+	//On fetch les unseen de alloGM
+	$avID = $_GET['avID'];
+	$userID = $_GET['userID'];
+
+	$req = $bdd->query("
+		SELECT fromID
+		FROM mas_alloGM
+		WHERE avID = '$avID'
+		AND toID = '$userID'
+		AND seen = 0;
+		");
+	$alloGMUnseen = $req->fetchall();
+	$alloGMUnseens = [];
+	//On fait la liste des joueurs dont msg unseen pour le GM
+
+	foreach ($alloGMUnseen as $unseen) {
+		array_push($alloGMUnseens, $unseen);
 	}
 
-	if ($GM == 0) {
-		$req = $bdd->query("
-			SELECT *
-			FROM mas_allogm
-			WHERE id > '$lastMsgID'
-			AND avID = '$avID'
-			AND GM = 1
-			");
-		$res = $req->fetchall();
-
-		foreach ($res as $msg) { ?>
-			<div class="alloGM-msg msg-other" id="<?=$msg['id']?>"><?=$msg['content']?></div>		
-		<?php
-		} 
-	}
-
+	echo json_encode($alloGMUnseens);
 
 }
 ?>

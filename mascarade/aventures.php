@@ -66,6 +66,7 @@ include("submits/aventures_submit.php");
 						AND mas_persos.userID='$userID';
 						");
 					//Si oui, $persoOfAv sera défini par le nom de ce perso
+					
 					$persoOfAv = $req->fetch()['nom']; ?>
 
 					<!-- On affiche l'aventure -->
@@ -186,7 +187,7 @@ include("submits/aventures_submit.php");
 				ORDER BY mas_messages_aventure.id DESC ");
 			$lastMsgID = $req->fetch()[0];
 
-			//On vérifie sur le dernier message posté est celui du user actif
+			//On vérifie si le dernier message posté est celui du user actif
 			if ($currentPage == $NbrPages 
 			AND $msgS[count($msgS)-1]['userID'] == $userID) {
 				$lastIsUser = True;
@@ -205,6 +206,14 @@ include("submits/aventures_submit.php");
 				WHERE mas_relation_perso2aventure.avID = 25
 				");
 			$coterie = $req->fetchall();
+
+			//On identifie le GM de cette coterie et on le met dans $GMID
+			foreach ($coterie as $perso) {
+				if ($perso['nom'] == 'GM') {
+					$GMID = $perso['userID'];
+				}
+			}
+
 			?>
 
 			<!------ TITRE AVENTURE ------>
@@ -288,13 +297,14 @@ include("submits/aventures_submit.php");
 					<?php
 					}
 					if ($_SESSION['GM'] == 1) { //Si GM, choix des players?>
-						<div class="showingOW replyOption desktop showingAlloGM-menu" OW="alloGM-menu">
-							<img src="img/icones/allogm.png">
+						<div class="showingOW replyOption desktop showingAlloGM showingAlloGM-menu" OW="alloGM-menu">
+							<img src="img/icones/allogm.png"><div class="
+							unseen"></div>
 						</div>
 					<?php
 					}
 					else{ //Sinon, direct la messagerie?>
-						<div class="showingOW replyOption desktop showingAlloGM" OW="alloGM">
+						<div class="showingOW replyOption desktop showingAlloGM showingAlloGM-direct" OW="alloGM">
 							<img src="img/icones/allogm.png">
 						</div>
 					<?php
@@ -363,7 +373,7 @@ include("submits/aventures_submit.php");
 						<?php
 						foreach ($coterie as $perso) {
 							if ($perso['nom'] !== "GM") { ?>
-								<div class="alloGM-playerChoice choice-gen button" id="<?=$perso['userID']?>">
+								<div class="alloGM-playerChoice choice-gen button unseen2" id="<?=$perso['userID']?>">
 									<?=$perso['nom']?>
 								</div>
 							<?php
@@ -379,7 +389,6 @@ include("submits/aventures_submit.php");
 						</div>
 						<textarea class="alloGM-textArea"></textarea>
 						<div class="alloGM-submit button"></div>
-						<div id='GMStock' gm="<?=$_SESSION['GM']?>"></div>
 					</div>
 
 
@@ -416,7 +425,10 @@ include("submits/aventures_submit.php");
 </section>
 
 <!-- JAVASCRIPT STOCK -->
+
 <div id="avID" hidden><?=$_GET['avID']?></div>
+<div id="userID" hidden><?=$userID?></div>
+<div id="GMID" hidden><?=$GMID?></div>
 
 <!---------- SCRIPTS ---------->
 <?php include("_shared_/scripts.php"); ?>

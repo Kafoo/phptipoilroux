@@ -19,15 +19,34 @@ include("_shared_/functions.php");
 <!-- -------- CONTENU -------- -->
 <section>
 
-	<h1>SOCIAL</h1>
+	<?php //IF USER IS DISCONNECTED
+	if (!isset($_SESSION['connected'])) { ?>
 
-	<div class="container">
-		
-	</div>
+		<h1>SOCIAL</h1>
 
-	<div class="container">
-		
-	</div>
+		<div class="paco">
+			Il faut te connecter pour accéder à cette page !
+		</div>
+
+
+	<?php //endif disconnected user
+
+
+	}else{ //IF CONNECTED USER ?>
+
+
+		<h1>SOCIAL</h1>
+
+		<div class="container">
+			
+		</div>
+
+		<div class="container">
+			
+		</div>
+
+	<?php //endif connected user
+	} ?>
 
 </section>
 

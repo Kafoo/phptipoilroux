@@ -164,7 +164,7 @@ $("#diceReply-submit").click(function(){
 /*ALLO GM*/
 
 //Showing if player
-$('.showingAlloGM').one('click', function() {
+$('.showingAlloGM-direct').one('click', function() {
 	var http = new XMLHttpRequest;
     http.onreadystatechange = function() {
     	if (this.readyState < 4 ) {
@@ -179,11 +179,13 @@ $('.showingAlloGM').one('click', function() {
     };
 
     var userID = $('#userID').html();
+    var otherID = $('#GMID').html();
     var avID = $('#avID').html();
 
 	http.open('POST','ajax/aventures_allogm.php', true);
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.send("userID="+userID+"&avID="+avID);    
+	http.send("userID="+userID+"&otherID="+otherID+"&avID="+avID);
+	refreshNotifUnseen(); 
 });
 
 //Showing if GM
@@ -213,13 +215,24 @@ $('.alloGM-playerChoice').click(function(e) {
        }
     };
 
-    var userID = $(e.currentTarget).attr('id');
+    var userID = $('#GMID').html();
+    var otherID = $(e.currentTarget).attr('id');
     var avID = $('#avID').html();
 
 	http.open('POST','ajax/aventures_allogm.php', true);
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.send("userID="+userID+"&avID="+avID);    
+	http.send("userID="+userID+"&otherID="+otherID+"&avID="+avID);  
+	refreshNotifUnseen();  
 });
+
+//Stop refresh when stop showing
+$('#alloGM').children(".closingCross").click(function(){
+	clearInterval(alloRefreshInterval);
+})
+
+$('.replyOption').click(function(){
+	clearInterval(alloRefreshInterval);
+})
 
 //Sending
 
@@ -247,23 +260,54 @@ $('.alloGM-submit').click(function(){
 	        if (this.readyState == 4 && this.status == 200) {
 	        	$('.alloGM-loading').addClass('alloGM-submit button');
 	        	$('.alloGM-submit').removeClass('alloGM-loading');
-	            $('.alloGM-content').append(http.responseText);
+	        	if (http.responseText.includes('success')){
+	        		$('.alloGM-content').append(formContent);
+	        	}
 	            $('.alloGM-textArea').val('');
 	           	$('.alloGM-content').scrollTop(9999);
 
 	       }
 	    };
 
-	    var content =  encodeURIComponent($('.alloGM-textArea').val().replace(/\\n/g, '\n'));
-	    var GM = $('#GMStock').attr('gm');
+	    var content = $('.alloGM-textArea').val().replace(/\\n/g, '\n');
+	    var URIcontent =  encodeURIComponent(content);
+	    var formContent = '<div class="alloGM-msg msg-user temp">'+content+'</div>'
 	    var userID = $('#alloGM-userID').attr('userID');
+	    var otherID = $('#alloGM-otherID').attr('otherID');
 	    var avID = $('#avID').html();
 		http.open('POST','server/HTTP_REQUEST.php', true);
 		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		http.send("action=alloGM&content="+content+"&GM="+GM+"&userID="+userID+"&avID="+avID);	
+		http.send("action=alloGM&content="+URIcontent+"&userID="+userID+"&otherID="+otherID+"&avID="+avID);	
 	}
 })
 	
+//Notification unseen
+
+function refreshNotifUnseen(){
+
+	var http_notif = new XMLHttpRequest;
+	var avID = $('#avID').html();
+	var userID = $('#userID').html();
+
+    http_notif.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+	        if (http_notif.responseText == "[]") {
+	        	$('.showingAlloGM').removeClass("unseen1");
+	        }
+	        else{
+				$('.showingAlloGM').addClass("unseen1");
+	        }
+       }
+      }
+
+	http_notif.open('GET','server/HTTP_REQUEST.php?action=notifUnseen&avID='+avID+"&userID="+userID, true);
+	http_notif.send();
+}
+
+setInterval(refreshNotifUnseen, 5000);
+
+
+
 
 
 /*NOTES*/
@@ -323,6 +367,41 @@ $(".confirmEditNotes").click(function(){
 	$(".notesPaper").slideToggle(200);
 	$(".editNotesBlock").slideToggle(200);
 })
+
+/*FIXINFOS POP-UP SYSTEM*/
+
+$(".infoPersoCarac").mouseover(function(e){
+	$carac = $(e.currentTarget).attr('carac');
+	$('.puFixInfos').html($carac);
+	$('.puFixInfos').animate({opacity:'1'}, 80);
+})
+
+$(".hpBar").mouseover(function(e){
+	$pv = $(e.currentTarget).attr('pv');
+	$('.puFixInfos').html($pv+'/10 PV');
+	$('.puFixInfos').animate({opacity:'1'}, 80);
+})
+
+$(".infoPersoNom").mouseover(function(){
+	$('.puFixInfos').html('fiche perso');
+	$('.puFixInfos').animate({opacity:'1'}, 80);
+})
+
+$(".infoPersoInventory").mouseover(function(){
+	$('.puFixInfos').html('inventaire');
+	$('.puFixInfos').animate({opacity:'1'}, 80);
+})
+
+$(".infoPersoXP-container, .infoPersoLvl").mouseover(function(e){
+	$xp = $(e.currentTarget).children('.infoPersoXP').attr('xp');
+	$('.puFixInfos').html($xp);
+	$('.puFixInfos').animate({opacity:'1'}, 80);
+})
+
+$(".infoPerso").mouseleave(function(){
+	$('.puFixInfos').animate({opacity:'0'}, 1);
+})
+
 
 /*-------------- IF MOBILE --------------*/
 

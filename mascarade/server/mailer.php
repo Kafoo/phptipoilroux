@@ -9,29 +9,25 @@ require '../PHPMailer-master/src/PHPMailer.php';
 require '../PHPMailer-master/src/SMTP.php';
 
 
-/*---------- NOUVEAU POST AVENTURE ----------*/
+/*---------- NOUVEAU ALLO GM ----------*/
 if (isset($_GET['type']) AND $_GET['type'] == "alloGM" ) {
 
-    if ($_GET['toGM'] == 0) {
-        $avID = $_GET['avID'];
-        $userID = $_GET['userID'];
-        $req = $bdd->query("
-                SELECT mail
-                FROM mas_membres
-                WHERE id = '$userID'");
-        $playerMail = $req->fetch()[0];
-        $req = $bdd->query("
-            SELECT nom_aventure
-            FROM mas_aventures
-            WHERE id='$avID'");
-        $avName = $req->fetch()[0];
-        $subject = 'AlloGM - Nouveau message !';
-        $body = 'Tu as reçu un nouveau message privé de la part du GM dans l\'aventure "'.$avName.'" !! <br><b>Découvre le en suivant ce lien : https://phptipoilroux.herokuapp.com/mascarade/aventures.php?avID='.$avID.'#replyContainer <br><br></b>A bientôôôôt =P';
-        $altBody = 'Tu as reçu un nouveau message privé de la part du GM dans l\'aventure "'.$avName.'" !! Découvre le en suivant ce lien : https://phptipoilroux.herokuapp.com/mascarade/aventures.php?avID='.$avID.'#replyContainer . A bientôôôôt =P';
-        send_mail([$playerMail], $subject, $body, $altBody);
-    }
-
-
+    $avID = $_GET['avID'];
+    $userID = $_GET['userID'];
+    $req = $bdd->query("
+            SELECT mail
+            FROM mas_membres
+            WHERE id = '$userID'");
+    $playerMail = $req->fetch()[0];
+    $req = $bdd->query("
+        SELECT nom_aventure
+        FROM mas_aventures
+        WHERE id='$avID'");
+    $avName = $req->fetch()[0];
+    $subject = 'AlloGM - Nouveau message !';
+    $body = 'Tu as reçu un nouveau message privé sur AlloGM dans l\'aventure "'.$avName.'" !! <br><b>Découvre le en suivant ce lien : https://phptipoilroux.herokuapp.com/mascarade/aventures.php?avID='.$avID.'#replyContainer <br><br></b>A bientôôôôt =P';
+    $altBody = 'Tu as reçu un nouveau message privé sur AlloGM dans l\'aventure "'.$avName.'" !! Découvre le en suivant ce lien : https://phptipoilroux.herokuapp.com/mascarade/aventures.php?avID='.$avID.'#replyContainer . A bientôôôôt =P';
+    send_mail([$playerMail], $subject, $body, $altBody);
 }
 
 

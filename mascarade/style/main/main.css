@@ -123,27 +123,27 @@ src: url("../font/Cinzel-Regular.ttf");
 	}
 
 	.carac1{
-		background-image: url(../../img/icones/carac/c1_color.png);
+		background-image: url(../../img/icones/carac/1_color.png);
 		background-size: cover;
 	}
 
 	.carac2{
-		background-image: url(../../img/icones/carac/c2_color.png);
+		background-image: url(../../img/icones/carac/2_color.png);
 		background-size: cover;
 	}
 
 	.carac3{
-		background-image: url(../../img/icones/carac/c3_color.png);
+		background-image: url(../../img/icones/carac/3_color.png);
 		background-size: cover;
 	}
 
 	.carac4{
-		background-image: url(../../img/icones/carac/c4_color.png);
+		background-image: url(../../img/icones/carac/4_color.png);
 		background-size: cover;
 	}
 
 	.carac5{
-		background-image: url(../../img/icones/carac/c5_color.png);
+		background-image: url(../../img/icones/carac/5_color.png);
 		background-size: cover;
 	}
 
@@ -182,12 +182,41 @@ src: url("../font/Cinzel-Regular.ttf");
 	}
 
 	.choice-gen{
+		position: relative;
 		width: max-content;
 		margin: 10px auto;
 		padding: 5px 8px;
 		background-color: grey;
 		border: 1px solid black;
 		border-radius: 3px;
+	}
+
+	.unseen1, .unseen2{
+		position: relative;
+	}
+
+	.unseen1:after{
+		content: "";
+		position: absolute;
+		right: 8px;
+		bottom: 6px;
+		display: inline-block;
+		background-image: url(../../img/icones/unseen.png);
+		background-size: 30px;
+		width: 30px;
+		height: 30px;
+	}
+
+	.unseen2:after{
+		content: "";
+		position: absolute;
+		right: -20px;
+		bottom: 3px;
+		display: inline-block;
+		background-image: url(../../img/icones/unseen.png);
+		background-size: 20px;
+		width: 20px;
+		height: 20px;
 	}
 
 /*--------- HEADER ---------*/

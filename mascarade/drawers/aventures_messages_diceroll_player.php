@@ -15,13 +15,13 @@ for ($j=0; $j < count($diceRolls); $j++) {
 	$diceRoll = $diceRolls[$j];
 	$perso = $diceRoll['nom'];
 	$title = htmlspecialchars_decode($msgInfo['contenu']);
-	$carac = $diceRoll['carac'];
-	$valCarac = $diceRoll[$carac];
+	$caracID = $diceRoll['caracID'];
+	$caracVal = $diceRoll['c'.$caracID];
 	$result = $diceRoll['result'];
 	$bonus = $diceRoll['bonus'];
 	$malus = $diceRoll['malus'];
 	$difficulty = $diceRoll['difficulty'];
-	$resultFinal = floatval($result)+floatval($valCarac)+floatval($bonus)-floatval($malus);
+	$resultFinal = floatval($result)+floatval($caracVal)+floatval($bonus)-floatval($malus);
 
 	if ($difficulty<$resultFinal) {$success = 1;}
 	elseif ($difficulty>=$resultFinal) {$success = 0;}
@@ -33,7 +33,7 @@ for ($j=0; $j < count($diceRolls); $j++) {
 		<div class="centering">
 			<div class="diceRollDigits">
 				<div class="diceRollDigit digit-roll"><?=$result?></div>
-				<div class="diceRollDigit digit-carac" style="background-image: url(img/icones/carac/<?=$carac?>_color.png);">+<?=$valCarac?></div>
+				<div class="diceRollDigit digit-carac" style="background-image: url(img/icones/carac/<?=$caracID?>_color.png);">+<?=$caracVal?></div>
 				<div class="diceRollDigit digit-bonus">+<?=$bonus?></div>
 				<div class="diceRollDigit digit-malus">-<?=$malus?></div>
 				<div class="inline">

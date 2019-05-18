@@ -55,38 +55,3 @@ $(".closingCross").click(function(e){
 		$(e.currentTarget).parent().hide();
 	})
 });
-
-
-/*POP-UP SYSTEM*/
-
-$(".infoPersoCarac").mouseover(function(e){
-	$carac = $(e.currentTarget).attr('carac');
-	$('.puFixInfos').html($carac);
-	$('.puFixInfos').animate({opacity:'1'}, 80);
-})
-
-$(".hpBar").mouseover(function(e){
-	$pv = $(e.currentTarget).attr('pv');
-	$('.puFixInfos').html($pv+'/10 PV');
-	$('.puFixInfos').animate({opacity:'1'}, 80);
-})
-
-$(".infoPersoNom").mouseover(function(){
-	$('.puFixInfos').html('fiche perso');
-	$('.puFixInfos').animate({opacity:'1'}, 80);
-})
-
-$(".infoPersoInventory").mouseover(function(){
-	$('.puFixInfos').html('inventaire');
-	$('.puFixInfos').animate({opacity:'1'}, 80);
-})
-
-$(".infoPersoXP-container, .infoPersoLvl").mouseover(function(e){
-	$xp = $('.infoPersoXP').attr('xp');
-	$('.puFixInfos').html($xp);
-	$('.puFixInfos').animate({opacity:'1'}, 80);
-})
-
-$(".infoPerso").mouseleave(function(){
-	$('.puFixInfos').animate({opacity:'0'}, 1);
-})

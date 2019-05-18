@@ -76,5 +76,5 @@ if ($i == 0) {//Seulement pour le 1er post ?>
 	</div>
 	<?php	
 }else{ ?>
-	<div class='<?=$firstMsgOfPost[0]?>'></div>
+	<div></div>
 <?php }?>

@@ -1,806 +1,266 @@
 /* ------ AVENTURE NON PRÉCISÉE ------ */
 
-.choixAv{
-	position: relative;
-	width: 250px;
-	height: 100px;
-	margin: 30px auto;
-	padding: 30px;
-    color: black;
-    font-style: italic;
-    font-weight: bold;
-    font-size: 1.5em;
-    text-align: center;
-    background-color: rgba(139, 131, 128, 0.79);
-    box-shadow: 2px 2px 30px 3px rgba(0,0,0,0.5);
-    border: 1.5px solid black;
-    border-radius: 5px;
-}
+	.choixAv{
+		position: relative;
+		width: 250px;
+		height: 100px;
+		margin: 30px auto;
+		padding: 30px;
+	    color: black;
+	    font-style: italic;
+	    font-weight: bold;
+	    font-size: 1.5em;
+	    text-align: center;
+	    background-color: rgba(139, 131, 128, 0.79);
+	    box-shadow: 2px 2px 30px 3px rgba(0,0,0,0.5);
+	    border: 1.5px solid black;
+	    border-radius: 5px;
+	}
 
-.titreAv{
-	background-color: rgba(40,40,50, 0.6);
-}
+	.titreAv{
+		background-color: rgba(40,40,50, 0.6);
+	}
 
-.goAv{
-    display: block;
-    position: relative;
-    padding: 7px 20px;
-    margin: 30px auto 0 auto;
-    color: black;
-    font-size: 0.6em;
-    font-style: initial;
-    font-weight: initial;
-    text-decoration: none;
-    border: 1px solid black;
-    border-radius: 5px;
-    box-shadow: inset -5px -5px 20px 1px rgba(0,0,0,0.2);
-    background-color: #887f78;
-    cursor: pointer;
-   }
+	.goAv{
+	    display: block;
+	    position: relative;
+	    padding: 7px 20px;
+	    margin: 30px auto 0 auto;
+	    color: black;
+	    font-size: 0.6em;
+	    font-style: initial;
+	    font-weight: initial;
+	    text-decoration: none;
+	    border: 1px solid black;
+	    border-radius: 5px;
+	    box-shadow: inset -5px -5px 20px 1px rgba(0,0,0,0.2);
+	    background-color: #887f78;
+	    cursor: pointer;
+	   }
 
-.goAv a{
-	pointer-events: none;
-}
+	.goAv a{
+		pointer-events: none;
+	}
 
-.goAv:hover{
-	box-shadow: none;
-}
+	.goAv:hover{
+		box-shadow: none;
+	}
 
-.joinPerso{
-	position: absolute;
-	display: none;
-	opacity: 0;
-	top: 0;
-	left: 0;
-	width: 90%;
-	height: calc(100% - 30px);
-    padding: 15px 5%;
-    color: black;
-    font-size: 0.7em;
-    border-radius: 5px;
-    background-color: rgb(163, 162, 144);
-	z-index: 500;
-	overflow: hidden;
-}
+	.joinPerso{
+		position: absolute;
+		display: none;
+		opacity: 0;
+		top: 0;
+		left: 0;
+		width: 90%;
+		height: calc(100% - 30px);
+	    padding: 15px 5%;
+	    color: black;
+	    font-size: 0.7em;
+	    border-radius: 5px;
+	    background-color: rgb(163, 162, 144);
+		z-index: 500;
+		overflow: hidden;
+	}
 
-.joinPerso li{
-	display: block;
-}
+	.joinPerso li{
+		display: block;
+	}
 
 /* ------ AVENTURE PRÉCISÉE ------ */
 
-h2 img{
-	width: 30px;
-}
+	h2 img{
+		width: 30px;
+	}
 
-#gridAv{
-	display: grid;
-	margin: auto 3% auto 5%;
-	position: relative;
-	grid-template-columns: 120px 1fr 200px;
-}
+	#gridAv{
+		display: grid;
+		margin: auto 3% auto 5%;
+		position: relative;
+		grid-template-columns: 120px 1fr 200px;
+	}
 
-.pagination{
-	width: max-content;
-	background-color: grey;
-	padding: 5px;
-	margin: 10px auto;
-	border: 1px solid black;
-	border-radius: 2px;
-	color: white;
-}
+	.pagination{
+		width: max-content;
+		background-color: grey;
+		padding: 5px;
+		margin: 10px auto;
+		border: 1px solid black;
+		border-radius: 2px;
+		color: white;
+	}
 
 /*MESSAGE RP*/
 
-.writerAvatarSlider{
-	margin: 40px 0 60px 0;
-}
-
-.writerAvatar{
-	position: sticky;
-	top: 80px;
-	height: max-content;
-	background-size: cover;
-	border: 1.5px solid rgb(0, 0, 0);
-	border-right: none;
-	border-radius: 10px 0 0 10px;
-	box-shadow: 0px 0px 10px black;
-	z-index: 10;
-	cursor: pointer;
-}
-
-.layer.desktop{
-	height: 130px;
-	background-color: rgba(0,0,0,0.8);
-	color: white;
-	padding: 10px;
-	border-radius: 10px 0 0 10px;
-	opacity: 0;
-	transition: 0.3s;
-	text-align: center;
-	font-size: 0.9em;
-}
-
-@media (min-width: 720px){
-	.writerAvatar:hover .layer{
-		opacity: 1;
-		transition: 0.3s;
+	.writerAvatarSlider{
+		margin: 40px 0 60px 0;
 	}
-}
 
-.separate{
-	border: 1px solid rgb(0,0,0);
-	margin: 5px 0;
-}
+	.writerAvatar{
+		position: sticky;
+		top: 80px;
+		height: max-content;
+		background-size: cover;
+		border: 1.5px solid rgb(0, 0, 0);
+		border-right: none;
+		border-radius: 10px 0 0 10px;
+		box-shadow: 0px 0px 10px black;
+		z-index: 10;
+		cursor: pointer;
+	}
 
-.msg{
-	position: relative;
-	min-height: 100px;
-	margin: 15px 0;
-	padding: 25px;
-    background-color: rgba(157, 165, 158, 0.59);
-	border: 1.5px solid black;
-	border-radius: 6px;
-	box-shadow: inset -2px -2px 50px rgb(43, 81, 46);
-	z-index: 20;
-	overflow: hidden;
-}
+	.layer.desktop{
+		height: 130px;
+		background-color: rgba(0,0,0,0.8);
+		color: white;
+		padding: 10px;
+		border-radius: 10px 0 0 10px;
+		opacity: 0;
+		transition: 0.3s;
+		text-align: center;
+		font-size: 0.9em;
+	}
 
-.msgGM{
-    background-color: rgba(162, 162, 162, 0.58);
-	box-shadow: inset -2px -2px 50px rgb(80, 75, 40);
-}
+	@media (min-width: 720px){
+		.writerAvatar:hover .layer{
+			opacity: 1;
+			transition: 0.3s;
+		}
+	}
 
-.editMsg.desktop{
-	position: absolute;
-	bottom: 0;
-	right: 21px;
-	padding: 2px 6px;
-	border-left: 1px solid black;
-	border-top: 1px solid black;
-	border-radius: 3px 0 0 0;
-	font-family: arial black;
-	font-size: 0.7em;
-	color: rgba(62, 42, 16, 1);
-}
+	.separate{
+		border: 1px solid rgb(0,0,0);
+		margin: 5px 0;
+	}
 
-.suppMsg.desktop{
-	position: absolute;
-	width: 20px;
-	padding: 2px 0;
-	bottom: 0;
-	right: 0;
-	border-left: 1px solid black;
-	border-top: 1px solid black;
-	border-radius: 0 0 6px 0;
-	text-align: center;
-	font-family: arial black;
-	font-size: 0.7em;
-	color: rgba(62, 42, 16, 1);
-}
+	.msg{
+		position: relative;
+		min-height: 100px;
+		margin: 15px 0;
+		padding: 25px;
+	    background-color: rgba(157, 165, 158, 0.59);
+		border: 1.5px solid black;
+		border-radius: 6px;
+		box-shadow: inset -2px -2px 50px rgb(43, 81, 46);
+		z-index: 20;
+		overflow: hidden;
+	}
 
-.editMsgArea{
-	display: block;
-	width: 90%;
-	margin: auto;
-}
+	.msgGM{
+	    background-color: rgba(162, 162, 162, 0.58);
+		box-shadow: inset -2px -2px 50px rgb(80, 75, 40);
+	}
 
-.editMsgBloc input[type="submit"]{
-	display: block;
-	margin: auto;
-	padding: 10px;
-	width: 100.3%;
-	text-align: center;
-}
+	.editMsg.desktop{
+		position: absolute;
+		bottom: 0;
+		right: 21px;
+		padding: 2px 6px;
+		border-left: 1px solid black;
+		border-top: 1px solid black;
+		border-radius: 3px 0 0 0;
+		font-family: arial black;
+		font-size: 0.7em;
+		color: rgba(62, 42, 16, 1);
+	}
 
-.msg img{
-	max-width: 90%;
-	height: auto;
-}
+	.suppMsg.desktop{
+		position: absolute;
+		width: 20px;
+		padding: 2px 0;
+		bottom: 0;
+		right: 0;
+		border-left: 1px solid black;
+		border-top: 1px solid black;
+		border-radius: 0 0 6px 0;
+		text-align: center;
+		font-family: arial black;
+		font-size: 0.7em;
+		color: rgba(62, 42, 16, 1);
+	}
 
-.msg .diceRollDigits{
-	margin: 5px 0 0 0;
-}
+	.editMsgArea{
+		display: block;
+		width: 90%;
+		margin: auto;
+	}
+
+	.editMsgBloc input[type="submit"]{
+		display: block;
+		margin: auto;
+		padding: 10px;
+		width: 100.3%;
+		text-align: center;
+	}
+
+	.msg img{
+		max-width: 90%;
+		height: auto;
+	}
+
+	.msg .diceRollDigits{
+		margin: 5px 0 0 0;
+	}
 
 /*MESSAGE DICEROLL*/
 
-.diceRoll_icone{
-	width: 100px;
-	margin: 30px 15px;
-	padding: 10px;
-	border-radius: 50px 0 0 50px;
-	background-color: rgb(50,50,50);
-	z-index: -1;
-}
-
-.diceRollBloc{
-	margin: 15px 0;
-	border: 1px solid black;
-	border-radius: 5px;
-	box-shadow: inset 0 0 60px 1px rgb(63, 63, 63);
-	background: inherit;
-	background-color: rgba(94,94,94, 1);
-}
-
-.diceRollTitle{
-	margin: 10px 10px 0 10px;
-	padding: 10px 15px;
-	font-family: sans-serif;
-	font-style: italic;
-	color: lightgrey;
-	background-color: rgb(50,50,50);
-	border-radius: 5px;
-}
-
-.diceRollTitle-player{
-	display: block;
-	margin: auto;
-	margin-top: 10px;
-	width: max-content;
-	padding: 2px 10px;
-	background-color: rgba(50,50,50,0.3);
-	border-bottom: none;
-	border-radius: 5px 5px 0 0;
-	font-style: italic;
-	text-align: center;
-	color: rgb(216,216,216);
-}
-
-.diceRollBox{
-	margin: 10px;
-	margin-top: 0;
-	background-color: rgb(135,135,135);
-	border: 1px solid black;
-	border-radius: 4px;
-	overflow: auto;
-}
-
-.diceRollPerso{
-	float: left;
-	display: inline-block;
-	font-size: 1em;
-	min-width: 140px;
-	margin: 5px;
-	padding: 3px 0px;
-	background-color: rgba(200,200,200,0.5);
-	border: 1px solid black;
-	text-align: center;
-	overflow: hidden;
-}
-
-.rollBox{
-	background-image: url(../img/icones/d20black.png), url(../img/icones/d20black.png);
-	background-position: right 3px top 2px, left 3px top 2px;
-	background-size: 17px;
-	background-repeat: no-repeat;
-	margin: 3px 6px;
-	padding: 1px;
-	border : 1px solid black;
-	background-color: lightgrey;
-}
-
-.diceRollDigits{
-	display: inline-block;
-	margin: 14px auto 0 auto;
-	font-size: 1.8em;
-	overflow: hidden;
-}
-
-.diceRollDigit{
-	display: inline-block;
-	border: 1px solid black;
-	border-radius: 50px;
-	font-weight: bolder;
-	color: white;
-	width: 45px;
-	height: 40px;
-	margin: 3px;
-	padding-top: 5px;
-	box-shadow: inset -1px -1px 5px 1px rgba(0,0,0,0.5);
-	text-align: center;
-}
-
-.digit-roll{
-	background-image: url(../img/icones/d20black.png);
-	background-size: cover;
-	background-color: rgb(131, 131, 131);
-	box-shadow: inset -1px -1px 5px 1px rgba(0,0,0,0.5);
-}
-
-.digit-carac{
-	background-size: cover;
-}
-
-.digit-bonus{
-	background-color: rgb(41, 127, 40);
-	background-size: cover;
-}
-
-.digit-malus{
-	background-color: rgb(149, 10, 10);
-	background-size: cover;
-}
-
-.digit-resultFinal{
-	position: relative;
-	width: 70px;
-	background-color: rgb(216,216,216);
-	color: black;
-	margin-right: 20px;
-	padding: 3px 10px;
-	border: 1px solid black;
-	box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.5);
-	border-radius: 3px;
-}
-
-.digit-difficulty{
-	font-size: 0.7em;
-}
-
-.diceRoll-tic{
-	position: absolute;
-	top: -5px;
-	right: -15px;
-	width: 25px;
-}
-
-.resultText{
-	display: inline-block;
-	width: 80px;
-	font-size: 0.8em;	
-}
-
-.resultText .yes{
-	color: #56e756;
-	display: inline-block;
-	font-weight: bolder;
-	text-shadow: 0 0 3px black;
-}
-
-.resultText .no{
-	color: black;
-	display: inline-block;
-	font-weight: bolder;
-}
-
-/*FIXINFOS*/
-
-.fixInfos{
-	position: sticky;
-	height: max-content;
-	background-color: rgba(200,200,200,0.2);
-	box-shadow: 4px 4px 20px 1px rgba(0,0,0,0.4);
-	margin: 50px 0 0 35px;
-	top: 100px;
-	border-radius: 5px;
-	border: 1px solid black;
-	color: black;
-	z-index: 30;
-	text-align: center;
-}
-
-.coterieLogoContainer{
-	width: 100%;
-	position: absolute;
-	top: -22px;
-}
-
-.coterie-logo{
-	min-width: 90px;
-	max-width: max-content;
-	margin: auto;
-	height: 20px;
-	background-color: rgb(120,120,120);
-	border: 1px solid black;
-	border-bottom: none;
-	border-radius: 20px 20px 0 0;
-	background-image: url('../img/icones/coterie.png');
-	background-size: 70px;
-	background-repeat: no-repeat;
-	background-position: bottom;
-}
-
-
-.infoPersoLvl{
-	display: inline-block;
-	border: 1px solid black;
-	border-radius: 3px;
-	width: max-content;
-	margin: 0 0 5px 0;
-	padding: 0 5px;
-	font-weight: bold;
-	color: white;
-	text-shadow: 1px 1px 2px black;
-	background-color: grey;
-}
-
-.infoPerso{
-	cursor: pointer;
-	box-shadow: 1px 1px 1px black;
-	padding: 5px 0 0 0;
-}
-
-.infoPersoXP-container{
-	display: inline-block;
-	position: relative;
-	top: -1.7px;
-	left: -5px;
-}
-
-.infoPersoXP{
-	display: inline-block;
-	border: 1px solid black;
-	font-size: 0.7em;
-	line-height: 14px;
-	border-radius: 3px;
-	height: 14px;
-	width: 88px;
-	z-index: -1;
-}
-
-.infoPersoNom{
-	display: inline-block;
-	font-size: 1.1em;
-	font-weight: bold;
-}
-
-.infoPersoPU{
-	display: none;
-	position: absolute;
-	left: -230px;
-	top : 18px;
-	width: 200px;
-	border: 1px solid black;
-	border-radius: 3px;
-	padding: 10px;
-	background-color: lightgrey;
-	box-shadow: 3px 3px 30px 1px rgba(0,0,0,0.4);
-	z-index: 40;
-}
-
-.dropdownIcone{
-	display: block;
-	width: 40px;
-	margin: auto;
-	padding-bottom: 2px;
-}
-
-
-.infoPersoDropdown{
-	overflow: hidden;
-	height: max-content;
-	max-height: 0;
-	transition : max-height 0.3s;
-}
-
-.infoPerso:hover .infoPersoDropdown{
-	max-height: 200px;
-	transition: max-height 0.3s;
-}
-
-.infoPerso:hover .dropdownIcone{
-	opacity: 0;
-}
-
-.infoPersoNom:hover{
-	color: rgb(220,220,220);
-	text-shadow: 1px 1px 3px black;
-}
-
-.infoPersoCarac{
-	display: inline-block;
-	width: 25px;
-	height: 25px;
-	line-height: 25px;
-	border-radius: 50px;
-	border: 1px solid black;
-	box-shadow: inset -1px -1px 1px rgb(50,50,50);
-	text-shadow: 1px 1px 1px black;
-	color: white;
-}
-
-.infoPersoInventory{
-	background-color: rgba(50,50,50,0.3);
-	margin : 4px 7px;
-	margin-bottom: 0;
-}
-
-.puFixInfos{
-	background-color: rgb(120,120,120);
-	padding: 2px 10px 2px 10px;
-	height: 16px;
-	line-height: initial;
-	border-radius: 20px 20px 0 0;
-	font-style: italic;
-	opacity: 0;
-}
-
-.hpBar{
-	width: 155px;
-	height: 12px;
-}
-
-/* ------ MCE TEXT AREA ------ */
-
-.mytextarea{
-	display: block;
-	width: 100%;
-	height: 350px;
-	margin: 0;
-}
-
-.replyOption{
-	width: 90%;
-	margin : 10px 0 10px 20px;
-	padding-top: 8px;
-	height: 65px;
-	text-align: center;
-	background-color: rgba(91, 103, 91, 0.27);
-	border: 1.5px solid rgb(0, 0, 0);
-	border-right: none;
-	border-radius: 10px 0 0 10px;
-	box-shadow: inset 2px -2px 20px rgba(50,50,50, 0.8);
-	z-index: 1;
-	cursor: pointer;
-}
-
-.replyOption:hover {
-	background-color: rgba(180,180,180,0.8);
-}
-
-.replyOption.current{
-	box-shadow: inset 2px -2px 20px rgb(255,255,255);
-
-}
-
-.replyOption img{
-	width: 50px;
-}
-
-#replyContainer{
-	padding: 0;
-	position: relative;
-	border-radius: 10px;
-	background-color: rgb(200,200,200);
-	overflow: hidden;
-	border: 2px solid rgb(80,80,80);
-	box-shadow: 2px 2px 30px 1px rgba(0,0,0,0.5);
-	z-index: 10;
-}
-
-#classicReply input[type='submit']{
-
-	display: inline-block;
-	width: 100%;
-	margin: 0 !important;
-	padding: 20px;
-	font-weight: bold;
-	cursor: pointer;
-}
-
-#replyContainer input[type='submit']:hover{
-	background-color: rgb(240,240,240);	
-}	
-
-.OW{
-	padding: 20px 0 0 0
-}
-
-#diceReply{
-	background-color: rgb(181, 183, 161);
-	text-align: center;
-}
-
-#diceReply-error{
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	background-color: rgb(202, 165, 135);
-	font-size: 1.5em;
-	text-align: center;
-	color: rgb(100,100,100);
-	font-weight: bold;
-}
-
-#diceReply form input[name='diceReply-title']{
-	display: block;
-	width: 300px;
-	margin: 5px auto;
-	text-align: center;
-}
-
-.diceReply-carac{
-	display: inline-block;
-	width: 60px;
-	height: 60px;
-	border: 2px solid black;
-	box-shadow: inset -2px -2px 10px black;
-	border-radius: 4px;
-	margin: 5px;
-}
-
-.diceReply-diff{
-	display: inline-block;
-	padding: 2px 5px;
-	margin: 2px;
-	border: 1px solid black;
-	border-radius: 2px;
-}
-
-.current, .current:hover{
-	box-shadow: inset 1px 1px 10px 1px white;
- }
-
-
-#diceReply-submit{
-	margin: 10px auto;
-	width: 300px;
-	height: 30px;
-	line-height: 30px;
-	cursor: pointer;
-}
-
-#alloGM, #alloGM-menu{
-	background-color: rgb(162, 161, 183);
-	resize: both
-}
-
-.alloGM-content{
-	width: 90%;
-	margin: auto;
-	height: 225px;
-	overflow: auto;
-	background-color: rgba(0,0,0,0.1);
-	padding: 5px;
-	border-radius: 3px;
-}
-
-.alloGM-content::-webkit-scrollbar { 
-  width: 8px;
-  height: 8px;
-  background-color: rgb(100, 100, 100);
-}
-
-.alloGM-content::-webkit-scrollbar-thumb {
-    background: rgba(50,50,50,0.7);
-}
-
-.alloGM-content .msg-user{
-	background-color: rgb(106, 106, 255);
-	border: 1px solid black;
-	border-radius: 4px;
-	width: max-content;
-	max-width: 70%;
-	padding: 2px 5px;
-	margin: 8px 15px 8px auto;
-}
-
-.alloGM-content .msg-other{
-	background-color: rgb(164, 200, 46);
-	border: 1px solid black;
-	border-radius: 4px;
-	width: max-content;
-	max-width: 70%;
-	padding: 2px 5px;
-	margin: 8px 15px;
-}
-
-.alloGM-textArea{
-	display: inline-block;
-	width: calc(90% - 70px);
-	height: 75px;
-	margin: 10px 0 10px calc(5% - 5px);
-	border-radius: 5px;
-	resize: none;
-}
-
-.alloGM-submit{
-	display: inline-block;
-	width: 75px;
-	height: 75px;
-	line-height: 75px;
-	margin: 10px auto 10px 0;
-	background-color: rgba(237, 237, 237, 0.57);
-	border-radius: 5px;
-	vertical-align: top;
-	background-image: url(../img/icones/sendingArrow.png);
-	background-size: 45px;
-	background-position: top 15px left 15px;
-	background-repeat: no-repeat;
-}
-
-.loading{
-	display: inline-block;
-	width: 75px;
-	height: 75px;
-	line-height: 75px;
-	margin: 10px auto 10px 0;
-	background-color: rgba(237, 237, 237, 0.57);
-	border-radius: 5px;
-	vertical-align: top;
-	background-size: 45px;
-	background-position: top 15px left 15px;
-	background-repeat: no-repeat;
-}
-
-#notes{
-	background-color: rgb(159, 163, 159);
-	text-align: center;
-}
-
-.notesPaperStyle{
-	font-family: MarckScript;
-	font-size: 1.2em;
-	padding: 1px 10px 1px 26px;
-	width: 80%;
-	height: 75%;
-	margin: auto;
-	line-height: 24px;
-	text-align: left;
-	background-image: linear-gradient(transparent 18px, rgb(50,50,50) 20px, transparent 1px),
-	linear-gradient(90deg,transparent 22px, rgba(50,50,50,0.5) 24px, transparent 1px),
-	url('../img/paper.jpg');
-	background-size: 100% 24px, 100% 24px, cover;
-	background-attachment: local;
-	border: 1px solid black;
-	border-radius: 3px;
-	box-shadow: inset 0 0 30px 1px rgba(0,0,0,0.3);
-	overflow: auto;
-}
-
-.notesPaperStyle::-webkit-scrollbar { 
-  width: 5px;
-  height: 8px;
-  background-color: rgb(225, 199, 151);
-}
-
-.notesPaperStyle::-webkit-scrollbar-thumb {
-    background: rgba(50,50,50,0.7);
-
-}
-
-.notesPaper{
-	position: relative;
-	height: 100%;
-}
-
-#editButtonNotes{
-	display: block;
-	width: max-content;
-	margin: 2px auto;
-	padding: 2px 7px;
-}
-
-.editNotesBlock{
-	position: relative;
-	height: 100%;
-	resize: none;
-}
-
-.confirmEditNotes{
-	width: max-content;
-	margin:auto;
-	padding: 2px 7px;
-	background-color: rgb(93, 155, 92);
-	border: 1px solid black;
-	border-radius: 3px;
-}
-
-/*----------- 1400px -----------*/
-
-@media (max-width: 1400px){
-	.resultText{display: none;}
-}
-
-/*----------- 1250px -----------*/
-
-@media (max-width: 1250px){
-	.diceRollPerso{
-		float: none;
+	.diceRoll_icone{
+		width: 100px;
+		margin: 30px 15px;
+		padding: 10px;
+		border-radius: 50px 0 0 50px;
+		background-color: rgb(50,50,50);
+		z-index: -1;
+	}
+
+	.diceRollBloc{
+		margin: 15px 0;
+		border: 1px solid black;
+		border-radius: 5px;
+		box-shadow: inset 0 0 60px 1px rgb(63, 63, 63);
+		background: inherit;
+		background-color: rgba(94,94,94, 1);
+	}
+
+	.diceRollTitle{
+		margin: 10px 10px 0 10px;
+		padding: 10px 15px;
+		font-family: sans-serif;
+		font-style: italic;
+		color: lightgrey;
+		background-color: rgb(50,50,50);
+		border-radius: 5px;
+	}
+
+	.diceRollTitle-player{
 		display: block;
-		width: 95%;
-		margin: 5px auto;
+		margin: auto;
+		margin-top: 10px;
+		width: max-content;
+		padding: 2px 10px;
+		background-color: rgba(50,50,50,0.3);
+		border-bottom: none;
+		border-radius: 5px 5px 0 0;
+		font-style: italic;
+		text-align: center;
+		color: rgb(216,216,216);
+	}
+
+	.diceRollBox{
+		margin: 10px;
+		margin-top: 0;
+		background-color: rgb(135,135,135);
+		border: 1px solid black;
+		border-radius: 4px;
+		overflow: auto;
+	}
+
+	.diceRollPerso{
+		float: left;
+		display: inline-block;
+		font-size: 1em;
+		min-width: 140px;
+		margin: 5px;
 		padding: 3px 0px;
 		background-color: rgba(200,200,200,0.5);
 		border: 1px solid black;
@@ -808,16 +268,557 @@ h2 img{
 		overflow: hidden;
 	}
 
-	.diceRollPerso .box{
-		display: inline-block;
-	}
 	.rollBox{
-		padding: 2px 22px;
+		background-image: url(../img/icones/d20black.png), url(../img/icones/d20black.png);
+		background-position: right 3px top 2px, left 3px top 2px;
+		background-size: 17px;
+		background-repeat: no-repeat;
+		margin: 3px 6px;
+		padding: 1px;
+		border : 1px solid black;
+		background-color: lightgrey;
 	}
+
 	.diceRollDigits{
-		margin: 5px auto;
+		display: inline-block;
+		margin: 14px auto 0 auto;
+		font-size: 1.8em;
+		overflow: hidden;
 	}
-}
+
+	.diceRollDigit{
+		display: inline-block;
+		border: 1px solid black;
+		border-radius: 50px;
+		font-weight: bolder;
+		color: white;
+		width: 45px;
+		height: 40px;
+		margin: 3px;
+		padding-top: 5px;
+		box-shadow: inset -1px -1px 5px 1px rgba(0,0,0,0.5);
+		text-align: center;
+	}
+
+	.digit-roll{
+		background-image: url(../img/icones/d20black.png);
+		background-size: cover;
+		background-color: rgb(131, 131, 131);
+		box-shadow: inset -1px -1px 5px 1px rgba(0,0,0,0.5);
+	}
+
+	.digit-carac{
+		background-size: cover;
+	}
+
+	.digit-bonus{
+		background-color: rgb(41, 127, 40);
+		background-size: cover;
+	}
+
+	.digit-malus{
+		background-color: rgb(149, 10, 10);
+		background-size: cover;
+	}
+
+	.digit-resultFinal{
+		position: relative;
+		width: 70px;
+		background-color: rgb(216,216,216);
+		color: black;
+		margin-right: 20px;
+		padding: 3px 10px;
+		border: 1px solid black;
+		box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.5);
+		border-radius: 3px;
+	}
+
+	.digit-difficulty{
+		font-size: 0.7em;
+	}
+
+	.diceRoll-tic{
+		position: absolute;
+		top: -5px;
+		right: -15px;
+		width: 25px;
+	}
+
+	.resultText{
+		display: inline-block;
+		width: 80px;
+		font-size: 0.8em;	
+	}
+
+	.resultText .yes{
+		color: #56e756;
+		display: inline-block;
+		font-weight: bolder;
+		text-shadow: 0 0 3px black;
+	}
+
+	.resultText .no{
+		color: black;
+		display: inline-block;
+		font-weight: bolder;
+	}
+
+/*FIXINFOS*/
+
+	.fixInfos{
+		position: sticky;
+		height: max-content;
+		background-color: rgba(200,200,200,0.2);
+		box-shadow: 4px 4px 20px 1px rgba(0,0,0,0.4);
+		margin: 50px 0 0 35px;
+		top: 100px;
+		border-radius: 5px;
+		border: 1px solid black;
+		color: black;
+		z-index: 30;
+		text-align: center;
+	}
+
+	.coterieLogoContainer{
+		width: 100%;
+		position: absolute;
+		top: -22px;
+	}
+
+	.coterie-logo{
+		min-width: 90px;
+		max-width: max-content;
+		margin: auto;
+		height: 20px;
+		background-color: rgb(120,120,120);
+		border: 1px solid black;
+		border-bottom: none;
+		border-radius: 20px 20px 0 0;
+		background-image: url('../img/icones/coterie.png');
+		background-size: 70px;
+		background-repeat: no-repeat;
+		background-position: bottom;
+	}
+
+
+	.infoPersoLvl{
+		display: inline-block;
+		border: 1px solid black;
+		border-radius: 3px;
+		width: max-content;
+		margin: 0 0 5px 0;
+		padding: 0 5px;
+		font-weight: bold;
+		color: white;
+		text-shadow: 1px 1px 2px black;
+		background-color: grey;
+	}
+
+	.infoPerso{
+		cursor: pointer;
+		box-shadow: 1px 1px 1px black;
+		padding: 5px 0 0 0;
+	}
+
+	.infoPersoXP-container{
+		display: inline-block;
+		position: relative;
+		top: -1.7px;
+		left: -5px;
+	}
+
+	.infoPersoXP{
+		display: inline-block;
+		border: 1px solid black;
+		font-size: 0.7em;
+		line-height: 14px;
+		border-radius: 3px;
+		height: 14px;
+		width: 88px;
+		z-index: -1;
+	}
+
+	.infoPersoNom{
+		display: inline-block;
+		font-size: 1.1em;
+		font-weight: bold;
+	}
+
+	.infoPersoPU{
+		display: none;
+		position: absolute;
+		left: -230px;
+		top : 18px;
+		width: 200px;
+		border: 1px solid black;
+		border-radius: 3px;
+		padding: 10px;
+		background-color: lightgrey;
+		box-shadow: 3px 3px 30px 1px rgba(0,0,0,0.4);
+		z-index: 40;
+	}
+
+	.dropdownIcone{
+		display: block;
+		width: 40px;
+		margin: auto;
+		padding-bottom: 2px;
+	}
+
+
+	.infoPersoDropdown{
+		overflow: hidden;
+		height: max-content;
+		max-height: 0;
+		transition : max-height 0.3s;
+	}
+
+	.infoPerso:hover .infoPersoDropdown{
+		max-height: 200px;
+		transition: max-height 0.3s;
+	}
+
+	.infoPerso:hover .dropdownIcone{
+		opacity: 0;
+	}
+
+	.infoPersoNom:hover{
+		color: rgb(220,220,220);
+		text-shadow: 1px 1px 3px black;
+	}
+
+	.infoPersoCarac{
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+		line-height: 25px;
+		border-radius: 50px;
+		border: 1px solid black;
+		box-shadow: inset -1px -1px 1px rgb(50,50,50);
+		text-shadow: 1px 1px 1px black;
+		color: white;
+	}
+
+	.infoPersoInventory{
+		background-color: rgba(50,50,50,0.3);
+		margin : 4px 7px;
+		margin-bottom: 0;
+	}
+
+	.puFixInfos{
+		background-color: rgb(120,120,120);
+		padding: 2px 10px 2px 10px;
+		height: 16px;
+		line-height: initial;
+		border-radius: 20px 20px 0 0;
+		font-style: italic;
+		opacity: 0;
+	}
+
+	.hpBar{
+		width: 155px;
+		height: 12px;
+	}
+
+/* ------ REPLY ------ */
+
+	.mytextarea{
+		display: block;
+		width: 100%;
+		height: 350px;
+		margin: 0;
+	}
+
+	.replyOption{
+		position: relative;
+		width: 90%;
+		margin : 10px 0 10px 20px;
+		padding-top: 8px;
+		height: 65px;
+		text-align: center;
+		background-color: rgba(91, 103, 91, 0.27);
+		border: 1.5px solid rgb(0, 0, 0);
+		border-right: none;
+		border-radius: 10px 0 0 10px;
+		box-shadow: inset 2px -2px 20px rgba(50,50,50, 0.8);
+		z-index: 1;
+		cursor: pointer;
+	}
+
+	.replyOption:hover {
+		background-color: rgba(180,180,180,0.8);
+	}
+
+	.replyOption.current{
+		box-shadow: inset 2px -2px 20px rgb(255,255,255);
+
+	}
+
+	.replyOption img{
+		width: 50px;
+	}
+
+	#replyContainer{
+		padding: 0;
+		position: relative;
+		border-radius: 10px;
+		background-color: rgb(200,200,200);
+		overflow: hidden;
+		border: 2px solid rgb(80,80,80);
+		box-shadow: 2px 2px 30px 1px rgba(0,0,0,0.5);
+		z-index: 10;
+	}
+
+	#classicReply input[type='submit']{
+
+		display: inline-block;
+		width: 100%;
+		margin: 0 !important;
+		padding: 20px;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	#replyContainer input[type='submit']:hover{
+		background-color: rgb(240,240,240);	
+	}	
+
+	.OW{
+		padding: 20px 0 0 0
+	}
+
+	#diceReply{
+		background-color: rgb(181, 183, 161);
+		text-align: center;
+	}
+
+	#diceReply-error{
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		background-color: rgb(202, 165, 135);
+		font-size: 1.5em;
+		text-align: center;
+		color: rgb(100,100,100);
+		font-weight: bold;
+	}
+
+	#diceReply form input[name='diceReply-title']{
+		display: block;
+		width: 300px;
+		margin: 5px auto;
+		text-align: center;
+	}
+
+	.diceReply-carac{
+		display: inline-block;
+		width: 60px;
+		height: 60px;
+		border: 2px solid black;
+		box-shadow: inset -2px -2px 10px black;
+		border-radius: 4px;
+		margin: 5px;
+	}
+
+	.diceReply-diff{
+		display: inline-block;
+		padding: 2px 5px;
+		margin: 2px;
+		border: 1px solid black;
+		border-radius: 2px;
+	}
+
+	.current, .current:hover{
+		box-shadow: inset 1px 1px 10px 1px white;
+	 }
+
+
+	#diceReply-submit{
+		margin: 10px auto;
+		width: 300px;
+		height: 30px;
+		line-height: 30px;
+		cursor: pointer;
+	}
+
+	#alloGM, #alloGM-menu{
+		background-color: rgb(162, 161, 183);
+		resize: both
+	}
+
+	.alloGM-content{
+		width: 90%;
+		margin: auto;
+		height: 225px;
+		overflow: auto;
+		background-color: rgba(0,0,0,0.1);
+		padding: 5px;
+		border-radius: 3px;
+	}
+
+	.alloGM-content::-webkit-scrollbar { 
+	  width: 8px;
+	  height: 8px;
+	  background-color: rgb(100, 100, 100);
+	}
+
+	.alloGM-content::-webkit-scrollbar-thumb {
+	    background: rgba(50,50,50,0.7);
+	}
+
+	.alloGM-content .msg-user{
+		background-color: rgb(106, 106, 255);
+		border: 1px solid black;
+		border-radius: 4px;
+		width: max-content;
+		max-width: 70%;
+		padding: 2px 5px;
+		margin: 8px 15px 8px auto;
+	}
+
+	.alloGM-content .msg-other{
+		background-color: rgb(164, 200, 46);
+		border: 1px solid black;
+		border-radius: 4px;
+		width: max-content;
+		max-width: 70%;
+		padding: 2px 5px;
+		margin: 8px 15px;
+	}
+
+	.alloGM-textArea{
+		display: inline-block;
+		width: calc(90% - 70px);
+		height: 75px;
+		margin: 10px 0 10px calc(5% - 5px);
+		border-radius: 5px;
+		resize: none;
+	}
+
+	.alloGM-submit{
+		display: inline-block;
+		width: 75px;
+		height: 75px;
+		line-height: 75px;
+		margin: 10px auto 10px 0;
+		background-color: rgba(237, 237, 237, 0.57);
+		border-radius: 5px;
+		vertical-align: top;
+		background-image: url(../img/icones/sendingArrow.png);
+		background-size: 45px;
+		background-position: top 15px left 15px;
+		background-repeat: no-repeat;
+	}
+
+	.loading{
+		display: inline-block;
+		width: 75px;
+		height: 75px;
+		line-height: 75px;
+		margin: 10px auto 10px 0;
+		background-color: rgba(237, 237, 237, 0.57);
+		border-radius: 5px;
+		vertical-align: top;
+		background-size: 45px;
+		background-position: top 15px left 15px;
+		background-repeat: no-repeat;
+	}
+
+	#notes{
+		background-color: rgb(159, 163, 159);
+		text-align: center;
+	}
+
+	.notesPaperStyle{
+		font-family: MarckScript;
+		font-size: 1.2em;
+		padding: 1px 10px 1px 26px;
+		width: 80%;
+		height: 75%;
+		margin: auto;
+		line-height: 24px;
+		text-align: left;
+		background-image: linear-gradient(transparent 18px, rgb(50,50,50) 20px, transparent 1px),
+		linear-gradient(90deg,transparent 22px, rgba(50,50,50,0.5) 24px, transparent 1px),
+		url('../img/paper.jpg');
+		background-size: 100% 24px, 100% 24px, cover;
+		background-attachment: local;
+		border: 1px solid black;
+		border-radius: 3px;
+		box-shadow: inset 0 0 30px 1px rgba(0,0,0,0.3);
+		overflow: auto;
+	}
+
+	.notesPaperStyle::-webkit-scrollbar { 
+	  width: 5px;
+	  height: 8px;
+	  background-color: rgb(225, 199, 151);
+	}
+
+	.notesPaperStyle::-webkit-scrollbar-thumb {
+	    background: rgba(50,50,50,0.7);
+
+	}
+
+	.notesPaper{
+		position: relative;
+		height: 100%;
+	}
+
+	#editButtonNotes{
+		display: block;
+		width: max-content;
+		margin: 2px auto;
+		padding: 2px 7px;
+	}
+
+	.editNotesBlock{
+		position: relative;
+		height: 100%;
+		resize: none;
+	}
+
+	.confirmEditNotes{
+		width: max-content;
+		margin:auto;
+		padding: 2px 7px;
+		background-color: rgb(93, 155, 92);
+		border: 1px solid black;
+		border-radius: 3px;
+	}
+
+/*----------- 1400px -----------*/
+
+	@media (max-width: 1400px){
+		.resultText{display: none;}
+	}
+
+/*----------- 1250px -----------*/
+
+	@media (max-width: 1250px){
+		.diceRollPerso{
+			float: none;
+			display: block;
+			width: 95%;
+			margin: 5px auto;
+			padding: 3px 0px;
+			background-color: rgba(200,200,200,0.5);
+			border: 1px solid black;
+			text-align: center;
+			overflow: hidden;
+		}
+
+		.diceRollPerso .box{
+			display: inline-block;
+		}
+		.rollBox{
+			padding: 2px 22px;
+		}
+		.diceRollDigits{
+			margin: 5px auto;
+		}
+	}
 
 
 /*----------- MOBILE -----------*/
