@@ -998,6 +998,13 @@
 
 	/* ------ MCE TEXT AREA ------ */
 
+	.replyOption{
+		display: inline-block;
+		width: 25%;
+		border: 1px solid black;
+		border-radius: 3px;
+	}
+
 	#replyContainer{
 		margin: 0;
 		border-radius: 0;

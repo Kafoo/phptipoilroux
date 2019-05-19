@@ -286,31 +286,31 @@ include("submits/aventures_submit.php");
 					<div style="height: 40px" SPACER></div>
 					<?php
 					if ($lastIsUser == True) { //diceReply possible ou non?>
-					<div class="showingOW replyOption desktop" OW="diceReply">
+					<div class="showingOW replyOption" OW="diceReply">
 						<img src="img/icones/d20black.png">
 					</div>
 					<?php
 					} else{ ?>
-					<div class="showingOW replyOption desktop" OW="diceReply-error">
+					<div class="showingOW replyOption" OW="diceReply-error">
 						<img src="img/icones/d20black.png">
 					</div>
 					<?php
 					}
 					if ($_SESSION['GM'] == 1) { //Si GM, choix des players?>
-						<div class="showingOW replyOption desktop showingAlloGM showingAlloGM-menu" OW="alloGM-menu">
+						<div class="showingOW replyOption showingAlloGM showingAlloGM-menu" OW="alloGM-menu">
 							<img src="img/icones/allogm.png"><div class="
 							unseen"></div>
 						</div>
 					<?php
 					}
 					else{ //Sinon, direct la messagerie?>
-						<div class="showingOW replyOption desktop showingAlloGM showingAlloGM-direct" OW="alloGM">
+						<div class="showingOW replyOption showingAlloGM showingAlloGM-direct" OW="alloGM">
 							<img src="img/icones/allogm.png">
 						</div>
 					<?php
 					}
 					?>
-					<div class="showingOW replyOption desktop showingNotes" OW="notes">
+					<div class="showingOW replyOption showingNotes" OW="notes">
 						<img src="img/icones/notes.png">
 					</div>
 				</div>
