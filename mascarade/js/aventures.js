@@ -164,7 +164,7 @@ $("#diceReply-submit").click(function(){
 /*ALLO GM*/
 
 //Showing if player
-$('.showingAlloGM-direct').one('click', function() {
+$('.showingAlloGM-direct').click(function() {
 	var http = new XMLHttpRequest;
     http.onreadystatechange = function() {
     	if (this.readyState < 4 ) {
@@ -192,6 +192,7 @@ $('.showingAlloGM-direct').one('click', function() {
 
 $('.alloGM-playerChoice').click(function(e) {
 
+
 	var OW = $(".OW#alloGM");
 	var otherOW = OW.parent().children('.OW').not(OW);
 	OW.show();
@@ -211,6 +212,9 @@ $('.alloGM-playerChoice').click(function(e) {
         $('.alloGM-content').html('<div class="loading-error"></div>');
        }
         if (this.readyState == 4 && this.status == 200) {
+			//remove unseen class
+			$(e.currentTarget).removeClass("unseen2");
+			//showing messages
             $('.alloGM-content').html(this.responseText.trim());
        }
     };
@@ -230,8 +234,12 @@ $('#alloGM').children(".closingCross").click(function(){
 	clearInterval(alloRefreshInterval);
 })
 
-$('.replyOption').click(function(){
-	clearInterval(alloRefreshInterval);
+
+
+$('.replyOption:not(.showingAlloGM)').click(function(){
+	if (typeof alloRefreshInterval !== 'undefined') {
+    	clearInterval(alloRefreshInterval);
+	}
 })
 
 //Sending
@@ -295,6 +303,21 @@ function refreshNotifUnseen(){
 	        	$('.showingAlloGM').removeClass("unseen1");
 	        }
 	        else{
+	        	var unseenArray = JSON.parse(http_notif.responseText);
+	        	var i = 0;
+	        	console.log(unseenArray);
+	        	unseenArray.forEach(function(unseen){
+	        		console.log(unseen);
+	        		$('.alloGM-playerChoice').each(function(){
+	        			var playerID = this.id;
+	        			var playerDOM = this;
+	        			if (unseen[0] == playerID) {
+	        				$('.alloGM-playerChoice#'+unseen[0]).addClass('unseen2');
+	        			}
+	        		})
+		        	i++;
+
+	        	})
 				$('.showingAlloGM').addClass("unseen1");
 	        }
        }
@@ -439,6 +462,25 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 		$(e.currentTarget).parent().parent().css('z-index', 100);
 		$(e.currentTarget).parent().parent().children('.mobile').hide(200);
 	});
+
+	/*----REPLYOPTIONS----*/
+
+	$('.showingOW').click(function(e){
+		$('#replyContainer').animate({height:'390'},100);
+		$('.closingArrow').show();
+		$('.closingArrow').animate({height:'40'},100);
+
+	})
+
+	$(".closingArrow").click(function(e){
+		$('#replyContainer').animate({height:'0'},100);
+		$('.closingArrow').animate({height:'0'},100);
+		$('.closingArrow').hide();
+
+	})
+
+
+
 }
 
 

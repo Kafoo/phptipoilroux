@@ -282,8 +282,11 @@ include("submits/aventures_submit.php");
 				<div></div><div style="height: 20px" SPACER></div><div></div>
 				
 				<!-- REPONSE AREA -->
-				<div>
-					<div style="height: 40px" SPACER></div>
+				<div class="showingOWContainer">
+					<div class="desktop" style="height: 40px" SPACER></div>
+					<div class="showingOW replyOption" OW="classicReply">
+						<img src="img/icones/notes.png">
+					</div>
 					<?php
 					if ($lastIsUser == True) { //diceReply possible ou non?>
 					<div class="showingOW replyOption" OW="diceReply">
@@ -315,12 +318,19 @@ include("submits/aventures_submit.php");
 					</div>
 				</div>
 
-				<div class="OWContainer" id="replyContainer">
 
+				<div class="OWContainer" id="replyContainer">
+					<!-- REPONSE TEXTE -->
+					<form class="OW" id="classicReply" method="POST" action="">
+						<div class="closingArrow mobile"></div>
+						<textarea class="mytextarea" name="message"></textarea>
+						<input type="submit" name="submit" value='Je réponds !'>
+					</form>
 
 					<!-- LANCER DE DES -->
 					<div class="OW" id="diceReply">
-						<div class="closingCross"></div>
+						<div class="closingCross desktop"></div>
+						<div class="closingArrow mobile"></div>
 						<form method="POST" action="">
 							<h3>LANCE DE DES</h3>
 
@@ -357,7 +367,8 @@ include("submits/aventures_submit.php");
 						</form>
 					</div>
 					<div class="OW" id="diceReply-error">
-						<div class="closingCross"></div>
+						<div class="closingCross desktop"></div>
+						<div class="closingArrow mobile"></div>
 						<div class="container">
 							<br>
 							Avant de lancer un dé, tu dois écrire et poster un message qui décrit ton action ! ;-)
@@ -367,13 +378,14 @@ include("submits/aventures_submit.php");
 
 					<!-- ALLO GM -->
 					<div class="OW" id="alloGM-menu">
-						<div class="closingCross"></div>
+						<div class="closingCross desktop"></div>
+						<div class="closingArrow mobile"></div>
 						<h3>ALLO GM</h3>
 						<div style="height: 30px" SPACER></div>
 						<?php
 						foreach ($coterie as $perso) {
 							if ($perso['nom'] !== "GM") { ?>
-								<div class="alloGM-playerChoice choice-gen button unseen2" id="<?=$perso['userID']?>">
+								<div class="alloGM-playerChoice choice-gen button" id="<?=$perso['userID']?>">
 									<?=$perso['nom']?>
 								</div>
 							<?php
@@ -382,7 +394,8 @@ include("submits/aventures_submit.php");
 						?>
 					</div>
 					<div class="OW" id="alloGM">
-						<div class="closingCross"></div>
+						<div class="closingCross desktop"></div>
+						<div class="closingArrow mobile"></div>
 						<h3>ALLO GM</h3>
 						<!-- ajax -->
 						<div class="alloGM-content">
@@ -394,7 +407,8 @@ include("submits/aventures_submit.php");
 
 					<!-- NOTES PERSOS -->
 					<div class="OW" id="notes">
-						<div class="closingCross"></div>
+						<div class="closingCross desktop"></div>
+						<div class="closingArrow mobile"></div>
 						<h3>Notes Perso</h3>
 						<div class="notesPaper">
 							<div class="notesPaperStyle">
@@ -407,11 +421,6 @@ include("submits/aventures_submit.php");
 							<div class="confirmEditNotes button">OK</div>
 						</div>
 					</div>
-					<!-- REPONSE TEXTE -->
-					<form id="classicReply" method="POST" action="">
-						<textarea class="mytextarea" name="message"></textarea>
-						<input type="submit" name="submit" value='Je réponds !'>
-					</form>
 				</div>
 
 

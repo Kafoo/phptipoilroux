@@ -117,14 +117,14 @@ if (isset($_POST['diceReply-submit']) AND !empty($_POST['diceReply-submit'])) {
 
 				$req = $bdd->query('SELECT id FROM mas_messages_aventure ORDER BY id DESC LIMIT 1');
 				$msgID = $req->fetch()[0];
-				$carac = 'c'.$_POST['diceReply-carac'];
+				$caracID = $_POST['diceReply-carac'];
 
 				$diff = $_POST ['diceReply-diff'];
 				$result = $_POST ['diceReply-result'];
 
 
 
-				$bdd->query("INSERT INTO mas_diceroll (persoID, msgID, carac, difficulty, result) VALUES ('$persoID', '$msgID', '$carac', '$diff', '$result')");
+				$bdd->query("INSERT INTO mas_diceroll (persoID, msgID, caracID, difficulty, result) VALUES ('$persoID', '$msgID', '$caracID', '$diff', '$result')");
 
 			}else{
 				$error = "Tu dois choisir une difficulté pour ton lancé";

@@ -5,14 +5,13 @@ $req = $bdd->query("
 	LEFT JOIN mas_persos
 	ON mas_diceroll.persoID=mas_persos.id
 	WHERE msgID = '$msgInfo[0]'");
-$diceRolls = $req->fetchall(); ?>
+$diceRoll = $req->fetchall()[0];
+
+?>
 
 
+<?php
 
-<?php 
-for ($j=0; $j < count($diceRolls); $j++) {
-
-	$diceRoll = $diceRolls[$j];
 	$perso = $diceRoll['nom'];
 	$title = htmlspecialchars_decode($msgInfo['contenu']);
 	$caracID = $diceRoll['caracID'];
@@ -58,5 +57,3 @@ for ($j=0; $j < count($diceRolls); $j++) {
 			</div>
 		</div>
 	</div>
-<?php
-} ?>
