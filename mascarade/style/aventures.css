@@ -525,9 +525,10 @@
 	.mytextarea{
 		padding: 20px;
 		display: block;
-		width: 100%;
-		height: 290px;
+		width: calc(100% - 42px);
+		height: 300px;
 		margin: 0;
+		resize: none;
 	}
 
 	.replyOption{
@@ -561,6 +562,7 @@
 
 	#replyContainer{
 		padding: 0;
+		height: 400px;
 		position: relative;
 		border-radius: 10px;
 		background-color: rgb(200,200,200);
@@ -768,7 +770,7 @@
 
 	.notesPaper{
 		position: relative;
-		height: 100%;
+		height: 80%;
 	}
 
 	#editButtonNotes{
@@ -1003,8 +1005,18 @@
 
 	/* ------ MCE TEXT AREA ------ */
 
+	.OW{
+		padding: 0;
+	}
+
+	h3{
+		background-color: rgb(188,188,188);
+		border-bottom: 1px solid black;
+	}
+
 	#replyContainer{
 		width: 100%;
+		height: 0;
 		position: fixed;
 		bottom: 0px;
 		z-index: 200;
@@ -1043,7 +1055,11 @@
 	}
 
 	.OW{
-		height: 390px;
+		height: 100%;
+	}
+
+	.mytextarea{
+		height: 178px;
 	}
 
 	.closingArrow{
@@ -1062,6 +1078,16 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		cursor: pointer;
+	}
+
+	.diceReply-carac{
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		border: 1px solid black;
+		box-shadow: inset -1px -1px 5px black;
+		border-radius: 3px;
+		margin: 3px;
 	}
 
 }

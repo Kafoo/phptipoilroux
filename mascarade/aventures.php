@@ -283,7 +283,7 @@ include("submits/aventures_submit.php");
 				
 				<!-- REPONSE AREA -->
 				<div class="showingOWContainer">
-					<div class="desktop" style="height: 40px" SPACER></div>
+					<div class="desktop" style="height: 15px" SPACER></div>
 					<div class="showingOW replyOption" OW="classicReply">
 						<img src="img/icones/notes.png">
 					</div>
@@ -322,6 +322,7 @@ include("submits/aventures_submit.php");
 				<div class="OWContainer" id="replyContainer">
 					<!-- REPONSE TEXTE -->
 					<form class="OW" id="classicReply" method="POST" action="">
+						<div class="closingCross desktop"></div>
 						<div class="closingArrow mobile"></div>
 						<textarea class="mytextarea" name="message"></textarea>
 						<input type="submit" name="submit" value='Je réponds !'>

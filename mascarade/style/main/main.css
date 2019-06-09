@@ -159,8 +159,8 @@ src: url("../font/Cinzel-Regular.ttf");
 
 	.closingCross{
 		position: absolute;
-		width: 20px;
-		height: 20px;
+		width: 15px;
+		height: 15px;
 		top: 10px;
 		right: 10px;
 		background-image: url(../../img/icones/closingCross.png);

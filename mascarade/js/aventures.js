@@ -466,7 +466,7 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 	/*----REPLYOPTIONS----*/
 
 	$('.showingOW').click(function(e){
-		$('#replyContainer').animate({height:'390'},100);
+		$('#replyContainer').animate({height:'280'},100);
 		$('.closingArrow').show();
 		$('.closingArrow').animate({height:'40'},100);
 
