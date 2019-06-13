@@ -42,6 +42,9 @@ if (isset($_POST['submit'])) {
 		$bdd->query("INSERT INTO mas_messages_aventure (dat, auteurID, contenu, persoID, avID, postID) VALUES ('$dat', '$userID', '$contenu', '$persoID', '$avID', '$postID')");
 		/*Incrémente de 1 le nombre de message postés pour ce compte*/
 		$bdd->query("UPDATE mas_membres SET nombremsg=nombremsg+1 WHERE id='$userID' ");
+		/*Incrémente de 4 l'xp du perso*/
+		$bdd->query("UPDATE mas_persos SET xp=xp+4 WHERE id='$persoID' ");
+
 
 	}else{
 		$error = "Tu dois écrire quelque chose dans ton message !";

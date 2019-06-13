@@ -36,7 +36,7 @@ if ($i == 0) {//Seulement pour le 1er post ?>
  
 					<?php //Calcul du pourcentage vers le nextLVL 
 						$xp = $coterie[$j]['xp']; 
-						$nextLVL = $coterie[$j]['nextLVL']; 
+						$nextLVL = $coterie[$j]['minxp']; 
 						$pourcent = $xp*100/$nextLVL; 
 					?> 
  

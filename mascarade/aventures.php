@@ -10,8 +10,8 @@ include("submits/aventures_submit.php");
 	<?php include("_shared_/headconfig.php");
 	$_SESSION['currentURL'] = $_SERVER['REQUEST_URI']; ?>
 	<!-- TINYMCE SOURCE -->
-            	<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
-     	<!-- END TINYMCE -->
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
+ 	<!-- END TINYMCE -->
 	<link rel="stylesheet" type="text/css" href="style/aventures.css">
 	<title>Vampire - Aventures</title>
 </head>
@@ -203,6 +203,8 @@ include("submits/aventures_submit.php");
 				ON mas_persos.id=mas_relation_perso2aventure.persoID
 				LEFT JOIN mas_disciplines
 				ON mas_persos.discID=mas_disciplines.id
+				LEFT JOIN mas_leveling
+				ON mas_persos.lvl=mas_leveling.id
 				WHERE mas_relation_perso2aventure.avID = 25
 				");
 			$coterie = $req->fetchall();
@@ -322,7 +324,6 @@ include("submits/aventures_submit.php");
 				<div class="OWContainer" id="replyContainer">
 					<!-- REPONSE TEXTE -->
 					<form class="OW" id="classicReply" method="POST" action="">
-						<div class="closingCross desktop"></div>
 						<div class="closingArrow mobile"></div>
 						<textarea class="mytextarea" name="message"></textarea>
 						<input type="submit" name="submit" value='Je réponds !'>
@@ -330,7 +331,6 @@ include("submits/aventures_submit.php");
 
 					<!-- LANCER DE DES -->
 					<div class="OW" id="diceReply">
-						<div class="closingCross desktop"></div>
 						<div class="closingArrow mobile"></div>
 						<form method="POST" action="">
 							<h3>LANCE DE DES</h3>
@@ -368,7 +368,6 @@ include("submits/aventures_submit.php");
 						</form>
 					</div>
 					<div class="OW" id="diceReply-error">
-						<div class="closingCross desktop"></div>
 						<div class="closingArrow mobile"></div>
 						<div class="container">
 							<br>
@@ -379,7 +378,6 @@ include("submits/aventures_submit.php");
 
 					<!-- ALLO GM -->
 					<div class="OW" id="alloGM-menu">
-						<div class="closingCross desktop"></div>
 						<div class="closingArrow mobile"></div>
 						<h3>ALLO GM</h3>
 						<div style="height: 30px" SPACER></div>
@@ -395,7 +393,6 @@ include("submits/aventures_submit.php");
 						?>
 					</div>
 					<div class="OW" id="alloGM">
-						<div class="closingCross desktop"></div>
 						<div class="closingArrow mobile"></div>
 						<h3>ALLO GM</h3>
 						<!-- ajax -->
@@ -408,7 +405,6 @@ include("submits/aventures_submit.php");
 
 					<!-- NOTES PERSOS -->
 					<div class="OW" id="notes">
-						<div class="closingCross desktop"></div>
 						<div class="closingArrow mobile"></div>
 						<h3>Notes Perso</h3>
 						<div class="notesPaper">

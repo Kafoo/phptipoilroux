@@ -50,8 +50,26 @@ $('.showingOW').click(function(e){
 
 });
 
-$(".closingCross").click(function(e){
+$(".closingCross,.closingArrow").click(function(e){
 	$(e.currentTarget).parent().animate({opacity:"0"}, 100, function(){
 		$(e.currentTarget).parent().hide();
 	})
 });
+
+/*INFO POP-UP*/
+
+var PUTO;
+
+$(".PUTrigger").mouseenter(function(e){
+	var PUSource = $(e.currentTarget);
+	var PUText = PUSource.attr('PU');
+	PUTO = setTimeout(function(){
+	PUSource.append('<div class="PU">yo</div>').css;
+	}, 500);
+})
+
+$(".PUTrigger").mouseleave(function(e){
+	var PUSource = $(e.currentTarget);
+	clearTimeout(PUTO);
+	PUSource.children('.PU').remove();
+})

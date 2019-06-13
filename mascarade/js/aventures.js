@@ -142,10 +142,14 @@ $('.rollTheDie').one('click', function(e){
 
 // ---------- REPLY OPTIONS ---------
 
-$('.closingCross').click(function(e){
+//Si Desktop, on affiche le classicReply par défaut
+if (window.matchMedia("(min-width: 720px)").matches) {
+	$('.showingOW:first').click();
+}
+
+$('.closingCross,.closingArrow').click(function(e){
 	$('.showingOW').removeClass("current");
 })
-
 
 /*DICE REPLY*/
 

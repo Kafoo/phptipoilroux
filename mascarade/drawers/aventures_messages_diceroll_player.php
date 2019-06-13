@@ -2,8 +2,8 @@
 $req = $bdd->query("
 	SELECT *
 	FROM mas_diceroll
-	LEFT JOIN mas_persos
-	ON mas_diceroll.persoID=mas_persos.id
+	LEFT JOIN mas_persos ON mas_diceroll.persoID=mas_persos.id
+	LEFT JOIN mas_carac ON mas_diceroll.caracID=mas_carac.id
 	WHERE msgID = '$msgInfo[0]'");
 $diceRoll = $req->fetchall()[0];
 
@@ -14,6 +14,7 @@ $diceRoll = $req->fetchall()[0];
 
 	$perso = $diceRoll['nom'];
 	$title = htmlspecialchars_decode($msgInfo['contenu']);
+	$caracName = $diceRoll['carac_name'];
 	$caracID = $diceRoll['caracID'];
 	$caracVal = $diceRoll['c'.$caracID];
 	$result = $diceRoll['result'];
@@ -31,8 +32,8 @@ $diceRoll = $req->fetchall()[0];
 	<div class="diceRollBox">
 		<div class="centering">
 			<div class="diceRollDigits">
-				<div class="diceRollDigit digit-roll"><?=$result?></div>
-				<div class="diceRollDigit digit-carac" style="background-image: url(img/icones/carac/<?=$caracID?>_color.png);">+<?=$caracVal?></div>
+				<div class="diceRollDigit digit-roll" title="résultat du lancé"><?=$result?></div>
+				<div class="diceRollDigit digit-carac" style="background-image: url(img/icones/carac/<?=$caracID?>_color.png);" title="<?=$caracName?> de <?=$perso?>">+<?=$caracVal?></div>
 				<div class="diceRollDigit digit-bonus">+<?=$bonus?></div>
 				<div class="diceRollDigit digit-malus">-<?=$malus?></div>
 				<div class="inline">
