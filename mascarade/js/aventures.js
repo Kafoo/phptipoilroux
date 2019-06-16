@@ -361,7 +361,7 @@ $('.showingNotes').one('click', function() {
 });
 
 /*EDIT NOTES*/
-$(".editButton").click(function(){
+$(".notesPaperStyle").click(function(){
 	var notesContent = $(".notesContent").html().replace(/<br>/g,'');
 	$(".notesPaper").slideToggle(200);
 	$("#editNotesArea").html(notesContent);	
@@ -430,6 +430,15 @@ $(".infoPerso").mouseleave(function(){
 })
 
 
+$("div[title]").click(function () {
+  var $title = $(this).find(".title");
+  if (!$title.length) {
+    $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
+  } else {
+    $title.remove();
+  }
+})
+
 /*-------------- IF MOBILE --------------*/
 
 if (window.matchMedia("(max-width: 720px)").matches) {
@@ -483,7 +492,22 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 
 	})
 
+	/*----HIDE&SHOW HEADER ON SCROLL----*/
 
+	var position = $(window).scrollTop(); 
+	var header = $('#headerMobile');
+	// should start at 0
+
+	var iScrollPos = 0;
+	$(window).scroll(function () {
+	    var iCurScrollPos = $(this).scrollTop();
+	    if (iCurScrollPos > iScrollPos) {
+	        header.slideUp(300);
+	    } else {
+	       header.slideDown(300);
+	    }
+	    iScrollPos = iCurScrollPos;
+	});
 
 }
 

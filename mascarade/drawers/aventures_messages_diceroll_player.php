@@ -32,13 +32,13 @@ $diceRoll = $req->fetchall()[0];
 	<div class="diceRollBox">
 		<div class="centering">
 			<div class="diceRollDigits">
-				<div class="diceRollDigit digit-roll" title="résultat du lancé"><?=$result?></div>
-				<div class="diceRollDigit digit-carac" style="background-image: url(img/icones/carac/<?=$caracID?>_color.png);" title="<?=$caracName?> de <?=$perso?>">+<?=$caracVal?></div>
+				<div class="diceRollDigit digit-roll" title="Résultat du lancé"><?=$result?></div>
+				<div class="diceRollDigit digit-carac" style="background-image: url(img/icones/carac/<?=$caracID?>_color.png);" title="<?=ucfirst($caracName)?> de <?=$perso?>">+<?=$caracVal?></div>
 				<div class="diceRollDigit digit-bonus">+<?=$bonus?></div>
 				<div class="diceRollDigit digit-malus">-<?=$malus?></div>
 				<div class="inline">
 					<span style="font-weight: bolder">=</span>	
-					<div class="diceRollDigit digit-resultFinal">
+					<div class="diceRollDigit digit-resultFinal" title="Résultat final">
 						<?=$resultFinal?>
 						<span class="digit-difficulty"> /<?=$difficulty?></span>
 						<?php

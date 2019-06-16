@@ -411,7 +411,6 @@ include("submits/aventures_submit.php");
 							<div class="notesPaperStyle">
 								<span class="notesContent"></span>
 							</div>
-							<div class="editButton" id="editButtonNotes">edit</div>
 						</div>
 						<div class="editNotesBlock" hidden>
 							<textarea class="notesPaperStyle" id="editNotesArea"></textarea>
