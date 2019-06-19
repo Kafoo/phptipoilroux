@@ -115,8 +115,6 @@ function checkLvlPerso($persoID){
 	$leveling = $req->fetch();
 	if ($leveling['xp'] >= $leveling['nextlvl']) {
 		$bdd->query("UPDATE mas_persos SET lvl=lvl+1 WHERE id='$persoID' ");
-		//checkLvlPerso($persoID);
-		echo $leveling['xp']."new LVL !".$leveling['nextlvl'];
 	}
 
 	$req = $bdd->query("
@@ -129,8 +127,6 @@ function checkLvlPerso($persoID){
 
 	if ($leveling['xp'] >= $leveling['nextlvl']) {
 		checkLvlPerso($persoID);
-	}else{
-		echo 'end of leveling';
 	}
 
 }

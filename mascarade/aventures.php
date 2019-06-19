@@ -374,6 +374,7 @@ include("submits/aventures_submit.php");
 							<div class="diff12 diceReply-diff button"
 							onclick="choose('diff','12')">Difficile</div>
 							<input id="diffStock" type="text" name="diceReply-diff" hidden>
+							
 							<br>
 							<input id="resultStock" type="text" name="diceReply-result" hidden>
 
