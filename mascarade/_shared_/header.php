@@ -59,8 +59,7 @@
 <!---- TOOLTIPS MOBILE ---->
 
 <div id="tooltipsMobile" hidden>
-	<div class="closingCross"></div>
-	YO
+	<div class="arrowUP"></div>
 </div>
 
 
@@ -107,7 +106,7 @@
 <?php 
 if (isset($error)) {
 	?>
-	<div id="error">
+	<div id="error" class="desktop">
 		<b>Wooooups !</b>
 		<br><br>
 		<?= $error ?>

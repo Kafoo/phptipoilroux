@@ -172,9 +172,15 @@ src: url("../font/Cinzel-Regular.ttf");
 		cursor: pointer;
 	}
 
-	#tooltipsMobile .closingCross{
-		width: 35px;
-		height: 35px;
+	.arrowUP{
+		position: absolute;
+		width: 38px;
+    	height: 35px;
+    	top: 12px;
+    	right: 15px;
+		background-image: url(../../img/icones/arrowUP.png);
+		background-size: cover;
+		cursor: pointer;
 	}
 
 	.editButton{
@@ -402,6 +408,7 @@ src: url("../font/Cinzel-Regular.ttf");
 
 	#tooltipsMobile{
 		position: fixed;
+		font-style: italic;
 		top: 0;
 		padding: 0 20px;
 		width: calc(100% - 40px);

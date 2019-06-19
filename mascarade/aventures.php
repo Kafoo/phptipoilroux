@@ -188,8 +188,14 @@ include("submits/aventures_submit.php");
 			$lastMsgID = $req->fetch()[0];
 
 			//On vérifie si le dernier message posté est celui du user actif
-			if ($currentPage == $NbrPages 
-			AND $msgS[count($msgS)-1]['userID'] == $userID) {
+
+			$req = $bdd->query("
+				SELECT *
+				FROM mas_messages_aventure
+				WHERE avID= '$avID'
+				ORDER BY mas_messages_aventure.id DESC ");
+			$res = $req->fetch();
+			if ($res['auteurID'] == $userID) {
 				$lastIsUser = True;
 			}else{
 				$lastIsUser = False;

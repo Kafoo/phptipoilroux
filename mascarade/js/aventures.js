@@ -36,7 +36,7 @@ $('.joinAv').click(function(e){
 			tinymce.init({
 			    selector: '.mytextarea',
 			    content_css : "style/tinymce.css",
-			    height: 300,
+			    height: 184,
 			    menubar: false,
 			    forced_root_block : "",
 			    statusbar : false,
@@ -45,7 +45,7 @@ $('.joinAv').click(function(e){
 			    paste_remove_styles_if_webkit: true,
 			    paste_strip_class_attributes: true,
 			    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
-			    toolbar: 'undo redo | bold italic | link image forecolor backcolor fontsizeselect | code',
+			    toolbar: 'bold italic | forecolor fontsizeselect',
 			    plugins: 'code image textcolor preview paste'
 			});
 		}
@@ -166,6 +166,8 @@ if (window.matchMedia("(min-width: 720px)").matches) {
 $('.closingCross,.closingArrow').click(function(e){
 	$('.showingOW').removeClass("current");
 })
+
+
 
 /*DICE REPLY*/
 
@@ -486,8 +488,13 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 		$('#replyContainer').animate({height:'280'},100);
 		$('.closingArrow').show();
 		$('.closingArrow').animate({height:'40'},100);
-
+		$('#headerMobile').slideUp(300);
 	})
+
+	$('.OW').click(function(){
+		$('#headerMobile').slideUp(300);
+	})
+
 
 	$(".closingArrow").click(function(e){
 		$('#replyContainer').animate({height:'0'},100);
@@ -495,23 +502,6 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 		$('.closingArrow').hide();
 
 	})
-
-	/*----HIDE&SHOW HEADER ON SCROLL----*/
-
-	var position = $(window).scrollTop(); 
-	var header = $('#headerMobile');
-	// should start at 0
-
-	var iScrollPos = 0;
-	$(window).scroll(function () {
-	    var iCurScrollPos = $(this).scrollTop();
-	    if (iCurScrollPos > iScrollPos) {
-	        header.slideUp(300);
-	    } else {
-	       header.slideDown(300);
-	    }
-	    iScrollPos = iCurScrollPos;
-	});
 
 }
 

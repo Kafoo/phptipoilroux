@@ -61,11 +61,45 @@ $(".closingCross,.closingArrow").click(function(e){
 
 $('[title]').click(function(e){
 	var title = $(e.currentTarget).attr('title');
-	$('#tooltipsMobile').html("<div class='closingCross'></div>"+title);
-	$('#tooltipsMobile').slideDown();
+	$('#tooltipsMobile').html("<div class='arrowUP'></div>"+title);
+	$('#tooltipsMobile').slideDown(200);
 	e.stopPropagation();
 })
 
 $(document).click(function(e) {
-    $('#tooltipsMobile').slideUp();
+    $('#tooltipsMobile').slideUp(200);
 });
+
+
+$(document).ready(function(){
+  var _originalSize = $(window).width() + $(window).height()
+  $(window).resize(function(){
+    if($(window).width() + $(window).height() != _originalSize){
+      $('#headerMobile').slideUp(300);
+    }
+  });
+});
+
+
+/*-------------- IF MOBILE --------------*/
+
+if (window.matchMedia("(max-width: 720px)").matches) {
+
+	/*----HIDE&SHOW HEADER ON SCROLL----*/
+
+	var position = $(window).scrollTop(); 
+	var header = $('#headerMobile');
+	// should start at 0
+
+	var iScrollPos = 0;
+	$(window).scroll(function () {
+	    var iCurScrollPos = $(this).scrollTop();
+	    if (iCurScrollPos > iScrollPos) {
+	        header.slideUp(300);
+	    } else {
+	       header.slideDown(300);
+	    }
+	    iScrollPos = iCurScrollPos;
+	});
+
+}

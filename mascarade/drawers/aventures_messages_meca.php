@@ -31,10 +31,9 @@ $diceRolls = $req->fetchall(); ?>
 		$caracVal = $diceRoll[$caracID];
 		$caracName = $diceRoll['carac_name'];
 		$result = $diceRoll['result'];
-		$bonus = $diceRoll['bonus'];
-		$malus = $diceRoll['malus'];
+		$caracCond = $diceRoll['c'.$caracID.'Cond'];
 		$difficulty = $diceRoll['difficulty'];
-		$resultFinal = floatval($result)+floatval($caracVal)+floatval($bonus)-floatval($malus);
+		$resultFinal = floatval($result)+floatval($caracVal)+floatval($caracCond);
 
 		if ($difficulty<$resultFinal) {$success = 1;}
 		elseif ($difficulty>=$resultFinal) {$success = 0;}
@@ -87,8 +86,7 @@ $diceRolls = $req->fetchall(); ?>
 				<div class="diceRollDigits">
 					<div class="diceRollDigit digit-roll" title="Résultat du lancé"><?=$result?></div>
 					<div class="diceRollDigit digit-carac" style="background-image: url(img/icones/carac/<?=$caracID?>_color.png);" title="<?=ucfirst($caracName)?> de <?=$perso?>">+<?=$caracVal?></div>
-					<div class="diceRollDigit digit-bonus">+<?=$bonus?></div>
-					<div class="diceRollDigit digit-malus">-<?=$malus?></div>
+				<div class="diceRollDigit digit-cond" title="Condition">+<?=$caracCond?></div>
 					<div class="inline">
 						<span style="font-weight: bolder">=</span>	
 						<div class="diceRollDigit digit-resultFinal" title="Résultat final">
