@@ -44,6 +44,7 @@ if (isset($_POST['submit'])) {
 		$bdd->query("UPDATE mas_membres SET nombremsg=nombremsg+1 WHERE id='$userID' ");
 		/*Incrémente de 4 l'xp du perso*/
 		$bdd->query("UPDATE mas_persos SET xp=xp+4 WHERE id='$persoID' ");
+		checkLvlPerso($persoID);
 
 
 	}else{

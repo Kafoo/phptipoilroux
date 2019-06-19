@@ -56,20 +56,16 @@ $(".closingCross,.closingArrow").click(function(e){
 	})
 });
 
-/*INFO POP-UP*/
 
-var PUTO;
+/*TOOLTIPS FOR MOBILE*/
 
-$(".PUTrigger").mouseenter(function(e){
-	var PUSource = $(e.currentTarget);
-	var PUText = PUSource.attr('PU');
-	PUTO = setTimeout(function(){
-	PUSource.append('<div class="PU">yo</div>').css;
-	}, 500);
+$('[title]').click(function(e){
+	var title = $(e.currentTarget).attr('title');
+	$('#tooltipsMobile').html("<div class='closingCross'></div>"+title);
+	$('#tooltipsMobile').slideDown();
+	e.stopPropagation();
 })
 
-$(".PUTrigger").mouseleave(function(e){
-	var PUSource = $(e.currentTarget);
-	clearTimeout(PUTO);
-	PUSource.children('.PU').remove();
-})
+$(document).click(function(e) {
+    $('#tooltipsMobile').slideUp();
+});

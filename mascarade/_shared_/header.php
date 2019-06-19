@@ -56,6 +56,14 @@
 
 </header>
 
+<!---- TOOLTIPS MOBILE ---->
+
+<div id="tooltipsMobile" hidden>
+	<div class="closingCross"></div>
+	YO
+</div>
+
+
 <!---- NAV MOBILE ---->
 <nav id="navMobile" hidden>
 	<ul>

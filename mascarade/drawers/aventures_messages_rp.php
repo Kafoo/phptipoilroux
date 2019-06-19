@@ -111,9 +111,6 @@
 
 	<?php
 	if ($msgInfo[0] == $lastMsgID AND $msgInfo['type'] == 'RP') { ?>
-		<div class="suppMsg desktop button" ajax='?action=suppMsg&msgID=<?=$lastMsgID?>' msgid="<?=$lastMsgID?>">
-			x
-		</div>
 		<div class="editMsg desktop button" msgid="<?=$lastMsgID?>">
 			edit
 		</div>

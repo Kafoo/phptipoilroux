@@ -35,32 +35,41 @@ if ($i == 0) {//Seulement pour le 1er post ?>
 					</div> 
  
 					<?php //Calcul du pourcentage vers le nextLVL 
-						$xp = $coterie[$j]['xp']; 
-						$nextLVL = $coterie[$j]['minxp']; 
-						$pourcent = $xp*100/$nextLVL; 
+						$xp = $coterie[$j]['xp'];
+						$minxp = $coterie[$j]['minxp'];
+						$nextLVL = $coterie[$j]['nextlvl']; 
+						$pourcent = ($xp-$minxp)*100/($nextLVL-$minxp); 
 					?> 
  
 					<div class="infoPersoDropdown"> 
-						<img src="img/rpg/pv_<?=$coterie[$j]['pv']?>.png" class="hpBar" pv="<?=$coterie[$j]['pv']?>"> 
+						<img src="img/rpg/pv_<?=$coterie[$j]['pv']?>.png" class="hpBar" title="<?=$coterie[$j]['pv']?>/10 PV"> 
 						<div class="infoPersoLvl">lvl <?=$coterie[$j]['lvl']?></div> 
 						<div class="infoPersoXP-container">
 							<div class="infoPersoXP"  
-							style="background: linear-gradient(to right, #5154bd <?=$pourcent?>%, rgb(200,200,200) <?=$pourcent?>%);"
-							xp="<b><?=$xp?></b> / <?=$nextLVL?> XP"> 
-								<?=$pourcent?>% 
+							style="background: linear-gradient(to right, #5154bd <?=$pourcent?>%, rgb(200,200,200) <?=$pourcent?>%);"> 
+								<b><?=$xp?></b> / <?=$nextLVL?> XP
 							</div> 
 						</div>
-						<div class="infoPersoCarac carac1" carac="force"><?=$coterie[$j]['c1']?></div> 
-						<div class="infoPersoCarac carac2" carac="dextérité"><?=$coterie[$j]['c2']?></div> 
-						<div class="infoPersoCarac carac3" carac="intelligence"><?=$coterie[$j]['c3']?></div> 
-						<div class="infoPersoCarac carac4" carac="charisme"><?=$coterie[$j]['c4']?></div>
-						<div class="infoPersoCarac carac5" carac="perception"><?=$coterie[$j]['c5']?></div>
+
+						<?php
+						$c1Name = $caracOfUniv['0']['carac_name'];
+						$c2Name = $caracOfUniv['1']['carac_name'];
+						$c3Name = $caracOfUniv['2']['carac_name'];
+						$c4Name = $caracOfUniv['3']['carac_name'];
+						$c5Name = $caracOfUniv['4']['carac_name'];				
+						?>
+
+						<div class="infoPersoCarac carac1" title="<?=ucfirst($c1Name)?>"><?=$coterie[$j]['c1']?></div> 
+						<div class="infoPersoCarac carac2" title="<?=ucfirst($c2Name)?>"><?=$coterie[$j]['c2']?></div> 
+						<div class="infoPersoCarac carac3" title="<?=ucfirst($c3Name)?>"><?=$coterie[$j]['c3']?></div> 
+						<div class="infoPersoCarac carac4" title="<?=ucfirst($c4Name)?>"><?=$coterie[$j]['c4']?></div>
+						<div class="infoPersoCarac carac5" title="<?=ucfirst($c5Name)?>"><?=$coterie[$j]['c5']?></div>
 						<div class="infoPersoInventory">
-							- <br>
-							- <br>
-							- <br>
-							- <br>
-							- <br>
+							<?=$coterie[$j]['invent1']?> <br>
+							<?=$coterie[$j]['invent2']?> <br>
+							<?=$coterie[$j]['invent3']?> <br>
+							<?=$coterie[$j]['invent4']?> <br>
+							<?=$coterie[$j]['invent5']?> <br>
 						</div>
 					</div>
 					<img src="img/icones/dropdown.png" class="dropdownIcone">

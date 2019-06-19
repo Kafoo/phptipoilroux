@@ -2,6 +2,7 @@
 session_start();
 include("../_shared_/connectDB.php");
 include("mailer.php");
+include("_shared_/functions.php");
 
 
 /*----------- SUPP MSG -----------*/

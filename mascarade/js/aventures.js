@@ -13,91 +13,90 @@ $('.joinAv').click(function(e){
 /*----------------MESSAGES PAGE----------------*/
 
 // TINYMCE INITIALISATION
-if (typeof tinymce !== 'undefined') {
-	if (window.matchMedia("(min-width: 720px)").matches) {
-	//Desktop init.
-		tinymce.init({
-		    selector: '.mytextarea',
-		    content_css : "style/tinymce.css",
-		    height: 300,
-		    menubar: false,
-		    forced_root_block : "",
-		    statusbar : false,
-		    paste_auto_cleanup_on_paste : true,
-		    paste_remove_styles: true,
-		    paste_remove_styles_if_webkit: true,
-		    paste_strip_class_attributes: true,
-		    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
-		    toolbar: 'undo redo | bold italic | link image forecolor backcolor fontsizeselect | code',
-		    plugins: 'code image textcolor preview paste'
-		});
-	//Mobile init.
-	}else{
-		tinymce.init({
-		    selector: '.mytextarea',
-		    content_css : "style/tinymce.css",
-		    height: 300,
-		    menubar: false,
-		    forced_root_block : "",
-		    statusbar : false,
-		    paste_auto_cleanup_on_paste : true,
-		    paste_remove_styles: true,
-		    paste_remove_styles_if_webkit: true,
-		    paste_strip_class_attributes: true,
-		    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
-		    toolbar: 'undo redo | bold italic | link image forecolor backcolor fontsizeselect | code',
-		    plugins: 'code image textcolor preview paste'
-		});
+	if (typeof tinymce !== 'undefined') {
+		if (window.matchMedia("(min-width: 720px)").matches) {
+		//Desktop init.
+			tinymce.init({
+			    selector: '.mytextarea',
+			    content_css : "style/tinymce.css",
+			    height: 300,
+			    menubar: false,
+			    forced_root_block : "",
+			    statusbar : false,
+			    paste_auto_cleanup_on_paste : true,
+			    paste_remove_styles: true,
+			    paste_remove_styles_if_webkit: true,
+			    paste_strip_class_attributes: true,
+			    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
+			    toolbar: 'undo redo | bold italic | link image forecolor backcolor fontsizeselect | code',
+			    plugins: 'code image textcolor preview paste'
+			});
+		//Mobile init.
+		}else{
+			tinymce.init({
+			    selector: '.mytextarea',
+			    content_css : "style/tinymce.css",
+			    height: 300,
+			    menubar: false,
+			    forced_root_block : "",
+			    statusbar : false,
+			    paste_auto_cleanup_on_paste : true,
+			    paste_remove_styles: true,
+			    paste_remove_styles_if_webkit: true,
+			    paste_strip_class_attributes: true,
+			    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
+			    toolbar: 'undo redo | bold italic | link image forecolor backcolor fontsizeselect | code',
+			    plugins: 'code image textcolor preview paste'
+			});
+		}
 	}
-}
 
 // --------- SUPP MESSAGE ---------
  
-$('.suppMsg').click(function(e){
+	$('.suppMsg').click(function(e){
 
-	var confirmation = confirm("Tu es sûr de vouloir supprimer ce message ? C'est définitif !\n\n (si plusieurs messages ont été postés à la suite, seul le dernier sera supprimé ;-)");
-	if (confirmation == false) {
-		return false;
-	}else{
+		var confirmation = confirm("Tu es sûr de vouloir supprimer ce message ? C'est définitif !\n\n (si plusieurs messages ont été postés à la suite, seul le dernier sera supprimé ;-)");
+		if (confirmation == false) {
+			return false;
+		}else{
 
-		var msgCount = $(e.currentTarget).parent().children(".msgCount").attr('msgcount');
-		// Si un seul message dans le post
-		if (msgCount == 1) {
-			var msgID = $(e.currentTarget).attr('msgid');
-			$('.'+msgID).animate({opacity:"0"}, 500, function(){
-				$('.'+msgID).slideToggle(300, function(){
-					$('.'+msgID).replaceWith('<div></div>');
+			var msgCount = $(e.currentTarget).parent().children(".msgCount").attr('msgcount');
+			// Si un seul message dans le post
+			if (msgCount == 1) {
+				var msgID = $(e.currentTarget).attr('msgid');
+				$('.'+msgID).animate({opacity:"0"}, 500, function(){
+					$('.'+msgID).slideToggle(300, function(){
+						$('.'+msgID).replaceWith('<div></div>');
+					});
 				});
-			});
-		}
+			}
 
-		// Si plusieurs messages dans le post :
-		if (msgCount > 1) {
-			var lastMsgOfPost = $(e.currentTarget).parent().children('.lastMsgOfPost');
-			var lastSepOfPost = $(e.currentTarget).parent().children('.lastSepOfPost');
-			lastMsgOfPost.slideToggle(500);
-			lastSepOfPost.slideToggle(500);
-		}
-		$(".msgOption").remove();
-		$(".editMsg").remove();
-		$(".suppMsg").remove();		
-		
+			// Si plusieurs messages dans le post :
+			if (msgCount > 1) {
+				var lastMsgOfPost = $(e.currentTarget).parent().children('.lastMsgOfPost');
+				var lastSepOfPost = $(e.currentTarget).parent().children('.lastSepOfPost');
+				lastMsgOfPost.slideToggle(500);
+				lastSepOfPost.slideToggle(500);
+			}
+			$(".msgOption").remove();
+			$(".editMsg").remove();
+			$(".suppMsg").remove();		
+			
 
-		var refine = $(e.currentTarget).attr('ajax');
-		var http = new XMLHttpRequest();
-		http.open('GET', 'server/HTTP_REQUEST.php'+refine, false);
-		http.send();
-	}
-})
+			var refine = $(e.currentTarget).attr('ajax');
+			var http = new XMLHttpRequest();
+			http.open('GET', 'server/HTTP_REQUEST.php'+refine, false);
+			http.send();
+		}
+	})
 
 
 // --------- EDIT MESSAGE ---------
- 
-$('.editMsg').click(function(e){
 
+function handler1(e) {
 	var msgID = $(e.currentTarget).attr('msgid');
 	var contenu = $(e.currentTarget).parent().children('.lastMsgOfPost');
-	var editBloc = $(e.currentTarget).parent().children('.editMsgBloc')
+	var editBloc = $(e.currentTarget).parent().children('.editMsgBloc');
 	var editArea = $(e.currentTarget).parent().children('.editMsgBloc').children('.editMsgArea');
 	var contenuHTML = contenu.html();
 	var height = $(e.currentTarget).parent().css("height");
@@ -108,9 +107,13 @@ $('.editMsg').click(function(e){
 		var newheight = parseFloat(height)/2;
 		editArea.height(newheight);
 	}
-	contenu.slideToggle();
+	contenu.slideToggle(function(){
+		$('.editMsg').html('annuler')
+	});
 	editBloc.slideToggle();
 	tinymce.get(msgID).setContent(contenuHTML);
+
+
 	//Si mobile, on cache les options du message
 	if (window.matchMedia("(max-width: 720px)").matches) {
 		var editButton = $(e.currentTarget).parent().children('.editMsg.mobile');
@@ -120,7 +123,20 @@ $('.editMsg').click(function(e){
 		suppButton.hide();
 		suppButton.animate({opacity:"0"}, 200);
 	}
-})
+
+    $(this).one("click", handler2);
+}
+
+function handler2(e) {
+	var contenu = $(e.currentTarget).parent().children('.lastMsgOfPost');
+	var editBloc = $(e.currentTarget).parent().children('.editMsgBloc');
+	contenu.slideToggle();
+	editBloc.slideToggle();
+	$('.editMsg').html('edit')
+    $(this).one("click", handler1);
+}
+
+$('.editMsg').one("click", handler1);
 
 
 // --------- ROLL THE DIE ---------
@@ -167,277 +183,265 @@ $("#diceReply-submit").click(function(){
 
 /*ALLO GM*/
 
-//Showing if player
-$('.showingAlloGM-direct').click(function() {
-	var http = new XMLHttpRequest;
-    http.onreadystatechange = function() {
-    	if (this.readyState < 4 ) {
-    		$('.alloGM-content').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
-    	}
-        if (this.readyState == 4 && this.status !== 200) {
-        $('.alloGM-content').html('<div class="loading-error"></div>');
-       }
-        if (this.readyState == 4 && this.status == 200) {
-            $('.alloGM-content').html(this.responseText.trim());
-       }
-    };
+	//Showing if player
+	$('.showingAlloGM-direct').click(function() {
+		var http = new XMLHttpRequest;
+	    http.onreadystatechange = function() {
+	    	if (this.readyState < 4 ) {
+	    		$('.alloGM-content').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+	    	}
+	        if (this.readyState == 4 && this.status !== 200) {
+	        $('.alloGM-content').html('<div class="loading-error"></div>');
+	       }
+	        if (this.readyState == 4 && this.status == 200) {
+	            $('.alloGM-content').html(this.responseText.trim());
+	       }
+	    };
 
-    var userID = $('#userID').html();
-    var otherID = $('#GMID').html();
-    var avID = $('#avID').html();
+	    var userID = $('#userID').html();
+	    var otherID = $('#GMID').html();
+	    var avID = $('#avID').html();
 
-	http.open('POST','ajax/aventures_allogm.php', true);
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.send("userID="+userID+"&otherID="+otherID+"&avID="+avID);
-	refreshNotifUnseen(); 
-});
-
-//Showing if GM
-
-$('.alloGM-playerChoice').click(function(e) {
-
-
-	var OW = $(".OW#alloGM");
-	var otherOW = OW.parent().children('.OW').not(OW);
-	OW.show();
-	OW.animate({opacity:"1"},100, function(){
-		otherOW.animate({opacity:"0"}, 100, function(){
-			otherOW.hide();
-		})
+		http.open('POST','ajax/aventures_allogm.php', true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		http.send("userID="+userID+"&otherID="+otherID+"&avID="+avID);
+		refreshNotifUnseen(); 
 	});
 
+	//Showing if GM
 
-	var http = new XMLHttpRequest;
-    http.onreadystatechange = function() {
-    	if (this.readyState < 4 ) {
-    		$('.alloGM-content').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
-    	}
-        if (this.readyState == 4 && this.status !== 200) {
-        $('.alloGM-content').html('<div class="loading-error"></div>');
-       }
-        if (this.readyState == 4 && this.status == 200) {
-			//remove unseen class
-			$(e.currentTarget).removeClass("unseen2");
-			//showing messages
-            $('.alloGM-content').html(this.responseText.trim());
-       }
-    };
-
-    var userID = $('#GMID').html();
-    var otherID = $(e.currentTarget).attr('id');
-    var avID = $('#avID').html();
-
-	http.open('POST','ajax/aventures_allogm.php', true);
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.send("userID="+userID+"&otherID="+otherID+"&avID="+avID);  
-	refreshNotifUnseen();  
-});
-
-//Stop refresh when stop showing
-$('#alloGM').children(".closingCross").click(function(){
-	clearInterval(alloRefreshInterval);
-})
+	$('.alloGM-playerChoice').click(function(e) {
 
 
-
-$('.replyOption:not(.showingAlloGM)').click(function(){
-	if (typeof alloRefreshInterval !== 'undefined') {
-    	clearInterval(alloRefreshInterval);
-	}
-})
-
-//Sending
-
-$('.alloGM-textArea').on('keypress', function (e) {
-         if(e.which === 13){
-         	$('.alloGM-submit').click();
-         	return false;
-         }
-   });
-
-$('.alloGM-submit').click(function(){
-
-	if ($(".alloGM-textArea").val().trim() !== "") {
+		var OW = $(".OW#alloGM");
+		var otherOW = OW.parent().children('.OW').not(OW);
+		OW.show();
+		OW.animate({opacity:"1"},100, function(){
+			otherOW.animate({opacity:"0"}, 100, function(){
+				otherOW.hide();
+			})
+		});
 
 
 		var http = new XMLHttpRequest;
 	    http.onreadystatechange = function() {
 	    	if (this.readyState < 4 ) {
-	    		$('.alloGM-submit').addClass('alloGM-loading');
-	    		$('.alloGM-loading').removeClass('alloGM-submit button');
+	    		$('.alloGM-content').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
 	    	}
 	        if (this.readyState == 4 && this.status !== 200) {
-	        //code
+	        $('.alloGM-content').html('<div class="loading-error"></div>');
 	       }
 	        if (this.readyState == 4 && this.status == 200) {
-	        	$('.alloGM-loading').addClass('alloGM-submit button');
-	        	$('.alloGM-submit').removeClass('alloGM-loading');
-	        	if (http.responseText.includes('success')){
-	        		$('.alloGM-content').append(formContent);
-	        	}
-	            $('.alloGM-textArea').val('');
-	           	$('.alloGM-content').scrollTop(9999);
-
+				//remove unseen class
+				$(e.currentTarget).removeClass("unseen2");
+				//showing messages
+	            $('.alloGM-content').html(this.responseText.trim());
 	       }
 	    };
 
-	    var content = $('.alloGM-textArea').val().replace(/\\n/g, '\n');
-	    var URIcontent =  encodeURIComponent(content);
-	    var formContent = '<div class="alloGM-msg msg-user temp">'+content+'</div>'
-	    var userID = $('#alloGM-userID').attr('userID');
-	    var otherID = $('#alloGM-otherID').attr('otherID');
+	    var userID = $('#GMID').html();
+	    var otherID = $(e.currentTarget).attr('id');
 	    var avID = $('#avID').html();
-		http.open('POST','server/HTTP_REQUEST.php', true);
+
+		http.open('POST','ajax/aventures_allogm.php', true);
 		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		http.send("action=alloGM&content="+URIcontent+"&userID="+userID+"&otherID="+otherID+"&avID="+avID);	
+		http.send("userID="+userID+"&otherID="+otherID+"&avID="+avID);  
+		refreshNotifUnseen();  
+	});
+
+	//Stop refresh when stop showing
+	$('#alloGM').children(".closingCross").click(function(){
+		clearInterval(alloRefreshInterval);
+	})
+
+
+
+	$('.replyOption:not(.showingAlloGM)').click(function(){
+		if (typeof alloRefreshInterval !== 'undefined') {
+	    	clearInterval(alloRefreshInterval);
+		}
+	})
+
+	//Sending
+
+	$('.alloGM-textArea').on('keypress', function (e) {
+	         if(e.which === 13){
+	         	$('.alloGM-submit').click();
+	         	return false;
+	         }
+	   });
+
+	$('.alloGM-submit').click(function(){
+
+		if ($(".alloGM-textArea").val().trim() !== "") {
+
+
+			var http = new XMLHttpRequest;
+		    http.onreadystatechange = function() {
+		    	if (this.readyState < 4 ) {
+		    		$('.alloGM-submit').addClass('alloGM-loading');
+		    		$('.alloGM-loading').removeClass('alloGM-submit button');
+		    	}
+		        if (this.readyState == 4 && this.status !== 200) {
+		        //code
+		       }
+		        if (this.readyState == 4 && this.status == 200) {
+		        	$('.alloGM-loading').addClass('alloGM-submit button');
+		        	$('.alloGM-submit').removeClass('alloGM-loading');
+		        	if (http.responseText.includes('success')){
+		        		$('.alloGM-content').append(formContent);
+		        	}
+		            $('.alloGM-textArea').val('');
+		           	$('.alloGM-content').scrollTop(9999);
+
+		       }
+		    };
+
+		    var content = $('.alloGM-textArea').val().replace(/\\n/g, '\n');
+		    var URIcontent =  encodeURIComponent(content);
+		    var formContent = '<div class="alloGM-msg msg-user temp">'+content+'</div>'
+		    var userID = $('#alloGM-userID').attr('userID');
+		    var otherID = $('#alloGM-otherID').attr('otherID');
+		    var avID = $('#avID').html();
+			http.open('POST','server/HTTP_REQUEST.php', true);
+			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			http.send("action=alloGM&content="+URIcontent+"&userID="+userID+"&otherID="+otherID+"&avID="+avID);	
+		}
+	})
+		
+	//Notification unseen
+
+	function refreshNotifUnseen(){
+
+		var http_notif = new XMLHttpRequest;
+		var avID = $('#avID').html();
+		var userID = $('#userID').html();
+
+	    http_notif.onreadystatechange = function() {
+	        if (this.readyState == 4 && this.status == 200) {
+		        if (http_notif.responseText == "[]") {
+		        	$('.showingAlloGM').removeClass("unseen1");
+		        }
+		        else{
+		        	var unseenArray = JSON.parse(http_notif.responseText);
+		        	var i = 0;
+		        	console.log(unseenArray);
+		        	unseenArray.forEach(function(unseen){
+		        		console.log(unseen);
+		        		$('.alloGM-playerChoice').each(function(){
+		        			var playerID = this.id;
+		        			var playerDOM = this;
+		        			if (unseen[0] == playerID) {
+		        				$('.alloGM-playerChoice#'+unseen[0]).addClass('unseen2');
+		        			}
+		        		})
+			        	i++;
+
+		        	})
+					$('.showingAlloGM').addClass("unseen1");
+		        }
+	       }
+	      }
+
+		http_notif.open('GET','server/HTTP_REQUEST.php?action=notifUnseen&avID='+avID+"&userID="+userID, true);
+		http_notif.send();
 	}
-})
-	
-//Notification unseen
 
-function refreshNotifUnseen(){
-
-	var http_notif = new XMLHttpRequest;
-	var avID = $('#avID').html();
-	var userID = $('#userID').html();
-
-    http_notif.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-	        if (http_notif.responseText == "[]") {
-	        	$('.showingAlloGM').removeClass("unseen1");
-	        }
-	        else{
-	        	var unseenArray = JSON.parse(http_notif.responseText);
-	        	var i = 0;
-	        	console.log(unseenArray);
-	        	unseenArray.forEach(function(unseen){
-	        		console.log(unseen);
-	        		$('.alloGM-playerChoice').each(function(){
-	        			var playerID = this.id;
-	        			var playerDOM = this;
-	        			if (unseen[0] == playerID) {
-	        				$('.alloGM-playerChoice#'+unseen[0]).addClass('unseen2');
-	        			}
-	        		})
-		        	i++;
-
-	        	})
-				$('.showingAlloGM').addClass("unseen1");
-	        }
-       }
-      }
-
-	http_notif.open('GET','server/HTTP_REQUEST.php?action=notifUnseen&avID='+avID+"&userID="+userID, true);
-	http_notif.send();
-}
-
-setInterval(refreshNotifUnseen, 5000);
-
-
-
+	setInterval(refreshNotifUnseen, 5000);
 
 
 /*NOTES*/
-$('.showingNotes').one('click', function() {
-	var http = new XMLHttpRequest;
-    http.onreadystatechange = function() {
-    	if (this.readyState < 4 ) {
-    		$('.notesContent').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
-    	}
-        if (this.readyState == 4 && this.status !== 200) {
-        $('.notesContent').html('<div class="loading-error"></div>');
-       }
-        if (this.readyState == 4 && this.status == 200) {
-            $('.notesContent').html(this.responseText.trim());
-       }
-    };
+	$('.showingNotes').one('click', function() {
+		var http = new XMLHttpRequest;
+	    http.onreadystatechange = function() {
+	    	if (this.readyState < 4 ) {
+	    		$('.notesContent').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+	    	}
+	        if (this.readyState == 4 && this.status !== 200) {
+	        $('.notesContent').html('<div class="loading-error"></div>');
+	       }
+	        if (this.readyState == 4 && this.status == 200) {
+	            $('.notesContent').html(this.responseText.trim());
+	       }
+	    };
 
-    var userID = $('#userID').html();
-    var avID = $('#avID').html();
+	    var userID = $('#userID').html();
+	    var avID = $('#avID').html();
 
-	http.open('POST','ajax/aventures_notes.php', true);
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.send("userID="+userID+"&avID="+avID);    
-});
-
-/*EDIT NOTES*/
-$(".notesPaperStyle").click(function(){
-	var notesContent = $(".notesContent").html().replace(/<br>/g,'');
-	$(".notesPaper").slideToggle(200);
-	$("#editNotesArea").html(notesContent);	
-	$(".editNotesBlock").slideToggle(200, function(){
-	$("#editNotesArea").focus();	
+		http.open('POST','ajax/aventures_notes.php', true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		http.send("userID="+userID+"&avID="+avID);    
 	});
-})
 
-$(".confirmEditNotes").click(function(){
-	var http = new XMLHttpRequest;
-    http.onreadystatechange = function() {
-    	if (this.readyState < 4 ) {
-    		$('.notesContent').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
-    	}
-        if (this.readyState == 4 && this.status !== 200) {
-        $('.notesContent').html('<div class="loading-error"></div>');
-       }
-        if (this.readyState == 4 && this.status == 200) {
-            $('.notesContent').html(http.responseText);
-       }
-    };
+	/*EDIT NOTES*/
+	$(".notesPaperStyle").click(function(){
+		var notesContent = $(".notesContent").html().replace(/<br>/g,'');
+		$(".notesPaper").slideToggle(200);
+		$("#editNotesArea").html(notesContent);	
+		$(".editNotesBlock").slideToggle(200, function(){
+		$("#editNotesArea").focus();	
+		});
+	})
 
-    var content =  encodeURIComponent($('#editNotesArea').val().replace(/\\n/g, '\n'));
-    var userID = $('#userID').html();
-    var avID = $('#avID').html();
-	http.open('POST','server/HTTP_REQUEST.php', true);
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	http.send("action=editNotes&notesContent="+content+"&userID="+userID+"&avID="+avID);
+	$(".confirmEditNotes").click(function(){
+		var http = new XMLHttpRequest;
+	    http.onreadystatechange = function() {
+	    	if (this.readyState < 4 ) {
+	    		$('.notesContent').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+	    	}
+	        if (this.readyState == 4 && this.status !== 200) {
+	        $('.notesContent').html('<div class="loading-error"></div>');
+	       }
+	        if (this.readyState == 4 && this.status == 200) {
+	            $('.notesContent').html(http.responseText);
+	       }
+	    };
 
-	$(".notesPaper").slideToggle(200);
-	$(".editNotesBlock").slideToggle(200);
-})
+	    var content =  encodeURIComponent($('#editNotesArea').val().replace(/\\n/g, '\n'));
+	    var userID = $('#userID').html();
+	    var avID = $('#avID').html();
+		http.open('POST','server/HTTP_REQUEST.php', true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		http.send("action=editNotes&notesContent="+content+"&userID="+userID+"&avID="+avID);
+
+		$(".notesPaper").slideToggle(200);
+		$(".editNotesBlock").slideToggle(200);
+	})
 
 /*FIXINFOS POP-UP SYSTEM*/
 
-$(".infoPersoCarac").mouseover(function(e){
-	$carac = $(e.currentTarget).attr('carac');
-	$('.puFixInfos').html($carac);
-	$('.puFixInfos').animate({opacity:'1'}, 80);
-})
+	/*$(".infoPersoCarac").mouseover(function(e){
+		$carac = $(e.currentTarget).attr('carac');
+		$('.puFixInfos').html($carac);
+		$('.puFixInfos').animate({opacity:'1'}, 80);
+	})
 
-$(".hpBar").mouseover(function(e){
-	$pv = $(e.currentTarget).attr('pv');
-	$('.puFixInfos').html($pv+'/10 PV');
-	$('.puFixInfos').animate({opacity:'1'}, 80);
-})
+	$(".hpBar").mouseover(function(e){
+		$pv = $(e.currentTarget).attr('pv');
+		$('.puFixInfos').html($pv+'/10 PV');
+		$('.puFixInfos').animate({opacity:'1'}, 80);
+	})
 
-$(".infoPersoNom").mouseover(function(){
-	$('.puFixInfos').html('fiche perso');
-	$('.puFixInfos').animate({opacity:'1'}, 80);
-})
+	$(".infoPersoNom").mouseover(function(){
+		$('.puFixInfos').html('fiche perso');
+		$('.puFixInfos').animate({opacity:'1'}, 80);
+	})
 
-$(".infoPersoInventory").mouseover(function(){
-	$('.puFixInfos').html('inventaire');
-	$('.puFixInfos').animate({opacity:'1'}, 80);
-})
+	$(".infoPersoInventory").mouseover(function(){
+		$('.puFixInfos').html('inventaire');
+		$('.puFixInfos').animate({opacity:'1'}, 80);
+	})
 
-$(".infoPersoXP-container, .infoPersoLvl").mouseover(function(e){
-	$xp = $(e.currentTarget).children('.infoPersoXP').attr('xp');
-	$('.puFixInfos').html($xp);
-	$('.puFixInfos').animate({opacity:'1'}, 80);
-})
+	$(".infoPersoXP-container, .infoPersoLvl").mouseover(function(e){
+		$xp = $(e.currentTarget).children('.infoPersoXP').attr('xp');
+		$('.puFixInfos').html($xp);
+		$('.puFixInfos').animate({opacity:'1'}, 80);
+	})
 
-$(".infoPerso").mouseleave(function(){
-	$('.puFixInfos').animate({opacity:'0'}, 1);
-})
+	$(".infoPerso").mouseleave(function(){
+		$('.puFixInfos').animate({opacity:'0'}, 1);
+	})*/
 
-
-$("div[title]").click(function () {
-  var $title = $(this).find(".title");
-  if (!$title.length) {
-    $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
-  } else {
-    $title.remove();
-  }
-})
 
 /*-------------- IF MOBILE --------------*/
 

@@ -100,4 +100,38 @@ function getInfoDisc($nomDisc){
 	return $reqInfoDisc->fetch()[0];
 }
 
+
+function checkLvlPerso($persoID){
+	global $bdd;
+
+	$req = $bdd->query("
+		SELECT xp, nextlvl
+		FROM mas_persos
+		INNER JOIN mas_leveling
+		ON mas_persos.lvl=mas_leveling.lvl
+		WHERE mas_persos.id='$persoID'
+		");
+
+	$leveling = $req->fetch();
+	if ($leveling['xp'] >= $leveling['nextlvl']) {
+		$bdd->query("UPDATE mas_persos SET lvl=lvl+1 WHERE id='$persoID' ");
+		//checkLvlPerso($persoID);
+		echo $leveling['xp']."new LVL !".$leveling['nextlvl'];
+	}
+
+	$req = $bdd->query("
+		SELECT xp, nextlvl
+		FROM mas_persos
+		INNER JOIN mas_leveling
+		ON mas_persos.lvl=mas_leveling.lvl
+		WHERE mas_persos.id='$persoID'
+		");
+
+	if ($leveling['xp'] >= $leveling['nextlvl']) {
+		checkLvlPerso($persoID);
+	}else{
+		echo 'end of leveling';
+	}
+
+}
 ?>

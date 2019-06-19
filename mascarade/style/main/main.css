@@ -114,6 +114,10 @@ src: url("../font/Cinzel-Regular.ttf");
 		width: 15px;
 	}
 
+	[title]{
+		cursor: help;
+	}
+
 	.button{
 		box-shadow: inset -2px -2px 20px 1px rgba(0,0,0,0.2);
 		cursor: pointer;
@@ -166,6 +170,11 @@ src: url("../font/Cinzel-Regular.ttf");
 		background-image: url(../../img/icones/closingCross.png);
 		background-size: cover;
 		cursor: pointer;
+	}
+
+	#tooltipsMobile .closingCross{
+		width: 35px;
+		height: 35px;
 	}
 
 	.editButton{
@@ -388,6 +397,18 @@ src: url("../font/Cinzel-Regular.ttf");
 		background-size: 135px;
 		border-bottom: 1px solid black;
 		box-shadow: 0 0	10px 1px rgba(0,0,0,0.7);
+		z-index: 1000;
+	}
+
+	#tooltipsMobile{
+		position: fixed;
+		top: 0;
+		padding: 0 20px;
+		width: calc(100% - 40px);
+		height: 60px;
+		font-size: 1.3em;
+		line-height: 60px;
+		background-color: rgb(200,200,200);
 		z-index: 1000;
 	}
 
