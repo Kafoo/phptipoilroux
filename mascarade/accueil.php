@@ -32,38 +32,6 @@ include("_shared_/functions.php");
 	<div class="container centering">
 	</div>
 
-<?php
-
-		$dat = getRealDate();
-		$avID = 25;
-
-		//On check si le dernier post date d'il y a moins de 12h
-		$req = $bdd->query("
-			SELECT dat
-			FROM mas_messages_aventure
-			WHERE avID='$avID'
-			ORDER BY id DESC
-			");
-		$lastPostDat = $req->fetch()[0];
-
-		$exDat_current = explode('--', $dat);
-		$exDat_old = explode('--', $lastPostDat);
-		$day_current = new DateTime(str_replace('/', '-', $exDat_current[0]));
-		$day_old = new DateTime(str_replace('/', '-', $exDat_old[0]));
-		$day_interval = $day_current->diff($day_old);
-		$mail_frequency = 12;
-		$hour_current = explode(':', $exDat_current[1])[0];
-		$hour_old = explode(':', $exDat_old[1])[0];
-
-		if ($day_interval->days > 0) {
-			//MAIL
-		}elseif ($hour_current > $hour_old + $mail_frequency) {
-			//MAIL
-		}
-?>
-
-
-
 	<div class="container">
 		
 	</div>
