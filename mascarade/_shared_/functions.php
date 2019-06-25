@@ -2,10 +2,10 @@
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
 
-  	$root = $_SERVER['DOCUMENT_ROOT'].'/phptipoilroux/mascarade';
-	require $root.'/PHPMailer-master/src/Exception.php';
-	require $root.'/PHPMailer-master/src/PHPMailer.php';
-	require $root.'/PHPMailer-master/src/SMTP.php';
+  	/*$root = $_SERVER['DOCUMENT_ROOT'].'/phptipoilroux/mascarade';*/
+	require 'PHPMailer-master/src/Exception.php';
+	require 'PHPMailer-master/src/PHPMailer.php';
+	require 'PHPMailer-master/src/SMTP.php';
 
 function getRealDate(){
 	return
