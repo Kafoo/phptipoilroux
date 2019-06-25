@@ -144,14 +144,14 @@ function send_mail ($addresses, $subject, $body, $altBody){
 
     try {
         //Server settings
-        $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+        $mail->SMTPDebug = 0;                                 // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+        $mail->Host = 'smtp.sendgrid.net';  					// Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'sanssouci.mailer@gmail.com';                 // SMTP username
-        $mail->Password = 'sGund4Ma';                           // SMTP password
-        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 587;                                    // TCP port to connect to
+        $mail->Username = 'apikey';                 // SMTP username
+        $mail->Password = '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';                           // SMTP password
+        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 465;                                    // TCP port to connect to
         $mail->SMTPOptions = array(
                         'ssl' => array(
                             'verify_peer' => false,

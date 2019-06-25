@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
 		$userID = $_SESSION['id'];
 		$avID = $_GET['avID'];
 
-		//On check si le dernier post date d'il y a moins de 12h
+		//On check si le dernier post date d'il y a moins de 6h
 		$req = $bdd->query("
 			SELECT dat
 			FROM mas_messages_aventure
@@ -22,26 +22,22 @@ if (isset($_POST['submit'])) {
 		$day_current = new DateTime(str_replace('/', '-', $exDat_current[0]));
 		$day_old = new DateTime(str_replace('/', '-', $exDat_old[0]));
 		$day_interval = $day_current->diff($day_old);
-		$mail_frequency = 12;
+		$mail_frequency = 6;
 		$hour_current = explode(':', $exDat_current[1])[0];
 		$hour_old = explode(':', $exDat_old[1])[0];
 
 		$mail = False;
 		if ($day_interval->days > 0) {
 			$mail = True;
-			echo "OtherDay";
 		}elseif ($hour_current > $hour_old + $mail_frequency) {
 			$mail = True;
-			echo "+12h";
-		}else{
-			echo "NO";
 		}
 
 
-		//On envoie un mail à tous les joueurs de l'aventure si besoin
+		//On envoie un mail à tous les joueurs de l'aventure sauf l'auteur
 		if ($mail == True) {
 			$req = $bdd->query("
-				SELECT mail, nom_aventure
+				SELECT mail, nom_aventure, mas_persos.userID
 				FROM mas_relation_perso2aventure
 				INNER JOIN mas_persos ON mas_relation_perso2aventure.persoID = mas_persos.id
 				INNER JOIN mas_membres ON mas_persos.userID = mas_membres.id
@@ -50,10 +46,11 @@ if (isset($_POST['submit'])) {
 				");
 			$usersMails = $req->fetchall();
 			$addresses = [];
-			foreach ($usersMails as $adress) {
-				array_push($addresses, $adress['mail']);
+			foreach ($usersMails as $address) {
+				if ($address['userID'] !== $userID) {
+					array_push($addresses, $address['mail']);
+				}
 			}
-			$addresses = 'ant.guillard@gmail.com';
 	 		$avName = $usersMails[0]['nom_aventure'];
 			$subject = "\"".$avName."\" : Nouveau post !";
 			$body = "Ouh yeaaaaaaah, nouveau post dans l'aventure, comment qu'on est trop heureux (ouais promis bientôt je fais des mails mieux).";
