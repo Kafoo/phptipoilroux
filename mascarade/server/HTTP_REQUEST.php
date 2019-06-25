@@ -1,7 +1,6 @@
 <?php
 session_start();
 include("../_shared_/connectDB.php");
-include("mailer.php");
 include("../_shared_/functions.php");
 
 
@@ -45,14 +44,13 @@ if (isset($_POST['action']) AND $_POST['action'] == 'editNotes') {
 }
 
 /*----------- ALLO GM -----------*/
-
 if (isset($_POST['action']) AND $_POST['action'] == 'alloGM') {
 
+	$dat = getRealDate();
 	$content = nl2br(htmlspecialchars(($_POST['content']), ENT_QUOTES));
 	$fromID = $_POST['userID'];
 	$toID = $_POST['otherID'];
 	$avID = $_POST['avID'];
-
 	//On vérifie s'il n'y a pas d'autre unseen pour le mailer
 	$req = $bdd->query("
 		SELECT * 
@@ -62,32 +60,41 @@ if (isset($_POST['action']) AND $_POST['action'] == 'alloGM') {
 		");
 	$res = $req->fetchall();
 
+	$mailer = True;
 	foreach ($res as $key) {
 		if ($key['seen'] == 0) {
-			$mailer = True;
+			$mailer = False;
 		}
 	}
 
 	//INSERT MSG
 	$bdd->query("INSERT INTO mas_allogm
-		(avID, fromID, toID, content)
-		VALUES ('$avID','$fromID', '$toID', '$content')
+		(avID, fromID, toID, content, dat)
+		VALUES ('$avID','$fromID', '$toID', '$content', '$dat')
 		");
 
 	//SEND MAIL
-	if ($mailer==True) { ?>
-		<script type="text/javascript">
-			var http = new XMLHttpRequest;
-			http.open('GET','server/mailer.php?type=alloGM&avID=<?=$avID?>&userID=<?=$toID?>',true);
-			http.send();
-		</script>
-	<?php
-	}
-	?>
-		
-	<?php
+	if ($mailer==True) {
+		echo "yo";
+    	$req = $bdd->query("
+            SELECT mail
+            FROM mas_membres
+            WHERE id = '$toID'");
+    	$playerMail = $req->fetch()[0];
+    	$req = $bdd->query("
+        	SELECT nom_aventure
+        	FROM mas_aventures
+        	WHERE id='$avID'");
+    	$avName = $req->fetch()[0];
+    	$subject = 'AlloGM - Nouveau message !';
+    	$body = 'Tu as reçu un nouveau message privé sur AlloGM dans l\'aventure "'.$avName.'" !! <br><b>Découvre le en suivant ce lien : https://phptipoilroux.herokuapp.com/mascarade/aventures.php?avID='.$avID.'#replyContainer <br><br></b>A bientôôôôt =P';
+    	$altBody = 'Tu as reçu un nouveau message privé sur AlloGM dans l\'aventure "'.$avName.'" !! Découvre le en suivant ce lien : https://phptipoilroux.herokuapp.com/mascarade/aventures.php?avID='.$avID.'#replyContainer . A bientôôôôt =P';
 
-	echo 'success';
+    	send_mail([$playerMail], $subject, $body, $altBody);
+	}else{
+		echo "plop";
+	}
+
 }
 
 /*REFRESH*/
@@ -156,6 +163,31 @@ if (isset($_GET['action']) AND $_GET['action'] == 'notifUnseen') {
 	}
 
 	echo json_encode($alloGMUnseens);
+
+}
+
+/*NOTIFICATIONS UNSEEN*/
+
+if (isset($_GET['action']) AND $_GET['action'] == 'sendMail') {
+
+	if ($mailer==True) {
+
+    	$req = $bdd->query("
+            SELECT mail
+            FROM mas_membres
+            WHERE id IN '$toID'");
+    	$adresses = $req->fetch()[0];
+    	$req = $bdd->query("
+        	SELECT nom_aventure
+        	FROM mas_aventures
+        	WHERE id='$avID'");
+    	$avName = $req->fetch()[0];
+    	$subject = 'AlloGM - Nouveau message !';
+    	$body = 'Tu as reçu un nouveau message privé sur AlloGM dans l\'aventure "'.$avName.'" !! <br><b>Découvre le en suivant ce lien : https://phptipoilroux.herokuapp.com/mascarade/aventures.php?avID='.$avID.'#replyContainer <br><br></b>A bientôôôôt =P';
+    	$altBody = 'Tu as reçu un nouveau message privé sur AlloGM dans l\'aventure "'.$avName.'" !! Découvre le en suivant ce lien : https://phptipoilroux.herokuapp.com/mascarade/aventures.php?avID='.$avID.'#replyContainer . A bientôôôôt =P';
+
+    	send_mail([$playerMail], $subject, $body, $altBody);
+	}
 
 }
 ?>

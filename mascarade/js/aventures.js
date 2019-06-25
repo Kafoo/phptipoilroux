@@ -277,37 +277,34 @@ $("#diceReply-submit").click(function(){
 
 		if ($(".alloGM-textArea").val().trim() !== "") {
 
-
 			var http = new XMLHttpRequest;
 		    http.onreadystatechange = function() {
 		    	if (this.readyState < 4 ) {
 		    		$('.alloGM-submit').addClass('alloGM-loading');
 		    		$('.alloGM-loading').removeClass('alloGM-submit button');
 		    	}
-		        if (this.readyState == 4 && this.status !== 200) {
-		        //code
-		       }
 		        if (this.readyState == 4 && this.status == 200) {
 		        	$('.alloGM-loading').addClass('alloGM-submit button');
 		        	$('.alloGM-submit').removeClass('alloGM-loading');
 		        	if (http.responseText.includes('success')){
-		        		$('.alloGM-content').append(formContent);
 		        	}
-		            $('.alloGM-textArea').val('');
-		           	$('.alloGM-content').scrollTop(9999);
 
 		       }
 		    };
 
 		    var content = $('.alloGM-textArea').val().replace(/\\n/g, '\n');
 		    var URIcontent =  encodeURIComponent(content);
-		    var formContent = '<div class="alloGM-msg msg-user temp">'+content+'</div>'
+		    var tempContent = '<div class="alloGM-msg msg-user temp">'+content+'</div>'
 		    var userID = $('#alloGM-userID').attr('userID');
 		    var otherID = $('#alloGM-otherID').attr('otherID');
 		    var avID = $('#avID').html();
 			http.open('POST','server/HTTP_REQUEST.php', true);
 			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			http.send("action=alloGM&content="+URIcontent+"&userID="+userID+"&otherID="+otherID+"&avID="+avID);	
+
+       		$('.alloGM-content').append(tempContent);
+            $('.alloGM-textArea').val('');
+           	$('.alloGM-content').scrollTop(9999);
 		}
 	})
 		
@@ -349,7 +346,7 @@ $("#diceReply-submit").click(function(){
 		http_notif.send();
 	}
 
-	setInterval(refreshNotifUnseen, 5000);
+	setInterval(refreshNotifUnseen, 10000);
 
 
 /*NOTES*/
