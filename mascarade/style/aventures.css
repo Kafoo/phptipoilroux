@@ -1,5 +1,14 @@
 /* ------ AVENTURE NON PRÉCISÉE ------ */
 
+	.plop{
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+		margin: auto;
+		position: relative;
+		background-color: rgba(0,0,0,0.3);
+	}
+
 	.choixAv{
 		position: relative;
 		width: 250px;
@@ -299,19 +308,7 @@
 		padding-top: 5px;
 		box-shadow: inset -1px -1px 5px 1px rgba(0,0,0,0.5);
 		text-align: center;
-		cursor: help;
 	}
-
-	.title {
- 		position: absolute;
-  		top: 20px;
-  		background: silver;
-  		padding: 4px;
-  		left: 0;
-  		white-space: nowrap;
-  		z-index: 20000;
-	}
-
 
 	.digit-roll{
 		background-image: url(../img/icones/d20black.png);
@@ -1013,6 +1010,10 @@
 	}
 
 	/* ------ MCE TEXT AREA ------ */
+
+	.mytextarea{
+		height: 184px;
+	}
 
 	.OW{
 		padding: 0;

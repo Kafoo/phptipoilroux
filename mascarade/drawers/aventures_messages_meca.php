@@ -84,12 +84,12 @@ $diceRolls = $req->fetchall(); ?>
 			</div>
 			<div class="centering">
 				<div class="diceRollDigits">
-					<div class="diceRollDigit digit-roll" title="Résultat du lancé"><?=$result?></div>
-					<div class="diceRollDigit digit-carac" style="background-image: url(img/icones/carac/<?=$caracID?>_color.png);" title="<?=ucfirst($caracName)?> de <?=$perso?>">+<?=$caracVal?></div>
-				<div class="diceRollDigit digit-cond" title="Condition">+<?=$caracCond?></div>
+					<div class="diceRollDigit digit-roll" data-toggle="tooltip" data-placement="top" title="Résultat du lancé"><?=$result?></div>
+					<div class="diceRollDigit digit-carac" style="background-image: url(img/icones/carac/<?=$caracID?>_color.png);" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracName)?> de <?=$perso?>">+<?=$caracVal?></div>
+				<div class="diceRollDigit digit-cond" data-toggle="tooltip" data-placement="top" title="Condition">+<?=$caracCond?></div>
 					<div class="inline">
 						<span style="font-weight: bolder">=</span>	
-						<div class="diceRollDigit digit-resultFinal" title="Résultat final">
+						<div class="diceRollDigit digit-resultFinal" data-toggle="tooltip" data-placement="top" title="Résultat final">
 							<?=$resultFinal?>
 							<span class="digit-difficulty"> /<?=$difficulty?></span>
 							<?php

@@ -71,15 +71,15 @@ $(".closingCross,.closingArrow").click(function(e){
 
 /*TOOLTIPS FOR MOBILE*/
 
-$('[title]').click(function(e){
+/*$('[title]').click(function(e){
 	var title = $(e.currentTarget).attr('title');
-	$('#tooltipsMobile').html("<div class='arrowUP'></div>"+title);
-	$('#tooltipsMobile').slideDown(200);
+	$('#topMenuMobile').html("<div class='arrowUP'></div>"+title);
+	$('#topMenuMobile').slideDown(200);
 	e.stopPropagation();
 })
 
 $(document).click(function(e) {
-    $('#tooltipsMobile').slideUp(200);
+    $('#topMenuMobile').slideUp(200);
 });
 
 
@@ -90,7 +90,7 @@ $(document).ready(function(){
       slideUpHeader();
     }
   });
-});
+});*/
 
 
 /*-------------- IF MOBILE --------------*/

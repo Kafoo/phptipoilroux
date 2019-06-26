@@ -1,5 +1,7 @@
 $(".nav2").addClass("currentNav");
-
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 /*----------------AVENTURES PAGE----------------*/
 
 //CLIQUE SUR REJOINDRE

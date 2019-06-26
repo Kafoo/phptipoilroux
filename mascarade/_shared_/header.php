@@ -58,7 +58,7 @@
 
 <!---- TOOLTIPS MOBILE ---->
 
-<div id="tooltipsMobile" hidden>
+<div id="topMenuMobile" hidden>
 	<div class="arrowUP"></div>
 </div>
 

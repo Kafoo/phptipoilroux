@@ -110,12 +110,12 @@ src: url("../font/Cinzel-Regular.ttf");
 		color: inherit;
 	}
 
-	#helpLogo{
-		width: 15px;
+	[title]{
+		cursor: default;
 	}
 
-	[title]{
-		cursor: help;
+	#helpLogo{
+		width: 15px;
 	}
 
 	.button{
@@ -406,7 +406,7 @@ src: url("../font/Cinzel-Regular.ttf");
 		z-index: 1000;
 	}
 
-	#tooltipsMobile{
+	#topMenuMobile{
 		position: fixed;
 		font-style: italic;
 		top: 0;

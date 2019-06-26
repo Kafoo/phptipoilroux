@@ -42,7 +42,7 @@ if ($i == 0) {//Seulement pour le 1er post ?>
 					?> 
  
 					<div class="infoPersoDropdown"> 
-						<img src="img/rpg/pv_<?=$coterie[$j]['pv']?>.png" class="hpBar" title="<?=$coterie[$j]['pv']?>/10 PV"> 
+						<img src="img/rpg/pv_<?=$coterie[$j]['pv']?>.png" class="hpBar" data-toggle="tooltip" data-placement="top" title="<?=$coterie[$j]['pv']?>/10 PV"> 
 						<div class="infoPersoLvl">lvl <?=$coterie[$j]['lvl']?></div> 
 						<div class="infoPersoXP-container">
 							<div class="infoPersoXP"  
@@ -59,11 +59,11 @@ if ($i == 0) {//Seulement pour le 1er post ?>
 						$c5Name = $caracOfUniv['4']['carac_name'];				
 						?>
 
-						<div class="infoPersoCarac carac1" title="<?=ucfirst($c1Name)?>"><?=$coterie[$j]['c1']?></div> 
-						<div class="infoPersoCarac carac2" title="<?=ucfirst($c2Name)?>"><?=$coterie[$j]['c2']?></div> 
-						<div class="infoPersoCarac carac3" title="<?=ucfirst($c3Name)?>"><?=$coterie[$j]['c3']?></div> 
-						<div class="infoPersoCarac carac4" title="<?=ucfirst($c4Name)?>"><?=$coterie[$j]['c4']?></div>
-						<div class="infoPersoCarac carac5" title="<?=ucfirst($c5Name)?>"><?=$coterie[$j]['c5']?></div>
+						<div class="infoPersoCarac carac1" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($c1Name)?>"><?=$coterie[$j]['c1']?></div> 
+						<div class="infoPersoCarac carac2" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($c2Name)?>"><?=$coterie[$j]['c2']?></div> 
+						<div class="infoPersoCarac carac3" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($c3Name)?>"><?=$coterie[$j]['c3']?></div> 
+						<div class="infoPersoCarac carac4" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($c4Name)?>"><?=$coterie[$j]['c4']?></div>
+						<div class="infoPersoCarac carac5" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($c5Name)?>"><?=$coterie[$j]['c5']?></div>
 						<div class="infoPersoInventory">
 							<?=$coterie[$j]['invent1']?> <br>
 							<?=$coterie[$j]['invent2']?> <br>
