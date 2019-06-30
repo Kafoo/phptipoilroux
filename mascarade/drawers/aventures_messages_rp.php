@@ -143,4 +143,10 @@
 </div>
 
 <!------ FIXINFO ------>
-<?php include('drawers/aventures_fixinfos.php');?>
+<?php
+if ($i == 0) {//Seulement pour le 1er post ?>
+	<?php include('drawers/aventures_fixinfos.php');?>
+<?php	
+}else{ ?>
+	<div></div>
+<?php }?>

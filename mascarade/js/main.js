@@ -18,12 +18,7 @@ $('#navLogo').click(function(){
 	$('#croixNav').show();
 });
 
-$('#croixNav').click(function(){
-	$('#navMobile').slideToggle(200, function(){
-		$('#croixNav').hide();
-		$("#navLogo").show();
-	});
-});
+
 
 /*CONNEXION DEROULANTE MOBILE*/
 
@@ -33,12 +28,7 @@ $('#connectionLogo').click(function(){
 	$('#croixConnection').show();
 });
 
-$('#croixConnection').click(function(){
-	$('#connectionMobile').slideToggle(200, function(){
-		$('#croixConnection').hide();
-		$("#connectionLogo").show();
-	});
-});
+
 
 
 /*OVER WINDOWS*/
@@ -100,36 +90,40 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 	/*----HIDE&SHOW HEADER ON SCROLL----*/
 
 	var position = $(window).scrollTop(); 
-	// should start at 0
-
 	var iScrollPos = 0;
-	$(window).scroll(function () {
+	var lastSlide = 0;
+	var intervalSlide = 50;
+
+	$(window).scroll(function slideHeaderMobile() {
+		var currentSlide = Date.now();
+		console.log(lastSlide+'---'+currentSlide);
 	    var iCurScrollPos = $(this).scrollTop();
-	    if (iCurScrollPos > iScrollPos) {
-	        slideUpHeader();
-	    } else {
-	       $('#headerMobile').slideDown(300);
+	    if (currentSlide > lastSlide + intervalSlide) {    	
+		    if (iCurScrollPos > iScrollPos) {
+		        slideUpHeader();
+		    } else {
+		       $('#headerMobile').slideDown(300);
+		    }
 	    }
+	    lastSlide = currentSlide;
 	    iScrollPos = iCurScrollPos;
 	});
 
 
 	$(document).mouseup(function(e) {
-	    var container = $("#navMobile");
-	    if (!container.is(e.target) && container.has(e.target).length === 0) {
-	        container.slideUp(200);
+	    var navMobile = $("#navMobile");
+	    if (!navMobile.is(e.target) && navMobile.has(e.target).length === 0) {
+	        navMobile.slideUp(200);
 			$('#navLogo').show();
 			$('#croixNav').hide();
 	    }
-	});
-
-	$(document).mouseup(function(e) {
-	    var container = $("#connectionMobile");
-	    if (!container.is(e.target) && container.has(e.target).length === 0) {
-	        container.slideUp(200);
+	    var connectionMobile = $("#connectionMobile");
+	    if (!connectionMobile.is(e.target) && connectionMobile.has(e.target).length === 0) {
+	        connectionMobile.slideUp(200);
 			$('#connectionLogo').show();
 			$('#croixConnection').hide();
 	    }
+
 	});
 
 }

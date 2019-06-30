@@ -326,11 +326,15 @@ include("submits/aventures_submit.php");
 							<img src="img/icones/allogm2.png">
 						</div>
 					<?php
-					}
-					?>
+					}?>
 					<div class="showingOW replyOption showingNotes" OW="notes">
 						<img src="img/icones/notes2.png">
 					</div>
+
+					<div class="showingOW replyOption mobile showingFixInfos" OW="fixinfosMobile">
+						<img src="img/icones/perso.png">
+					</div>
+
 				</div>
 
 
@@ -431,6 +435,14 @@ include("submits/aventures_submit.php");
 							<div class="confirmEditNotes button">OK</div>
 						</div>
 					</div>
+
+					<!-- FIXINFOS MOBILE -->
+					<div class="OW" id="fixinfosMobile">
+						<div class="closingArrow mobile"></div>
+						<?php include('drawers/aventures_fixinfos.php');?>
+					</div>
+
+
 				</div>
 
 

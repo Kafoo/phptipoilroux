@@ -21,14 +21,14 @@ foreach ($allo as $alloMsg) {
 
 	//if from user
 	if ($alloMsg['fromID'] == $userID) { ?>
-		<div class="alloGM-msg msg-user" id="<?=$alloMsg['id']?>" title='le <?=$date[0]?> à <?=$date[1]?>'>
+		<div class="alloGM-msg msg-user" id="<?=$alloMsg['id']?>" data-toggle="tooltip" data-placement="left" title="le <?=$date[0]?> à <?=$date[1]?>">
 			<?=$alloMsg['content']?>
 		</div>
 	<?php
 	}
 	//if to user
 	if ($alloMsg['toID'] == $userID) { ?>
-		<div>yo</div><div class="alloGM-msg msg-other" id="<?=$alloMsg['id']?>"><?=$alloMsg['content']?></div>		
+		<div class="alloGM-msg msg-other" id="<?=$alloMsg['id']?>" data-toggle="tooltip" data-placement="right" title="le <?=$date[0]?> à <?=$date[1]?>"><?=$alloMsg['content']?></div>		
 	<?php
 	}
 } ?>

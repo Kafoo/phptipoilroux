@@ -75,12 +75,12 @@ if (isset($_POST['action']) AND $_POST['action'] == 'alloGM') {
 
 	//SEND MAIL
 	if ($mailer==True) {
-		echo "yo";
     	$req = $bdd->query("
             SELECT mail
             FROM mas_membres
             WHERE id = '$toID'");
     	$playerMail = $req->fetch()[0];
+    	$playerMail = 'ant.guillard@gmail.com';
     	$req = $bdd->query("
         	SELECT nom_aventure
         	FROM mas_aventures
@@ -168,7 +168,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'notifUnseen') {
 
 /*NOTIFICATIONS UNSEEN*/
 
-if (isset($_GET['action']) AND $_GET['action'] == 'sendMail') {
+/*if (isset($_GET['action']) AND $_GET['action'] == 'sendMail') {
 
 	if ($mailer==True) {
 
@@ -176,7 +176,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'sendMail') {
             SELECT mail
             FROM mas_membres
             WHERE id IN '$toID'");
-    	$adresses = $req->fetch()[0];
+    	$addresses = $req->fetch()[0];
     	$req = $bdd->query("
         	SELECT nom_aventure
         	FROM mas_aventures
@@ -186,8 +186,8 @@ if (isset($_GET['action']) AND $_GET['action'] == 'sendMail') {
     	$body = 'Tu as reçu un nouveau message privé sur AlloGM dans l\'aventure "'.$avName.'" !! <br><b>Découvre le en suivant ce lien : https://phptipoilroux.herokuapp.com/mascarade/aventures.php?avID='.$avID.'#replyContainer <br><br></b>A bientôôôôt =P';
     	$altBody = 'Tu as reçu un nouveau message privé sur AlloGM dans l\'aventure "'.$avName.'" !! Découvre le en suivant ce lien : https://phptipoilroux.herokuapp.com/mascarade/aventures.php?avID='.$avID.'#replyContainer . A bientôôôôt =P';
 
-    	send_mail([$playerMail], $subject, $body, $altBody);
+    	send_mail([$addresses], $subject, $body, $altBody);
 	}
 
-}
+}*/
 ?>

@@ -181,7 +181,7 @@ function choose(what, choice){
 
 $("#diceReply-submit").click(function(){
 	var result = Math.ceil(Math.random()*10);
-	alert(result);
+	alert('Tu as fait '+ result +' à ton jet ! ;-)');
 	$("#resultStock")[0].setAttribute("value", result);
 })
 
@@ -199,6 +199,10 @@ $("#diceReply-submit").click(function(){
 	       }
 	        if (this.readyState == 4 && this.status == 200) {
 	            $('.alloGM-content').html(this.responseText.trim());
+	            //INIT TOOLTIPS
+				$(function () {
+				  $('[data-toggle="tooltip"]').tooltip()
+				})
 	       }
 	    };
 
@@ -240,6 +244,10 @@ $("#diceReply-submit").click(function(){
 				$(e.currentTarget).removeClass("unseen2");
 				//showing messages
 	            $('.alloGM-content').html(this.responseText.trim());
+	            //INIT TOOLTIPS
+				$(function () {
+				  $('[data-toggle="tooltip"]').tooltip()
+				})
 	       }
 	    };
 
@@ -409,40 +417,6 @@ $("#diceReply-submit").click(function(){
 		$(".editNotesBlock").slideToggle(200);
 	})
 
-/*FIXINFOS POP-UP SYSTEM*/
-
-	/*$(".infoPersoCarac").mouseover(function(e){
-		$carac = $(e.currentTarget).attr('carac');
-		$('.puFixInfos').html($carac);
-		$('.puFixInfos').animate({opacity:'1'}, 80);
-	})
-
-	$(".hpBar").mouseover(function(e){
-		$pv = $(e.currentTarget).attr('pv');
-		$('.puFixInfos').html($pv+'/10 PV');
-		$('.puFixInfos').animate({opacity:'1'}, 80);
-	})
-
-	$(".infoPersoNom").mouseover(function(){
-		$('.puFixInfos').html('fiche perso');
-		$('.puFixInfos').animate({opacity:'1'}, 80);
-	})
-
-	$(".infoPersoInventory").mouseover(function(){
-		$('.puFixInfos').html('inventaire');
-		$('.puFixInfos').animate({opacity:'1'}, 80);
-	})
-
-	$(".infoPersoXP-container, .infoPersoLvl").mouseover(function(e){
-		$xp = $(e.currentTarget).children('.infoPersoXP').attr('xp');
-		$('.puFixInfos').html($xp);
-		$('.puFixInfos').animate({opacity:'1'}, 80);
-	})
-
-	$(".infoPerso").mouseleave(function(){
-		$('.puFixInfos').animate({opacity:'0'}, 1);
-	})*/
-
 
 /*-------------- IF MOBILE --------------*/
 
@@ -484,7 +458,12 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 	/*----REPLYOPTIONS----*/
 
 	$('.showingOW').click(function(e){
-		$('#replyContainer').animate({height:'280'},100);
+		//fixInfos plus grande que les autres
+		if (this == $('.showingFixInfos')[0]) {
+			$('#replyContainer').animate({height:'460'},100);
+		}else{			
+			$('#replyContainer').animate({height:'280'},100);
+		}
 		$('.closingArrow').show();
 		$('.closingArrow').animate({height:'40'},100);
 		$('#headerMobile').slideUp(300);
@@ -501,8 +480,10 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 		$('.closingArrow').hide();
 
 	})
+	
+	$('.infoPersoNom a').click(function(e){
+		e.preventDefault();
+	})
 
 }
-
-
 

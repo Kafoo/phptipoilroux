@@ -131,6 +131,9 @@ function checkLvlPerso($persoID){
 		WHERE mas_persos.id='$persoID'
 		");
 
+	var_dump($leveling['xp']);
+	var_dump($leveling['nextlvl']);
+
 	if ($leveling['xp'] >= $leveling['nextlvl']) {
 		checkLvlPerso($persoID);
 	}
@@ -140,7 +143,32 @@ function checkLvlPerso($persoID){
 function send_mail ($addresses, $subject, $body, $altBody){
 	global $bdd;
 
-    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+
+
+require("../sendgrid-php/sendgrid-php.php");
+
+$email = new \SendGrid\Mail\Mail(); 
+$email->setFrom("mailer.sanssouci@gmail.com", "Example User");
+$email->setSubject("Sending with SendGrid is Fun");
+$email->addTo("ant.guillard@gmail.com", "Example User");
+$email->addContent("text/plain", "and easy to do anywhere, even with PHP");
+$email->addContent(
+    "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
+);
+$sendgrid = new \SendGrid(getenv('barbapapa'));
+
+try {
+    $response = $sendgrid->send($email);
+    print $response->statusCode() . "\n";
+    print_r($response->headers());
+    print $response->body() . "\n";
+} catch (Exception $e) {
+    echo 'Caught exception: '. $e->getMessage() ."\n";
+}
+
+
+
+/*    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 
     try {
         //Server settings
@@ -183,7 +211,7 @@ function send_mail ($addresses, $subject, $body, $altBody){
         //echo 'Message has been sent';
     } catch (Exception $e) {
         //echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-    }
+    }*/
 
 }
 ?>

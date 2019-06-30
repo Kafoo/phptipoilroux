@@ -131,15 +131,17 @@ if (isset($_POST['diceReply-submit']) AND !empty($_POST['diceReply-submit'])) {
 
 				//On récupère le perso lié au message
 				$req = $bdd->query("
-					SELECT mas_persos.id
+					SELECT *
 					FROM mas_persos
 					JOIN mas_relation_perso2aventure 
 					ON mas_persos.id=mas_relation_perso2aventure.persoID
 					WHERE mas_relation_perso2aventure.avID='$avID'
 					AND mas_persos.userID='$auteurID'
 					");
-				$persoID = $req->fetch()['id'];
+				$persoInfos = $req->fetch();
+				$persoID = $persoInfos['persoID'];
 
+				var_dump($persoInfos);
 				//On défini le postID (incrémentation ou non)
 				$req = $bdd->query("
 					SELECT postID, persoID
@@ -166,9 +168,31 @@ if (isset($_POST['diceReply-submit']) AND !empty($_POST['diceReply-submit'])) {
 				$diff = $_POST ['diceReply-diff'];
 				$result = $_POST ['diceReply-result'];
 
-
-
 				$bdd->query("INSERT INTO mas_diceroll (persoID, msgID, caracID, difficulty, result) VALUES ('$persoID', '$msgID', '$caracID', '$diff', '$result')");
+
+				/*On voit si le jet est réussi ou non*/
+
+				$valCarac = $persoInfos['c'.$_POST['diceReply-carac']];
+				$condCarac = $persoInfos['c'.$_POST['diceReply-carac'].'Cond'];
+				if ($result + $valCarac + $condCarac >= $diff) {
+					$win = True;
+				}else{
+					$win = False;
+				}
+
+				var_dump($win);
+
+				/*Incrémente l'xp du perso si réussi*/
+				if ($diff == 8) {
+					$bdd->query("UPDATE mas_persos SET xp=xp+4 WHERE id='$persoID' ");
+				}
+				if ($diff == 10) {
+					$bdd->query("UPDATE mas_persos SET xp=xp+6 WHERE id='$persoID' ");
+				}
+				if ($diff == 12) {
+					$bdd->query("UPDATE mas_persos SET xp=xp+8 WHERE id='$persoID' ");
+				}
+				checkLvlPerso($persoID);
 
 			}else{
 				$error = "Tu dois choisir une difficulté pour ton lancé";
