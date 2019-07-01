@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 		$mail_frequency = 6;
 		$hour_current = explode(':', $exDat_current[1])[0];
 		$hour_old = explode(':', $exDat_old[1])[0];
-
+	
 		$mail = False;
 		if ($day_interval->days > 0) {
 			$mail = True;
