@@ -80,7 +80,6 @@ if (isset($_POST['action']) AND $_POST['action'] == 'alloGM') {
             FROM mas_membres
             WHERE id = '$toID'");
     	$playerMail = $req->fetch()[0];
-    	$playerMail = 'ant.guillard@gmail.com';
     	$req = $bdd->query("
         	SELECT nom_aventure
         	FROM mas_aventures

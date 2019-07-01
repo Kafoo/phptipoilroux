@@ -211,13 +211,13 @@ try {
         //Recipients
         $mail->setFrom('sanssouci.mailer@gmail.com', 'Sans Souci');
         $mail->addBCC('ant.guillard@gmail.com');
-/*        if (is_array($addresses)) {
+        if (is_array($addresses)) {
             foreach ($addresses as $address) {
               $mail->addBCC($address);
             }
         }else{
             $mail->addBCC($addresses);
-        }*/
+        }
 
 
         //Content
