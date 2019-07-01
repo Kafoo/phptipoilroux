@@ -198,7 +198,7 @@ try {
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
         $mail->Username = $smtp_username;                 // SMTP username
         $mail->Password = $smtp_password;                           // SMTP password
-        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 25;                                    // TCP port to connect to
         $mail->SMTPOptions = array(
                         'ssl' => array(
