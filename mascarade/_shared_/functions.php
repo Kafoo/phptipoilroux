@@ -192,13 +192,13 @@ try {
 
     try {
         //Server settings
-        $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+        $mail->SMTPDebug = 2;                                 // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  					// Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
         $mail->Username = $smtp_username;                 // SMTP username
         $mail->Password = $smtp_password;                           // SMTP password
-        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 25;                                    // TCP port to connect to
         $mail->SMTPOptions = array(
                         'ssl' => array(
@@ -211,13 +211,13 @@ try {
         //Recipients
         $mail->setFrom('sanssouci.mailer@gmail.com', 'Sans Souci');
         $mail->addBCC('ant.guillard@gmail.com');
-        if (is_array($addresses)) {
+/*        if (is_array($addresses)) {
             foreach ($addresses as $address) {
               $mail->addBCC($address);
             }
         }else{
             $mail->addBCC($addresses);
-        }
+        }*/
 
 
         //Content
