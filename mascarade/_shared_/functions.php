@@ -7,8 +7,8 @@
 	require 'vendor/phpmailer/phpmailer/src/SMTP.php';*/
 
 	$root = $_SERVER['DOCUMENT_ROOT']);
-
-	require $root.'/phptipoilroux/vendor/autoload.php';
+	var_dump($root);
+	/*require $root.'/phptipoilroux/vendor/autoload.php';*/
 
 
 function getRealDate(){
