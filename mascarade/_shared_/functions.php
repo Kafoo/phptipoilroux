@@ -6,7 +6,7 @@
 	require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
 	require 'vendor/phpmailer/phpmailer/src/SMTP.php';*/
 
-	$root = $_SERVER['DOCUMENT_ROOT']);
+	$root = $_SERVER['DOCUMENT_ROOT'];
 	var_dump($root);
 	/*require $root.'/phptipoilroux/vendor/autoload.php';*/
 
