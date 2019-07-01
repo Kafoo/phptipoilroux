@@ -148,6 +148,7 @@ function checkLvlPerso($persoID){
 
 }
 
+
 function send_mail ($addresses, $subject, $body, $altBody){
 	global $bdd;
 
@@ -184,6 +185,8 @@ try {
 	$smtp_username = $res['username'];
 	$smtp_password = $res['password'];
 
+	var_dump($smtp_password);
+	var_dump($smtp_username);
 
     $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 
@@ -196,7 +199,7 @@ try {
         $mail->Username = $smtp_username;                 // SMTP username
         $mail->Password = $smtp_password;                           // SMTP password
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 587;                                    // TCP port to connect to
+        $mail->Port = 25;                                    // TCP port to connect to
         $mail->SMTPOptions = array(
                         'ssl' => array(
                             'verify_peer' => false,
