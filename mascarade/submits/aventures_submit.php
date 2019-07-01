@@ -141,7 +141,6 @@ if (isset($_POST['diceReply-submit']) AND !empty($_POST['diceReply-submit'])) {
 				$persoInfos = $req->fetch();
 				$persoID = $persoInfos['persoID'];
 
-				var_dump($persoInfos);
 				//On défini le postID (incrémentation ou non)
 				$req = $bdd->query("
 					SELECT postID, persoID
@@ -180,7 +179,6 @@ if (isset($_POST['diceReply-submit']) AND !empty($_POST['diceReply-submit'])) {
 					$win = False;
 				}
 
-				var_dump($win);
 
 				/*Incrémente l'xp du perso si réussi*/
 				if ($diff == 8) {

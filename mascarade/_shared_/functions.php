@@ -139,8 +139,6 @@ function checkLvlPerso($persoID){
 		WHERE mas_persos.id='$persoID'
 		");
 
-	var_dump($leveling['xp']);
-	var_dump($leveling['nextlvl']);
 
 	if ($leveling['xp'] >= $leveling['nextlvl']) {
 		checkLvlPerso($persoID);
@@ -184,9 +182,6 @@ try {
 	$res = $req->fetch();
 	$smtp_username = $res['username'];
 	$smtp_password = $res['password'];
-
-	var_dump($smtp_password);
-	var_dump($smtp_username);
 
     $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 
