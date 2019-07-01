@@ -2,7 +2,7 @@
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
 
-/*	require 'vendor/phpmailer/phpmailer/src/Exception.php';
+	/*require 'vendor/phpmailer/phpmailer/src/Exception.php';
 	require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
 	require 'vendor/phpmailer/phpmailer/src/SMTP.php';*/
 
@@ -12,7 +12,6 @@
 		$root = $_SERVER['DOCUMENT_ROOT'].'/phptipoilroux';
 	}
 
-	var_dump($root);
 	require $root.'/vendor/autoload.php';
 
 
@@ -196,8 +195,8 @@ try {
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
         $mail->Username = $smtp_username;                 // SMTP username
         $mail->Password = $smtp_password;                           // SMTP password
-        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 25;                                    // TCP port to connect to
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;                                    // TCP port to connect to
         $mail->SMTPOptions = array(
                         'ssl' => array(
                             'verify_peer' => false,
