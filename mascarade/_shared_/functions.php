@@ -2,10 +2,14 @@
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
 
-  	/*$root = $_SERVER['DOCUMENT_ROOT'].'/phptipoilroux/mascarade';*/
-	require 'PHPMailer-master/src/Exception.php';
-	require 'PHPMailer-master/src/PHPMailer.php';
-	require 'PHPMailer-master/src/SMTP.php';
+/*	require 'vendor/phpmailer/phpmailer/src/Exception.php';
+	require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+	require 'vendor/phpmailer/phpmailer/src/SMTP.php';*/
+
+	$root = $_SERVER['DOCUMENT_ROOT']);
+
+	require $root.'/phptipoilroux/vendor/autoload.php';
+
 
 function getRealDate(){
 	return
@@ -144,7 +148,7 @@ function send_mail ($addresses, $subject, $body, $altBody){
 	global $bdd;
 
 
-
+/*
 require("../sendgrid-php/sendgrid-php.php");
 
 $email = new \SendGrid\Mail\Mail(); 
@@ -165,21 +169,30 @@ try {
 } catch (Exception $e) {
     echo 'Caught exception: '. $e->getMessage() ."\n";
 }
+*/
+
+	$req = $bdd->query("
+		SELECT *
+		FROM mas_smtp
+		WHERE id = 1
+		");
+	$res = $req->fetch();
+	$smtp_username = $res['username'];
+	$smtp_password = $res['password'];
 
 
-
-/*    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 
     try {
         //Server settings
         $mail->SMTPDebug = 0;                                 // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'smtp.sendgrid.net';  					// Specify main and backup SMTP servers
+        $mail->Host = 'smtp.gmail.com';  					// Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'apikey';                 // SMTP username
-        $mail->Password = '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';                           // SMTP password
+        $mail->Username = $smtp_username;                 // SMTP username
+        $mail->Password = $smtp_password;                           // SMTP password
         $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 465;                                    // TCP port to connect to
+        $mail->Port = 25;                                    // TCP port to connect to
         $mail->SMTPOptions = array(
                         'ssl' => array(
                             'verify_peer' => false,
@@ -208,10 +221,10 @@ try {
         $mail->AltBody = $altBody;
 
         $mail->send();
-        //echo 'Message has been sent';
+        echo 'Message has been sent';
     } catch (Exception $e) {
-        //echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-    }*/
+        echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+    }
 
 }
 ?>
