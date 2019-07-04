@@ -229,4 +229,28 @@ try {
     }
 
 }
+
+function setObjectPersos(){
+	global $bdd;
+
+	$req = $bdd->query("
+		SELECT *
+		FROM mas_persos
+		");
+
+	$bdd_infosPersos = $req->fetchall();
+	global $array_objectPersos;
+	$array_objectPersos = [];
+
+	foreach ($bdd_infosPersos as $key => $bdd_infosPerso) {
+		$name = 'perso'.$key;
+		global $$name;
+		$$name = new perso();
+		$$name->hydrate($bdd_infosPerso);
+		array_push($array_objectPersos, $$name);
+	}
+
+}
+
+
 ?>

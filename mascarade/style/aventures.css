@@ -525,10 +525,10 @@
 
 	.replyOption{
 		position: relative;
-		width: 90%;
-		margin : 10px 0 10px 20px;
-		padding-top: 8px;
-		height: 65px;
+    	width: 55%;
+    	margin: 10px 0 10px 55px;
+    	padding-top: 8px;
+    	height: 50px;
 		text-align: center;
 		background-color: rgba(91, 103, 91, 0.27);
 		border: 1.5px solid rgb(0, 0, 0);
@@ -548,7 +548,7 @@
 	}
 
 	.replyOption img{
-		width: 50px;
+		width: 40px;
 	}
 
 	#replyContainer{
@@ -786,6 +786,15 @@
 		background-color: rgb(93, 155, 92);
 		border: 1px solid black;
 		border-radius: 3px;
+	}
+
+	#GMDashBoard-menu{
+		background-color: rgb(161, 180, 183);
+	}
+
+	.GMDashBoard{
+		background-color: rgb(161, 180, 183);
+		text-align: center;
 	}
 
 /*----------- 1400px -----------*/

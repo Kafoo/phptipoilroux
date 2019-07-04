@@ -1,6 +1,5 @@
 <?php
 include("_shared_/start.php");
-include("_shared_/functions.php");
 /*include("submits/tapage_submit.php");*/
 ?>
 
@@ -30,6 +29,7 @@ include("_shared_/functions.php");
 	</div>
 
 	<div class="container centering">
+
 	</div>
 
 

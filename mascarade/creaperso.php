@@ -1,6 +1,5 @@
 <?php
 include("_shared_/start.php");
-include("_shared_/functions.php");
 include("submits/creaperso_submit.php");
 ?>
 

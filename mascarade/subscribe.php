@@ -1,6 +1,5 @@
 <?php
 include("_shared_/start.php");
-include("_shared_/functions.php");
 include("submits/subscribe_submit.php"); ?>
 
 <!DOCTYPE html>

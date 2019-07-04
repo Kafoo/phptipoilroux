@@ -23,9 +23,13 @@ session_start();
     }
 
 
-/* ---------- CONNECT TO DATABASE ---------- */
+/* ---------- MAIN INCLUDES ---------- */
 
     include("connectDB.php");
+    include("_shared_/functions.php");
+    include("_shared_/views.php");
+
+
 
 /* ---------- CHECK LAST UPDATES ---------- */ 
  

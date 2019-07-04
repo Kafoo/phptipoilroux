@@ -418,6 +418,50 @@ $("#diceReply-submit").click(function(){
 	})
 
 
+	//GM DASHBOARD
+	$('.GMDashBoard-playerChoice').click(function(e) {
+
+		var userID = $(e.currentTarget).attr('id');
+		var OW = $(".OW#GMDashBoard-"+userID);
+		var otherOW = OW.parent().children('.OW').not(OW);
+		OW.show();
+		OW.animate({opacity:"1"},100, function(){
+			otherOW.animate({opacity:"0"}, 100, function(){
+				otherOW.hide();
+			})
+		});
+
+
+
+
+/*		var http = new XMLHttpRequest;
+	    http.onreadystatechange = function() {
+	    	if (this.readyState < 4 ) {
+	    		$('.GMDashBoard-content').html('<div class="loading"><div></div><div></div><div></div><div></div></div>');
+	    	}
+	        if (this.readyState == 4 && this.status !== 200) {
+	        $('.GMDashBoard-content').html('<div class="loading-error"></div>');
+	       }
+	        if (this.readyState == 4 && this.status == 200) {
+				//remove unseen class
+				$(e.currentTarget).removeClass("unseen2");
+				//showing perso infos
+	            $('.GMDashBoard-content').html(this.responseText.trim());
+	            //INIT TOOLTIPS
+				$(function () {
+				  $('[data-toggle="tooltip"]').tooltip()
+				})
+	       }
+	    };
+
+	    var playerID = $(e.currentTarget).attr('id');
+	    var avID = $('#avID').html();
+
+		http.open('POST','ajax/aventures_gmdashboard.php', true);
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		http.send("playerID="+playerID+"&avID="+avID);  */ 
+	});
+
 /*-------------- IF MOBILE --------------*/
 
 if (window.matchMedia("(max-width: 720px)").matches) {
