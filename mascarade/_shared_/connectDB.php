@@ -1,6 +1,6 @@
 <?php
 
-$onlinebdd = 0;
+$onlinebdd = 1;
 
 if ($onlinebdd == 0) {
 	$bdd = new PDO('mysql:host=127.0.0.1;dbname=heroku_3ca6f2b572bf369', "root", "");

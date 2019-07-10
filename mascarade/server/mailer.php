@@ -16,7 +16,7 @@ if (isset($_GET['type']) AND $_GET['type'] == "alloGM" ) {
     $userID = $_GET['userID'];
     $req = $bdd->query("
             SELECT mail
-            FROM mas_membres
+            FROM mas_users
             WHERE id = '$userID'");
     $playerMail = $req->fetch()[0];
     $req = $bdd->query("

@@ -80,7 +80,7 @@ function getActivePerso(){
 
 function getInfoMembre($membreID, $info){
 	global $bdd;
-	$reqInfoMembre = $bdd->query("SELECT $info FROM ss_membres WHERE id = '$membreID'");
+	$reqInfoMembre = $bdd->query("SELECT $info FROM ss_users WHERE id = '$membreID'");
 	return $reqInfoMembre->fetch()[0];
 }
 
@@ -149,85 +149,64 @@ function checkLvlPerso($persoID){
 
 function send_mail ($addresses, $subject, $body, $altBody){
 	global $bdd;
+	global $onlinebdd;
+
+	if ($onlinebdd == 1) {
+
+		$req = $bdd->query("
+			SELECT *
+			FROM mas_smtp
+			WHERE id = 1
+			");
+		$res = $req->fetch();
+		$smtp_username = $res['username'];
+		$smtp_password = $res['password'];
+
+	    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+
+	    try {
+	        //Server settings
+	        $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+	        $mail->isSMTP();                                      // Set mailer to use SMTP
+	        $mail->Host = 'smtp.gmail.com';  					// Specify main and backup SMTP servers
+	        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+	        $mail->Username = $smtp_username;                 // SMTP username
+	        $mail->Password = $smtp_password;                           // SMTP password
+	        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+	        $mail->Port = 25;                                    // TCP port to connect to
+	        $mail->SMTPOptions = array(
+	                        'ssl' => array(
+	                            'verify_peer' => false,
+	                            'verify_peer_name' => false,
+	                            'allow_self_signed' => true
+	                        )
+	                    );
+
+	        //Recipients
+	        $mail->setFrom('sanssouci.mailer@gmail.com', 'Sans Souci');
+	        $mail->addBCC('ant.guillard@gmail.com');
+	        if (is_array($addresses)) {
+	            foreach ($addresses as $address) {
+	              $mail->addBCC($address);
+	            }
+	        }else{
+	            $mail->addBCC($addresses);
+	        }
 
 
-/*
-require("../sendgrid-php/sendgrid-php.php");
+	        //Content
+	        $mail->CharSet = 'UTF-8';
+	        $mail->isHTML(true);
+	        $mail->Subject = $subject;
+	        $mail->Body    = $body;
+	        $mail->AltBody = $altBody;
 
-$email = new \SendGrid\Mail\Mail(); 
-$email->setFrom("mailer.sanssouci@gmail.com", "Example User");
-$email->setSubject("Sending with SendGrid is Fun");
-$email->addTo("ant.guillard@gmail.com", "Example User");
-$email->addContent("text/plain", "and easy to do anywhere, even with PHP");
-$email->addContent(
-    "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
-);
-$sendgrid = new \SendGrid(getenv('barbapapa'));
-
-try {
-    $response = $sendgrid->send($email);
-    print $response->statusCode() . "\n";
-    print_r($response->headers());
-    print $response->body() . "\n";
-} catch (Exception $e) {
-    echo 'Caught exception: '. $e->getMessage() ."\n";
-}
-*/
-
-	$req = $bdd->query("
-		SELECT *
-		FROM mas_smtp
-		WHERE id = 1
-		");
-	$res = $req->fetch();
-	$smtp_username = $res['username'];
-	$smtp_password = $res['password'];
-
-    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-
-    try {
-        //Server settings
-        $mail->SMTPDebug = 0;                                 // Enable verbose debug output
-        $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'smtp.gmail.com';  					// Specify main and backup SMTP servers
-        $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = $smtp_username;                 // SMTP username
-        $mail->Password = $smtp_password;                           // SMTP password
-        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 25;                                    // TCP port to connect to
-        $mail->SMTPOptions = array(
-                        'ssl' => array(
-                            'verify_peer' => false,
-                            'verify_peer_name' => false,
-                            'allow_self_signed' => true
-                        )
-                    );
-
-        //Recipients
-        $mail->setFrom('sanssouci.mailer@gmail.com', 'Sans Souci');
-        $mail->addBCC('ant.guillard@gmail.com');
-        if (is_array($addresses)) {
-            foreach ($addresses as $address) {
-              $mail->addBCC($address);
-            }
-        }else{
-            $mail->addBCC($addresses);
-        }
-
-
-        //Content
-        $mail->CharSet = 'UTF-8';
-        $mail->isHTML(true);
-        $mail->Subject = $subject;
-        $mail->Body    = $body;
-        $mail->AltBody = $altBody;
-
-        $mail->send();
-        echo 'Message has been sent';
-    } catch (Exception $e) {
-        echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-    }
-
+	        $mail->send();
+	        /*echo 'Message has been sent';*/
+	    } catch (Exception $e) {
+	        /*echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;*/
+	    }
+	}
 }
 
 function setObjectPersos(){
@@ -237,13 +216,13 @@ function setObjectPersos(){
 		SELECT *
 		FROM mas_persos
 		");
-
+	
 	$bdd_infosPersos = $req->fetchall();
 	global $array_objectPersos;
 	$array_objectPersos = [];
 
 	foreach ($bdd_infosPersos as $key => $bdd_infosPerso) {
-		$name = 'perso'.$key;
+		$name = 'perso'.$bdd_infosPerso['id'];
 		global $$name;
 		$$name = new perso();
 		$$name->hydrate($bdd_infosPerso);

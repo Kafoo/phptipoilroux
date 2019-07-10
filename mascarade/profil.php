@@ -43,7 +43,7 @@ include("_shared_/start.php");
 			$req = $bdd->query("
 				SELECT *
 				FROM mas_persos
-				JOIN mas_membres ON mas_membres.id = mas_persos.userID
+				JOIN mas_users ON mas_users.id = mas_persos.userID
 				WHERE userID = '$userID'");
 			$infoPerso = $req->fetchall();
 			$infoUser = $infoPerso[0];
