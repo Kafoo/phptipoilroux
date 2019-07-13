@@ -13,7 +13,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'suppMsg') {
 		DELETE FROM mas_messages_aventure
 		WHERE id = '$msgID' ");
 	// -1 au compteur des messages
-	$bdd->query("UPDATE mas_membres SET nombremsg=nombremsg-1 WHERE id='$userID' ");
+	$bdd->query("UPDATE mas_users SET nombremsg=nombremsg-1 WHERE id='$userID' ");
 }
 
 
@@ -77,7 +77,7 @@ if (isset($_POST['action']) AND $_POST['action'] == 'alloGM') {
 	if ($mailer==True) {
     	$req = $bdd->query("
             SELECT mail
-            FROM mas_membres
+            FROM mas_users
             WHERE id = '$toID'");
     	$playerMail = $req->fetch()[0];
     	$req = $bdd->query("
@@ -173,7 +173,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'notifUnseen') {
 
     	$req = $bdd->query("
             SELECT mail
-            FROM mas_membres
+            FROM mas_users
             WHERE id IN '$toID'");
     	$addresses = $req->fetch()[0];
     	$req = $bdd->query("

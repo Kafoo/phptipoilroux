@@ -48,11 +48,11 @@ if (!isset($_SESSION['connected'])) {
     if (isset($_COOKIE['auth'])) {
         $auth = $_COOKIE['auth'];
         $auth = explode("---", $auth);
-        $checkUser = $bdd->query("SELECT * FROM mas_membres WHERE id='$auth[0]' ")->fetch();
+        $checkUser = $bdd->query("SELECT * FROM mas_users WHERE id='$auth[0]' ")->fetch();
         $key = sha1($checkUser['pseudo']);
         if ($key === $auth[1]) {
             $userID = $checkUser['id'];
-            $reqUser = $bdd->query("SELECT * FROM mas_membres WHERE id='$userID' ");
+            $reqUser = $bdd->query("SELECT * FROM mas_users WHERE id='$userID' ");
                 $userInfo = $reqUser->fetch();
                 $canSetSession = True;
         }
@@ -66,7 +66,7 @@ if (!isset($_SESSION['connected'])) {
 
         if (!empty($_POST['pseudoConnect']) AND !empty($_POST['passwordConnect'])) {
 
-            $reqUser = $bdd->prepare("SELECT * FROM mas_membres WHERE pseudo=? AND password=?");
+            $reqUser = $bdd->prepare("SELECT * FROM mas_users WHERE pseudo=? AND password=?");
             $reqUser->execute(array($pseudoConnect, $passwordConnect));
             $userExist = $reqUser->rowCount();
             if ($userExist == 1) {
@@ -118,6 +118,15 @@ if (!isset($_SESSION['connected'])) {
         $canSetSession = False;
     }
 
-}   
+    //On met les différentes caractéristiques dans caracOfUniv
 
+
+}   
+    if (!isset($_SESSION['caracOfUniv'])) {
+        $req = $bdd->query("
+            SELECT *
+            FROM mas_carac
+            ORDER BY id");
+        $_SESSION['caracOfUniv'] = $req->fetchall();
+    }
 ?>

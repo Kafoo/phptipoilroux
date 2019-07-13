@@ -45,12 +45,11 @@ include('_shared_/class_persos.php');
 
 		}else{ //--------- SI AVENTURE PRÉCISÉE --------- 
 
-			include ('content/aventures/start.php');	
+			include ('content/aventures/start.php');
 			?>
 
 			<!------ TITRE AVENTURE ------>
-			<h2><?=$msgS[0]['nom_aventure']?></h2>
-
+			<h2><?=$allMsg[0]['nom_aventure']?></h2>
 
 			<!-- SELECTION DE PAGE -->	
 			<div></div>
@@ -63,22 +62,99 @@ include('_shared_/class_persos.php');
 
 				<?php // ------- WHILE MESSAGES ------- 
 
-				for ($i=0; $i < count($postArray); $i++) {
 
-					$msgOfPost = array_keys(array_column($msgS, 'postID'), $postArray[$i]);
-					$firstMsgOfPost= $msgS[$msgOfPost[0]];
-						if ($firstMsgOfPost['type'] === 'RP'){
-							//MESSAGE REGULAR
-							include("drawers/aventures_messages_rp.php");
-						}
-						if ($firstMsgOfPost['type'] === 'diceRoll_GM') { 
-							//MESSAGE MECA
-							include("drawers/aventures_messages_meca.php");
-						}
-					?>
+				foreach ($allMsg as $key => $msg) {
 
-				<?php //endwhile messages	
-				} ?>
+					//Si le message est sensé être sur la page
+					if ($msg['postID'] >= $firstPostOfPage
+					AND $msg['postID'] <= $lastPostOfPage) {
+
+						if ($key>0) {
+							$previousMsg = $allMsg[$key-1];
+						}
+						if ($key<count($allMsg)-1) {
+							$nextMsg = $allMsg[$key+1];
+						}
+
+						//On définit le début et la fin du post total
+						$firstMsgOfPost = False;
+						$lastMsgOfPost = False;
+						$LPOP = False;
+						if ($key == 0 
+						OR $msg['postID'] > $previousMsg['postID']) {
+							$firstMsgOfPost = True;
+						}
+						if ($key == count($allMsg)-1 
+						OR $msg['postID'] < $nextMsg['postID']) {
+							$lastMsgOfPost = True;
+						}
+						//Last post of page pour l'ancre
+						if ($msg['postID'] == $lastPostOfPage
+						OR $msg['postID'] == $nbrPosts) {
+							$LPOP = True;
+						}
+
+						//------ RP / diceroll from player ------
+						if ($msg['type'] == 'rp' OR $msg['type'] == 'drPlayer') {
+
+							//START
+							if ($firstMsgOfPost == True) {
+								include('content/aventures/msg_rp_start.php');
+							}
+							//si RP 
+							if ($msg['type'] == 'rp') { 
+
+								//si précédent rp du même perso, on met un séparateur
+								if ($key !== 0 
+								AND $previousMsg['type'] == 'rp' 
+								AND $firstMsgOfPost == False) { 
+									echo '<div class="separate"></div>';
+								} ?>
+
+								<!-- CONTENT -->
+								<span <?php if ($lastMsgOfPost == True){echo "class='lastMsgOfPost'";} ?> >
+									<?=htmlspecialchars_decode(nl2br($msg['content_rp']))?>
+								</span>
+							<?php
+							} 
+
+							//si DiceRoll
+							if ($msg['type'] == 'drPlayer') {
+								include ("content/aventures/msg_diceroll.php");		
+							} 
+
+							//END
+							if ($lastMsgOfPost == True) {
+								include('content/aventures/msg_rp_end.php');
+							}
+
+						}
+
+						//------ Dice Roll from GM ------
+						if ($msg['type'] == 'drGM') {
+
+							//START
+							if ($firstMsgOfPost == True) {
+								include('content/aventures/msg_drGM_start.php');
+							}
+
+							include('content/aventures/msg_drGM.php');
+
+							//END
+							if ($lastMsgOfPost == True) {
+								echo "</div><div></div>";
+							}
+						}
+
+						//------ LOG ------
+						if ($msg['type'] == 'log') {
+							# code...
+						}
+					}
+				}
+
+
+				?>
 
 				<!-- SELECTION DE PAGE -->	
 				<div></div>
@@ -89,7 +165,8 @@ include('_shared_/class_persos.php');
 
 				<div></div><div style="height: 20px" SPACER></div><div></div>
 				
-				<!-- REPONSE AREA -->
+
+				<!-- SHOWING OW -->
 				<div class="showingOWContainer">
 					<div class="desktop" style="height: 15px" SPACER></div>
 					<div class="showingOW replyOption" OW="classicReply">
@@ -139,11 +216,13 @@ include('_shared_/class_persos.php');
 				</div>
 
 
+				<!-- REPONSE AREA -->
 				<div class="OWContainer" id="replyContainer">
 					<!-- REPONSE TEXTE -->
 					<form class="OW" id="classicReply" method="POST" action="">
 						<div class="closingArrow mobile"></div>
 						<textarea class="mytextarea" name="message"></textarea>
+						<input type="text" name="persoID" value="<?=$persoID?>" hidden>
 						<input type="submit" name="submit" value='Je réponds !'>
 					</form>
 
@@ -182,6 +261,12 @@ include('_shared_/class_persos.php');
 							
 							<br>
 							<input id="resultStock" type="text" name="diceReply-result" hidden>
+							<input type="text" name="persoID" value="<?=$persoID?>" hidden>
+							<?php 
+							$persoObjectID = 'perso'.$persoID;
+							$persoObjectJson = json_encode($$persoObjectID); 
+							?>
+							<input type="text" name="persoObjectJson" value='<?=$persoObjectJson?>' hidden>
 
 							<input id="diceReply-submit"  type="submit" name="diceReply-submit" value="Je lance mon dé !">
 						</form>

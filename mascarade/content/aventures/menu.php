@@ -32,7 +32,7 @@
 			</span>
 			<?php
 			if (isset($persoOfAv)) { ?>
-				<a href="aventures.php?avID=<?=$avID?>#pmop" class="goAv">
+				<a href="aventures.php?avID=<?=$avID?>#lpop" class="goAv">
 					Continuer avec <?=$persoOfAv?>
 				</a>
 			<?php
