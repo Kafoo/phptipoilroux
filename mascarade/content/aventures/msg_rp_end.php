@@ -1,7 +1,7 @@
 	<!-- Options d'édition et suppression -->
 
 	<?php
-	if ($lastMsgID == $msg['id']) { ?>
+	if ($lastMsgID == $msg['id'] AND $lastIsUser == True) { ?>
 
 		<div class="editMsg desktop button" msgid="<?=$msg['id']?>">
 			edit

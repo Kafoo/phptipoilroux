@@ -79,6 +79,7 @@ include('_shared_/class_persos.php');
 						//On définit le début et la fin du post total
 						$firstMsgOfPost = False;
 						$lastMsgOfPost = False;
+						$LPOP = False;
 						if ($key == 0 
 						OR $msg['postID'] > $previousMsg['postID']) {
 							$firstMsgOfPost = True;
@@ -86,6 +87,11 @@ include('_shared_/class_persos.php');
 						if ($key == count($allMsg)-1 
 						OR $msg['postID'] < $nextMsg['postID']) {
 							$lastMsgOfPost = True;
+						}
+						//Last post of page pour l'ancre
+						if ($msg['postID'] == $lastPostOfPage
+						OR $msg['postID'] == $nbrPosts) {
+							$LPOP = True;
 						}
 
 						//------ RP / diceroll from player ------

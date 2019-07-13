@@ -107,15 +107,15 @@ foreach ($allMsg as $key => $msg) {
 //--------------PAGINATION--------------
 
 $postsParPage = 6;
-$NbrPosts = end($allMsg)['postID'];
-$NbrPages = ceil($NbrPosts/$postsParPage);
+$nbrPosts = end($allMsg)['postID'];
+$nbrPages = ceil($nbrPosts/$postsParPage);
 
 //On défini la page courante
 if (isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0) {
 	$_GET['page']=intval($_GET['page']);
 	$currentPage = $_GET['page'];
 }else{
-	$currentPage = $NbrPages;
+	$currentPage = $nbrPages;
 }
 
 //On défini où on en est sur cette page

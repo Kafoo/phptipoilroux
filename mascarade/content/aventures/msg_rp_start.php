@@ -1,5 +1,6 @@
 <!------ AVATAR ------>
-<div class="writerAvatarSlider <?=$msg[0]?>">
+<div class="writerAvatarSlider <?=$msg[0]?>"
+	<?php if($LPOP==True){echo'id = "lpop"';}?>>
 	<div class="writerAvatar <?php if($msg['nom']=='GM'){echo'GM';} ?>" style="background-image: url(img/avatars/<?php
 	//Si GM, avatar générique de GM
 	if ($msg['nom']=='GM'){echo'GM';}

@@ -2,17 +2,17 @@
 
 function showPages(){
 
-	global $NbrPages;
+	global $nbrPages;
 	global $currentPage;
 	?>
 
 	<div class ="pagination"> Pages :
 
 		<?php
-		for ($i=1; $i <= $NbrPages ; $i++) {
+		for ($i=1; $i <= $nbrPages ; $i++) {
 
-			if ($NbrPages > 6) {
-				if ($i <= 3 or $i >= $NbrPages-2) {
+			if ($nbrPages > 6) {
+				if ($i <= 3 or $i >= $nbrPages-2) {
 					if ($i==$currentPage) {
 						echo "<span style='color:#c8c8c8'>".$i."</span>";
 					}
@@ -20,7 +20,7 @@ function showPages(){
 						$file = explode('&page', $_SERVER['REQUEST_URI'])[0];
 						echo "<a href='".$file."&page=".$i."'>".$i."</a> ";
 					}
-					if ($i<$NbrPages) {
+					if ($i<$nbrPages) {
 						echo " - ";
 					}					
 				}else{
@@ -34,7 +34,7 @@ function showPages(){
 					$file = explode('&page', $_SERVER['REQUEST_URI'])[0];
 					echo "<a href='".$file."&page=".$i."'>".$i."</a> ";
 				}
-				if ($i<$NbrPages) {
+				if ($i<$nbrPages) {
 					echo " - ";
 				}
 			}
