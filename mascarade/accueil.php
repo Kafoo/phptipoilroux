@@ -30,13 +30,11 @@ include("_shared_/start.php");
 
 	<div class="container centering">
 
-		
-
 	</div>
 
 
 	<div class="container">
-		
+
 	</div>
 
 </section>

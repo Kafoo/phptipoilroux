@@ -29,12 +29,4 @@
 	}
 	?>
 
-
-
-
-	<?php if($key==count($allMsg)-2){ ?>
-		<div id="pmop"></div>
-	<?php
-	}?>
 </div>
-<div></div>

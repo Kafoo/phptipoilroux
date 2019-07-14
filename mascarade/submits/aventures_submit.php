@@ -77,7 +77,7 @@ if (isset($_POST['submit'])) {
 		}
 
 		//Rentrée en BDD
-		$bdd->query("INSERT INTO mas_av_entries (avID, postID, type, dat, persoID) 
+		$bdd->query("INSERT INTO mas_av_entries (avID, postID, type, dat, persoID)
 			VALUES ('$avID', '$postID', 'rp', '$dat', '$persoID')");
 		$bdd->query("INSERT INTO mas_av_rp (entryID, persoID, content) 
 			SELECT id, '$persoID', '$content' FROM mas_av_entries WHERE avID = '$avID' ORDER BY id DESC LIMIT 1
@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
 		$bdd->query("UPDATE mas_users SET nombremsg=nombremsg+1 WHERE id='$userID' ");
 		/*Incrémente de 4 l'xp du perso*/
 		$bdd->query("UPDATE mas_persos SET xp=xp+4 WHERE id='$persoID' ");
-		checkLvlPerso($persoID);
+		checkLvlPerso($avID, $persoID);
 
 
 	}else{
@@ -163,16 +163,16 @@ if (isset($_POST['diceReply-submit']) AND !empty($_POST['diceReply-submit'])) {
 
 
 				/*Incrémente l'xp du perso si réussi*/
-				if ($diff == 8) {
+				if ($diff == 8 AND $win == True) {
 					$bdd->query("UPDATE mas_persos SET xp=xp+4 WHERE id='$persoID' ");
 				}
-				if ($diff == 10) {
+				if ($diff == 10 AND $win == True) {
 					$bdd->query("UPDATE mas_persos SET xp=xp+6 WHERE id='$persoID' ");
 				}
-				if ($diff == 12) {
+				if ($diff == 12 AND $win == True) {
 					$bdd->query("UPDATE mas_persos SET xp=xp+8 WHERE id='$persoID' ");
 				}
-				checkLvlPerso($persoID);
+				checkLvlPerso($avID, $persoID);
 
 			}else{
 				$error = "Tu dois choisir une difficulté pour ton lancé";

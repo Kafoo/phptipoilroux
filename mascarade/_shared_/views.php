@@ -4,6 +4,7 @@ function showPages(){
 
 	global $nbrPages;
 	global $currentPage;
+	$pageVoid = False;
 	?>
 
 	<div class ="pagination"> Pages :
@@ -24,7 +25,10 @@ function showPages(){
 						echo " - ";
 					}					
 				}else{
-					echo "... - ";
+					if ($pageVoid == False) {
+						echo "... - ";
+						$pageVoid = True;
+					}
 				}
 			}else{
 				if ($i==$currentPage) {

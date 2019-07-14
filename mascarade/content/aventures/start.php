@@ -119,8 +119,8 @@ if (isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0) {
 }
 
 //On défini où on en est sur cette page
-$firstPostOfPage = ($currentPage-1)*$postsParPage;
-$lastPostOfPage = $firstPostOfPage+$postsParPage-1;
+$lastPostOfPage = ($currentPage)*$postsParPage;
+$firstPostOfPage = $lastPostOfPage - $postsParPage + 1;
 
 //--------------caracOfUniv--------------
 $caracOfUniv = $_SESSION['caracOfUniv'];

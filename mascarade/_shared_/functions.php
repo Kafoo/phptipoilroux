@@ -115,11 +115,37 @@ function getInfoDisc($nomDisc){
 }
 
 
-function checkLvlPerso($persoID){
+function logPost($avID, $persoID, $dat, $content){
+	global $bdd;
+
+	//On défini le postID (incrémentation ou non)
+	$req = $bdd->query("
+		SELECT postID, type
+		FROM mas_av_entries
+		WHERE avID='$avID'
+		ORDER BY id DESC
+		LIMIT 1
+		");
+	$res = $req->fetchall()[0];
+	if ($res['type'] == 'log') {
+		$postID = $res['postID'];
+	} else {
+		$postID = $res['postID']+1;
+	}
+
+	//Rentrée en BDD
+	$bdd->query("INSERT INTO mas_av_entries (avID, postID, type, dat, persoID) 
+		VALUES ('$avID', '$postID', 'log', '$dat', '$persoID')");
+	$bdd->query("INSERT INTO mas_av_log (entryID, avID, persoID, content) 
+		SELECT id, '$avID', '$persoID', '$content' FROM mas_av_entries WHERE avID = '$avID' ORDER BY id DESC LIMIT 1
+		");
+}
+
+function checkLvlPerso($avID, $persoID){
 	global $bdd;
 
 	$req = $bdd->query("
-		SELECT xp, nextlvl
+		SELECT xp, nom, nextlvl, mas_leveling.lvl as lvl
 		FROM mas_persos
 		INNER JOIN mas_leveling
 		ON mas_persos.lvl=mas_leveling.lvl
@@ -127,8 +153,19 @@ function checkLvlPerso($persoID){
 		");
 
 	$leveling = $req->fetch();
+
 	if ($leveling['xp'] >= $leveling['nextlvl']) {
+		//+1 niveau
 		$bdd->query("UPDATE mas_persos SET lvl=lvl+1 WHERE id='$persoID' ");
+		//LOGPOST seulement si pas GM
+		if ($leveling['nom'] !== 'GM') {
+			$req = $bdd->query("SELECT nom FROM mas_persos WHERE id = '$persoID'");
+			$persoNom = $req->fetch()[0];
+			$dat = getRealDate();
+			$lvl = intval($leveling['lvl'])+1;
+			$content = $persoNom.' a gagné un niveau ! (lvl'.$lvl.')';
+			logPost($avID, $persoID, $dat, $content);
+		}
 	}
 
 	$req = $bdd->query("
@@ -139,9 +176,9 @@ function checkLvlPerso($persoID){
 		WHERE mas_persos.id='$persoID'
 		");
 
-
+	//Si l'xp dépasse aussi le niveau suivant
 	if ($leveling['xp'] >= $leveling['nextlvl']) {
-		checkLvlPerso($persoID);
+		checkLvlPerso($avID, $persoID);
 	}
 
 }

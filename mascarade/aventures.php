@@ -52,12 +52,13 @@ include('_shared_/class_persos.php');
 			<h2><?=$allMsg[0]['nom_aventure']?></h2>
 
 			<!-- SELECTION DE PAGE -->	
-			<div></div>
+
 			<?php
 			showPages();
- 			?>
-			<div></div>
-
+			?>
+			<div class="fixinfosContainer">
+				<?php include('content/aventures/fixinfos.php');?>
+			</div>
 			<div id="gridAv">
 
 				<?php // ------- WHILE MESSAGES ------- 
@@ -96,13 +97,13 @@ include('_shared_/class_persos.php');
 
 						//------ RP / diceroll from player ------
 						if ($msg['type'] == 'rp' OR $msg['type'] == 'drPlayer') {
-
+							
 							//START
 							if ($firstMsgOfPost == True) {
 								include('content/aventures/msg_rp_start.php');
 							}
 							//si RP 
-							if ($msg['type'] == 'rp') { 
+							if ($msg['type'] == 'rp') {
 
 								//si précédent rp du même perso, on met un séparateur
 								if ($key !== 0 
@@ -142,13 +143,32 @@ include('_shared_/class_persos.php');
 
 							//END
 							if ($lastMsgOfPost == True) {
-								echo "</div><div></div>";
+								echo "</div>";
 							}
 						}
 
 						//------ LOG ------
 						if ($msg['type'] == 'log') {
-							# code...
+
+							//START
+							if ($firstMsgOfPost == True) { ?>
+
+								<div></div>
+								<div class="msgLog">	
+
+							<?php
+							}
+							if ($key !== 0
+							AND $firstMsgOfPost == False) { 
+								echo '<div class="separate"></div>';
+							}
+							echo $msg['content_log'];
+
+							//END
+							if ($lastMsgOfPost == True) {
+								echo "</div>";
+							}	
+							
 						}
 					}
 				}
@@ -161,9 +181,9 @@ include('_shared_/class_persos.php');
 				<?php
 				showPages();
 				?>
-				<div></div>
 
-				<div></div><div style="height: 20px" SPACER></div><div></div>
+
+				<div></div><div style="height: 20px" SPACER></div>
 				
 
 				<!-- SHOWING OW -->

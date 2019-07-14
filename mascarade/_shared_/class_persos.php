@@ -95,6 +95,7 @@ class perso
 	public function setC5Cond($c5Cond){
 
 	}
+
 	public function setLore($lore){
 
 	}
