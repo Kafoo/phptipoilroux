@@ -159,7 +159,7 @@ include('_shared_/class_persos.php');
 							AND $firstMsgOfPost == False) { 
 								echo '<div class="separate"></div>';
 							}
-							echo $msg['content_log'];
+							echo htmlspecialchars_decode(nl2br($msg['content_log']));
 
 							//END
 							if ($lastMsgOfPost == True) {
