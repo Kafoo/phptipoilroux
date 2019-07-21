@@ -1,6 +1,5 @@
 <div class="persoID-stock" hidden><?=$perso->id?></div>
 <h3><?=$perso->nom?></h3>
-
 <h4>PV :</h4>
 <div class="button operate_update update_lessPV">-</div>
 <img src="img/rpg/pv_<?=$perso->pv?>.png" pv_val="<?=$perso->pv?>" class="pvBar" data-toggle="tooltip" data-placement="bottom" title="<?=$perso->pv?>/10 PV">

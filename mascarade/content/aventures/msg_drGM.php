@@ -3,10 +3,10 @@
 
 	$perso = $msg['nom'];
 	$caracID = $msg['caracID'];
-	$caracVal = $msg['c'.$caracID];
-	$caracName = $caracOfUniv[$caracID-1]['carac_name'];
+	$caracVal = $msg['caracVal'];
+	$caracName = $caracOfAv['c'.$caracID.'_name'];
 	$result = $msg['result'];
-	$caracCond = $msg['c'.$caracID.'Cond'];
+	$caracCond = $msg['caracCond'];
 	$difficulty = $msg['difficulty'];
 	$resultFinal = floatval($result)+floatval($caracVal)+floatval($caracCond);
 
@@ -61,7 +61,7 @@
 			<div class="diceRollDigits">
 				<div class="diceRollDigit digit-roll" data-toggle="tooltip" data-placement="top" title="Résultat du lancé"><?=$result?></div>
 				<div class="diceRollDigit digit-carac" style="background-image: url(img/icones/carac/<?=$caracID?>_color.png);" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracName)?> de <?=$perso?>">+<?=$caracVal?></div>
-			<div class="diceRollDigit digit-cond" data-toggle="tooltip" data-placement="top" title="Condition">+<?=$caracCond?></div>
+			<div class="diceRollDigit digit-cond <?php if($caracCond>=0){echo'digit-cond-pos';}else{echo'digit-cond-neg';}?>" data-toggle="tooltip" data-placement="top" title="Condition">+<?=$caracCond?></div>
 				<div class="inline">
 					<span style="font-weight: bolder">=</span>	
 					<div class="diceRollDigit digit-resultFinal" data-toggle="tooltip" data-placement="top" title="Résultat final">

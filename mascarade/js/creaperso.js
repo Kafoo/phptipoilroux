@@ -1,10 +1,4 @@
-//var valCarac = document.getElementById('yo');
-//var outputCarac = document.getElementsByClassName("valCarac");
-//outputCarac.innerHTML = valCarac.value;
-
-//valCarac.oninput = function(){
-//	outputCarac.innerHTML = this.value;
-//}
+// --------- CARACTERISTIQUES ---------
 
 function change(carac){
 	//Change la valeur affichée devant chaque caractéristique

@@ -118,15 +118,5 @@ if (!isset($_SESSION['connected'])) {
         $canSetSession = False;
     }
 
-    //On met les différentes caractéristiques dans caracOfUniv
-
 
 }   
-    if (!isset($_SESSION['caracOfUniv'])) {
-        $req = $bdd->query("
-            SELECT *
-            FROM mas_carac
-            ORDER BY id");
-        $_SESSION['caracOfUniv'] = $req->fetchall();
-    }
-?>

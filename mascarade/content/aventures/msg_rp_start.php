@@ -1,4 +1,12 @@
 <!------ AVATAR ------>
+<?php
+foreach ($coterie as $key => $perso) {
+	if ($perso[0] == $msg['persoID']) {
+		$persoKey = $key;
+	}
+}
+$perso = $coterie[$persoKey];
+?>
 <div class="writerAvatarSlider <?=$msg[0]?>"
 	<?php if($LPOP==True){echo'id = "lpop"';}?>>
 	<div class="writerAvatar <?php if($msg['nom']=='GM'){echo'GM';} ?>" style="background-image: url(img/avatars/<?php
@@ -17,35 +25,35 @@
 		</div>
 		<div class="layer mobile" hidden>									
 			<img src="img/mobile/croix.png" class="croixAvatar">
-			<span class="nomPerso">
-				<?=strtoupper($msg['nom'])?>
-			</span><br><br>
+			<a href="profil.php?persoID=<?=$perso['nom']?>" class="nomPerso">
+				<?=strtoupper($perso['nom'])?>
+			</a><br><br>
 				<table class="carac">
 					<tr>
-						<td>Force :</td><td><?=$msg['c1']?></td>
+						<td>Force :</td><td><?=$perso['c1']?></td>
 					</tr>
 					<tr>
-						<td>Dextérité :</td><td><?=$msg['c2']?></td>
+						<td>Dextérité :</td><td><?=$perso['c2']?></td>
 					</tr>
 					<tr>
-						<td>Intelligence :</td><td><?=$msg['c3']?></td>
+						<td>Intelligence :</td><td><?=$perso['c3']?></td>
 					</tr>
 					<tr>
-						<td>Charisme :</td><td><?=$msg['c4']?></td>
+						<td>Charisme :</td><td><?=$perso['c4']?></td>
 					</tr>
 					<tr>
-						<td>Perception :</td><td><?=$msg['c5']?></td>
+						<td>Perception :</td><td><?=$perso['c5']?></td>
 					</tr>
 				</table>
 				<div class="layerBox">
-					<b><?=ucfirst($msg['clan'])?></b><br>
-					<b>LVL : </b><?=$msg['lvl']?><br><br>
-					<?=$msg['nature']?><br>
-					/<?=$msg['attitude']?><br><br>
+					<b><?=ucfirst($perso['clan'])?></b><br>
+					<b>LVL : </b><?=$perso['lvl']?><br><br>
+					<?=$perso['nature']?><br>
+					/<?=$perso['attitude']?><br><br>
 				</div>
 				<div class="centering layerBox">
-					<b>Concept : </b><br><?=$msg['concept']?><br>
-					<b>Défaut : </b><br><?=$msg['defaut']?><br>
+					<b>Concept : </b><br><?=$perso['concept']?><br>
+					<b>Défaut : </b><br><?=$perso['defaut']?><br>
 				</div>
 				<div class="layerBottom">
 					<b>Auteur : </b><?=$msg['pseudo']?><br>

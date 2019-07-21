@@ -15,9 +15,9 @@ $('.joinAv').click(function(e){
 /*----------------MESSAGES PAGE----------------*/
 
 // TINYMCE INITIALISATION
+function tinymceInit($format){
 	if (typeof tinymce !== 'undefined') {
-		if (window.matchMedia("(min-width: 720px)").matches) {
-		//Desktop init.
+		if ($format == 'desktop') {
 			tinymce.init({
 			    selector: '.mytextarea',
 			    content_css : "style/tinymce.css",
@@ -25,16 +25,17 @@ $('.joinAv').click(function(e){
 			    menubar: false,
 			    forced_root_block : "",
 			    statusbar : false,
+			    toolbar_drawer : 'floating',
 			    paste_auto_cleanup_on_paste : true,
 			    paste_remove_styles: true,
 			    paste_remove_styles_if_webkit: true,
 			    paste_strip_class_attributes: true,
 			    fontsize_formats: "6pt 8pt 11pt 14pt 18pt",
-			    toolbar: 'undo redo | bold italic | link image forecolor backcolor fontsizeselect | code',
+			    toolbar: 'undo redo | bold italic | link image | forecolor backcolor | fontsizeselect | code',
 			    plugins: 'code image textcolor preview paste'
 			});
-		//Mobile init.
-		}else{
+		}
+		if ($format == 'mobile') {
 			tinymce.init({
 			    selector: '.mytextarea',
 			    content_css : "style/tinymce.css",
@@ -42,6 +43,7 @@ $('.joinAv').click(function(e){
 			    menubar: false,
 			    forced_root_block : "",
 			    statusbar : false,
+			    toolbar_drawer : 'floating',
 			    paste_auto_cleanup_on_paste : true,
 			    paste_remove_styles: true,
 			    paste_remove_styles_if_webkit: true,
@@ -52,6 +54,8 @@ $('.joinAv').click(function(e){
 			});
 		}
 	}
+}
+
 
 // --------- fixInfosSlider height ---------
 
@@ -61,7 +65,7 @@ $('.fixInfosSlider').height(sectionHeight-200);
 
 // --------- SUPP MESSAGE ---------
  
-	$('.suppMsg').click(function(e){
+/*	$('.suppMsg').click(function(e){
 
 		var confirmation = confirm("Tu es sûr de vouloir supprimer ce message ? C'est définitif !\n\n (si plusieurs messages ont été postés à la suite, seul le dernier sera supprimé ;-)");
 		if (confirmation == false) {
@@ -96,7 +100,7 @@ $('.fixInfosSlider').height(sectionHeight-200);
 			http.open('GET', 'server/HTTP_REQUEST.php'+refine, false);
 			http.send();
 		}
-	})
+	})*/
 
 
 // --------- EDIT MESSAGE ---------
@@ -554,11 +558,9 @@ $('.updatePerso_submit').click(function(e){
 
 /*-------------- IF MOBILE --------------*/
 
-if (window.matchMedia("(max-width: 720px)").matches) {
-
 	/*----CLIQUE OPTIONS DU MESSAGE----*/	
 
-	$('.msgOption').click(function(e){
+	$('.msgOption').click(function(e){if (isMobile) {
 		var msgID = $(e.currentTarget).attr('msgid');
 		var editButton = $(e.currentTarget).parent().children('.editMsg.mobile');
 		var suppButton = $(e.currentTarget).parent().children('.suppMsg.mobile');
@@ -566,10 +568,10 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 		editButton.animate({opacity:"1"}, 200);
 		suppButton.show();
 		suppButton.animate({opacity:"1"}, 200);
-	})
+	}})
 
 	/*----CLIQUE SUR L'AVATAR----*/
-	$('.writerAvatar').click(function(e){
+/*	$('.writerAvatar').click(function(e){
 
 		if ($(e.currentTarget).is('.GM')) {
         	e.preventDefault();
@@ -587,13 +589,13 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 		$(e.currentTarget).parent().parent().animate({width:'70px', height:'70px', border:'1px solid black', borderRadius:'40px'}, 200);
 		$(e.currentTarget).parent().parent().css('z-index', 100);
 		$(e.currentTarget).parent().parent().children('.mobile').hide(200);
-	});
+	});*/
 
 	/*----REPLYOPTIONS----*/
 
-	$('.showingOW').click(function(e){
-		//fixInfos plus grande que les autres
-		if (this == $('.showingFixInfos')[0]) {
+	$('.showingOW').click(function(e){if (isMobile) {
+		//fixInfos et GMDashBoard plus grandes que les autres
+		if (this == $('.showingFixInfos')[0] || this == $('.showingGMDashBoard')[0]) {
 			$('#replyContainer').animate({height:'460'},100);
 		}else{			
 			$('#replyContainer').animate({height:'280'},100);
@@ -601,23 +603,61 @@ if (window.matchMedia("(max-width: 720px)").matches) {
 		$('.closingArrow').show();
 		$('.closingArrow').animate({height:'40'},100);
 		$('#headerMobile').slideUp(300);
-	})
+	}})
 
-	$('.OW').click(function(){
+	$('.OW').click(function(){if (isMobile) {
 		$('#headerMobile').slideUp(300);
-	})
+	}})
 
 
-	$(".closingArrow").click(function(e){
+	$(".closingArrow").click(function(e){if (isMobile) {
 		$('#replyContainer').animate({height:'0'},100);
 		$('.closingArrow').animate({height:'0'},100);
 		$('.closingArrow').hide();
 
-	})
+	}})
 	
-	$('.infoPersoNom a').click(function(e){
+	$('.infoPersoNom a').click(function(e){if (isMobile) {
 		e.preventDefault();
-	})
+	}})
 
+
+
+// Fonction exécutée au redimensionnement, contenu executé seulement au passage mobile/desktop et desktop/mobile
+var isMobile;
+var lastFormat='';
+function redimensionnement(e) {
+	if("matchMedia" in window) {
+		if(window.matchMedia("(min-width:720px)").matches) {
+			if (lastFormat == 'mobile' || lastFormat == '') {
+				//On supprime l'instance si on vient du mobile
+				if (lastFormat == 'mobile') {tinymce.get("tinymce-classicReply").remove()};
+				//tinymce Initialisation
+				tinymceInit('desktop');
+				//Ajustements divers
+				$(".replyOption[ow='classicReply']").click();
+				$('#replyContainer').animate({height:'400'},100);
+				//on redéfini les variables
+				isMobile = false;
+				lastFormat = 'desktop';
+			}
+		} else {
+			if (lastFormat == 'desktop' || lastFormat == '') {
+				//On supprime l'instance si on vient du desktop
+				if (lastFormat == 'desktop') {tinymce.get("tinymce-classicReply").remove()};
+				//tinymce Initialisation
+				tinymceInit('mobile');
+				//Ajustements divers
+				$(".showingOW").removeClass("current");
+				$('#replyContainer').height(0);
+				//on redéfini les variables
+				isMobile = true;
+				lastFormat = 'mobile';
+			}
+		}
+	}
 }
-
+// On lie l'événement resize à la fonction
+window.addEventListener('resize', redimensionnement, false);
+// Exécution de cette même fonction au démarrage pour avoir un retour initial
+redimensionnement();

@@ -3,14 +3,8 @@
 	<?php
 	if ($lastMsgID == $msg['id'] AND $lastIsUser == True) { ?>
 
-		<div class="editMsg desktop button" msgid="<?=$msg['id']?>">
+		<div class="editMsg button" msgid="<?=$msg['id']?>">
 			edit
-		</div>
-		<div class="msgOption mobile button">
-			+
-		</div>
-		<div class="suppMsg mobile button" ajax='?action=suppMsg&msgID=<?=$msg['id']?>' msgid="<?=$msg['id']?>" >
-			supp
 		</div>
 		<div class="editMsg mobile button" msgid="<?=$msg['id']?>">
 			edit

@@ -144,7 +144,6 @@
 		border-radius: 6px;
 		box-shadow: inset -2px -2px 50px rgb(43, 81, 46);
 		z-index: 20;
-		overflow: hidden;
 	}
 
 	.msgGM{
@@ -152,7 +151,7 @@
 		box-shadow: inset -2px -2px 50px rgb(80, 75, 40);
 	}
 
-	.editMsg.desktop{
+	.editMsg{
 		position: absolute;
 		bottom: 0;
 		right: 0;
@@ -163,6 +162,7 @@
 		font-family: arial black;
 		font-size: 0.7em;
 		color: rgba(62, 42, 16, 1);
+		cursor: pointer;
 	}
 
 /*	.suppMsg.desktop{
@@ -199,9 +199,6 @@
 		height: auto;
 	}
 
-	.msg .diceRollDigits{
-		margin: 5px 0 0 0;
-	}
 
 /*MESSAGE DICEROLL*/
 
@@ -237,8 +234,7 @@
 		display: block;
 		margin: auto;
 		margin-top: 10px;
-		width: max-content;
-		max-width: 90%;
+		max-width: calc(100% - 50px);
 		padding: 2px 10px;
 		background-color: rgba(50,50,50,0.3);
 		border-bottom: none;
@@ -283,7 +279,7 @@
 
 	.diceRollDigits{
 		display: inline-block;
-		margin: 14px auto 0 auto;
+		margin: 5px 0 0 0;
 		font-size: 1.8em;
 		overflow: hidden;
 	}
@@ -314,10 +310,16 @@
 	}
 
 	.digit-cond{
-		background-color: rgb(41, 127, 40);
-		background-size: cover;
+		border-radius: 2px;
 	}
 
+	.digit-cond-pos{
+		background-color: rgb(41, 127, 40);
+	}
+
+	.digit-cond-neg{
+		background-color: rgb(127, 40, 40);
+	}
 
 	.digit-resultFinal{
 		position: relative;
@@ -390,7 +392,6 @@
 		height: max-content;
 		background-color: rgba(200,200,200,0.2);
 		box-shadow: 4px 4px 20px 1px rgba(0,0,0,0.4);
-		margin: 50px 0 0 0;
 		top: 100px;
 		border-radius: 5px;
 		border: 1px solid black;
@@ -513,6 +514,15 @@
 		border-radius: 2px;
 		background-color: rgb(54, 175, 54);
 		border:1px solid black;
+		color: rgb(204, 186, 186);
+	}
+
+	.infoPersoCond-pos{
+		background-color: rgb(41, 127, 40);
+	}
+
+	.infoPersoCond-neg{
+		background-color: rgb(127, 40, 40);
 	}
 
 	.infoPersoInventory{
@@ -602,7 +612,12 @@
 	}	
 
 	.OW{
-		padding: 20px 0 0 0
+		/*Plus rien pour le moment*/
+	}
+
+	.OWContent{
+		height: 100%;
+		overflow: auto;
 	}
 
 	.OW#classicReply{
@@ -620,10 +635,7 @@
 		left: 0;
 		height: 100%;
 		background-color: rgb(202, 165, 135);
-		font-size: 1.5em;
 		text-align: center;
-		color: rgb(100,100,100);
-		font-weight: bold;
 	}
 
 	#diceReply form input[name='diceReply-title']{
@@ -789,7 +801,6 @@
 
 	.notesPaperStyle::-webkit-scrollbar-thumb {
 	    background: rgba(50,50,50,0.7);
-
 	}
 
 	.notesPaper{
@@ -889,6 +900,7 @@
 		border:1px solid black;
 		background-color: rgb(240,240,240);
 	}
+
 
 /*----------- 1400px -----------*/
 
@@ -1106,6 +1118,12 @@
 		margin-right: 10px;
 	}
 
+	.msgLog{
+		margin: 0;
+		border-radius: 0;
+		border: 1px solid black;
+	}
+
 	/* ------ MCE TEXT AREA ------ */
 
 	.mytextarea{
@@ -1113,14 +1131,21 @@
 	}
 
 	.OW{
+		position: relative;
 		padding: 0;
+		padding-top: 37px;
+		overflow: hidden;
 	}
 
 	h3{
+		position: absolute;
+		width: 100%;
+		top: 0px;
+		margin: 0 auto;
+		padding-top: 5px;
 		background-color: rgb(188,188,188);
 		border-bottom: 1px solid black;
 		text-decoration: none;
-		padding-top: 5px;
 	}
 
 	#replyContainer{
@@ -1164,26 +1189,18 @@
 		height: 25px;
 	}
 
-	.OW{
-		height: 100%;
-	}
-
 	.closingArrow{
-		position: absolute;
-		width: 45px;
-		height: 50px;
-		top: -42px;
-		right: 20px;
-		border: 1.5px solid black;
-		border-bottom: none;
-		border-radius: 4px 4px 0 0;
-		background-color: rgb(188,188,188);
-		box-shadow: inset 0px 0px 9px 0px rgba(0, 0, 0, 0.57);
-		background-image: url(../img/icones/closingArrow.png);
-		background-size: 40px;
-		background-position: center;
-		background-repeat: no-repeat;
-		cursor: pointer;
+	    position: absolute;
+	    width: 60px;
+	    height: 50px;
+	    top: 0px;
+	    right: 0px;
+	    background-image: url(../img/icones/closingArrow.png);
+	    background-size: 40px;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    cursor: pointer;
+	    z-index: 2000;
 	}
 
 	.diceReply-carac{
@@ -1202,15 +1219,18 @@
 
 	.notesPaper{
 		height: 80%;
+		margin-top: 10px;
 	}
 
 	.editNotesBlock{
 		height: 80%;
+		margin-top: 10px;
 	}
 
 	/* ------ FIXINFOS ------ */
 
 	.OW .fixInfos{
+		position: initial;
 		display: block;
 		margin: auto;
 		border: 0;

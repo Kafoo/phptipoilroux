@@ -52,40 +52,37 @@ include('_shared_/class_persos.php');
 			<h2><?=$allMsg[0]['nom_aventure']?></h2>
 
 			<!-- SELECTION DE PAGE -->	
-
 			<?php
 			showPages();
 			?>
-			<div class="fixinfosContainer">
+			<div class="fixInfosSlider desktop">
 				<?php include('content/aventures/fixinfos.php');?>
 			</div>
 			<div id="gridAv">
 
 				<?php // ------- WHILE MESSAGES ------- 
 
-
-				foreach ($allMsg as $key => $msg) {
-
+				foreach ($allMsg as $msgKey => $msg) {
 					//Si le message est sensé être sur la page
 					if ($msg['postID'] >= $firstPostOfPage
 					AND $msg['postID'] <= $lastPostOfPage) {
 
-						if ($key>0) {
-							$previousMsg = $allMsg[$key-1];
+						if ($msgKey>0) {
+							$previousMsg = $allMsg[$msgKey-1];
 						}
-						if ($key<count($allMsg)-1) {
-							$nextMsg = $allMsg[$key+1];
+						if ($msgKey<count($allMsg)-1) {
+							$nextMsg = $allMsg[$msgKey+1];
 						}
 
 						//On définit le début et la fin du post total
 						$firstMsgOfPost = False;
 						$lastMsgOfPost = False;
 						$LPOP = False;
-						if ($key == 0 
+						if ($msgKey == 0 
 						OR $msg['postID'] > $previousMsg['postID']) {
 							$firstMsgOfPost = True;
 						}
-						if ($key == count($allMsg)-1 
+						if ($msgKey == count($allMsg)-1 
 						OR $msg['postID'] < $nextMsg['postID']) {
 							$lastMsgOfPost = True;
 						}
@@ -104,9 +101,9 @@ include('_shared_/class_persos.php');
 							}
 							//si RP 
 							if ($msg['type'] == 'rp') {
-
+								key($msg);
 								//si précédent rp du même perso, on met un séparateur
-								if ($key !== 0 
+								if ($msgKey !== 0 
 								AND $previousMsg['type'] == 'rp' 
 								AND $firstMsgOfPost == False) { 
 									echo '<div class="separate"></div>';
@@ -158,7 +155,7 @@ include('_shared_/class_persos.php');
 
 							<?php
 							}
-							if ($key !== 0
+							if ($msgKey !== 0
 							AND $firstMsgOfPost == False) { 
 								echo '<div class="separate"></div>';
 							}
@@ -227,7 +224,7 @@ include('_shared_/class_persos.php');
 
 					<?php
 					if ($_SESSION['GM'] == 1){ ?>
-						<div class="showingOW replyOption" OW="GMDashBoard-menu">
+						<div class="showingOW replyOption showingGMDashBoard" OW="GMDashBoard-menu">
 							<img src="img/icones/baguette.png">
 						</div>
 					<?php 
@@ -240,60 +237,68 @@ include('_shared_/class_persos.php');
 				<div class="OWContainer" id="replyContainer">
 					<!-- REPONSE TEXTE -->
 					<form class="OW" id="classicReply" method="POST" action="">
-						<div class="closingArrow mobile"></div>
-						<textarea class="mytextarea" name="message"></textarea>
+						<div class="mobile">
+							<div class="closingArrow"></div>
+						</div>
+						<textarea class="mytextarea" id="tinymce-classicReply" name="message"></textarea>
 						<input type="text" name="persoID" value="<?=$persoID?>" hidden>
 						<input type="submit" name="submit" value='Je réponds !'>
 					</form>
 
 					<!-- LANCER DE DES -->
 					<div class="OW" id="diceReply">
-						<div class="closingArrow mobile"></div>
-						<form method="POST" action="">
-							<h3>LANCE DE DES</h3>
+						<div class="mobile">
+							<div class="closingArrow"></div>
+						</div>
+						<h3>LANCE DE DES</h3>
+						<div class="OWContent">
+							<form method="POST" action="">
 
-							<h4>Titre</h4>
-							<input type="text" name="diceReply-title">
+								<h4>Titre</h4>
+								<input type="text" name="diceReply-title" placeholder="titre du lancé">
+								<h4>Caractéristique</h4>
+								<div class="diceReply-caracContainer container centering">	
+									<div class="carac1 diceReply-carac button"
+									onclick="choose('carac', '1')" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracOfAv['c1_name'])?>"></div>
+									<div class="carac2 diceReply-carac button" 
+									onclick="choose('carac', '2')" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracOfAv['c2_name'])?>"></div>
+									<div class="carac3 diceReply-carac button" 
+									onclick="choose('carac', '3')" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracOfAv['c3_name'])?>"></div>
+									<div class="carac4 diceReply-carac button" 
+									onclick="choose('carac', '4')" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracOfAv['c4_name'])?>"></div>
+									<div class="carac5 diceReply-carac button" 
+									onclick="choose('carac', '5')" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($caracOfAv['c5_name'])?>"></div>
+								</div>
+								<input id="caracStock" type="text" name="diceReply-carac" hidden>
 
-							<h4>Caractéristique</h4>
-							<div class="diceReply-caracContainer container centering">	
-								<div class="carac1 diceReply-carac button"
-								onclick="choose('carac', '1')"></div>
-								<div class="carac2 diceReply-carac button" 
-								onclick="choose('carac', '2')"></div>
-								<div class="carac3 diceReply-carac button" 
-								onclick="choose('carac', '3')"></div>
-								<div class="carac4 diceReply-carac button" 
-								onclick="choose('carac', '4')"></div>
-								<div class="carac5 diceReply-carac button" 
-								onclick="choose('carac', '5')"></div>
-							</div>
-							<input id="caracStock" type="text" name="diceReply-carac" hidden>
+								<h4>Difficulté</h4>
+								<div class="diff8 diceReply-diff button"
+								onclick="choose('diff','8')">Facile</div>
+								<div class="diff10 diceReply-diff button"
+								onclick="choose('diff','10')">Normal</div>
+								<div class="diff12 diceReply-diff button"
+								onclick="choose('diff','12')">Difficile</div>
+								<input id="diffStock" type="text" name="diceReply-diff" hidden>
+								
+								<br>
+								<input id="resultStock" type="text" name="diceReply-result" hidden>
+								<input type="text" name="persoID" value="<?=$persoID?>" hidden>
+								<?php 
+								$persoObjectID = 'perso'.$persoID;
+								$persoObjectJson = json_encode($$persoObjectID); 
+								?>
+								<input type="text" name="persoObjectJson" value='<?=$persoObjectJson?>' hidden>
 
-							<h4>Difficulté</h4>
-							<div class="diff8 diceReply-diff button"
-							onclick="choose('diff','8')">Facile</div>
-							<div class="diff10 diceReply-diff button"
-							onclick="choose('diff','10')">Normal</div>
-							<div class="diff12 diceReply-diff button"
-							onclick="choose('diff','12')">Difficile</div>
-							<input id="diffStock" type="text" name="diceReply-diff" hidden>
-							
-							<br>
-							<input id="resultStock" type="text" name="diceReply-result" hidden>
-							<input type="text" name="persoID" value="<?=$persoID?>" hidden>
-							<?php 
-							$persoObjectID = 'perso'.$persoID;
-							$persoObjectJson = json_encode($$persoObjectID); 
-							?>
-							<input type="text" name="persoObjectJson" value='<?=$persoObjectJson?>' hidden>
-
-							<input id="diceReply-submit"  type="submit" name="diceReply-submit" value="Je lance mon dé !">
-						</form>
+								<input id="diceReply-submit"  type="submit" name="diceReply-submit" value="Je lance mon dé !">
+							</form>
+						</div>
 					</div>
 					<div class="OW" id="diceReply-error">
-						<div class="closingArrow mobile"></div>
-						<div class="container">
+						<div class="mobile">
+							<div class="closingArrow"></div>
+						</div>
+						<h3>LANCE DE DES</h3>
+						<div class="OWContent">
 							<br>
 							Avant de lancer un dé, tu dois écrire et poster un message qui décrit ton action ! ;-)
 						</div>
@@ -302,66 +307,85 @@ include('_shared_/class_persos.php');
 
 					<!-- ALLO GM -->
 					<div class="OW" id="alloGM-menu">
-						<div class="closingArrow mobile"></div>
+						<div class="mobile">
+							<div class="closingArrow"></div>
+						</div>
 						<h3>ALLO GM</h3>
-						<div style="height: 30px" SPACER></div>
-						<?php
-						foreach ($coterie as $perso) {
-							if ($perso['nom'] !== "GM") { ?>
-								<div class="alloGM-playerChoice choice-gen button" id="<?=$perso['userID']?>">
-									<?=$perso['nom']?>
-								</div>
+						<div class="OWContent">
 							<?php
+							foreach ($coterie as $perso) {
+								if ($perso['nom'] !== "GM") { ?>
+									<div class="alloGM-playerChoice choice-gen button" id="<?=$perso['userID']?>">
+										<?=$perso['nom']?>
+									</div>
+								<?php
+								}
 							}
-						}
-						?>
+							?>
+						</div>
 					</div>
 					<div class="OW" id="alloGM">
-						<div class="closingArrow mobile"></div>
-						<h3>ALLO GM</h3>
-						<!-- ajax -->
-						<div class="alloGM-content">
+						<div class="mobile">
+							<div class="closingArrow"></div>
 						</div>
-						<textarea class="alloGM-textArea"></textarea>
-						<div class="alloGM-submit button"></div>
+						<h3>ALLO GM</h3>
+						<div class="OWContent">
+							<!-- ajax -->
+							<div class="alloGM-content">
+							</div>
+							<textarea class="alloGM-textArea"></textarea>
+							<div class="alloGM-submit button"></div>
+						</div>
 					</div>
 
 
 					<!-- NOTES PERSOS -->
 					<div class="OW" id="notes">
-						<div class="closingArrow mobile"></div>
-						<h3>Notes Perso</h3>
-						<div class="notesPaper">
-							<div class="notesPaperStyle">
-								<span class="notesContent"></span>
-							</div>
+						<div class="mobile">
+							<div class="closingArrow"></div>
 						</div>
-						<div class="editNotesBlock" hidden>
-							<textarea class="notesPaperStyle" id="editNotesArea"></textarea>
-							<div class="confirmEditNotes button">OK</div>
+						<h3>NOTES</h3>
+						<div class="OWContent">
+							<div class="notesPaper">
+								<div class="notesPaperStyle">
+									<span class="notesContent"></span>
+								</div>
+							</div>
+							<div class="editNotesBlock" hidden>
+								<textarea class="notesPaperStyle" id="editNotesArea"></textarea>
+								<div class="confirmEditNotes button">OK</div>
+							</div>
 						</div>
 					</div>
 
 					<!-- FIXINFOS MOBILE -->
 					<div class="OW" id="fixinfosMobile">
-						<div class="closingArrow mobile"></div>
-						<?php include('drawers/aventures_fixinfos.php');?>
+						<div class="mobile">
+							<div class="closingArrow"></div>
+						</div>
+						<h3>INFOS PERSOS</h3>
+						<div class="OWContent">
+							<?php include('content/aventures/fixinfos.php');?>
+						</div>
 					</div>
 
 					<!-- GM DASHBOARD -->
 					<div class="OW" id="GMDashBoard-menu">
-						<div class="closingArrow mobile"></div>
+						<div class="mobile">
+							<div class="closingArrow"></div>
+						</div>
 						<h3>GM DASHBOARD</h3>
-						<div style="height: 30px" SPACER></div>
-						<?php
-						foreach ($array_objectPersos as $perso) {
-							if ($perso->nom !== "GM") { ?>
-								<div class="GMDashBoard-playerChoice choice-gen button" id="<?=$perso->userID?>">
-									<?=$perso->nom?>
-								</div>
+						<div class="OWContent">
 							<?php
-							}
-						} ?>
+							foreach ($array_objectPersos as $perso) {
+								if ($perso->nom !== "GM") { ?>
+									<div class="GMDashBoard-playerChoice choice-gen button" id="<?=$perso->userID?>">
+										<?=$perso->nom?>
+									</div>
+								<?php
+								}
+							} ?>
+						</div>
 
 					</div>
 
@@ -370,9 +394,11 @@ include('_shared_/class_persos.php');
 					foreach ($array_objectPersos as $perso) {
 						if ($perso->nom !== "GM") { ?>
 							<div class="OW GMDashBoard" id="GMDashBoard-<?=$perso->userID?>">
-								<div class="closingArrow mobile"></div>
+								<div class="mobile">
+									<div class="closingArrow"></div>
+								</div>
 								<!-- ajax -->
-								<div class="GMDashBoard-content">
+								<div class="GMDashBoard-content OWContent">
 								 <?php include ('ajax/aventures_gmdashboard.php');?>
 								</div>
 							</div>

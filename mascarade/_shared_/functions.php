@@ -246,12 +246,15 @@ function send_mail ($addresses, $subject, $body, $altBody){
 	}
 }
 
-function setObjectPersos(){
+function setObjectPersos($avID){
 	global $bdd;
 
 	$req = $bdd->query("
-		SELECT *
+		SELECT mas_persos.*, mas_relation_perso2aventure.avID
 		FROM mas_persos
+		JOIN mas_relation_perso2aventure
+		ON mas_persos.id = mas_relation_perso2aventure.persoID
+		WHERE mas_relation_perso2aventure.avID = '$avID'
 		");
 	
 	$bdd_infosPersos = $req->fetchall();

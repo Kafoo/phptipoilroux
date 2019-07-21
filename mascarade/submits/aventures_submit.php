@@ -127,8 +127,8 @@ if (isset($_POST['diceReply-submit']) AND !empty($_POST['diceReply-submit'])) {
 				$persoObject = json_decode($_POST['persoObjectJson']);
 				$cID = 'c'.$caracID;
 				$cIDCond = 'c'.$caracID.'Cond';
-				$valCarac = $persoObject->$cID;
-				$condCarac = $persoObject->$cIDCond;
+				$caracVal = $persoObject->$cID;
+				$caracCond = $persoObject->$cIDCond;
 
 				//On défini le postID (incrémentation ou non)
 				$req = $bdd->query("
@@ -149,13 +149,13 @@ if (isset($_POST['diceReply-submit']) AND !empty($_POST['diceReply-submit'])) {
 				//Rentrée en BDD
 				$bdd->query("INSERT INTO mas_av_entries (avID, postID, type, dat, persoID) 
 					VALUES ('$avID', '$postID', 'drPlayer', '$dat', '$persoID')");
-				$bdd->query("INSERT INTO mas_av_dicerolls (entryID, persoID, title, caracID, difficulty, result, GM) 
-					SELECT id, '$persoID', '$title', '$caracID', '$diff', '$result', '0' FROM mas_av_entries WHERE avID = '$avID' ORDER BY id DESC LIMIT 1
+				$bdd->query("INSERT INTO mas_av_dicerolls (entryID, persoID, title, caracID, caracVal, caracCond, difficulty, result, GM) 
+					SELECT id, '$persoID', '$title', '$caracID', '$caracVal', '$caracCond', '$diff', '$result', '0' FROM mas_av_entries WHERE avID = '$avID' ORDER BY id DESC LIMIT 1
 					");
 
 				/*On voit si le jet est réussi ou non*/
 
-				if ($result + $valCarac + $condCarac >= $diff) {
+				if ($result + $caracVal + $caracCond >= $diff) {
 					$win = True;
 				}else{
 					$win = False;
