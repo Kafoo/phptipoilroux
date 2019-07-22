@@ -25,12 +25,7 @@ include("_shared_/start.php");
 	</div>
 
 	<div class="container">
-	<?php
 
-$plok = getenv('PLOK');
-var_dump($plok);
-
-?>	
 	</div>
 
 	<div class="container">
