@@ -1,0 +1,14 @@
+-------------- FORMATER DU CONTENU POUR LA BDD --------------
+
+------ PHP -> BDD -> PHP
+
+$content = htmlspecialchars($input, ENT_QUOTES);
+//BDD//
+$content = htmlspecialchars_decode(nl2br($bdd_data))
+
+------ JAVSCRIPT -> AJAX -> PHP -> BDD ->
+
+var URIcontent =  encodeURIComponent(content);
+//AJAX//
+$content = nl2br(htmlspecialchars(($_POST['content']), ENT_QUOTES));
+//BDD//

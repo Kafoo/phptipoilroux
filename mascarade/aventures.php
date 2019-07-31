@@ -22,7 +22,6 @@ include('_shared_/class_persos.php');
 ?>
 
 
-<!---------- CONTENU ---------->
 <section>
 
 	<?php //IF USER IS DISCONNECTED
@@ -49,7 +48,7 @@ include('_shared_/class_persos.php');
 			?>
 
 			<!------ TITRE AVENTURE ------>
-			<h2><?=$allMsg[0]['nom_aventure']?></h2>
+			<h2><?=$avInfos['nom_aventure']?></h2>
 
 			<!-- SELECTION DE PAGE -->	
 			<?php
@@ -166,6 +165,14 @@ include('_shared_/class_persos.php');
 								echo "</div>";
 							}	
 							
+						}
+
+						//------ LOG ------
+						if ($msg['type'] == 'start') { ?>
+
+							<div></div><div class="msg centering">Bienvenue dans une nouvelle aventure ! Poste un premier message pour commencer</div>
+
+						<?php
 						}
 					}
 				}

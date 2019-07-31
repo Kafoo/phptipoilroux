@@ -9,17 +9,27 @@ if (isset($_POST['submit'])) {
 		$persoID = $_POST['persoID'];
 		$avID = $_GET['avID'];
 
-		//On check si le dernier post date d'il y a moins de 6h
 		$req = $bdd->query("
-			SELECT dat
-			FROM mas_messages_aventure
-			WHERE avID='$avID'
+			SELECT dat, type, postID, persoID
+			FROM mas_av_entries
+			WHERE avID='$avID' 
 			ORDER BY id DESC
+			LIMIT 1
 			");
-		$lastPostDat = $req->fetch()[0];
+		$lastPost = $req->fetch();
 
+		//Si le dernier post est le "start", on le supprime.
+		if ($lastPost['type'] == 'start'){
+			$bdd->query("
+				DELETE FROM mas_av_entries
+				WHERE avID = '$avID'
+				AND type = 'start'
+				");
+		}
+
+		//On check si le dernier post date d'il y a moins de 6h
 		$exDat_current = explode('--', $dat);
-		$exDat_old = explode('--', $lastPostDat);
+		$exDat_old = explode('--', $lastPost['dat']);
 		$day_current = new DateTime(str_replace('/', '-', $exDat_current[0]));
 		$day_old = new DateTime(str_replace('/', '-', $exDat_old[0]));
 		$day_interval = $day_current->diff($day_old);
@@ -61,19 +71,12 @@ if (isset($_POST['submit'])) {
 		}
 
 		//On défini le postID (incrémentation ou non)
-		$req = $bdd->query("
-			SELECT postID, persoID, type
-			FROM mas_av_entries
-			WHERE avID='$avID'
-			ORDER BY id DESC
-			LIMIT 1
-			");
-		$res = $req->fetchall()[0];
-		if ($persoID == $res['persoID'] 
-		AND ($res['type'] == 'rp' OR $res['type'] == 'drPlayer')) {
-			$postID = $res['postID'];
+
+		if ($persoID == $lastPost['persoID'] 
+		AND ($lastPost['type'] == 'rp' OR $lastPost['type'] == 'drPlayer')) {
+			$postID = $lastPost['postID'];
 		} else {
-			$postID = $res['postID']+1;
+			$postID = $lastPost['postID']+1;
 		}
 
 		//Rentrée en BDD

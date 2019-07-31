@@ -74,7 +74,7 @@ foreach ($allo as $alloMsg) {
 
 	    var refine = "?action=alloRefresh"+"&lastMsgID="+lastMsgID+"&userID="+userID+"&otherID="+otherID+"&avID="+avID;
 
-		http.open('GET','server/HTTP_REQUEST.php'+refine, true);
+		http.open('GET','server/request_aventures.php'+refine, true);
 		http.send();
 
 

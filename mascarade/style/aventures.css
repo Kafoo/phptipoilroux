@@ -48,7 +48,6 @@
 
 	.joinPerso{
 		position: absolute;
-		display: none;
 		opacity: 0;
 		top: 0;
 		left: 0;
@@ -60,7 +59,7 @@
 	    border-radius: 5px;
 	    background-color: rgb(163, 162, 144);
 		z-index: 500;
-		overflow: hidden;
+		overflow: auto;
 	}
 
 	.joinPerso li{
@@ -1139,6 +1138,10 @@
 		overflow: hidden;
 	}
 
+	.OWContent{
+		height: calc(100% - 38px);
+	}
+
 	h3{
 		position: absolute;
 		width: 100%;
@@ -1217,6 +1220,7 @@
 
 	.alloGM-content{
 		height: 133px;
+		margin-top: 6px;
 	}
 
 	.notesPaper{

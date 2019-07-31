@@ -84,3 +84,80 @@ function choose(what,choix){
 	stock.innerHTML = choix;
 	stock.setAttribute("value", choix);
 }
+
+
+//SELECT NATURE
+$('.selectNature').change(function(){
+	var natureType;
+	if ($(this).attr('natureType') == 'race') {natureType = 'race';} 
+	else if ($(this).attr('NatureType') == 'classe') {natureType = 'classe';}
+	var natureID = this.value;
+	
+
+	//Loading
+	if (natureType == 'race') {
+		$('.raceDescription').html('...');		
+		$('.selectCapacite').html('<option>...</option>');
+		$('.capaciteDescription-container').html('...');
+	}
+	if (natureType == 'classe') {
+		$('.classeDescription').html('...');		
+		$('.selectDiscipline').html('<option>...</option>');
+		$('.disciplineDescription-container').html('...');
+	}
+
+	//AJAX
+    $.get({
+		url : 'server/request_univers?get=natureInfos&natureID='+natureID,
+		dataType : 'json', // On désire recevoir du HTML
+
+		success : function(data, statut){
+			//NATURE = RACE
+			if (natureType == 'race') {
+				//On affiche la description
+				$('.raceDescription').html(data['description'])
+				//On vide le choix des capacités et on le rempli
+				$('.selectCapacite').html('');
+				$('.capaciteDescription-container').html('');
+				for (var i = data['powers'].length - 1; i >= 0; i--) {
+					$power = data['powers'][i]
+					console.log('yo')
+					$('.selectCapacite').append('<option value="'+$power['id']+'">'+$power['name']+' [lvl'+$power['lvl']+']</option>')
+					$('.capaciteDescription-container').append('<div class="capaciteDescription" powerID="'+$power['id']+'" hidden>'+$power['description']+'</div>');					
+				}
+			}
+			//NATURE = CLASSE
+			if (natureType == 'classe') {
+				//On affiche la description
+				$('.classeDescription').html(data['description'])
+				//On vide le choix des disciplines et on le rempli
+				$('.selectDiscipline').html('');
+				$('.disciplineDescription-container').html('');
+				for (var i = data['powers'].length - 1; i >= 0; i--) {
+					$power = data['powers'][i]
+					$('.selectDiscipline').append('<option value="'+$power['id']+'">'+$power['name']+' [lvl'+$power['lvl']+']</option>')
+					$('.disciplineDescription-container').append('<div class="disciplineDescription" powerID="'+$power['id']+'" hidden>'+$power['description']+'</div>');					
+				}
+			}
+			$('.selectPower').trigger('change');
+		},
+
+		error : function(e){
+		}
+	});
+})
+//Au chargement, on trigger le change pour afficher les infos des premières natures
+$('.selectNature').trigger('change');
+
+//SELECT POWERS
+$('.selectCapacite').change(function(){
+	var powerID = $(this).val();
+	$('.capaciteDescription-container').children('[powerID]').hide();
+	$('.capaciteDescription-container').children('[powerID="'+powerID+'"]').show();
+})
+$('.selectDiscipline').change(function(){
+	var powerID = $(this).val();
+	$('.disciplineDescription-container').children('[powerID]').hide();
+	$('.disciplineDescription-container').children('[powerID="'+powerID+'"]').show();
+})
+

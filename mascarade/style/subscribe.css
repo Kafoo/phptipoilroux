@@ -32,3 +32,13 @@ input[type='submit']{
 	width: 300px;
 	margin: 100px auto;
 }
+
+@media (max-width: 720px){
+	#help{
+		position: fixed;
+		top: 50px;
+		left: 0;
+		width: 100%;
+		z-index: 20000;
+	}
+}

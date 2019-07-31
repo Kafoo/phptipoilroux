@@ -2,7 +2,7 @@
 
 $avID = $_GET['avID'];
 
-//--------------PERSONNAGES--------------
+//--------------INFOS PERSONNAGES--------------
 
 //On met tous les persos présents et leurs infos dans $coterie
 $req = $bdd->query("
@@ -10,8 +10,6 @@ $req = $bdd->query("
 	FROM mas_persos
 	JOIN mas_relation_perso2aventure
 	ON mas_persos.id=mas_relation_perso2aventure.persoID
-	LEFT JOIN mas_disciplines
-	ON mas_persos.discID=mas_disciplines.id
 	LEFT JOIN mas_leveling
 	ON mas_persos.lvl=mas_leveling.id
 	WHERE mas_relation_perso2aventure.avID = '$avID'
@@ -50,7 +48,20 @@ if ($userInAv == False){
 }
 
 
-//--------------MESSAGES--------------
+//--------------INFOS AVENTURE&UNIVERS--------------
+
+$req = $bdd->query("
+	SELECT
+	av.nom_aventure, av.gmID,
+	univ.name, univ.c1_name, univ.c2_name, univ.c3_name, univ.c4_name, univ.c5_name
+	FROM mas_aventures as av
+	INNER JOIN mas_univers as univ
+	ON av.univID = univ.id
+	WHERE av.id = '$avID'
+	");
+$avInfos = $req->fetch();
+
+//--------------INFOS MESSAGES--------------
 
 
 $req = $bdd->query("
@@ -82,7 +93,7 @@ $req = $bdd->query("
 $allMsg = $req->fetchall();
 
 //On cherche si le user est le GM
-if ($allMsg[0]['gmID'] == $userID) {
+if ($avInfos['gmID'] == $userID) {
 	$_SESSION['GM'] = "1";
 } else {
 	$_SESSION['GM'] = "0";
@@ -136,7 +147,7 @@ $req = $bdd->query("
 	c5_name
 	FROM mas_aventures
 	INNER JOIN mas_univers
-	ON mas_aventures.universID = mas_univers.id
+	ON mas_aventures.univID = mas_univers.id
 	WHERE mas_aventures.id = '$avID'
 	");
 

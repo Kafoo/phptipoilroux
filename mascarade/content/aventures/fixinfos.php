@@ -5,6 +5,10 @@
 		</div>
 	</div>
 	<?php
+	//S'il n'y a que le GM pour le moment
+	if (count($coterie) == 1 AND $coterie[0]['nom'] == 'GM'){
+		echo "<br>Il n'y a pas encore de joueur dans ton aventure<br><br>";
+	}
 	for ($j=0; $j < count($coterie); $j++) {  
 		if ($coterie[$j]['nom']!=='GM') { //On n'affiche pas le GM ?> 
 			<div class="infoPerso"> 

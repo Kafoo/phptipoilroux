@@ -97,7 +97,7 @@ $('.fixInfosSlider').height(sectionHeight-200);
 
 			var refine = $(e.currentTarget).attr('ajax');
 			var http = new XMLHttpRequest();
-			http.open('GET', 'server/HTTP_REQUEST.php'+refine, false);
+			http.open('GET', 'server/request_aventures.php'+refine, false);
 			http.send();
 		}
 	})*/
@@ -163,7 +163,7 @@ $('.rollTheDie').one('click', function(e){
 	var refine = $(e.currentTarget).attr('ajax');
 
 	var http = new XMLHttpRequest();
-	http.open('GET', 'server/HTTP_REQUEST.php'+refine+'&result='+result, false);
+	http.open('GET', 'server/request_aventures.php'+refine+'&result='+result, false);
 	http.send();
 
 	alert('Tu as fait '+ result +' à ton jet ! ;-) \nTon résultat a bien été enregistré');
@@ -320,7 +320,7 @@ $("#diceReply-submit").click(function(){
 		    var userID = $('#alloGM-userID').attr('userID');
 		    var otherID = $('#alloGM-otherID').attr('otherID');
 		    var avID = $('#avID').html();
-			http.open('POST','server/HTTP_REQUEST.php', true);
+			http.open('POST','server/request_aventures.php', true);
 			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			http.send("action=alloGM&content="+URIcontent+"&userID="+userID+"&otherID="+otherID+"&avID="+avID);	
 
@@ -364,7 +364,7 @@ $("#diceReply-submit").click(function(){
 	       }
 	      }
 
-		http_notif.open('GET','server/HTTP_REQUEST.php?action=notifUnseen&avID='+avID+"&userID="+userID, true);
+		http_notif.open('GET','server/request_aventures.php?action=notifUnseen&avID='+avID+"&userID="+userID, true);
 		http_notif.send();
 	}
 
@@ -421,7 +421,7 @@ $("#diceReply-submit").click(function(){
 	    var content =  encodeURIComponent($('#editNotesArea').val().replace(/\\n/g, '\n'));
 	    var userID = $('#userID').html();
 	    var avID = $('#avID').html();
-		http.open('POST','server/HTTP_REQUEST.php', true);
+		http.open('POST','server/request_aventures.php', true);
 		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		http.send("action=editNotes&notesContent="+content+"&userID="+userID+"&avID="+avID);
 
@@ -550,7 +550,7 @@ $('.updatePerso_submit').click(function(e){
        }
     };
 
-	http.open('POST','server/HTTP_REQUEST', true);
+	http.open('POST','server/updates.php', true);
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	http.send("action=updatePerso&perso="+perso+"&avID="+avID);
 

@@ -3,7 +3,7 @@ section{
 }
 
 .ventreBox{
-	width: 60%;
+	width: 80%;
 	margin: 30px auto;
 	border: 1px solid black;
 	border-radius: 3px;
@@ -74,15 +74,32 @@ section{
 
 .descriptionBox{
 	height: 150px;
-	margin:  10px 5% 20px 5%;
-	padding: 5px;
+	margin:  10px 10% 20px 10%;
+	padding: 12px 20px;
 	border: 1px solid black;
 	border-radius: 4px;
 	background-color: rgba(217, 217, 217, 0.18);
 	overflow: auto;
 }
 
+.addBox{
+	min-height: 200px;
+	margin: 20px 10%;
+	border: 1.5px solid black;
+	background-color: rgba(200,200,200,0.8);
+}
 
+.addBox textarea{
+	height: 100px;
+	width: 400px;
+	max-width: 80%;
+}
+
+.addBox input{
+	width: 200px;
+	max-width: 80%;
+	}
+	
 /*---T'AS QUOI DANS LE VENTRE---*/
 
 .displayCarac{
