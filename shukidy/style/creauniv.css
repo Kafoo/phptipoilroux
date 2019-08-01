@@ -2,18 +2,28 @@ section{
 	text-align: center;
 }
 
+
 h3{
-	background-color: rgba(0,0,0,0.3);
-	width: 100%;
-	margin: 0 0 20px 0;
-	padding: 5px 0;
+	background-color: rgb(57, 57, 57);
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 5px 0;
+    color: #ffffff;
+    border-bottom: 1px solid black;
+    text-decoration: none;
 }
 
 h4{
 	text-shadow: none;
 	color: black;
 	text-decoration: underline;
-	margin: 10px 0;
+	padding: 0;
+	min-height: 40px;
+	line-height: 40px;
+}
+
+.saving{
+	font-size: 30px;
 }
 
 .ventreBox{
@@ -30,13 +40,14 @@ h4{
 }
 
 .titre{
-	width: 85%;
-	margin: 70px auto 40px auto;
-	padding: 10px;
-	font-size: 1.8em;
-	color: rgb(223, 213, 213);
-	background-color: rgba(0,0,0, 0.4);
-	border-radius: 5px;
+    width: 100%;
+    margin: 70px auto 40px auto;
+    padding: 3px;
+    font-size: 2em;
+    color: rgb(0, 0, 0);
+    background-color: rgba(141, 139, 139, 0.4);
+    border-radius: 5px;
+    border-bottom: 3px solid black;
 }
 
 .soustitre{
@@ -72,65 +83,117 @@ h4{
 	top: 25px;
 }
 
+.caracBox{
+	margin: 20px;
+}
+
+.caracBox input{
+	margin: 5px;
+}
+
+.caracBox input[type="submit"]{
+	width: 200px;
+	margin: 15px;
+}
+
 .selectContainer{
 	margin: auto;
 	overflow: auto;
 }
 
 .selectBox{
-	min-width: 200px;
-	height: 30px;
-	margin: 5px;
-	font-size: 16px;
-	line-height: 50px;
-	text-align: center;
-	text-align-last: center;
-	background-color: grey;
-	border-radius: 4px;
+    width: 80%;
+    height: 40px;
+    margin: 5px 10% 0 10%;
+    font-size: 18px;
+    line-height: 50px;
+    text-align: center;
+    text-align-last: center;
+    background-color: #565656;
+    border-radius: 4px 4px 0 0;
+    border: 1.5px solid black;
+    border-bottom: none;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .selectBox.editArea{
-	height: 30px;
-	line-height: 30px;
+    width: calc(80% - 3px);
+    cursor: text;
 }
 
 .descriptionBox{
-	display: block;
-	height: 150px;
-	width: calc(80% - 40px);
-	margin:  10px 10% 10px 10%;
-	padding: 12px 20px;
-	border: 1px solid black;
-	border-radius: 4px;
-	background-color: rgba(217, 217, 217, 0.18);
-	overflow: auto;
+    display: block;
+    height: 150px;
+    width: calc(80% - 43px);
+    margin: 0 10% 20px 10%;
+    padding: 12px 20px;
+    border: 1.5px solid black;
+    border-top: 1px solid black;
+    border-radius: 0 0 4px 4px;
+    background-color: rgba(0, 0, 0, 0.27);
+    overflow: auto;
+}
+
+.selectBox, .descriptionBox{
+    background-color: rgba(200,200,200,0.8);
+    box-shadow: 3px 2px 14px 2px #00000047;
+    color: black;
 }
 
 .editArea{
-	background-color: rgba(217, 217, 217, 0.5);
-	resize: vertical;
+    background-color: rgb(207, 207, 207);
+    resize: vertical;
+    color: black;
 }
 
 .addBox{
-	min-height: 200px;
-	margin: 20px 10%;
-	padding: 5px 0;
-	border: 1.5px solid black;
-	background-color: rgba(200,200,200,0.8);
+	position: relative;
+    margin-top: 20px;
+    padding: 0 0 1px 0;
+    border-top: 1px solid black;
+    background-color: rgba(0, 0, 0, 0.28);
+    color: #c7c7c7;
+}
+
+.addBox h4{
+    color: #c2c2c2;
+    cursor: pointer;
+}
+
+.addBox .downArrow, .addBox .upArrow{
+	display: inline-block;
+    width: 30px;
+    height: 21px;
+    margin: 0 30px;
+    background-size: cover;
+}
+
+.addBox .downArrow{
+    background-image: url(../img/icones/closingArrow.png);
+}
+
+.addBox .upArrow{
+    background-image: url(../img/icones/arrowUP.png);
+}
+
+.addBox input, .addBox textarea{
+	border-radius: 4px;
 }
 
 .addBox textarea{
+	padding: 10px;
 	height: 100px;
-	width: 400px;
-	max-width: 80%;
+	width: 80%;
+	resize: vertical;
 }
 
 .addBox input{
 	width: 200px;
 	max-width: 80%;
 	margin: 5px 0;
+	text-align: center;
 	}
-	
 
 .update_button {
 	width: 200px;
@@ -138,6 +201,7 @@ h4{
 	margin: 5px auto;
 	border: 1px solid black;
 	border-radius: 3px;
+	background-color: #ffffff94;
 }
 
 /*---T'AS QUOI DANS LE VENTRE---*/

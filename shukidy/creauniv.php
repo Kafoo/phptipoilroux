@@ -61,11 +61,11 @@ $natures = $req->fetchall();
 
 <div class="ventreBox">
 	<div class="caracBox">
-		Caractéristique 1 : <input type="text" class="input_carac1" value="<?=$univers['c1_name']?>"><br>
-		Caractéristique 2 : <input type="text" class="input_carac2" value="<?=$univers['c2_name']?>"><br>
-		Caractéristique 3 : <input type="text" class="input_carac3" value="<?=$univers['c3_name']?>"><br>
-		Caractéristique 4 : <input type="text" class="input_carac4" value="<?=$univers['c4_name']?>"><br>
-		Caractéristique 5 : <input type="text" class="input_carac5" value="<?=$univers['c5_name']?>"><br>
+		Caractéristique 1 : <input type="text" class="input_carac1" value="<?=$univers['c1_name']?>" maxlength="20"><br>
+		Caractéristique 2 : <input type="text" class="input_carac2" value="<?=$univers['c2_name']?>" maxlength="20"><br>
+		Caractéristique 3 : <input type="text" class="input_carac3" value="<?=$univers['c3_name']?>" maxlength="20"><br>
+		Caractéristique 4 : <input type="text" class="input_carac4" value="<?=$univers['c4_name']?>" maxlength="20"><br>
+		Caractéristique 5 : <input type="text" class="input_carac5" value="<?=$univers['c5_name']?>" maxlength="20"><br>
 		<input type="submit" class="carac_submit">
 	</div>
 </div>
@@ -84,25 +84,28 @@ $natures = $req->fetchall();
 	</div>
 
 	<div class="addBox addRace">
-		<h4>Ajouter une race </h4>
+		<h4><div class="downArrow"></div>Ajouter une race<div class="downArrow"></div></h4>
 
-		<label>nom :</label><br>
-		<input class="race_name" type="text"><br>
+		<div class="addContainer" hidden>
+			<label>nom :</label><br>
+			<input class="race_name" type="text" maxlength="20"><br>
 
 
-		<label>Description :</label><br>
-		<textarea class="race_description"></textarea><br>
+			<label>Description :</label><br>
+			<textarea class="race_description"></textarea><br>
 
-		<input type="submit" class="nature_submit" nature_type="race">
+			<input type="submit" class="nature_submit" nature_type="race">
+		</div>
 	</div>
 
 
-<div style="height: 30px; border-bottom: 2px solid black;" SPACER></div>
+</div>
+<div class="ventreBox">
 <!-------------- CAPACITES DE LA RACE -------------->
 
 	<div class="capaBox">
 		<div class="selectContainer">
-			<h3>Capacités de la race:</h3>
+			<h3>Capacités de la race :</h3>
 			<select class="selectBox selectAttribute selectPower selectCapa"></select>
 		</div>
 		<div class="descriptionBox capaDescription"></div>
@@ -111,16 +114,18 @@ $natures = $req->fetchall();
 	</div>
 
 	<div class="addBox addCapa">
-		<h4>Ajouter une capacité pour cette race</h4>
+		<h4><div class="downArrow"></div>Ajouter une capacité pour cette race<div class="downArrow"></div></h4>
 
-		<label>nom :</label><br>
-		<input class="capa_name" type="text"><br>
+		<div class="addContainer" hidden>
+			<label>nom :</label><br>
+			<input class="capa_name" type="text" maxlength="20"><br>
 
 
-		<label>Description :</label><br>
-		<textarea class="capa_description"></textarea><br>
+			<label>Description :</label><br>
+			<textarea class="capa_description"></textarea><br>
 
-		<input type="submit" class="power_submit" power_type='capa'>
+			<input type="submit" class="power_submit" power_type='capa'>
+		</div>
 	</div>
 
 
@@ -140,24 +145,27 @@ $natures = $req->fetchall();
 	</div>
 
 	<div class="addBox addClasse">
-		<h4>Ajouter une classe </h4>
+		<h4><div class="downArrow"></div>Ajouter une classe<div class="downArrow"></div></h4>
 
-		<label>nom :</label><br>
-		<input class="classe_name" type="text"><br>
+		<div class="addContainer" hidden>
+			<label>nom :</label><br>
+			<input class="classe_name" type="text" maxlength="20"><br>
 
 
-		<label>Description :</label><br>
-		<textarea class="classe_description"></textarea><br>
+			<label>Description :</label><br>
+			<textarea class="classe_description"></textarea><br>
 
-		<input type="submit" class="nature_submit" nature_type="classe">
+			<input type="submit" class="nature_submit" nature_type="classe">
+		</div>
 	</div>
 
-<div style="height: 30px; border-bottom: 2px solid black;" SPACER></div>
+</div>
+<div class="ventreBox">
 <!-------------- DISCIPLINES DE LA CLASSE -------------->
 
 	<div class="discBox">
 		<div class="selectContainer">
-			<h3>Discipline de la classe:</h3>
+			<h3>Disciplines de la classe :</h3>
 			<select class="selectBox selectAttribute selectPower selectDisc"></select>
 		</div>
 		<div class="descriptionBox discDescription"></div>
@@ -166,16 +174,18 @@ $natures = $req->fetchall();
 	</div>
 
 	<div class="addBox addDisc">
-		<h4>Ajouter une discipline pour cette classe</h4>
+		<h4><div class="downArrow"></div>Ajouter une discipline pour cette classe<div class="downArrow"></div></h4>
 
-		<label>nom :</label><br>
-		<input class="disc_name" type="text"><br>
+		<div class="addContainer" hidden>
+			<label>nom :</label><br>
+			<input class="disc_name" type="text" maxlength="20"><br>
 
 
-		<label>Description :</label><br>
-		<textarea class="disc_description"></textarea><br>
+			<label>Description :</label><br>
+			<textarea class="disc_description"></textarea><br>
 
-		<input type="submit" class="power_submit" power_type='disc'>
+			<input type="submit" class="power_submit" power_type='disc'>
+		</div>
 	</div>
 
 

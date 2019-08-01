@@ -43,7 +43,7 @@ function refresh(what, natureID = 0){
 	else {type = what}
 	//Loading
 	$('.select'+What).html('<option>...</option>');
-	$('.'+what+'Description').html('...');
+	$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
 
 	$.post({
 		url : 'server/request_univers.php',
@@ -108,8 +108,6 @@ $('.selectNature').change(function(){
 // On initialise tout au chargement
 refresh('race')
 refresh('classe')
-refresh('capa')
-refresh('disc')
 
 
 //--------- EDIT DESCRIPTION ---------
@@ -128,7 +126,7 @@ function edit(){
 	var description_old = descriptionBox.html();
 	var format_description = description_old.replace(/\<br>/g, '');
 
-	selectBox.after('<input type="text" class="editArea selectBox select'+What+'" value="'+Name_old+'">')
+	selectBox.after('<input type="text" class="editArea selectBox select'+What+'" maxlength="20" value="'+Name_old+'">')
 	selectBox.hide();
 	descriptionBox.replaceWith('<textarea class="editArea descriptionBox '+what+'Description">'+format_description+'</textarea>')
 	$(this).replaceWith('<div class="button update_button confirm_button confirm_'+what+'" edit="'+what+'">valider</div>')
@@ -159,7 +157,6 @@ function confirm_edit(){
 	var description_new = descriptionBox.val();
 	var name_new = editArea.val();
 	var id = $('option:selected', '.select'+What).attr('id');
-	debugger
 	descriptionBox.replaceWith('<div class="descriptionBox '+what+'Description"></div>')
 	selectBox.show();
 	editArea.remove();
@@ -169,7 +166,7 @@ function confirm_edit(){
 
 	//Loading
 	$('.select'+What).html('<option>...</option>');
-	$('.'+what+'Description').html('...');
+	$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
 
 	$.post({
 		url: 'server/set_univers.php',
@@ -197,6 +194,20 @@ function confirm_edit(){
 }
 
 $('.edit_button').one("click", edit);
+
+
+//--------- CREATE SLIDE ---------
+
+
+$('.addBox h4').click(function(e){
+	$(this).siblings('.addContainer').slideToggle();
+	if ($(this).children('.downArrow').length > 0){
+		$(this).children('.downArrow').replaceWith('<div class="upArrow"></div>')
+	}else{
+		$(this).children('.upArrow').replaceWith('<div class="downArrow"></div>')
+	}
+})
+
 
 //--------- CREATE NATURE ---------
 
