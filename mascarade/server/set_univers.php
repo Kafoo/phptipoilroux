@@ -74,6 +74,9 @@ if (isset($_POST['action']) AND $_POST['action'] == 'deleteNature') {
 			DELETE FROM rel_univ2natures
 			WHERE natureID = '$natureID'
 			");
+
+		//On supprime les pouvoirs qui lui sont liés ??
+		//Peut être pas...
 	}
 }
 

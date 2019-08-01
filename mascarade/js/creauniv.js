@@ -34,9 +34,13 @@ $('.carac_submit').click(function(e){
 function refresh(what, natureID = 0){
 	var univID = $('.univID-stock').html()
 	var What = what[0].toUpperCase() + what.substring(1)
+	var type
+	if (what == 'capa') {type = 'capacité'}
+	else if (what == 'disc') {type = 'discipline'}
+	else {type = what}
 	//Loading
-	$('.select'+What).html('');
-	$('.'+what+'Description').html('');
+	$('.select'+What).html('<option>...</option>');
+	$('.'+what+'Description').html('...');
 
 	$.post({
 
@@ -49,14 +53,21 @@ function refresh(what, natureID = 0){
 		},
 		dataType : 'json',
 		success : function(data){
-			if (what == 'race') {refresh('capa', data[0]['id'])}
-			if (what == 'classe') {refresh('disc', data[0]['id'])}
-			$.each(data, function(key, value){
-				if (key == 0) {
-					$('.'+what+'Description').html(value['description'])
-				}
-				$('.select'+What).append("<option value='"+value['description']+"' id='"+value['id']+"'>"+value['name']+"</option>")
-			})
+			$('.select'+What).html('');
+			$('.'+what+'Description').html('');
+			if (data.length == 0) {
+				$('.select'+What).html('<option>---</option>');
+				$('.'+what+'Description').html('pas encore de '+type);
+			}else{
+				if (what == 'race') {refresh('capa', data[0]['id'])}
+				if (what == 'classe') {refresh('disc', data[0]['id'])}
+				$.each(data, function(key, value){
+					if (key == 0) {
+						$('.'+what+'Description').html(value['description'])
+					}
+					$('.select'+What).append("<option value='"+value['description']+"' id='"+value['id']+"'>"+value['name']+"</option>")
+				})
+			}
 		}
 	})
 
@@ -107,7 +118,7 @@ $('.nature_submit').click(function(){
   		dataType: 'html',
 
   		success: function(data, statut){
-  			location.reload();
+  			refresh(type)
   		},
 	})
 
