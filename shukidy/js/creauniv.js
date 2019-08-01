@@ -108,6 +108,8 @@ $('.selectNature').change(function(){
 // On initialise tout au chargement
 refresh('race')
 refresh('classe')
+refresh('capa')
+refresh('disc')
 
 
 //--------- EDIT DESCRIPTION ---------
