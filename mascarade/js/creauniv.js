@@ -22,7 +22,10 @@ $('.carac_submit').click(function(e){
   		dataType: 'html',
 
   		success: function(data, statut){
-  			$('.carac_submit').after('ok')
+  			$('.carac_submit').after('<span class="success">ok</span>')
+  			setTimeout(function(){
+  				$('.success').fadeOut(200)
+  			}, 3000)
   		},
 	})
 	
@@ -101,8 +104,9 @@ $('.selectNature').change(function(){
 //--------- CREATE NATURE ---------
 
 $('.nature_submit').click(function(){
+	var submit = $(this)
 	var univID = $('.univID-stock').html();
-	var type = $(this).attr('nature_type');
+	var type = submit.attr('nature_type');
 	var nature_name = $('.'+type+'_name').val();
 	var nature_description = $('.'+type+'_description').val();
 
@@ -118,6 +122,12 @@ $('.nature_submit').click(function(){
   		dataType: 'html',
 
   		success: function(data, statut){
+  			$('.'+type+'_name').val('');
+  			$('.'+type+'_description').val('');
+  			submit.after('<span class="success">ok</span>')
+  			setTimeout(function(){
+  				$('.success').fadeOut(200)
+  			}, 3000)
   			refresh(type)
   		},
 	})
@@ -154,9 +164,10 @@ $('.deleteNature').click(function(e){
 //--------- CREATE POWER ---------
 
 $('.power_submit').click(function(){
+	var submit = $(this)
 	var univID = $('.univID-stock').html();
-	var type = $(this).attr('power_type');
-	var natureID = $(this).parent().parent().find('option:selected', '.selectNature').attr('id');
+	var type = submit.attr('power_type');
+	var natureID = submit.parent().parent().find('option:selected', '.selectNature').attr('id');
 	var name = $('.'+type+'_name').val();
 	var description = $('.'+type+'_description').val();
 
@@ -173,6 +184,12 @@ $('.power_submit').click(function(){
   		dataType: 'html',
 
   		success: function(data, statut){
+  			$('.'+type+'_name').val('');
+  			$('.'+type+'_description').val('');
+  			submit.after('<span class="success">ok</span>')
+  			setTimeout(function(){
+  				$('.success').fadeOut(200)
+  			}, 3000)
   			refresh(type, natureID)
   		},
 	})
