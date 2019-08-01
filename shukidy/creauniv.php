@@ -74,9 +74,9 @@ $natures = $req->fetchall();
 <div class="titre">RACES</div>
 <div class="ventreBox">
 	<div class="raceBox">
-		<div class="selectBox">
+		<div class="selectContainer">
 			<h3>Races disponibles :</h3>
-			<select class="selectAttribute selectNature selectRace"></select>
+			<select class="selectBox selectAttribute selectNature selectRace"></select>
 		</div>
 		<div class="descriptionBox raceDescription"></div>
 		<div class="button update_button edit_button edit_race" edit="race">éditer cette race</div>
@@ -101,9 +101,9 @@ $natures = $req->fetchall();
 <!-------------- CAPACITES DE LA RACE -------------->
 
 	<div class="capaBox">
-		<div class="selectBox">
+		<div class="selectContainer">
 			<h3>Capacités de la race:</h3>
-			<select class="selectAttribute selectPower selectCapa"></select>
+			<select class="selectBox selectAttribute selectPower selectCapa"></select>
 		</div>
 		<div class="descriptionBox capaDescription"></div>
 		<div class="button update_button edit_button edit_capa" edit="capa">éditer cette capacité</div>	
@@ -130,9 +130,9 @@ $natures = $req->fetchall();
 <div class="titre">CLASSES</div>
 <div class="ventreBox">
 	<div class="classeBox">
-		<div class="selectBox">
+		<div class="selectContainer">
 			<h3>Classes disponibles :</h3>
-			<select class="selectAttribute selectNature selectClasse"></select>
+			<select class="selectBox selectAttribute selectNature selectClasse"></select>
 		</div>
 		<div class="descriptionBox classeDescription"></div>
 		<div class="button update_button edit_button edit_classe" edit="classe">éditer cette classe</div>
@@ -156,9 +156,9 @@ $natures = $req->fetchall();
 <!-------------- DISCIPLINES DE LA CLASSE -------------->
 
 	<div class="discBox">
-		<div class="selectBox">
+		<div class="selectContainer">
 			<h3>Discipline de la classe:</h3>
-			<select class="selectAttribute selectPower selectDisc"></select>
+			<select class="selectBox selectAttribute selectPower selectDisc"></select>
 		</div>
 		<div class="descriptionBox discDescription"></div>
 		<div class="button update_button edit_button edit_disc" edit="disc">éditer cette discipline</div>

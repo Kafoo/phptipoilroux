@@ -64,7 +64,7 @@ function refresh(what, natureID = 0){
 				$('.select'+What).html('<option>---</option>');
 				$('.'+what+'Description').html('pas encore de '+type);
 				$('.edit_'+what).hide();
-				$('.delete_'+what).hide();				
+				$('.delete_'+what).hide();			
 			}else{
 				//On refresh les pouvoirs correspondants à la nature
 				if (what == 'race') {refresh('capa', data[0]['id'])}
@@ -114,15 +114,24 @@ refresh('disc')
 
 //--------- EDIT DESCRIPTION ---------
 
-function edit_description(){
+function edit(){
 	var what = $(this).attr('edit');
 	var What = what[0].toUpperCase() + what.substring(1)
 	var descriptionBox = $('.'+what+'Description')
+	var selectBox = $('.select'+What)
+	var name_old = $('option:selected', '.select'+What).html();
+	if (name_old.length > 1) {		
+		var Name_old = name_old[0].toUpperCase() + name_old.substring(1)
+	}else{
+		Name_old = name_old.toUpperCase();
+	}
 	var description_old = descriptionBox.html();
 	var format_description = description_old.replace(/\<br>/g, '');
+
+	selectBox.after('<input type="text" class="editArea selectBox select'+What+'" value="'+Name_old+'">')
+	selectBox.hide();
 	descriptionBox.replaceWith('<textarea class="editArea descriptionBox '+what+'Description">'+format_description+'</textarea>')
 	$(this).replaceWith('<div class="button update_button confirm_button confirm_'+what+'" edit="'+what+'">valider</div>')
-	$('.select'+What).prop('disabled', 'disabled');
 	$('.delete_'+what).hide();
 	$('.confirm_'+what).one("click", confirm_edit);
 }
@@ -145,13 +154,18 @@ function confirm_edit(){
 	var descriptionBox = $('.'+what+'Description')
 	var What = what[0].toUpperCase() + what.substring(1)
 	var descriptionBox = $('.'+what+'Description')
+	var selectBox = $("select.select"+What)
+	var editArea = $("input.select"+What)
 	var description_new = descriptionBox.val();
-	descriptionBox.replaceWith('<div class="descriptionBox '+what+'Description"></div>')
-	$(this).replaceWith('<div class="button update_button edit_button edit_'+what+'" edit="'+what+'">éditer cette '+type+'</div>')
-	$('.select'+What).prop('disabled', false);
-    $('.edit_'+what).one("click", edit_description);
-
+	var name_new = editArea.val();
 	var id = $('option:selected', '.select'+What).attr('id');
+	debugger
+	descriptionBox.replaceWith('<div class="descriptionBox '+what+'Description"></div>')
+	selectBox.show();
+	editArea.remove();
+	$(this).replaceWith('<div class="button update_button edit_button edit_'+what+'" edit="'+what+'">éditer cette '+type+'</div>')
+    $('.edit_'+what).one("click", edit);
+
 
 	//Loading
 	$('.select'+What).html('<option>...</option>');
@@ -160,9 +174,10 @@ function confirm_edit(){
 	$.post({
 		url: 'server/set_univers.php',
 		data: {
-			action: 'edit_description',
+			action: 'edit',
 			what: what,
 			id: id,
+			name: name_new,
 			description: description_new
 		},
   		dataType: 'html',
@@ -178,10 +193,10 @@ function confirm_edit(){
   		},
 	})
 
+
 }
 
-$('.edit_button').one("click", edit_description);
-
+$('.edit_button').one("click", edit);
 
 //--------- CREATE NATURE ---------
 

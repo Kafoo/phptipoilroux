@@ -25,6 +25,10 @@ h4{
 	overflow: auto;
 }
 
+.selectAttribute{
+	text-transform: capitalize;
+}
+
 .titre{
 	width: 85%;
 	margin: 70px auto 40px auto;
@@ -68,12 +72,12 @@ h4{
 	top: 25px;
 }
 
-.selectBox{
+.selectContainer{
 	margin: auto;
 	overflow: auto;
 }
 
-.selectBox select{
+.selectBox{
 	min-width: 200px;
 	height: 30px;
 	margin: 5px;
@@ -83,6 +87,11 @@ h4{
 	text-align-last: center;
 	background-color: grey;
 	border-radius: 4px;
+}
+
+.selectBox.editArea{
+	height: 30px;
+	line-height: 30px;
 }
 
 .descriptionBox{
