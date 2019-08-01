@@ -1,7 +1,7 @@
 <!------- HEADER DESKTOP ------->
 <header id="headerDesktop" class="desktop">
 		
-	<img src="img/global/header_title.png" id="branding" style="cursor: pointer;" onclick="window.location='accueil.php';">
+	<img src="img/global/header_title_blanc2.png" id="branding" style="cursor: pointer;" onclick="window.location='accueil.php';">
 	
 	<!---- CONNECTION DESKTOP ---->
 	<div id="connectionDesktop">

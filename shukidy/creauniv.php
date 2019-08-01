@@ -7,7 +7,7 @@ include("_shared_/start.php");
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
 	<link rel="stylesheet" type="text/css" href="style/creauniv.css">
-	<title>Vampire - Ta Page</title>
+	<title>Shukidy - Edition d'univers</title>
 </head>
 <body>
 
@@ -78,10 +78,11 @@ $natures = $req->fetchall();
 			<h3>Races disponibles :</h3>
 			<select class="selectAttribute selectNature selectRace"></select>
 		</div>
-		<div class="descriptionBox raceDescription">
-		</div>
-		<span class="deleteNature" natureType="race" style="cursor: pointer"><u>supprimer cette race</u></span>
+		<div class="descriptionBox raceDescription"></div>
+		<div class="button update_button edit_button edit_race" edit="race">éditer cette race</div>
+		<div class="button update_button delete_button delete_nature delete_race" natureType="race">supprimer cette race</div>
 	</div>
+
 	<div class="addBox addRace">
 		<h4>Ajouter une race </h4>
 
@@ -95,6 +96,8 @@ $natures = $req->fetchall();
 		<input type="submit" class="nature_submit" nature_type="race">
 	</div>
 
+
+<div style="height: 30px; border-bottom: 2px solid black;" SPACER></div>
 <!-------------- CAPACITES DE LA RACE -------------->
 
 	<div class="capaBox">
@@ -102,10 +105,10 @@ $natures = $req->fetchall();
 			<h3>Capacités de la race:</h3>
 			<select class="selectAttribute selectPower selectCapa"></select>
 		</div>
-		<div class="descriptionBox capaDescription"></div>	
-		<span class="deletePower" powerType="capa" style="cursor: pointer"><u>supprimer cette capacité</u></span>	
+		<div class="descriptionBox capaDescription"></div>
+		<div class="button update_button edit_button edit_capa" edit="capa">éditer cette capacité</div>	
+		<div class="button update_button delete_button delete_power delete_capa" powerType="capa">supprimer cette capacité</div>	
 	</div>
-
 
 	<div class="addBox addCapa">
 		<h4>Ajouter une capacité pour cette race</h4>
@@ -131,10 +134,11 @@ $natures = $req->fetchall();
 			<h3>Classes disponibles :</h3>
 			<select class="selectAttribute selectNature selectClasse"></select>
 		</div>
-		<div class="descriptionBox classeDescription">
-		</div>
-		<span class="deleteNature" natureType="classe" style="cursor: pointer"><u>supprimer cette classe</u></span>
+		<div class="descriptionBox classeDescription"></div>
+		<div class="button update_button edit_button edit_classe" edit="classe">éditer cette classe</div>
+		<div class="button update_button delete_button delete_nature delete_classe" natureType="classe">supprimer cette classe</div>
 	</div>
+
 	<div class="addBox addClasse">
 		<h4>Ajouter une classe </h4>
 
@@ -148,6 +152,7 @@ $natures = $req->fetchall();
 		<input type="submit" class="nature_submit" nature_type="classe">
 	</div>
 
+<div style="height: 30px; border-bottom: 2px solid black;" SPACER></div>
 <!-------------- DISCIPLINES DE LA CLASSE -------------->
 
 	<div class="discBox">
@@ -156,12 +161,12 @@ $natures = $req->fetchall();
 			<select class="selectAttribute selectPower selectDisc"></select>
 		</div>
 		<div class="descriptionBox discDescription"></div>
-		<span class="deletePower" powerType="disc" style="cursor: pointer"><u>supprimer cette discipline</u></span>		
+		<div class="button update_button edit_button edit_disc" edit="disc">éditer cette discipline</div>
+		<div class="button update_button delete_button delete_power delete_disc" powerType="disc">supprimer cette discipline</div>		
 	</div>
 
-
 	<div class="addBox addDisc">
-		<h4>Ajouter une discipline pour cette race</h4>
+		<h4>Ajouter une discipline pour cette classe</h4>
 
 		<label>nom :</label><br>
 		<input class="disc_name" type="text"><br>
@@ -175,9 +180,6 @@ $natures = $req->fetchall();
 
 
 </div>
-
-
-
 
 
 

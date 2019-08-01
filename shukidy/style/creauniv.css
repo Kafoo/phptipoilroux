@@ -2,6 +2,20 @@ section{
 	text-align: center;
 }
 
+h3{
+	background-color: rgba(0,0,0,0.3);
+	width: 100%;
+	margin: 0 0 20px 0;
+	padding: 5px 0;
+}
+
+h4{
+	text-shadow: none;
+	color: black;
+	text-decoration: underline;
+	margin: 10px 0;
+}
+
 .ventreBox{
 	width: 80%;
 	margin: 30px auto;
@@ -55,8 +69,7 @@ section{
 }
 
 .selectBox{
-	margin: 10px auto 0 auto;
-	padding: 5px;
+	margin: auto;
 	overflow: auto;
 }
 
@@ -73,8 +86,10 @@ section{
 }
 
 .descriptionBox{
+	display: block;
 	height: 150px;
-	margin:  10px 10% 20px 10%;
+	width: calc(80% - 40px);
+	margin:  10px 10% 10px 10%;
 	padding: 12px 20px;
 	border: 1px solid black;
 	border-radius: 4px;
@@ -82,9 +97,15 @@ section{
 	overflow: auto;
 }
 
+.editArea{
+	background-color: rgba(217, 217, 217, 0.5);
+	resize: vertical;
+}
+
 .addBox{
 	min-height: 200px;
 	margin: 20px 10%;
+	padding: 5px 0;
 	border: 1.5px solid black;
 	background-color: rgba(200,200,200,0.8);
 }
@@ -98,8 +119,18 @@ section{
 .addBox input{
 	width: 200px;
 	max-width: 80%;
+	margin: 5px 0;
 	}
 	
+
+.update_button {
+	width: 200px;
+	padding: 2px 5px;
+	margin: 5px auto;
+	border: 1px solid black;
+	border-radius: 3px;
+}
+
 /*---T'AS QUOI DANS LE VENTRE---*/
 
 .displayCarac{

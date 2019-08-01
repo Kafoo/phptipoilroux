@@ -8,7 +8,7 @@ include("submits/creaperso_submit.php");
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
 	<link rel="stylesheet" type="text/css" href="style/creaperso.css">
-	<title>Vampire - Création de personnage</title>
+	<title>Shukidy - Création de personnage</title>
 </head>
 <body>
 

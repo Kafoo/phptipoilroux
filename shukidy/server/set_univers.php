@@ -26,7 +26,7 @@ if (isset($_POST['action']) AND $_POST['action'] == 'changeCaracs') {
 if (isset($_POST['action']) AND $_POST['action'] == 'addNature') {
 
 	$univID = $_POST['univID'];
-	$name = $_POST['name'];
+	$name = nl2br(htmlspecialchars(($_POST['name']), ENT_QUOTES));
 	$description = nl2br(htmlspecialchars(($_POST['description']), ENT_QUOTES));
 	$type = $_POST['type'];
 
@@ -87,7 +87,7 @@ if (isset($_POST['action']) AND $_POST['action'] == 'addPower') {
 
 	$univID = $_POST['univID'];
 	$natureID = $_POST['natureID'];
-	$name = $_POST['name'];
+	$name = nl2br(htmlspecialchars(($_POST['name']), ENT_QUOTES));
 	$description = nl2br(htmlspecialchars(($_POST['description']), ENT_QUOTES));
 	$type = $_POST['type'];
 	$lvl = 1;
@@ -142,5 +142,26 @@ if (isset($_POST['action']) AND $_POST['action'] == 'deletePower') {
 			WHERE powerID = '$powerID'
 			");
 	}
+}
+
+
+// ---------------  EDIT DESCRIPTION ---------------
+
+
+if (isset($_POST['action']) AND $_POST['action'] == 'edit_description') {
+
+	$id = $_POST['id'];
+	$description = nl2br(htmlspecialchars(($_POST['description']), ENT_QUOTES));
+
+	if ($_POST['what'] == 'race' OR $_POST['what'] == 'classe') {
+		$bdd->query("UPDATE natures SET description='$description' WHERE id='$id'");
+	}
+	if ($_POST['what'] == 'capa' OR $_POST['what'] == 'disc') {
+		$bdd->query("UPDATE powers SET description='$description' WHERE id='$id'");
+	}
+
+var_dump($description);
+
+
 }
 ?>

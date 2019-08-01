@@ -12,7 +12,7 @@ include("submits/aventures_submit.php");
     <script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
  	<!-- END TINYMCE -->
 	<link rel="stylesheet" type="text/css" href="style/aventures.css">
-	<title>Vampire - Aventures</title>
+	<title>Shukidy - Aventures</title>
 </head>
 <body>
 

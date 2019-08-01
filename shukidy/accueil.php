@@ -7,7 +7,7 @@ include("_shared_/start.php");
 <html>
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
-	<title>Vampire - Home</title>
+	<title>Shukidy - Home</title>
 </head>
 <body>
 

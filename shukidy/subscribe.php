@@ -7,7 +7,7 @@ include("submits/subscribe_submit.php"); ?>
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
 	<link rel="stylesheet" type="text/css" href="style/subscribe.css">
-	<title>Vampire - Inscription</title>
+	<title>Shukidy - Inscription</title>
 </head>
 <body>
 

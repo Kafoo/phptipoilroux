@@ -8,7 +8,7 @@ include("_shared_/start.php");
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
 	<link rel="stylesheet" type="text/css" href="style/profil.css">
-	<title>Vampire - Social</title>
+	<title>Shukidy - Profil</title>
 </head>
 <body>
 
@@ -48,7 +48,7 @@ include("_shared_/start.php");
 			$persoInfos = $req->fetchall();
 			$infoUser = $persoInfos[0];
 			?>
-
+			
 			<h1>PROFIL DE <?=strtoupper($infoUser['pseudo'])?></h1>
 
 			<div class="container centering	infoUser">
@@ -83,10 +83,11 @@ include("_shared_/start.php");
 
 		//IF PERSO PRÉCISÉ
 		}if(isset($_GET['persoID']) AND !empty($_GET['persoID'])){
+
 			$persoID = $_GET['persoID'];
 			$req = $bdd->query("
 				SELECT 
-				perso.id, perso.nom, perso.lvl, perso.lvl, perso.xp, perso.nature, perso.attitude, perso.concept, perso.defaut, perso.physique, perso.c1, perso.c2, perso.c3, perso.c4, perso.c5, perso.lore,
+				perso.id, perso.nom, perso.lvl, perso.xp, perso.nature, perso.attitude, perso.concept, perso.defaut, perso.physique, perso.c1, perso.c2, perso.c3, perso.c4, perso.c5, perso.lore,
 				classe.name as classeName, classe.description as classeDescription,
 				race.name as raceName, race.description as raceDescription
 				FROM mas_persos as perso
@@ -118,6 +119,7 @@ include("_shared_/start.php");
 							//Si GM, avatar générique de GM
 							if ($persoInfos['nom']=='GM'){echo'GM';}
 							else{echo $persoInfos['id'];} ?>.jpg">
+
 
 				<div class="ficheBox ficheBox-lvl mobile centering" style="grid-area: lvl">
 					<i>XP : soon<br>

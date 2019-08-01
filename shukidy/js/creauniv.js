@@ -27,8 +27,7 @@ $('.carac_submit').click(function(e){
   				$('.success').fadeOut(200)
   			}, 3000)
   		},
-	})
-	
+	})	
 })
 
 
@@ -37,7 +36,8 @@ $('.carac_submit').click(function(e){
 function refresh(what, natureID = 0){
 	var univID = $('.univID-stock').html()
 	var What = what[0].toUpperCase() + what.substring(1)
-	var type
+	//On définit "type" comme un "what" qui aurait toutes ses lettres
+	var type;
 	if (what == 'capa') {type = 'capacité'}
 	else if (what == 'disc') {type = 'discipline'}
 	else {type = what}
@@ -46,7 +46,6 @@ function refresh(what, natureID = 0){
 	$('.'+what+'Description').html('...');
 
 	$.post({
-
 		url : 'server/request_univers.php',
 		data : {
 			getInfos : true,
@@ -55,40 +54,46 @@ function refresh(what, natureID = 0){
 			natureID : natureID
 		},
 		dataType : 'json',
+
 		success : function(data){
+			//On vide les choix et la description
 			$('.select'+What).html('');
 			$('.'+what+'Description').html('');
+			//S'il n'y a pas encore d'attribut existant
 			if (data.length == 0) {
 				$('.select'+What).html('<option>---</option>');
 				$('.'+what+'Description').html('pas encore de '+type);
+				$('.edit_'+what).hide();
+				$('.delete_'+what).hide();				
 			}else{
+				//On refresh les pouvoirs correspondants à la nature
 				if (what == 'race') {refresh('capa', data[0]['id'])}
 				if (what == 'classe') {refresh('disc', data[0]['id'])}
+				//Pour chaque attribut, on l'ajoute aux choix
 				$.each(data, function(key, value){
+					//Et on met la description du premier
 					if (key == 0) {
 						$('.'+what+'Description').html(value['description'])
 					}
 					$('.select'+What).append("<option value='"+value['description']+"' id='"+value['id']+"'>"+value['name']+"</option>")
 				})
+				$('.edit_'+what).show();
+				$('.delete_'+what).show();				
+
+
 			}
 		}
 	})
 
 }
 
-// On initialise tout au chargement
-refresh('race')
-refresh('classe')
-
 //On affiche la description correspondante à n'importe quel changement
-
 $('.selectAttribute').change(function(){
 	var description = this.value
 	$(this).parent().siblings('.descriptionBox').html(description)
 })
 
 //On refresh les pouvoirs lorsqu'on change de nature
-
 $('.selectNature').change(function(){
 	var natureID = $(this).attr('id')
 	var natureID = $('option:selected', this).attr('id');
@@ -99,6 +104,81 @@ $('.selectNature').change(function(){
 		refresh('disc', natureID)
 	}
 })
+
+// On initialise tout au chargement
+refresh('race')
+refresh('classe')
+
+
+//--------- EDIT DESCRIPTION ---------
+
+function edit_description(){
+	var what = $(this).attr('edit');
+	var What = what[0].toUpperCase() + what.substring(1)
+	var descriptionBox = $('.'+what+'Description')
+	var description_old = descriptionBox.html();
+	var format_description = description_old.replace(/\<br>/g, '');
+	descriptionBox.replaceWith('<textarea class="editArea descriptionBox '+what+'Description">'+format_description+'</textarea>')
+	$(this).replaceWith('<div class="button update_button confirm_button confirm_'+what+'" edit="'+what+'">valider</div>')
+	$('.select'+What).prop('disabled', 'disabled');
+	$('.delete_'+what).hide();
+	$('.confirm_'+what).one("click", confirm_edit);
+}
+
+function confirm_edit(){
+	var submit = $(this)
+	var what = $(this).attr('edit');
+	//On définit "type" comme un "what" qui aurait toutes ses lettres
+	var type;
+	var natureID;
+	if (what == 'capa') {
+		type = 'capacité'
+		natureID = $('option:selected', '.selectRace').attr('id');
+	}
+	else if (what == 'disc') {
+		type = 'discipline'
+		natureID = $('option:selected', '.selectClasse').attr('id');
+	}
+	else {type = what}
+	var descriptionBox = $('.'+what+'Description')
+	var What = what[0].toUpperCase() + what.substring(1)
+	var descriptionBox = $('.'+what+'Description')
+	var description_new = descriptionBox.val();
+	descriptionBox.replaceWith('<div class="descriptionBox '+what+'Description"></div>')
+	$(this).replaceWith('<div class="button update_button edit_button edit_'+what+'" edit="'+what+'">éditer cette '+type+'</div>')
+	$('.select'+What).prop('disabled', false);
+    $('.edit_'+what).one("click", edit_description);
+
+	var id = $('option:selected', '.select'+What).attr('id');
+
+	//Loading
+	$('.select'+What).html('<option>...</option>');
+	$('.'+what+'Description').html('...');
+
+	$.post({
+		url: 'server/set_univers.php',
+		data: {
+			action: 'edit_description',
+			what: what,
+			id: id,
+			description: description_new
+		},
+  		dataType: 'html',
+
+  		success: function(data, statut){
+  			$('.'+type+'_name').val('');
+  			$('.'+type+'_description').val('');
+  			submit.after('<span class="success">ok</span>')
+  			setTimeout(function(){
+  				$('.success').fadeOut(200)
+  			}, 3000)
+  			refresh(what, natureID)
+  		},
+	})
+
+}
+
+$('.edit_button').one("click", edit_description);
 
 
 //--------- CREATE NATURE ---------
@@ -136,7 +216,7 @@ $('.nature_submit').click(function(){
 
 //--------- DELETE NATURE ---------
 
-$('.deleteNature').click(function(e){
+$('.delete_nature').click(function(e){
 	if (confirm('sûr ?')) {
 		var univID = $('.univID-stock').html();
 		var type = $(e.currentTarget).attr('natureType');
@@ -163,11 +243,14 @@ $('.deleteNature').click(function(e){
 
 //--------- CREATE POWER ---------
 
-$('.power_submit').click(function(){
+$('.power_submit').click(function(e){
 	var submit = $(this)
 	var univID = $('.univID-stock').html();
-	var type = submit.attr('power_type');
-	var natureID = submit.parent().parent().find('option:selected', '.selectNature').attr('id');
+	var type = $(e.currentTarget).attr('power_type');
+	var NatureType;
+	if (type == 'capa') {NatureType = 'Race'}
+	else if (type == 'disc') {NatureType = 'Classe'}
+	var natureID = $('option:selected', '.select'+NatureType).attr('id');
 	var name = $('.'+type+'_name').val();
 	var description = $('.'+type+'_description').val();
 
@@ -198,13 +281,16 @@ $('.power_submit').click(function(){
 
 //--------- DELETE POWER ---------
 
-$('.deletePower').click(function(e){
+$('.delete_power').click(function(e){
 	if (confirm('sûr ?')) {
 		var univID = $('.univID-stock').html();
 		var type = $(e.currentTarget).attr('powerType');
+		var NatureType;
+		if (type == 'capa') {NatureType = 'Race'}
+		else if (type == 'disc') {NatureType = 'Classe'}
+		var natureID = $('option:selected', '.select'+NatureType).attr('id');
 		var Type = type[0].toUpperCase() + type.substring(1);
 		var powerID = $('option:selected', '.select'+Type).attr('id');
-
 
 		$.post({
 			url: 'server/set_univers.php',
@@ -216,7 +302,7 @@ $('.deletePower').click(function(e){
 	  		dataType: 'html',
 
 	  		success: function(data, statut){
-	  			refresh(type)
+	  			refresh(type, natureID)
 	  		},
 		})
 	} 

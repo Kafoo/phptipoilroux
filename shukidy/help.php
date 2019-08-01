@@ -8,7 +8,7 @@ include("_shared_/start.php");
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
 	<link rel="stylesheet" type="text/css" href="style/help.css">
-	<title>Vampire - Aventures</title>
+	<title>Shukidy - Help</title>
 </head>
 <body>
 
