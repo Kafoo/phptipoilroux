@@ -108,14 +108,13 @@ src: url("../font/Cinzel-Regular.ttf");
 
 
 	*::-webkit-scrollbar { 
-		width: 8px;
+		width: 7px;
 		height: 8px;
-		border-radius: inherit;
 	}
 
 	*::-webkit-scrollbar-thumb {
 	    background: rgba(50,50,50,0.7);
-		border-radius: inherit;
+	    border-radius: 2px;
 	}
 
 

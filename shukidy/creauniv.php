@@ -57,6 +57,8 @@ $natures = $req->fetchall();
 
 <h1>"<?= strtoupper($univers['name'])?>" - EDITION</h1>
 
+
+
 <div class="titre">CARACTERISTIQUES</div>
 
 <div class="ventreBox">
