@@ -6,7 +6,7 @@ include("_shared_/start.php");
 <html>
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
-	<link rel="stylesheet" type="text/css" href="style/creauniv.css?v=2">
+	<link rel="stylesheet" type="text/css" href="style/creauniv.css?v=3">
 	<title>Shukidy - Edition d'univers</title>
 </head>
 <body>
@@ -88,7 +88,7 @@ $univers = $req->fetch();
 			<div class="selectContainer">
 				<h3>Races disponibles :</h3>
 				<div class="addBox addRace">
-					<h4><div class="downArrow"></div>Ajouter une race<div class="downArrow"></div></h4>
+					<h4><div class="downArrow"></div><div class="addLabel">Ajouter une race</div><div class="downArrow"></div></h4>
 
 					<div class="addContainer" hidden>
 						<label>nom :</label><br>
@@ -118,7 +118,7 @@ $univers = $req->fetch();
 			<div class="selectContainer">
 				<h3>Capacités de la race :</h3>
 				<div class="addBox addCapa">
-					<h4><div class="downArrow"></div>Ajouter une capacité pour cette race<div class="downArrow"></div></h4>
+					<h4><div class="downArrow"></div><div class="addLabel">Ajouter une capacité pour cette race</div><div class="downArrow"></div></h4>
 
 					<div class="addContainer" hidden>
 						<label>nom :</label><br>
@@ -154,7 +154,7 @@ $univers = $req->fetch();
 			<div class="selectContainer">
 				<h3>Classes disponibles :</h3>
 				<div class="addBox addClasse">
-					<h4><div class="downArrow"></div>Ajouter une classe<div class="downArrow"></div></h4>
+					<h4><div class="downArrow"></div><div class="addLabel">Ajouter une classe</div><div class="downArrow"></div></h4>
 
 					<div class="addContainer" hidden>
 						<label>nom :</label><br>
@@ -184,7 +184,7 @@ $univers = $req->fetch();
 				<h3>Disciplines de la classe :</h3>
 
 				<div class="addBox addDisc">
-					<h4><div class="downArrow"></div>Ajouter une discipline pour cette classe<div class="downArrow"></div></h4>
+					<h4><div class="downArrow"></div><div class="addLabel">Ajouter une discipline pour cette classe</div><div class="downArrow"></div></h4>
 
 					<div class="addContainer" hidden>
 						<label>nom :</label><br>

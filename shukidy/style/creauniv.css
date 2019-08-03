@@ -58,7 +58,7 @@ div h4:hover{
 .selectBigContainer{
     background-color: rgba(200, 200, 200, 0.5);
     padding: 10px 8px;
-    margin: 20px;
+    margin: 15px;
     line-height: 2em;
     border-radius: 5px;
     border: 1px solid black;
@@ -124,6 +124,12 @@ div h4:hover{
 	margin: 15px;
 }
 
+.addLabel{
+	margin: 0 30px;
+	display: inline-block;
+	max-width: calc(100% - 130px);
+}
+
 .selectContainer{
 	margin: auto;
 	overflow: auto;
@@ -173,6 +179,7 @@ div h4:hover{
     background-color: rgb(207, 207, 207);
     resize: vertical;
     color: black;
+    outline: none;
 }
 
 .univDescription, .regles{
@@ -209,7 +216,6 @@ div h4:hover{
 	display: inline-block;
     width: 30px;
     height: 21px;
-    margin: 0 30px;
     background-size: cover;
 }
 
@@ -314,9 +320,21 @@ form td{
 	height: 100px;
 }
 
-@media (max-width: 760px){
+@media (max-width: 720px){
+
+	.selectBigContainer{
+		font-size: 0.8em;
+	}
+
+	.helper{
+		width: calc(100% - 30px);
+		margin: 0;
+		border: none;
+		border-radius: 0;
+	}
 
 	.ventreBox{
+		margin: 0;
 		width: 100%;
 	}
 	.titre{

@@ -119,6 +119,12 @@ function editUniv(){
 	var description_old = descriptionBox.html()
 	var format_description = description_old.replace(/\<br>/g, '');
 	descriptionBox.replaceWith('<textarea class="editArea univDescription">'+format_description+'</textarea>')
+	descriptionBox_new = $('.univDescription')
+	descriptionBox_new.focus()
+    var v = descriptionBox_new.html();
+    descriptionBox_new.html('');
+    descriptionBox_new.html(v);
+    descriptionBox_new.scrollTop(2000); 
 	$(this).replaceWith('<div class="button update_button confirm_button confirm_univ">valider</div>')
 	$('.confirm_univ').one("click", confirm_editUniv);
 }
@@ -169,6 +175,12 @@ function editRegles(){
 	var regles_old = reglesBox.html()
 	var format_regles = regles_old.replace(/\<br>/g, '');
 	reglesBox.replaceWith('<textarea class="editArea regles">'+format_regles+'</textarea>')
+	reglesBox_new = $('.regles')
+	reglesBox_new.focus()
+    var v = reglesBox_new.html();
+    reglesBox_new.html('');
+    reglesBox_new.html(v);
+    reglesBox_new.scrollTop(2000); 
 	$(this).replaceWith('<div class="button update_button confirm_button confirm_regles">valider</div>')
 	$('.confirm_regles').one("click", confirm_editRegles);
 }
@@ -246,6 +258,12 @@ function edit(){
 	selectBox.after('<input type="text" class="editArea selectBox select'+What+'" maxlength="20" value="'+Name_old+'">')
 	selectBox.hide();
 	descriptionBox.replaceWith('<textarea class="editArea descriptionBox '+what+'Description">'+format_description+'</textarea>')
+	descriptionBox_new = $('.'+what+'Description')
+	descriptionBox_new.focus()
+    var v = descriptionBox_new.html();
+    descriptionBox_new.html('');
+    descriptionBox_new.html(v);
+    descriptionBox_new.scrollTop(2000);    
 	$(this).replaceWith('<div class="button update_button confirm_button confirm_'+what+'" edit="'+what+'">valider</div>')
 	$('.delete_'+what).hide();
 	$('.confirm_'+what).one("click", confirm_edit);
