@@ -61,6 +61,7 @@ div h4:hover{
     margin: 20px;
     line-height: 2em;
     border-radius: 5px;
+    border: 1px solid black;
 }
 
 .selectBigContainer.current{

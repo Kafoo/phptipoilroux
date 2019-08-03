@@ -6,7 +6,7 @@ include("_shared_/start.php");
 <html>
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
-	<link rel="stylesheet" type="text/css" href="style/creauniv.css?v=1">
+	<link rel="stylesheet" type="text/css" href="style/creauniv.css?v=2">
 	<title>Shukidy - Edition d'univers</title>
 </head>
 <body>

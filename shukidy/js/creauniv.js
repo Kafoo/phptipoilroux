@@ -8,6 +8,8 @@ $('.edit_carac').click(function(e){
 	var carac4 = $('.input_carac4').val()
 	var carac5 = $('.input_carac5').val()
 
+	$('.edit_carac').val('...')
+
 	$.post({
 		url: 'server/set_univers.php',
 		data: {
@@ -22,10 +24,10 @@ $('.edit_carac').click(function(e){
   		dataType: 'html',
 
   		success: function(data, statut){
-  			$('.carac_submit').after('<span class="success">ok</span>')
+  			$('.edit_carac').val('C\'est validé !')
   			setTimeout(function(){
-  				$('.success').fadeOut(200)
-  			}, 3000)
+  				$('.edit_carac').val('Valider les caractéristiques')
+  			}, 2000)
   		},
 	})	
 })
