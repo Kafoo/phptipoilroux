@@ -248,7 +248,7 @@ function edit(){
 	descriptionBox.replaceWith('<textarea class="editArea descriptionBox '+what+'Description">'+format_description+'</textarea>')
 	$(this).replaceWith('<div class="button update_button confirm_button confirm_'+what+'" edit="'+what+'">valider</div>')
 	$('.delete_'+what).hide();
-	$('.confirm_'+what).one("click", confirm_editUniv);
+	$('.confirm_'+what).one("click", confirm_edit);
 }
 
 function confirm_edit(){
@@ -283,7 +283,6 @@ function confirm_edit(){
 	//Loading
 	$('.select'+What).html('<option>...</option>');
 	$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
-
 	$.post({
 		url: 'server/set_univers.php',
 		data: {
