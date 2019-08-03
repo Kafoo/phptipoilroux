@@ -2,7 +2,7 @@
 
 $avID = $_GET['avID'];
 
-//--------------INFOS PERSONNAGES--------------
+//-------------- INFOS PERSONNAGES & USERS --------------
 
 //On met tous les persos présents et leurs infos dans $coterie
 $req = $bdd->query("
@@ -12,6 +12,8 @@ $req = $bdd->query("
 	ON mas_persos.id=mas_relation_perso2aventure.persoID
 	LEFT JOIN mas_leveling
 	ON mas_persos.lvl=mas_leveling.id
+	JOIN mas_users
+	ON mas_persos.userID = mas_users.id
 	WHERE mas_relation_perso2aventure.avID = '$avID'
 	");
 $coterie = $req->fetchall();
@@ -52,7 +54,7 @@ if ($userInAv == False){
 
 $req = $bdd->query("
 	SELECT
-	av.nom_aventure, av.gmID,
+	av.nom_aventure, av.gmID, av.writerID,
 	univ.name, univ.c1_name, univ.c2_name, univ.c3_name, univ.c4_name, univ.c5_name
 	FROM mas_aventures as av
 	INNER JOIN mas_univers as univ

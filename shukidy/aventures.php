@@ -11,7 +11,7 @@ include("submits/aventures_submit.php");
 	<!-- TINYMCE SOURCE -->
     <script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=fqt2ki9s4j252fq1ttq1lqvmkpegi0vltirbxqsvjvezla8g'></script>
  	<!-- END TINYMCE -->
-	<link rel="stylesheet" type="text/css" href="style/aventures.css">
+	<link rel="stylesheet" type="text/css" href="style/aventures.css?v=1">
 	<title>Shukidy - Aventures</title>
 </head>
 <body>
@@ -180,12 +180,15 @@ include('_shared_/class_persos.php');
 
 				?>
 
+
 				<!-- SELECTION DE PAGE -->	
 				<div></div>
 				<?php
 				showPages();
-				?>
 
+				/*--- NEXT WRITER ---*/
+
+				 ?>
 
 				<div></div><div style="height: 20px" SPACER></div>
 				
@@ -250,6 +253,20 @@ include('_shared_/class_persos.php');
 						<textarea class="mytextarea" id="tinymce-classicReply" name="message"></textarea>
 						<input type="text" name="persoID" value="<?=$persoID?>" hidden>
 						<input type="submit" name="submit" value='Je réponds !'>
+						<?php
+						if ($avInfos['writerID'] !== '0') { 
+
+							foreach ($coterie as $perso) {
+								if ($perso['userID'] == $avInfos['writerID'] AND $avInfos['writerID'] !== $userID) { ?>
+									<div class="nextWriter">
+										<b><i><?=$perso['pseudo']?></i></b> aimerait être le prochain à écrire
+										<div class="removeDisclaimer">Je veux poster quand même</div>
+									</div>
+								<?php
+								}
+							}
+						}
+						?>
 					</form>
 
 					<!-- LANCER DE DES -->
@@ -414,6 +431,24 @@ include('_shared_/class_persos.php');
 					} ?>
 
 				</div>
+
+				<?php
+				if ($avInfos['writerID'] == '0') { ?>
+					<div></div>
+					<div class="centering nextBox">
+						<div class="button requestNext">
+							J'aimerais poster en prochain
+						</div>
+						<div class="help" data-toggle="tooltip" data-placement="top" title="Si tu veux poster le prochain message sans que quelqu'un d'autre ne fasse d'action qui pourrait compromettre le déroulement de l'aventure tel que tu l'as imaginé, mais que tu n'as pas le temps d'écrire tout de suite : Clique sur le bouton et les autres joueurs le verront ;-) Cependant, pense à poster rapidement pour ne pas faire attendre les autres joueurs trop longtemps !"></div>
+					</div>
+				<?php
+				}elseif ($avInfos['writerID'] == $userID) { ?>
+					<div></div>
+					<div class="nextRappel">Souviens-toi que tu as signalé aux autres joueurs que tu voulais poster le prochain message !
+						<div class="cancelNext">Annuler</div>
+					</div>
+				<?php
+				}?>
 
 			</div>
 

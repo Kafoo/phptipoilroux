@@ -1,6 +1,6 @@
 //--------- UPDATE CARACS ---------
 
-$('.carac_submit').click(function(e){
+$('.edit_carac').click(function(e){
 	var univID = $('.univID-stock').html()
 	var carac1 = $('.input_carac1').val()
 	var carac2 = $('.input_carac2').val()
@@ -112,6 +112,121 @@ refresh('classe')
 
 //--------- EDIT DESCRIPTION ---------
 
+function editUniv(){
+	descriptionBox = $('.univDescription')
+	var description_old = descriptionBox.html()
+	var format_description = description_old.replace(/\<br>/g, '');
+	descriptionBox.replaceWith('<textarea class="editArea univDescription">'+format_description+'</textarea>')
+	$(this).replaceWith('<div class="button update_button confirm_button confirm_univ">valider</div>')
+	$('.confirm_univ').one("click", confirm_editUniv);
+}
+
+function confirm_editUniv(){
+
+	var univID = $('.univID-stock').html();
+	var submit = $(this)
+	var descriptionBox = $('.univDescription');
+	var description_new = descriptionBox.val();
+	descriptionBox.replaceWith('<div class="univDescription"></div>')
+	$(this).replaceWith('<div class="button update_button edit_button edit_univ" edit="univ">éditer la description</div>')
+
+    $('.edit_univ').one("click", editUniv);
+
+
+	//Loading
+
+	$('.univDescription').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
+
+	$.post({
+		url: 'server/set_univers.php',
+		data: {
+			action: 'edit',
+			what: 'univ',
+			univID: univID,
+			description: description_new
+		},
+  		dataType: 'html',
+
+  		success: function(data, statut){
+
+  			$('.univDescription').html(data)
+  		},
+	})
+
+
+}
+
+$('.edit_univ').one("click", editUniv);
+
+
+
+//--------- EDIT REGLES ---------
+
+function editRegles(){
+	reglesBox = $('.regles')
+	var regles_old = reglesBox.html()
+	var format_regles = regles_old.replace(/\<br>/g, '');
+	reglesBox.replaceWith('<textarea class="editArea regles">'+format_regles+'</textarea>')
+	$(this).replaceWith('<div class="button update_button confirm_button confirm_regles">valider</div>')
+	$('.confirm_regles').one("click", confirm_editRegles);
+}
+
+function confirm_editRegles(){
+
+	var univID = $('.univID-stock').html();
+	var submit = $(this)
+	var reglesBox = $('.regles');
+	var regles_new = reglesBox.val();
+	reglesBox.replaceWith('<div class="regles"></div>')
+	$(this).replaceWith('<div class="button update_button edit_button edit_regles" edit="univ">éditer les regles</div>')
+
+    $('.edit_regles').one("click", editRegles);
+
+
+	//Loading
+
+	$('.regles').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
+
+	$.post({
+		url: 'server/set_univers.php',
+		data: {
+			action: 'edit',
+			what: 'regles',
+			univID: univID,
+			regles: regles_new
+		},
+  		dataType: 'html',
+
+  		success: function(data, statut){
+
+  			$('.regles').html(data)
+  		},
+	})
+
+
+}
+
+$('.edit_regles').one("click", editRegles);
+
+//--------- SELECT BIG CONTAINER ---------
+
+$('.selectBigContainer').click(function(){
+	var what = $(this).attr('bigContainer')
+
+	$('.selectBigContainer').removeClass('current');
+	$(this).addClass('current')
+
+	console.log(what);
+	$('.bigContainer').hide(0, function(){
+
+	$('.'+what+'BigContainer').show();
+	});
+})
+
+
+
+//--------- EDIT ATTRIBUTE ---------
+
 function edit(){
 	var what = $(this).attr('edit');
 	var What = what[0].toUpperCase() + what.substring(1)
@@ -131,7 +246,7 @@ function edit(){
 	descriptionBox.replaceWith('<textarea class="editArea descriptionBox '+what+'Description">'+format_description+'</textarea>')
 	$(this).replaceWith('<div class="button update_button confirm_button confirm_'+what+'" edit="'+what+'">valider</div>')
 	$('.delete_'+what).hide();
-	$('.confirm_'+what).one("click", confirm_edit);
+	$('.confirm_'+what).one("click", confirm_editUniv);
 }
 
 function confirm_edit(){
@@ -149,7 +264,6 @@ function confirm_edit(){
 		natureID = $('option:selected', '.selectClasse').attr('id');
 	}
 	else {type = what}
-	var descriptionBox = $('.'+what+'Description')
 	var What = what[0].toUpperCase() + what.substring(1)
 	var descriptionBox = $('.'+what+'Description')
 	var selectBox = $("select.select"+What)

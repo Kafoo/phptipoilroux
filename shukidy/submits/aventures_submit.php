@@ -91,6 +91,11 @@ if (isset($_POST['submit'])) {
 		$bdd->query("UPDATE mas_persos SET xp=xp+4 WHERE id='$persoID' ");
 		checkLvlPerso($avID, $persoID);
 
+		//CANCEL NEXT
+		$bdd->query("
+			UPDATE mas_aventures SET writerID = '0' WHERE id = '$avID'
+			");
+
 
 	}else{
 		$error = "Tu dois écrire quelque chose dans ton message !";
@@ -176,6 +181,11 @@ if (isset($_POST['diceReply-submit']) AND !empty($_POST['diceReply-submit'])) {
 					$bdd->query("UPDATE mas_persos SET xp=xp+8 WHERE id='$persoID' ");
 				}
 				checkLvlPerso($avID, $persoID);
+
+				//CANCEL NEXT
+				$bdd->query("
+					UPDATE mas_aventures SET writerID = '0' WHERE id = '$avID'
+					");
 
 			}else{
 				$error = "Tu dois choisir une difficulté pour ton lancé";

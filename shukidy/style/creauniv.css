@@ -6,7 +6,7 @@ section{
 h3{
 	background-color: rgb(57, 57, 57);
     width: 100%;
-    margin: 0 0 20px 0;
+    margin: 0;
     padding: 5px 0;
     color: #ffffff;
     border-bottom: 1px solid black;
@@ -16,10 +16,14 @@ h3{
 h4{
 	text-shadow: none;
 	color: black;
-	text-decoration: underline;
 	padding: 0;
-	min-height: 40px;
-	line-height: 40px;
+	min-height: 30px;
+	line-height: 30px;
+	font-size: 1em;
+}
+
+div h4:hover{
+	color: white;
 }
 
 .saving{
@@ -29,6 +33,7 @@ h4{
 .ventreBox{
 	width: 80%;
 	margin: 30px auto;
+	padding: 0 0 10px 0;
 	border: 1px solid black;
 	border-radius: 3px;
 	background-color: rgba(78, 85, 86,0.5);
@@ -41,13 +46,35 @@ h4{
 
 .titre{
     width: 100%;
-    margin: 70px auto 40px auto;
+    margin: 70px auto 0 auto;
     padding: 3px;
     font-size: 2em;
     color: rgb(0, 0, 0);
     background-color: rgba(141, 139, 139, 0.4);
     border-radius: 5px;
     border-bottom: 3px solid black;
+}
+
+.selectBigContainer{
+    background-color: rgba(200, 200, 200, 0.5);
+    padding: 10px 8px;
+    margin: 20px;
+    line-height: 2em;
+    border-radius: 5px;
+}
+
+.selectBigContainer.current{
+	background-color: rgb(200, 200, 200);
+}
+
+.helper{
+	width: 70%;
+    background-color: rgb(78, 125, 88);
+    border: 1px solid black;
+    border-radius: 30px;
+    box-shadow: 3px 3px 19px 0px rgba(0, 0, 0, 0.41);
+    margin: 30px auto 30px auto;
+    padding: 3px 15px;
 }
 
 .soustitre{
@@ -126,7 +153,7 @@ h4{
     display: block;
     height: 150px;
     width: calc(80% - 43px);
-    margin: 0 10% 20px 10%;
+    margin: 0 10% 15px 10%;
     padding: 12px 20px;
     border: 1.5px solid black;
     border-top: 1px solid black;
@@ -147,9 +174,25 @@ h4{
     color: black;
 }
 
+.univDescription, .regles{
+    margin: 0 0 20px 0;
+    height: 250px;
+    padding: 15px;
+    overflow: auto;
+    border-bottom: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.34);
+    box-shadow: inset 0px 0px 20px 0px #00000066;
+    font-style: italic;
+}
+
+.univDescription.editArea, .regles.editArea{
+	width: calc(100% - 32px);
+    background-color: rgba(255, 255, 255, 0.34);
+}
+
 .addBox{
 	position: relative;
-    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 0 0 1px 0;
     border-top: 1px solid black;
     background-color: rgba(0, 0, 0, 0.28);

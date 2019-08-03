@@ -2,6 +2,7 @@
 session_start();
 include("../_shared_/connectDB.php");
 include("../_shared_/functions.php");
+
 /*----------- UPDATE PERSO -----------*/
 
 if (isset($_POST['action']) AND $_POST['action'] == 'updatePerso') {
@@ -34,5 +35,63 @@ if (isset($_POST['action']) AND $_POST['action'] == 'updatePerso') {
 	checkLvlPerso($avID, $perso->id);
 	var_dump($avID);
 }
+
+
+/*----------- REQUEST NEXT -----------*/
+
+if (isset($_GET['action']) AND $_GET['action'] == 'requestNext') {
+
+	$success = 0;
+	$msg = '';
+
+
+	$avID = $_GET['avID'];
+	$userID = $_GET['userID'];
+
+	$req = $bdd->query("
+		SELECT id
+		FROM mas_aventures
+		WHERE id = '$avID'
+		AND writerID > 0
+		");
+
+	$res = $req->fetchall();
+
+	if (count($res) > 0) {
+		$msg = 'Désolé ! Il y a déjà un joueur qui aimerait écrire prochainement';
+	}else{
+
+		$bdd->query("
+			UPDATE mas_aventures SET writerID = '$userID' WHERE id = '$avID'
+			");
+
+		$success = 1;
+		$msg = 'ok';
+	}
+
+
+
+	$data = [
+		'success' => $success,
+		'msg' => $msg
+	];
+
+	echo json_encode($data);
+
+}
+
+/*----------- CANCEL NEXT -----------*/
+
+if (isset($_GET['action']) AND $_GET['action'] == 'cancelNext') {
+
+	$avID = $_GET['avID'];
+
+	$bdd->query("
+		UPDATE mas_aventures SET writerID = '0' WHERE id = '$avID'
+		");
+}
+
+
+
 
 ?>

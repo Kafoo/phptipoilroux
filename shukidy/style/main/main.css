@@ -131,6 +131,14 @@ src: url("../font/Cinzel-Regular.ttf");
 		cursor: default;
 	}
 
+	.help{
+		display: inline-block;
+		width: 18px;
+		height: 18px;
+		background-image: url('../../img/global/help.png');
+		background-size: cover;
+	}
+
 	#helpLogo{
 		display: inline-block;
 		width: 15px;

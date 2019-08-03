@@ -153,6 +153,57 @@ function handler2(e) {
 $('.editMsg').one("click", handler1);
 
 
+// --------- REMOVE DISCLAIMER ---------
+
+$('.removeDisclaimer').click(function(){
+
+	$('.nextWriter').fadeOut(300);
+})
+
+// --------- REQUEST NEXT ---------
+
+$('.requestNext').click(function(){
+
+	var userID = $('#userID').html();
+	var avID = $('#avID').html();
+	
+	$.get({
+		url: 'server/updates.php',
+		dataType : 'json',
+		data: {
+			action: 'requestNext',
+			userID: userID,
+			avID: avID
+		},
+		success: function(data){
+			if (data['success'] == 1) {
+				location.reload()
+			}else{
+				alert(data['msg'])
+				location.reload()
+			}
+		}
+	})
+
+})
+
+// --------- CANCEL NEXT ---------
+
+$('.cancelNext').click(function(){
+
+	var avID = $('#avID').html();
+
+	$.get(
+		'server/updates.php',{
+			action: 'cancelNext',
+			avID: avID
+		},
+		function(){
+			location.reload()
+		})
+
+})
+
 // --------- ROLL THE DIE ---------
 
 $('.rollTheDie').one('click', function(e){

@@ -201,6 +201,61 @@
 	}
 
 
+	.nextWriter{
+	    background-color: rgb(239, 212, 200);
+	    height: 46px;
+	    padding: 8px 5px;
+	    margin: auto;
+	    box-shadow: 0 0 0 0 black;
+	    text-align: center;
+	    position: absolute;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	}
+
+	.removeDisclaimer{
+		width: max-content;
+		margin: 6px auto;
+		height: 15px;
+		line-height: 15px;
+		text-decoration: underline;	
+		cursor:pointer;	
+	}
+
+	.removeDisclaimer:hover{
+		color: rgb(100, 100, 100);
+	}
+
+	.requestNext{
+		display: inline-block;
+	    margin: 20px auto 30px auto;
+	    padding: 5px 10px;
+	    text-align: center;
+	    background-color: rgb(114, 178, 118);
+	    border: 1px solid black;
+	    border-radius: 5px;
+	}
+
+	.nextRappel{
+		max-width: max-content;
+	    margin: 20px auto 90px auto;
+	    padding: 5px 10px;
+	    text-align: center;
+	    background-color: rgb(178, 152, 114);
+	    border: 1px solid black;
+	    border-radius: 5px;
+	}
+
+	.cancelNext{
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.cancelNext:hover{
+		color: rgb(100,100,100)
+	}
+
 /*MESSAGE DICEROLL*/
 
 	.diceRoll_icone{
