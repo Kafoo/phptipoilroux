@@ -7,6 +7,7 @@ function chooseIcon(target, callBack){
 	let iconsBox = $('<div class="iconsBox"></div>')
 	$('body').append(iconsBox)
 	iconsBox.animate({opacity:1}, 200)
+	iconsBox.html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>')
 	iconsBox.load('ajax/icons.php', function(){
 
 		//Comportements dans le pop-up, une fois que son contenu est chargé
