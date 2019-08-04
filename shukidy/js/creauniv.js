@@ -1,3 +1,17 @@
+//--------- CARAC ICONES ---------
+
+$('.chooseCaracIcone').click(function(){
+	let target = $(this)
+	chooseIcone(
+		target, 
+		function(cat, icon){
+			target.attr('icon', icon)
+			target.css('background-image','url(img/gameicons/'+cat+'/'+icon+')'); 
+			console.log(target)
+	})
+})
+
+
 //--------- UPDATE CARACS ---------
 
 $('.edit_carac').click(function(e){
@@ -81,8 +95,6 @@ function refresh(what, natureID = 0){
 				})
 				$('.edit_'+what).show();
 				$('.delete_'+what).show();				
-
-
 			}
 		}
 	})
@@ -332,12 +344,12 @@ $('.edit_button').one("click", edit);
 //--------- CREATE SLIDE ---------
 
 
-$('.addBox h4').click(function(e){
+$('.addTitle').click(function(e){
 	$(this).siblings('.addContainer').slideToggle();
-	if ($(this).children('.downArrow').length > 0){
-		$(this).children('.downArrow').replaceWith('<div class="upArrow"></div>')
+	if ($(this).children('.addIcone').length > 0){
+		$(this).children('.addIcone').replaceWith('<div class="upArrow"></div>')
 	}else{
-		$(this).children('.upArrow').replaceWith('<div class="downArrow"></div>')
+		$(this).children('.upArrow').replaceWith('<div class="addIcone"></div>')
 	}
 })
 
@@ -348,8 +360,11 @@ $('.nature_submit').click(function(){
 	var submit = $(this)
 	var univID = $('.univID-stock').html();
 	var type = submit.attr('nature_type');
+	var Type = type[0].toUpperCase() + type.substring(1)
 	var nature_name = $('.'+type+'_name').val();
 	var nature_description = $('.'+type+'_description').val();
+	$('.add'+Type+' .addTitle').click()
+
 
 	$.post({
 		url: 'server/set_univers.php',
@@ -378,27 +393,40 @@ $('.nature_submit').click(function(){
 //--------- DELETE NATURE ---------
 
 $('.delete_nature').click(function(e){
-	if (confirm('sûr ?')) {
-		var univID = $('.univID-stock').html();
+
 		var type = $(e.currentTarget).attr('natureType');
-		var ucFirstType = type[0].toUpperCase() + type.substring(1);
-		var natureID = $('option:selected', '.select'+ucFirstType).attr('id');
+
+	customConfirm(
+		//msg
+		'Tu es sûr de vouloir supprimer cette '+type+' ?',
+		//yesMsg
+		'Carrément !',
+		//noMsg
+		'Euh en fait non',
+		//yesCallBack
+		function(){			
+			var univID = $('.univID-stock').html();
+			var ucFirstType = type[0].toUpperCase() + type.substring(1);
+			var natureID = $('option:selected', '.select'+ucFirstType).attr('id');
 
 
-		$.post({
-			url: 'server/set_univers.php',
-			data: {
-				action: 'deleteNature',
-				univID: univID,
-				natureID: natureID,
-			},
-	  		dataType: 'html',
+			$.post({
+				url: 'server/set_univers.php',
+				data: {
+					action: 'deleteNature',
+					univID: univID,
+					natureID: natureID,
+				},
+		  		dataType: 'html',
 
-	  		success: function(data, statut){
-	  			refresh(type)
-	  		},
+		  		success: function(data, statut){
+		  			refresh(type)
+		  		},
+			})
+		},
+		//noCallBack
+		function(){
 		})
-	} 
 })
 
 
@@ -408,12 +436,16 @@ $('.power_submit').click(function(e){
 	var submit = $(this)
 	var univID = $('.univID-stock').html();
 	var type = $(e.currentTarget).attr('power_type');
+	var Type = type[0].toUpperCase() + type.substring(1)
 	var NatureType;
 	if (type == 'capa') {NatureType = 'Race'}
 	else if (type == 'disc') {NatureType = 'Classe'}
 	var natureID = $('option:selected', '.select'+NatureType).attr('id');
 	var name = $('.'+type+'_name').val();
 	var description = $('.'+type+'_description').val();
+	$('.add'+Type+' .addTitle').click()
+
+
 
 	$.post({
 		url: 'server/set_univers.php',
@@ -443,28 +475,40 @@ $('.power_submit').click(function(e){
 //--------- DELETE POWER ---------
 
 $('.delete_power').click(function(e){
-	if (confirm('sûr ?')) {
-		var univID = $('.univID-stock').html();
-		var type = $(e.currentTarget).attr('powerType');
-		var NatureType;
-		if (type == 'capa') {NatureType = 'Race'}
-		else if (type == 'disc') {NatureType = 'Classe'}
-		var natureID = $('option:selected', '.select'+NatureType).attr('id');
-		var Type = type[0].toUpperCase() + type.substring(1);
-		var powerID = $('option:selected', '.select'+Type).attr('id');
+	customConfirm(
+		//msg
+		'Tu es sûr de vouloir supprimer ce pouvoir ?',
+		//yesMsg
+		'Oui !',
+		//noMsg
+		'Ah non, en fait non...',
+		function(){			
+		//yesCallBack
+			var univID = $('.univID-stock').html();
+			var type = $(e.currentTarget).attr('powerType');
+			var NatureType;
+			if (type == 'capa') {NatureType = 'Race'}
+			else if (type == 'disc') {NatureType = 'Classe'}
+			var natureID = $('option:selected', '.select'+NatureType).attr('id');
+			var Type = type[0].toUpperCase() + type.substring(1);
+			var powerID = $('option:selected', '.select'+Type).attr('id');
 
-		$.post({
-			url: 'server/set_univers.php',
-			data: {
-				action: 'deletePower',
-				univID: univID,
-				powerID: powerID,
-			},
-	  		dataType: 'html',
+			$.post({
+				url: 'server/set_univers.php',
+				data: {
+					action: 'deletePower',
+					univID: univID,
+					powerID: powerID,
+				},
+		  		dataType: 'html',
 
-	  		success: function(data, statut){
-	  			refresh(type, natureID)
-	  		},
+		  		success: function(data, statut){
+		  			refresh(type, natureID)
+		  		},
+			})
+		},
+		function(){
+		//noCallBack
 		})
-	} 
+
 })

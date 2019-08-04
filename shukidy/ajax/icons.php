@@ -1,0 +1,54 @@
+<?php
+
+$iconsCats = scandir('../img/gameicons');
+?>
+<!-- AFFICHAGE DES CATEGORIES D'ICONES -->
+<div class="iconsCatBox">
+	<?php
+	foreach ($iconsCats as $key => $iconsCat) { 
+		//Les 2 premiers résultats de scandir ne servent pas
+		if ($key > 1){?>
+			<div class="button iconsCat" cat="<?=$iconsCat?>">
+				<?=$iconsCat?>
+			</div>
+		<?php
+		}
+	} ?>
+</div>
+
+<!-- AFFICHAGE DES ICONES -->
+<?php
+foreach ($iconsCats as $key => $iconsCat) { 
+	//Les 2 premiers résultats de scandir ne servent pas
+	if ($key > 1){ ?>
+
+		<div class="iconsContainer" cat="<?=$iconsCat?>" <?php if ($key > 2) {echo "hidden";}?> >
+
+			<?php
+			//On scan le dossier correspondant à la catégorie
+			$icons = scandir('../img/gameicons/'.$iconsCat);
+
+			foreach ($icons as $key => $icon) {
+				if ($key > 1) { ?>
+					<div class="button icon" 
+					style="background-image: url('img/gameicons/<?=$iconsCat?>/<?=$icon?>');"
+					icon="<?=$icon?>"
+					cat="<?=$iconsCat?>">
+					</div>
+				<?php
+				}
+			} ?>
+		</div>
+	<?php
+	}
+} ?>
+
+<?php
+
+	if ($key > 1){?>
+	<?php
+	}
+
+
+
+?>

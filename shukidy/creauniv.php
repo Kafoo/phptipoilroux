@@ -6,7 +6,7 @@ include("_shared_/start.php");
 <html>
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
-	<link rel="stylesheet" type="text/css" href="style/creauniv.css?v=3">
+	<link rel="stylesheet" type="text/css" href="style/creauniv.css?v=4">
 	<title>Shukidy - Edition d'univers</title>
 </head>
 <body>
@@ -16,6 +16,7 @@ include("_shared_/start.php");
 
 <!---------- CONTENU ---------->
 <section>
+
 
 
 
@@ -60,15 +61,38 @@ $univers = $req->fetch();
 
 <div class="helper">Ces caractéristiques définiront les attributs des personnages de ton univers. Chaque caractéristique sera représenté par une valeur entre 1 et 10 pour chaque personnage, cette valeur sera choisie par le joueur lors de la création de son personnage.</div>
 
-<div class="ventreBox">
-	<div class="caracBox">
-		Caractéristique 1 : <input type="text" class="input_carac1" value="<?=$univers['c1_name']?>" maxlength="20"><br>
-		Caractéristique 2 : <input type="text" class="input_carac2" value="<?=$univers['c2_name']?>" maxlength="20"><br>
-		Caractéristique 3 : <input type="text" class="input_carac3" value="<?=$univers['c3_name']?>" maxlength="20"><br>
-		Caractéristique 4 : <input type="text" class="input_carac4" value="<?=$univers['c4_name']?>" maxlength="20"><br>
-		Caractéristique 5 : <input type="text" class="input_carac5" value="<?=$univers['c5_name']?>" maxlength="20"><br>
-		<input type="submit" class="button update_button edit_carac" value="Valider les caractéristiques">
-	</div>
+<div class="ventreBox caracBox">
+	Caractéristique 1 : <input type="text" class="input_carac1" value="<?=$univers['c1_name']?>" maxlength="20">
+	<select>
+		<option>Rouge</option><option>Vert</option><option>Bleu</option>
+	</select>
+	<div class="button chooseIcon chooseCaracIcone" icon="">?</div>
+	<br>
+	Caractéristique 2 : <input type="text" class="input_carac2" value="<?=$univers['c2_name']?>" maxlength="20">
+	<select>
+		<option>Rouge</option><option>Vert</option><option>Bleu</option>
+	</select>
+	<div class="button chooseIcon chooseCaracIcone" icon="">?</div>
+	<br>
+	Caractéristique 3 : <input type="text" class="input_carac3" value="<?=$univers['c3_name']?>" maxlength="20">
+	<select>
+		<option>Rouge</option><option>Vert</option><option>Bleu</option>
+	</select>
+	<div class="button chooseIcon chooseCaracIcone" icon="">?</div>
+	<br>
+	Caractéristique 4 : <input type="text" class="input_carac4" value="<?=$univers['c4_name']?>" maxlength="20">
+	<select>
+		<option>Rouge</option><option>Vert</option><option>Bleu</option>
+	</select>
+	<div class="button chooseIcon chooseCaracIcone" icon="">?</div>
+	<br>
+	Caractéristique 5 : <input type="text" class="input_carac5" value="<?=$univers['c5_name']?>" maxlength="20">
+	<select>
+		<option>Rouge</option><option>Vert</option><option>Bleu</option>
+	</select>
+	<div class="button chooseIcon chooseCaracIcone" icon="">?</div>
+	<br>
+	<input type="submit" class="button update_button edit_carac" value="Valider les caractéristiques">
 </div>
 
 <div class="titre">
@@ -87,28 +111,32 @@ $univers = $req->fetch();
 		<div class="raceBox">
 			<div class="selectContainer">
 				<h3>Races disponibles :</h3>
-				<div class="addBox addRace">
-					<h4><div class="downArrow"></div><div class="addLabel">Ajouter une race</div><div class="downArrow"></div></h4>
-
-					<div class="addContainer" hidden>
-						<label>nom :</label><br>
-						<input class="race_name" type="text" maxlength="20"><br>
-
-
-						<label>Description :</label><br>
-						<textarea class="race_description"></textarea><br>
-
-						<input type="submit" class="nature_submit" nature_type="race">
-					</div>
-				</div>
 				<select class="selectBox selectAttribute selectNature selectRace"></select>
 			</div>
 			<div class="descriptionBox raceDescription"></div>
 			<div class="button update_button edit_button edit_race" edit="race" hidden>éditer cette race</div>
 			<div class="button update_button delete_button delete_nature delete_race" natureType="race" hidden>supprimer cette race</div>
 		</div>
+		<div class="addBox addRace">
+			<div class="addTitle">
+				<div class="addIcone"></div>
+				<div class="addLabel">
+				Ajouter une race
+				</div>
+				<div class="addIcone"></div>
+			</div>
+
+			<div class="addContainer" hidden>
+				<label>nom :</label><br>
+				<input class="race_name" type="text" maxlength="20"><br>
 
 
+				<label>Description :</label><br>
+				<textarea class="race_description"></textarea><br>
+
+				<input type="submit" class="nature_submit" nature_type="race">
+			</div>
+		</div>
 
 	</div>
 
@@ -117,29 +145,30 @@ $univers = $req->fetch();
 		<div class="capaBox">
 			<div class="selectContainer">
 				<h3>Capacités de la race :</h3>
-				<div class="addBox addCapa">
-					<h4><div class="downArrow"></div><div class="addLabel">Ajouter une capacité pour cette race</div><div class="downArrow"></div></h4>
-
-					<div class="addContainer" hidden>
-						<label>nom :</label><br>
-						<input class="capa_name" type="text" maxlength="20"><br>
-
-
-						<label>Description :</label><br>
-						<textarea class="capa_description"></textarea><br>
-
-						<input type="submit" class="power_submit" power_type='capa'>
-					</div>
-				</div>
 				<select class="selectBox selectAttribute selectPower selectCapa"><option>---</option></select>
 			</div>
 			<div class="descriptionBox capaDescription">pas encore de capacité pour cette race</div>
 			<div class="button update_button edit_button edit_capa" edit="capa" hidden>éditer cette capacité</div>	
 			<div class="button update_button delete_button delete_power delete_capa" powerType="capa" hidden>supprimer cette capacité</div>	
 		</div>
+		<div class="addBox addCapa">
+			<div class="addTitle">
+				<div class="addIcone"></div>
+				<div class="addLabel">Ajouter une capacité pour cette race</div>
+				<div class="addIcone"></div>
+			</div>
+
+			<div class="addContainer" hidden>
+				<label>nom :</label><br>
+				<input class="capa_name" type="text" maxlength="20"><br>
 
 
+				<label>Description :</label><br>
+				<textarea class="capa_description"></textarea><br>
 
+				<input type="submit" class="power_submit" power_type='capa'>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -153,20 +182,6 @@ $univers = $req->fetch();
 		<div class="classeBox">
 			<div class="selectContainer">
 				<h3>Classes disponibles :</h3>
-				<div class="addBox addClasse">
-					<h4><div class="downArrow"></div><div class="addLabel">Ajouter une classe</div><div class="downArrow"></div></h4>
-
-					<div class="addContainer" hidden>
-						<label>nom :</label><br>
-						<input class="classe_name" type="text" maxlength="20"><br>
-
-
-						<label>Description :</label><br>
-						<textarea class="classe_description"></textarea><br>
-
-						<input type="submit" class="nature_submit" nature_type="classe">
-					</div>
-				</div>
 				<select class="selectBox selectAttribute selectNature selectClasse"></select>
 			</div>
 			<div class="descriptionBox classeDescription"></div>
@@ -174,6 +189,24 @@ $univers = $req->fetch();
 			<div class="button update_button delete_button delete_nature delete_classe" natureType="classe" hidden>supprimer cette classe</div>
 		</div>
 
+		<div class="addBox addClasse">
+			<div class="addTitle">
+				<div class="addIcone"></div>
+				<div class="addLabel">Ajouter une classe</div>
+				<div class="addIcone"></div>
+			</div>
+
+			<div class="addContainer" hidden>
+				<label>nom :</label><br>
+				<input class="classe_name" type="text" maxlength="20"><br>
+
+
+				<label>Description :</label><br>
+				<textarea class="classe_description"></textarea><br>
+
+				<input type="submit" class="nature_submit" nature_type="classe">
+			</div>
+		</div>
 
 	</div>
 	<div class="ventreBox">
@@ -183,26 +216,29 @@ $univers = $req->fetch();
 			<div class="selectContainer">
 				<h3>Disciplines de la classe :</h3>
 
-				<div class="addBox addDisc">
-					<h4><div class="downArrow"></div><div class="addLabel">Ajouter une discipline pour cette classe</div><div class="downArrow"></div></h4>
-
-					<div class="addContainer" hidden>
-						<label>nom :</label><br>
-						<input class="disc_name" type="text" maxlength="20"><br>
-
-
-						<label>Description :</label><br>
-						<textarea class="disc_description"></textarea><br>
-
-						<input type="submit" class="power_submit" power_type='disc'>
-					</div>
-				</div>
-
 				<select class="selectBox selectAttribute selectPower selectDisc"><option>---</option></select>
 			</div>
 			<div class="descriptionBox discDescription">Pas encore de discipline pour cette classe</div>
 			<div class="button update_button edit_button edit_disc" edit="disc" hidden>éditer cette discipline</div>
 			<div class="button update_button delete_button delete_power delete_disc" powerType="disc" hidden>supprimer cette discipline</div>		
+		</div>
+		<div class="addBox addDisc">
+			<div class="addTitle">
+				<div class="addIcone"></div>
+				<div class="addLabel">Ajouter une discipline pour cette classe</div>
+				<div class="addIcone"></div>
+			</div>
+
+			<div class="addContainer" hidden>
+				<label>nom :</label><br>
+				<input class="disc_name" type="text" maxlength="20"><br>
+
+
+				<label>Description :</label><br>
+				<textarea class="disc_description"></textarea><br>
+
+				<input type="submit" class="power_submit" power_type='disc'>
+			</div>
 		</div>
 	</div>
 </div>

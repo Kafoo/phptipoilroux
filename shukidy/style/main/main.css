@@ -66,6 +66,95 @@ src: url("../font/Cinzel-Regular.ttf");
 		border: 2px solid black;
 	}
 
+	.custConf{
+		width: 350px;
+		margin-left: -175px;
+		min-height: 50px;
+		position: fixed;
+		top: 40%;
+		left: 50%;
+		background-color: rgb(130, 185, 139);
+		border: 1.5px solid black;
+		box-shadow: 4px 5px 16px 7px #0000005e;
+		border-radius: 5px;
+		padding: 10px;
+		opacity: 0;
+	}
+
+	.custConf_msg{
+		width: max-content;
+		margin: 10px auto;
+
+	}
+
+	.custConf_choices{
+		width: max-content;
+		max-width: 90%;
+		margin: auto;
+		text-align: center;
+	}
+
+	.custConf_yes, .custConf_no{
+	    display: inline-block;
+	    margin: 5px;
+	    padding: 2px 5px;
+	    border-radius: 2px;
+	    border: 1px solid black;
+	    color: black;
+	    background-color: #e7f3fd;
+	}
+
+	.custConf_yes{
+		color: green;
+	}
+
+	.custConf_no{
+		color: red;
+	}
+
+	.iconsBox{
+		position: fixed;
+		width: 500px;
+		max-height: 30%;
+		margin-left: -250px;
+		top: 30%;
+		left: 50%;
+		background-color: grey;
+		border: 1.5px solid black;
+		box-shadow: 4px 5px 16px 7px #0000005e;
+		border-radius: 5px;
+		padding: 10px;
+		opacity: 0;
+		overflow: auto;
+		text-align: center;
+	}
+
+	.iconsCat{
+		display: inline-block;
+	    margin: 5px;
+	    padding: 2px 5px;
+	    border-radius: 2px;
+	    border: 1px solid black;
+	    background-color: #e7f3fd;
+	}
+
+	.iconsContainer{
+		padding: 5px;
+		border: 1px solid black;
+		margin: 5px;
+		background-color: rgba(0,0,0,0.2);
+	}
+
+	.icon, .chooseIcon{
+		width: 30px;
+		height: 30px;
+		display: inline-block;
+		border: 1px solid black;
+		border-radius: 5px;
+		margin: 3px;
+		background-size: cover;
+	}
+
 	h1{
 	    width: 60%;
 	    margin: 40px auto;
@@ -420,6 +509,21 @@ src: url("../font/Cinzel-Regular.ttf");
 		font-size: 2.2em; 
 	} 
  
+	.custConf{
+		left: 0;
+		width: calc(90% - 20px);
+		margin: 5%;
+	}
+
+	.custConf_msg{
+		font-size: 1.1em;
+	}
+
+	.custConf_yes, .custConf_no{
+		font-size: 1.1em;
+		padding: 4px 7px;
+	}
+
 	/*---- HEADER ----*/
 
 	#headerMobile{

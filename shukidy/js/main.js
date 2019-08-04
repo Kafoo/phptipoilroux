@@ -1,3 +1,67 @@
+/*CHOOSE ICONE*/
+
+
+//Fonction principale
+function chooseIcone(target, callBack){
+
+	let iconsBox = $('<div class="iconsBox"></div>')
+	$('body').append(iconsBox)
+	iconsBox.animate({opacity:1}, 200)
+	iconsBox.load('ajax/icons.php', function(){
+
+		//Comportements dans le pop-up, une fois que son contenu est chargé
+		$('.iconsCat').click(function(){
+			let cat = $(this).attr('cat')
+			$('.iconsContainer').hide();
+			$('.iconsContainer[cat="'+cat+'"]').show()
+		})
+		$('.icon').click(function(){
+			let icon = $(this).attr('icon')
+			let cat = $(this).attr('cat')
+			iconsBox.animate({opacity:0}, 200, function(){
+				iconsBox.remove()
+			})
+
+			callBack(cat, icon)
+		})
+
+	})
+
+
+
+
+}
+
+
+/*CUSTOM CONFIRM*/
+
+function customConfirm(msg, yesMsg, noMsg, yesCallBack, noCallBack){
+
+	let confirmBox = $('<div class="custConf"></div>')
+	let msgBox = $('<div class="custConf_msg">'+msg+'</div>')
+	let choicesBox = $('<div class="custConf_choices"></div>')
+	let yesBox = $('<div class="button custConf_yes">'+yesMsg+'</div>')
+	let noBox = $('<div class="button custConf_no">'+noMsg+'</div>')
+
+	choicesBox.append(yesBox, noBox)
+	confirmBox.append(msgBox, choicesBox)
+	$('body').append(confirmBox)
+	$('.custConf').animate({opacity:1}, 200)
+
+	$('.custConf_yes').click(function(){
+		yesCallBack()
+		$('.custConf').animate({opacity:0}, 200, function(){
+			$('.custConf').remove()		
+		})
+	})
+	$('.custConf_no').click(function(){
+		noCallBack()
+		$('.custConf').animate({opacity:0}, 200, function(){
+			$('.custConf').remove()		
+		})
+	})	
+}
+
 /*OVER WINDOWS*/
 
 $('.showingOW').click(function(e){
