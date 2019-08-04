@@ -2,7 +2,7 @@
 
 
 //Fonction principale
-function chooseIcone(target, callBack){
+function chooseIcon(target, callBack){
 
 	let iconsBox = $('<div class="iconsBox"></div>')
 	$('body').append(iconsBox)
@@ -11,19 +11,31 @@ function chooseIcone(target, callBack){
 
 		//Comportements dans le pop-up, une fois que son contenu est chargé
 		$('.iconsCat').click(function(){
+			$('.iconsCat').removeClass('current')
+			$(this).addClass('current')
 			let cat = $(this).attr('cat')
 			$('.iconsContainer').hide();
 			$('.iconsContainer[cat="'+cat+'"]').show()
 		})
+
 		$('.icon').click(function(){
 			let icon = $(this).attr('icon')
 			let cat = $(this).attr('cat')
 			iconsBox.animate({opacity:0}, 200, function(){
 				iconsBox.remove()
 			})
-
 			callBack(cat, icon)
 		})
+
+		//On enlève la box si on clique ailleurs
+		$(document).mouseup(function(e){
+		    // If the target of the click isn't the iconsBox
+		    if(!iconsBox.is(e.target) && iconsBox.has(e.target).length === 0){
+				iconsBox.animate({opacity:0}, 200, function(){
+					iconsBox.remove()
+				})
+		    }
+		});
 
 	})
 

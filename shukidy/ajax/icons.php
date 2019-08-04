@@ -8,7 +8,7 @@ $iconsCats = scandir('../img/gameicons');
 	foreach ($iconsCats as $key => $iconsCat) { 
 		//Les 2 premiers résultats de scandir ne servent pas
 		if ($key > 1){?>
-			<div class="button iconsCat" cat="<?=$iconsCat?>">
+			<div class="button iconsCat <?php if ($key == 2) {echo "current";}?>" cat="<?=$iconsCat?>">
 				<?=$iconsCat?>
 			</div>
 		<?php

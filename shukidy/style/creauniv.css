@@ -97,21 +97,52 @@ h3{
 	top: 25px;
 }
 
+.caracBox{
+	padding: 20px 0;
+}
+
+.caracContainer{
+	width: max-content;
+	margin: auto;
+	padding: 10px 0;
+	border-bottom: 1px solid black;
+}
+
+.caracContainer:last-of-type{
+	border-bottom: none;
+}
+
+.caracContainer-left{
+	display: inline-block;
+}
+
 .caracBox input[type="text"]{
 	margin: 5px;
 	border-radius: 5px;
-	padding: 2px 4px;
+	padding: 4px 4px 2px 4px;
+	text-align: center;
+	font-weight: bold;
 }
 
-.chooseIcon{
-	width: 20px;
-	height: 20px;
+.selectIconColor{
+	border-radius: 5px;
+}
+
+.chooseCaracIcon{
+	display: inline-block;
+	vertical-align: top;
+	font-size: 2em;
+	width: 40px;
+	height: 40px;
 	display: inline-block;
 	padding: 2px;
+	margin: 5px 5px;
 	border: 1px solid black;
 	background-color: grey;
-	border-radius: 3px;
-	background-size: cover;
+	border-radius: 50px;
+	background-size: 90% 90%;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .selectContainer{

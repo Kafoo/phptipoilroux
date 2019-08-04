@@ -1,39 +1,61 @@
 //--------- CARAC ICONES ---------
 
-$('.chooseCaracIcone').click(function(){
+$('.chooseCaracIcon').click(function(){
 	let target = $(this)
-	chooseIcone(
+	chooseIcon(
 		target, 
 		function(cat, icon){
-			target.attr('icon', icon)
+			target.html('')
+			target.attr('icon', cat+'/'+icon)
 			target.css('background-image','url(img/gameicons/'+cat+'/'+icon+')'); 
 			console.log(target)
 	})
 })
 
+$('.selectIconColor').change(function(){
+
+	let option = $('option:selected', this)
+
+	if (option.value !== 'Couleur') {
+		let color = option.val()
+		let carac = $(this).attr('carac')
+		let chooseIconBox = $('.chooseCaracIcon[carac="'+carac+'"]')
+		chooseIconBox.css('background-color',color)
+	}
+	
+})
 
 //--------- UPDATE CARACS ---------
 
 $('.edit_carac').click(function(e){
 	var univID = $('.univID-stock').html()
-	var carac1 = $('.input_carac1').val()
-	var carac2 = $('.input_carac2').val()
-	var carac3 = $('.input_carac3').val()
-	var carac4 = $('.input_carac4').val()
-	var carac5 = $('.input_carac5').val()
+	var c1_name = $('.input_carac1').val()
+	var c1_icon = $('.chooseCaracIcon[carac="1"]').attr('icon')
+	var c1_color = $('option:selected', '.selectIconColor[carac="1"]').val()
+	var c2_name = $('.input_carac2').val()
+	var c2_icon = $('.chooseCaracIcon[carac="2"]').attr('icon')
+	var c2_color = $('option:selected', '.selectIconColor[carac="2"]').val()
+	var c3_name = $('.input_carac3').val()
+	var c3_icon = $('.chooseCaracIcon[carac="3"]').attr('icon')
+	var c3_color = $('option:selected', '.selectIconColor[carac="3"]').val()
+	var c4_name = $('.input_carac4').val()
+	var c4_icon = $('.chooseCaracIcon[carac="4"]').attr('icon')
+	var c4_color = $('option:selected', '.selectIconColor[carac="4"]').val()
+	var c5_name = $('.input_carac5').val()
+	var c5_icon = $('.chooseCaracIcon[carac="5"]').attr('icon')
+	var c5_color = $('option:selected', '.selectIconColor[carac="5"]').val()
 
 	$('.edit_carac').val('...')
-
 	$.post({
 		url: 'server/set_univers.php',
 		data: {
 			action: 'changeCaracs',
 			univID: univID,
-			carac1: carac1,
-			carac2: carac2,
-			carac3: carac3,
-			carac4: carac4,
-			carac5: carac5
+			c1_name, c1_icon, c1_color,
+			c2_name, c2_icon, c2_color,
+			c3_name, c3_icon, c3_color,
+			c4_name, c4_icon, c4_color,
+			c5_name, c5_icon, c5_color
 		},
   		dataType: 'html',
 

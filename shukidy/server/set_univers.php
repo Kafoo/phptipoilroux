@@ -10,13 +10,44 @@ if (isset($_POST['action']) AND $_POST['action'] == 'changeCaracs') {
 
 
 	$univID = $_POST['univID'];
-	$carac1 = $_POST['carac1'];
-	$carac2 = $_POST['carac2'];
-	$carac3 = $_POST['carac3'];
-	$carac4 = $_POST['carac4'];
-	$carac5 = $_POST['carac5'];
+	$c1_name = $_POST['c1_name'];
+	var_dump($c1_name);
+	$c1_icon = $_POST['c1_icon'];
+	var_dump($c1_icon);
+	$c1_color = $_POST['c1_color'];
+	var_dump($c1_color);
+	$c2_name = $_POST['c2_name'];
+	var_dump($c2_name);
+	$c2_icon = $_POST['c2_icon'];
+	var_dump($c2_icon);
+	$c2_color = $_POST['c2_color'];
+	var_dump($c2_color);
+	$c3_name = $_POST['c3_name'];
+	var_dump($c3_name);
+	$c3_icon = $_POST['c3_icon'];
+	var_dump($c3_icon);
+	$c3_color = $_POST['c3_color'];
+	var_dump($c3_color);
+	$c4_name = $_POST['c4_name'];
+	var_dump($c4_name);
+	$c4_icon = $_POST['c4_icon'];
+	var_dump($c4_icon);
+	$c4_color = $_POST['c4_color'];
+	var_dump($c4_color);
+	$c5_name = $_POST['c5_name'];
+	var_dump($c5_name);
+	$c5_icon = $_POST['c5_icon'];
+	var_dump($c5_icon);
+	$c5_color = $_POST['c5_color'];
+var_dump($c5_color);
 
-	 	$bdd->query("UPDATE mas_univers SET c1_name='$carac1', c2_name='$carac2', c3_name='$carac3', c4_name='$carac4', c5_name='$carac5' WHERE id='$univID' ");
+
+	 	$bdd->query("UPDATE mas_univers 
+	 		SET 
+	 		c1_name='$c1_name', c2_name='$c2_name', c3_name='$c3_name', c4_name='$c4_name', c5_name='$c5_name',
+	 		c1_icon='$c1_icon', c2_icon='$c2_icon', c3_icon='$c3_icon', c4_icon='$c4_icon', c5_icon='$c5_icon',
+	 		c1_color='$c1_color', c2_color='$c2_color', c3_color='$c3_color', c4_color='$c4_color', c5_color='$c5_color' 
+	 		WHERE id='$univID' ");
 
 }
 

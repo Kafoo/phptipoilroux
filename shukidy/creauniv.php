@@ -6,7 +6,7 @@ include("_shared_/start.php");
 <html>
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
-	<link rel="stylesheet" type="text/css" href="style/creauniv.css?v=4">
+	<link rel="stylesheet" type="text/css" href="style/creauniv.css?v=5">
 	<title>Shukidy - Edition d'univers</title>
 </head>
 <body>
@@ -32,7 +32,9 @@ $univID = $_GET['univID'];
 //On récupère les infos de l'univers lié à l'aventure
 $req = $bdd->query("
 	SELECT univ.name, univ.description, univ.regles,
-	univ.c1_name, univ.c2_name, univ.c3_name, univ.c4_name, univ.c5_name 
+	univ.c1_name, univ.c2_name, univ.c3_name, univ.c4_name, univ.c5_name,
+	univ.c1_icon, univ.c2_icon, univ.c3_icon, univ.c4_icon, univ.c5_icon,
+	univ.c1_color, univ.c2_color, univ.c3_color, univ.c4_color, univ.c5_color 
 	FROM mas_univers as univ
 	WHERE univ.id = '$univID'
 	");
@@ -62,36 +64,131 @@ $univers = $req->fetch();
 <div class="helper">Ces caractéristiques définiront les attributs des personnages de ton univers. Chaque caractéristique sera représenté par une valeur entre 1 et 10 pour chaque personnage, cette valeur sera choisie par le joueur lors de la création de son personnage.</div>
 
 <div class="ventreBox caracBox">
-	Caractéristique 1 : <input type="text" class="input_carac1" value="<?=$univers['c1_name']?>" maxlength="20">
-	<select>
-		<option>Rouge</option><option>Vert</option><option>Bleu</option>
-	</select>
-	<div class="button chooseIcon chooseCaracIcone" icon="">?</div>
-	<br>
-	Caractéristique 2 : <input type="text" class="input_carac2" value="<?=$univers['c2_name']?>" maxlength="20">
-	<select>
-		<option>Rouge</option><option>Vert</option><option>Bleu</option>
-	</select>
-	<div class="button chooseIcon chooseCaracIcone" icon="">?</div>
-	<br>
-	Caractéristique 3 : <input type="text" class="input_carac3" value="<?=$univers['c3_name']?>" maxlength="20">
-	<select>
-		<option>Rouge</option><option>Vert</option><option>Bleu</option>
-	</select>
-	<div class="button chooseIcon chooseCaracIcone" icon="">?</div>
-	<br>
-	Caractéristique 4 : <input type="text" class="input_carac4" value="<?=$univers['c4_name']?>" maxlength="20">
-	<select>
-		<option>Rouge</option><option>Vert</option><option>Bleu</option>
-	</select>
-	<div class="button chooseIcon chooseCaracIcone" icon="">?</div>
-	<br>
-	Caractéristique 5 : <input type="text" class="input_carac5" value="<?=$univers['c5_name']?>" maxlength="20">
-	<select>
-		<option>Rouge</option><option>Vert</option><option>Bleu</option>
-	</select>
-	<div class="button chooseIcon chooseCaracIcone" icon="">?</div>
-	<br>
+	<div class="caracContainer">
+		<div class="button chooseIcon chooseCaracIcon" carac="1" icon="<?=$univers['c1_icon']?>"
+		style="background-color: <?=$univers['c1_color']?>;<?php
+		if ($univers['c1_icon'] !== '') { ?>
+			background-image: url('img/gameicons/<?=$univers['c1_icon']?>')<?php
+		}?>
+		">
+			<?php 
+			if ($univers['c1_icon'] == ''){echo"?";}
+			?>
+		</div>
+		<div class="caracContainer-left">
+			<input type="text" class="input_carac1" value="<?=$univers['c1_name']?>" maxlength="20"><br>
+			<select class="selectIconColor" carac="1">
+				<option disabled selected value="<?=$univers['c1_color']?>">Couleur</option>
+				<option value="#F44336">Rouge</option>
+				<option value="#4CAF50">Vert</option>
+				<option value="#3F51B5">Bleu</option>
+				<option value="#9C27B0">Violet</option>
+				<option value="#FF9800">Orange</option>
+				<option value="#FFEB3B">Jaune</option>
+
+			</select>
+		</div>
+	</div>
+	<div class="caracContainer">
+		<div class="button chooseIcon chooseCaracIcon" carac="2" icon="<?=$univers['c2_icon']?>"
+		style="background-color: <?=$univers['c2_color']?>;<?php
+		if ($univers['c2_icon'] !== '') { ?>
+			background-image: url('img/gameicons/<?=$univers['c2_icon']?>')<?php
+		}?>
+		">
+			<?php 
+			if ($univers['c2_icon'] == ''){echo"?";}
+			?>
+		</div>
+		<div class="caracContainer-left">
+			<input type="text" class="input_carac2" value="<?=$univers['c2_name']?>" maxlength="20"><br>
+			<select class="selectIconColor" carac="2">
+				<option disabled selected value="<?=$univers['c2_color']?>">Couleur</option>
+				<option value="#F44336">Rouge</option>
+				<option value="#4CAF50">Vert</option>
+				<option value="#3F51B5">Bleu</option>
+				<option value="#9C27B0">Violet</option>
+				<option value="#FF9800">Orange</option>
+				<option value="#FFEB3B">Jaune</option>
+
+			</select>
+		</div>
+	</div>
+	<div class="caracContainer">
+		<div class="button chooseIcon chooseCaracIcon" carac="3" icon="<?=$univers['c3_icon']?>"
+		style="background-color: <?=$univers['c3_color']?>;<?php
+		if ($univers['c3_icon'] !== '') { ?>
+			background-image: url('img/gameicons/<?=$univers['c3_icon']?>')<?php
+		}?>
+		">
+			<?php 
+			if ($univers['c3_icon'] == ''){echo"?";}
+			?>
+		</div>
+		<div class="caracContainer-left">
+			<input type="text" class="input_carac3" value="<?=$univers['c3_name']?>" maxlength="20"><br>
+			<select class="selectIconColor" carac="3">
+				<option disabled selected value="<?=$univers['c3_color']?>">Couleur</option>
+				<option value="#F44336">Rouge</option>
+				<option value="#4CAF50">Vert</option>
+				<option value="#3F51B5">Bleu</option>
+				<option value="#9C27B0">Violet</option>
+				<option value="#FF9800">Orange</option>
+				<option value="#FFEB3B">Jaune</option>
+
+			</select>
+		</div>
+	</div>
+	<div class="caracContainer">
+		<div class="button chooseIcon chooseCaracIcon" carac="4" icon="<?=$univers['c4_icon']?>"
+		style="background-color: <?=$univers['c4_color']?>;<?php
+		if ($univers['c4_icon'] !== '') { ?>
+			background-image: url('img/gameicons/<?=$univers['c4_icon']?>')<?php
+		}?>
+		">
+			<?php 
+			if ($univers['c4_icon'] == ''){echo"?";}
+			?>
+		</div>
+		<div class="caracContainer-left">
+			<input type="text" class="input_carac4" value="<?=$univers['c4_name']?>" maxlength="20"><br>
+			<select class="selectIconColor" carac="4">
+				<option disabled selected value="<?=$univers['c4_color']?>">Couleur</option>
+				<option value="#F44336">Rouge</option>
+				<option value="#4CAF50">Vert</option>
+				<option value="#3F51B5">Bleu</option>
+				<option value="#9C27B0">Violet</option>
+				<option value="#FF9800">Orange</option>
+				<option value="#FFEB3B">Jaune</option>
+
+			</select>
+		</div>
+	</div>
+	<div class="caracContainer">
+		<div class="button chooseIcon chooseCaracIcon" carac="5" icon="<?=$univers['c5_icon']?>"
+		style="background-color: <?=$univers['c5_color']?>;<?php
+		if ($univers['c5_icon'] !== '') { ?>
+			background-image: url('img/gameicons/<?=$univers['c5_icon']?>')<?php
+		}?>
+		">
+			<?php 
+			if ($univers['c5_icon'] == ''){echo"?";}
+			?>
+		</div>
+		<div class="caracContainer-left">
+			<input type="text" class="input_carac5" value="<?=$univers['c5_name']?>" maxlength="20"><br>
+			<select class="selectIconColor" carac="5">
+				<option disabled selected value="<?=$univers['c5_color']?>">Couleur</option>
+				<option value="#F44336">Rouge</option>
+				<option value="#4CAF50">Vert</option>
+				<option value="#3F51B5">Bleu</option>
+				<option value="#9C27B0">Violet</option>
+				<option value="#FF9800">Orange</option>
+				<option value="#FFEB3B">Jaune</option>
+
+			</select>
+		</div>
+	</div>
 	<input type="submit" class="button update_button edit_carac" value="Valider les caractéristiques">
 </div>
 
