@@ -6,7 +6,7 @@ include("_shared_/start.php");
 <html>
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
-	<link rel="stylesheet" type="text/css" href="style/creauniv.css?v=7">
+	<link rel="stylesheet" type="text/css" href="style/creauniv.css?v=8">
 	<title>Shukidy - Edition d'univers</title>
 </head>
 <body>
@@ -72,7 +72,7 @@ $univers = $req->fetch();
 <div class="bigContainer caracBigContainer" hidden>
 	<div class="titre">CARACTERISTIQUES</div>
 
-	<div class="helper">Ces caractéristiques définiront les attributs des personnages de ton univers. Chaque caractéristique sera représenté par une valeur entre 1 et 10 pour chaque personnage, cette valeur sera choisie par le joueur lors de la création de son personnage.</div>
+	<div class="helper">Ces caractéristiques définiront les attributs des personnages de ton univers. Chaque caractéristique sera représentée par une valeur entre 1 et 10 pour chaque personnage, cette valeur sera choisie par le joueur lors de la création de son personnage.</div>
 
 	<div class="ventreBox caracBox">
 		<div class="caracContainer">

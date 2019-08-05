@@ -34,6 +34,7 @@ h3{
 	font-size: 15px;
 	font-weight: bold;
 	width: max-content;
+	max-width: 90%;
 	margin: 20px auto;
 	text-decoration: underline;
 }
@@ -51,6 +52,7 @@ h3{
 
 .selectBigContainer{
     width: 60%;
+    min-width: min-content;
     background-color: rgba(200, 200, 200, 0.5);
     padding: 8px 10px;
     margin: 5px auto;

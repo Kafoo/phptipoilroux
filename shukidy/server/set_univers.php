@@ -214,7 +214,7 @@ if (isset($_POST['action']) AND $_POST['action'] == 'deletePower') {
 
 		$success = 1;
 	}else{
-		$msg = 'Un personnage de cet univers a déjà ce pouvoir ! Tu ne peux pas le supprimer, désolé.'
+		$msg = 'Un personnage de cet univers a déjà ce pouvoir ! Tu ne peux pas le supprimer, désolé.';
 	}
 
 	$response = [
