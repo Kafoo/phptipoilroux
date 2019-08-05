@@ -9,7 +9,7 @@ $iconsCats = scandir('../img/gameicons');
 		//Les 2 premiers résultats de scandir ne servent pas
 		if ($key > 1){?>
 			<div class="button iconsCat <?php if ($key == 2) {echo "current";}?>" cat="<?=$iconsCat?>">
-				<?=$iconsCat?>
+				<?=ucfirst($iconsCat)?>
 			</div>
 		<?php
 		}
