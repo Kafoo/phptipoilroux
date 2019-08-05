@@ -52,10 +52,10 @@ $univers = $req->fetch();
 
 <div class="helper">Tu peux ici décrire ton univers, de son environnement naturel aux les êtres qui y évoluent, en passant par sa politique, ses conflits, son ambiance, ses couleurs et ses odeurs. Fais-toi plaisir, tu feras plaisir à tes joueurs !</div>
 
-<div class="ventreBox">
-	<div class="univDescription"><?=$univers['description']?></div>
-	<div class="button update_button edit_univ" edit="univ">éditer la description</div>
-</div>
+
+<div class="univDescription"><?=$univers['description']?></div>
+<div class="button update_button edit_univ" edit="univ">éditer la description</div>
+
 
 <!-------------- CARACTERISTIQUES -------------->
 
@@ -364,10 +364,9 @@ $univers = $req->fetch();
 
 <div class="helper">Tu peux définir des règles de jeu associé à cet univers. <br>Par exemple, tu peux vouloir qu'aucun joueur ne fasse de lancé de dés associé à une caractéristique particulière et que celle-ci soit dédié à autre chose, ou que tout le monde écrive à la 3e personne.</div>
 
-<div class="ventreBox">
-	<div class="regles"><?=$univers['regles']?></div>
-	<div class="button update_button edit_regles" edit="regles">éditer les règles</div>
-</div>
+<div class="regles"><?=$univers['regles']?></div>
+<div class="button update_button edit_regles" edit="regles">éditer les règles</div>
+
 
 
 

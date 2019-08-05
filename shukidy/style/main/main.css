@@ -131,9 +131,9 @@ src: url("../font/Cinzel-Regular.ttf");
 	.iconsBox{
 		position: fixed;
 		width: 500px;
-		max-height: 30%;
+		max-height: 50%;
 		margin-left: -250px;
-		top: 30%;
+		top: 20%;
 		left: 50%;
 		background-color: grey;
 		border: 1.5px solid black;
@@ -533,12 +533,16 @@ src: url("../font/Cinzel-Regular.ttf");
 	} 
  
 	.iconsBox{
-		width: calc(80%);
-		max-height: 70%;
-		margin: 0;
-		top: 80px;
-		left: 8%;
-		box-shadow: none;
+	    width: calc(100% - 10px);
+	    height: 98%;
+	    max-height: 98%;
+	    margin: 0;
+	    top: 0;
+	    left: 0;
+	    box-shadow: none;
+	    border: none;
+	    padding: 10px;
+	    z-index: 1000;
 	}
 
 	.iconsCat{

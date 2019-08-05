@@ -355,6 +355,7 @@ function confirm_edit(){
 	//Loading
 	$('.select'+What).html('<option>...</option>');
 	$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
+	$('.'+what+'Background').css('background-image','')		
 	$.post({
 		url: 'server/set_univers.php',
 		data: {
