@@ -375,7 +375,7 @@ $univers = $req->fetch();
 </section>
 
 <?php include("_shared_/scripts.php"); ?>
-<script type="text/javascript" src="js/creauniv.js?v=1"></script>
+<script type="text/javascript" src="js/creauniv.js?v=2"></script>
 
 </body>
 </html>
