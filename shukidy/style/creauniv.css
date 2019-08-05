@@ -4,9 +4,9 @@ section{
 
 
 h3{
-	background-color: rgb(57, 57, 57);
+	background-color: black;
     width: 100%;
-    margin: 0;
+    margin: 0 0 15px 0;
     padding: 5px 0;
     color: #ffffff;
     border-bottom: 1px solid black;
@@ -30,6 +30,14 @@ h3{
 	text-transform: capitalize;
 }
 
+.chooseLabel{
+	font-size: 15px;
+	font-weight: bold;
+	width: max-content;
+	margin: 20px auto;
+	text-decoration: underline;
+}
+
 .titre{
     width: 100%;
     margin: 70px auto 0 auto;
@@ -42,12 +50,15 @@ h3{
 }
 
 .selectBigContainer{
+    width: 60%;
     background-color: rgba(200, 200, 200, 0.5);
-    padding: 10px 8px;
-    margin: 15px;
-    line-height: 2em;
+    padding: 8px 10px;
+    margin: 5px auto;
+    font-weight: bold;
+    font-size: 22px;
     border-radius: 5px;
     border: 1px solid black;
+    display: inline-block;
 }
 
 .selectBigContainer.current{
@@ -163,6 +174,7 @@ h3{
     border-top: 1px solid black;
     border-radius: 0 0 4px 4px;
     overflow: hidden;
+    box-shadow: 3px 2px 14px 2px #00000047;
 }
 
 .natureBackground{
@@ -377,17 +389,21 @@ form td{
 
 @media (max-width: 720px){
 
-	.selectBigContainer{
-		font-size: 0.8em;
+	h3{
+		margin: 0;
 	}
 
+	.selectBigContainer{
+	    width: 80%;
+	}
 
 	.selectBox{
-		border: none;
-		border-bottom: 1px solid black;
-		border-radius: 0;
-		width: 100%;
-		margin: 0;
+	    border: none;
+	    border-bottom: 1px solid black;
+	    border-radius: 0;
+	    width: 100%;
+	    margin: 0;
+	    box-shadow: inset 0px -3px 11px 2px #231f1f59
 	}
 
 	.selectBox.editArea{
@@ -421,6 +437,7 @@ form td{
 		width: calc(100% - 30px);
 		margin: 0;
 		border: none;
+		border-bottom: 3px solid;
 		border-radius: 0;
 	}
 

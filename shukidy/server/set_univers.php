@@ -67,6 +67,8 @@ if (isset($_POST['action']) AND $_POST['action'] == 'addNature') {
 
 if (isset($_POST['action']) AND $_POST['action'] == 'deleteNature') {
 
+	$success = 0;
+	$msg ='';
 	$univID = $_POST['univID'];
 	$natureID = $_POST['natureID'];
 
@@ -77,7 +79,6 @@ if (isset($_POST['action']) AND $_POST['action'] == 'deleteNature') {
 		WHERE classeID = '$natureID' OR raceID = '$natureID'
 		");
 	$res = $req->fetchall();
-	var_dump($res);
 
 	if (count($res) == 0) {
 		//On supprime la nature
@@ -94,21 +95,28 @@ if (isset($_POST['action']) AND $_POST['action'] == 'deleteNature') {
 			ON n2p.powerid = p.id
 			WHERE n2p.natureID = '$natureID'
 			");
-		$res = $req->fetchall();
+		$powers = $req->fetchall();
 
-		var_dump($res);
+		$powerIDArray = [];
 
-/*		//On les supprime
+		foreach ($powers as $power) {
+			array_push($powerIDArray, $power['id']);
+		}
+
+		$powerIDJoined = join(",", $powerIDArray);
+
+
+		//On les supprime
 		$bdd->query("
 			DELETE FROM powers
-			WHERE id = '$powerID'
+			WHERE id IN ($powerIDJoined)
 			");
 
 		//On supprime leurs relations avec cette nature
 		$bdd->query("
 			DELETE FROM rel_natures2powers
-			WHERE powerID = '$powerID'
-			");*/
+			WHERE powerID IN ($powerIDJoined)
+			");
 
 		//On supprime la relation de la nature avec l'univers
 		$bdd->query("
@@ -116,8 +124,22 @@ if (isset($_POST['action']) AND $_POST['action'] == 'deleteNature') {
 			WHERE natureID = '$natureID'
 			");
 
-	}
+		$success = 1;
+
+	//Si un perso a déjà cette nature
+	}else{
+		$msg = 'Un personnage de cet univers a déjà cette nature !';
+	} 
+
+	$response = [
+		'msg' => $msg,
+		'success' => $success
+	];
+
+	echo json_encode($response);
+
 }
+
 
 
 // --------------- CREATE POWER ---------------
@@ -163,6 +185,8 @@ var_dump($lvl);
 
 if (isset($_POST['action']) AND $_POST['action'] == 'deletePower') {
 
+	$success = 0;
+	$msg ='';
 	$univID = $_POST['univID'];
 	$powerID = $_POST['powerID'];
 
@@ -187,7 +211,21 @@ if (isset($_POST['action']) AND $_POST['action'] == 'deletePower') {
 			DELETE FROM rel_natures2powers
 			WHERE powerID = '$powerID'
 			");
+
+		$success = 1;
+	}else{
+		$msg = 'Un personnage de cet univers a déjà ce pouvoir ! Tu ne peux pas le supprimer, désolé.'
 	}
+
+	$response = [
+		'msg' => $msg,
+		'success' => $success
+	];
+
+	echo json_encode($response);
+
+
+
 }
 
 

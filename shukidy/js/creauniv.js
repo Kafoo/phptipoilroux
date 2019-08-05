@@ -1,3 +1,16 @@
+//--------- SELECT BIG CONTAINER ---------
+
+$('.selectBigContainer').click(function(){
+	var what = $(this).attr('bigContainer')
+
+	$('.selectBigContainer').removeClass('current');
+	$(this).addClass('current')
+	$('.bigContainer').hide(0, function(){
+	$('.'+what+'BigContainer').show();
+	});
+})
+
+
 //--------- CARAC ICONES ---------
 
 $('.chooseIcon').click(function(){
@@ -262,18 +275,6 @@ function confirm_editRegles(){
 
 $('.edit_regles').one("click", editRegles);
 
-//--------- SELECT BIG CONTAINER ---------
-
-$('.selectBigContainer').click(function(){
-	var what = $(this).attr('bigContainer')
-
-	$('.selectBigContainer').removeClass('current');
-	$(this).addClass('current')
-	$('.bigContainer').hide(0, function(){
-
-	$('.'+what+'BigContainer').show();
-	});
-})
 
 
 
@@ -427,7 +428,6 @@ $('.nature_submit').click(function(){
   			setTimeout(function(){
   				$('.success').fadeOut(200)
   			}, 3000)
-  			refresh(what)
   		},
 	})
 
@@ -460,10 +460,14 @@ $('.delete_nature').click(function(e){
 					univID: univID,
 					natureID: natureID,
 				},
-		  		dataType: 'html',
+		  		dataType: 'json',
 
 		  		success: function(data, statut){
-		  			refresh(what)
+		  			if (data['success'] == 0) {
+		  				alert(data['msg'])
+		  			}else{
+		  				refresh(what)
+		  			}
 		  		},
 			})
 		},
@@ -527,13 +531,13 @@ $('.delete_power').click(function(e){
 		function(){			
 		//yesCallBack
 			var univID = $('.univID-stock').html();
-			var type = $(e.currentTarget).attr('powerType');
+			var what = $(e.currentTarget).attr('powerType');
 			var NatureType;
-			if (type == 'capa') {NatureType = 'Race'}
-			else if (type == 'disc') {NatureType = 'Classe'}
+			if (what == 'capa') {NatureType = 'Race'}
+			else if (what == 'disc') {NatureType = 'Classe'}
 			var natureID = $('option:selected', '.select'+NatureType).attr('id');
-			var Type = type[0].toUpperCase() + type.substring(1);
-			var powerID = $('option:selected', '.select'+Type).attr('id');
+			var What = what[0].toUpperCase() + what.substring(1);
+			var powerID = $('option:selected', '.select'+What).attr('id');
 
 			$.post({
 				url: 'server/set_univers.php',
@@ -545,7 +549,11 @@ $('.delete_power').click(function(e){
 		  		dataType: 'html',
 
 		  		success: function(data, statut){
-		  			refresh(type, natureID)
+		  			if (data['success'] == 0) {
+		  				alert(data['msg'])
+		  			}else{
+			  			refresh(what, natureID)
+		  			}
 		  		},
 			})
 		},

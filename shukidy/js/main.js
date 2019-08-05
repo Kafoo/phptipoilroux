@@ -39,10 +39,6 @@ function chooseIcon(target, callBack){
 		});
 
 	})
-
-
-
-
 }
 
 

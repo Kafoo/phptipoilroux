@@ -20,8 +20,6 @@ include("_shared_/start.php");
 	<h1>ACCUEIL</h1>
 
 
-
-
 	<div class="container centering">
 
 		Mmh, ouais, alors ça c'est l'accueil<br>
