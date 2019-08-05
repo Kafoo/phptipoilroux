@@ -546,7 +546,7 @@ $('.delete_power').click(function(e){
 					univID: univID,
 					powerID: powerID,
 				},
-		  		dataType: 'html',
+		  		dataType: 'json',
 
 		  		success: function(data, statut){
 		  			if (data['success'] == 0) {

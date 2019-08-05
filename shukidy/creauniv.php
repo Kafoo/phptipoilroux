@@ -44,7 +44,7 @@ $univers = $req->fetch();
 
 <div class="univID-stock" hidden><?=$univID?></div>
 
-<h1>"<?= strtoupper($univers['name'])?>" - EDITION</h1>
+<h1><?= strtoupper($univers['name'])?></h1>
 
 <div class="container">
 	<div class="chooseLabel">Choisis ce que tu veux changer dans ton univers :</div>
@@ -53,7 +53,7 @@ $univers = $req->fetch();
 	<div class="button selectBigContainer" bigContainer="carac">CARACTERISTIQUES</div>	
 	<div class="button selectBigContainer" bigContainer="races">RACES</div>	
 	<div class="button selectBigContainer" bigContainer="classes">CLASSES</div>	
-	<div class="button selectBigContainer" bigContainer="regles">REGLES PARTICULIERES</div>
+	<div class="button selectBigContainer" bigContainer="regles">REGLES SPECIALES</div>
 </div>
 
 
@@ -364,11 +364,11 @@ $univers = $req->fetch();
 	</div>
 </div>
 
-<!-------------- REGLES PARTICULIERES -------------->
+<!-------------- REGLES SPECIALES -------------->
 <div class="bigContainer reglesBigContainer" hidden>
-	<div class="titre">REGLES PARTICULIERES</div>
+	<div class="titre">REGLES SPECIALES</div>
 
-	<div class="helper">Tu peux définir des règles de jeu associé à cet univers. <br>Par exemple, tu peux vouloir qu'aucun joueur ne fasse de lancé de dés associé à une caractéristique particulière et que celle-ci soit dédié à autre chose, ou que tout le monde écrive à la 3e personne.</div>
+	<div class="helper">Tu peux définir des règles de jeu associé à cet univers. <br>Par exemple, tu peux vouloir que tout le monde écrive à la 3e personne, ou que les joueurs n'utilisent une caractéristique que dans des cas bien particuliers.</div>
 
 	<div class="regles"><?=$univers['regles']?></div>
 	<div class="button update_button edit_regles" edit="regles">éditer les règles</div>

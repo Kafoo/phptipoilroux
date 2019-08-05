@@ -197,7 +197,6 @@ if (isset($_POST['action']) AND $_POST['action'] == 'deletePower') {
 		WHERE powerID = '$powerID'
 		");
 	$res = $req->fetchall();
-	var_dump($res);
 
 	if (count($res) == 0) {
 		//On supprime le pouvoir
@@ -221,7 +220,6 @@ if (isset($_POST['action']) AND $_POST['action'] == 'deletePower') {
 		'msg' => $msg,
 		'success' => $success
 	];
-
 	echo json_encode($response);
 
 
