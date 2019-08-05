@@ -113,6 +113,21 @@ src: url("../font/Cinzel-Regular.ttf");
 		color: red;
 	}
 
+	.chooseIcon{
+		display: inline-block;
+		vertical-align: top;
+		font-size: 2em;
+		width: 40px;
+		height: 40px;
+		padding: 2px;
+		margin: 5px 5px;
+		border: 1px solid black;
+		background-color: grey;
+		background-size: 90% 90%;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
 	.iconsBox{
 		position: fixed;
 		width: 500px;
@@ -163,7 +178,7 @@ src: url("../font/Cinzel-Regular.ttf");
 	}
 
 	h1{
-	    width: 60%;
+	    width: 80%;
 	    margin: 40px auto;
 	    padding: 15px;
 	    background-color: rgba(0,0,0,0.12);
@@ -172,6 +187,7 @@ src: url("../font/Cinzel-Regular.ttf");
 	    color: white;
 	    text-shadow: 2px 2px 5px black;
 	    text-align: center;
+	    font-size: 35px;
 	} 
  
 	h2{ 
@@ -506,8 +522,8 @@ src: url("../font/Cinzel-Regular.ttf");
 		width: 100%;
 		margin: 0;
 		padding: 15px 0;
-		border: none;
 		box-shadow: none;
+		background-color: #383838;
 	} 
  
 	h2{ 
@@ -560,7 +576,7 @@ src: url("../font/Cinzel-Regular.ttf");
 		width: 100%;
 		height: 55px;
 		background-color: rgb(43, 86, 43);
-		background-image: url(../../img/global/header_title_black.png);
+		background-image: url(../../img/global/header_title_noir.png);
 		background-position: center top 5px;
 		background-repeat: no-repeat;
 		background-size: 135px;

@@ -6,7 +6,7 @@ include("_shared_/start.php");
 <html>
 <head>
 	<?php include("_shared_/headconfig.php"); ?>
-	<link rel="stylesheet" type="text/css" href="style/creauniv.css?v=5">
+	<link rel="stylesheet" type="text/css" href="style/creauniv.css?v=6">
 	<title>Shukidy - Edition d'univers</title>
 </head>
 <body>
@@ -206,14 +206,20 @@ $univers = $req->fetch();
 
 	<div class="ventreBox">
 		<div class="raceBox">
-			<div class="selectContainer">
-				<h3>Races disponibles :</h3>
-				<select class="selectBox selectAttribute selectNature selectRace"></select>
+			<h3>Races disponibles :</h3>
+			<select class="selectBox selectAttribute selectNature selectRace" select="race"></select>
+			<div class="descriptionContainer">
+				<div class="natureBackground raceBackground"></div>				
+				<div class="descriptionBox raceDescription"></div>
 			</div>
-			<div class="descriptionBox raceDescription"></div>
+
+			<div class="button chooseIcon chooseNatureIcon-hidden chooseRaceIcon"></div>
+
 			<div class="button update_button edit_button edit_race" edit="race" hidden>éditer cette race</div>
 			<div class="button update_button delete_button delete_nature delete_race" natureType="race" hidden>supprimer cette race</div>
 		</div>
+
+		<!------ ADD RACE ------>
 		<div class="addBox addRace">
 			<div class="addTitle">
 				<div class="addIcone"></div>
@@ -230,7 +236,8 @@ $univers = $req->fetch();
 
 				<label>Description :</label><br>
 				<textarea class="race_description"></textarea><br>
-
+				<label>logo :</label><br>
+				<div class="button chooseIcon chooseNewNatureIcon chooseNewRaceIcon">?</div><br>
 				<input type="submit" class="nature_submit" nature_type="race">
 			</div>
 		</div>
@@ -240,14 +247,17 @@ $univers = $req->fetch();
 	<!-------------- CAPACITES DE LA RACE -------------->
 	<div class="ventreBox">
 		<div class="capaBox">
-			<div class="selectContainer">
-				<h3>Capacités de la race :</h3>
-				<select class="selectBox selectAttribute selectPower selectCapa"><option>---</option></select>
+			<h3>Capacités de la race :</h3>
+			<select class="selectBox selectAttribute selectPower selectCapa" select="capa"><option>---</option></select>
+			<div class="descriptionContainer">
+				<div class="natureBackground capaBackground"></div>	
+				<div class="descriptionBox capaDescription">pas encore de capacité pour cette race</div>
 			</div>
-			<div class="descriptionBox capaDescription">pas encore de capacité pour cette race</div>
 			<div class="button update_button edit_button edit_capa" edit="capa" hidden>éditer cette capacité</div>	
 			<div class="button update_button delete_button delete_power delete_capa" powerType="capa" hidden>supprimer cette capacité</div>	
 		</div>
+
+		<!------ ADD CAPA ------>
 		<div class="addBox addCapa">
 			<div class="addTitle">
 				<div class="addIcone"></div>
@@ -277,15 +287,20 @@ $univers = $req->fetch();
 
 	<div class="ventreBox">
 		<div class="classeBox">
-			<div class="selectContainer">
-				<h3>Classes disponibles :</h3>
-				<select class="selectBox selectAttribute selectNature selectClasse"></select>
+			<h3>Classes disponibles :</h3>
+			<select class="selectBox selectAttribute selectNature selectClasse" select="classe"></select>
+			<div class="descriptionContainer">
+				<div class="natureBackground classeBackground"></div>	
+				<div class="descriptionBox classeDescription"></div>
 			</div>
-			<div class="descriptionBox classeDescription"></div>
+
+			<div class="button chooseIcon chooseNatureIcon-hidden chooseClasseIcon"></div>
+
 			<div class="button update_button edit_button edit_classe" edit="classe" hidden>éditer cette classe</div>
 			<div class="button update_button delete_button delete_nature delete_classe" natureType="classe" hidden>supprimer cette classe</div>
 		</div>
 
+		<!------ ADD CLASSE ------>
 		<div class="addBox addClasse">
 			<div class="addTitle">
 				<div class="addIcone"></div>
@@ -300,7 +315,8 @@ $univers = $req->fetch();
 
 				<label>Description :</label><br>
 				<textarea class="classe_description"></textarea><br>
-
+				<label>logo :</label><br>
+				<div class="button chooseIcon chooseNewNatureIcon chooseNewClasseIcon">?</div><br>
 				<input type="submit" class="nature_submit" nature_type="classe">
 			</div>
 		</div>
@@ -310,15 +326,17 @@ $univers = $req->fetch();
 	<!-------------- DISCIPLINES DE LA CLASSE -------------->
 
 		<div class="discBox">
-			<div class="selectContainer">
-				<h3>Disciplines de la classe :</h3>
-
-				<select class="selectBox selectAttribute selectPower selectDisc"><option>---</option></select>
+			<h3>Disciplines de la classe :</h3>
+			<select class="selectBox selectAttribute selectPower selectDisc" select="disc"><option>---</option></select>
+			<div class="descriptionContainer">
+				<div class="natureBackground discBackground"></div>	
+				<div class="descriptionBox discDescription">Pas encore de discipline pour cette classe</div>
 			</div>
-			<div class="descriptionBox discDescription">Pas encore de discipline pour cette classe</div>
 			<div class="button update_button edit_button edit_disc" edit="disc" hidden>éditer cette discipline</div>
 			<div class="button update_button delete_button delete_power delete_disc" powerType="disc" hidden>supprimer cette discipline</div>		
 		</div>
+
+		<!------ ADD DISC ------>
 		<div class="addBox addDisc">
 			<div class="addTitle">
 				<div class="addIcone"></div>

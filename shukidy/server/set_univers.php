@@ -11,35 +11,20 @@ if (isset($_POST['action']) AND $_POST['action'] == 'changeCaracs') {
 
 	$univID = $_POST['univID'];
 	$c1_name = $_POST['c1_name'];
-	var_dump($c1_name);
 	$c1_icon = $_POST['c1_icon'];
-	var_dump($c1_icon);
 	$c1_color = $_POST['c1_color'];
-	var_dump($c1_color);
 	$c2_name = $_POST['c2_name'];
-	var_dump($c2_name);
 	$c2_icon = $_POST['c2_icon'];
-	var_dump($c2_icon);
 	$c2_color = $_POST['c2_color'];
-	var_dump($c2_color);
 	$c3_name = $_POST['c3_name'];
-	var_dump($c3_name);
 	$c3_icon = $_POST['c3_icon'];
-	var_dump($c3_icon);
 	$c3_color = $_POST['c3_color'];
-	var_dump($c3_color);
 	$c4_name = $_POST['c4_name'];
-	var_dump($c4_name);
 	$c4_icon = $_POST['c4_icon'];
-	var_dump($c4_icon);
 	$c4_color = $_POST['c4_color'];
-	var_dump($c4_color);
 	$c5_name = $_POST['c5_name'];
-	var_dump($c5_name);
 	$c5_icon = $_POST['c5_icon'];
-	var_dump($c5_icon);
 	$c5_color = $_POST['c5_color'];
-var_dump($c5_color);
 
 
 	 	$bdd->query("UPDATE mas_univers 
@@ -59,12 +44,13 @@ if (isset($_POST['action']) AND $_POST['action'] == 'addNature') {
 	$univID = $_POST['univID'];
 	$name = nl2br(htmlspecialchars(($_POST['name']), ENT_QUOTES));
 	$description = nl2br(htmlspecialchars(($_POST['description']), ENT_QUOTES));
-	$type = $_POST['type'];
+	$what = $_POST['what'];
+	$icon = $_POST['icon'];
 
 	//On ajoute la nature à la bdd
 	$bdd->query("INSERT INTO natures
-		(name, description, type)
-		VALUES ('$name', '$description', '$type')
+		(name, description, type, icon)
+		VALUES ('$name', '$description', '$what', '$icon')
 		");
 
 	//On lie la nature à l'univers
@@ -100,14 +86,36 @@ if (isset($_POST['action']) AND $_POST['action'] == 'deleteNature') {
 			WHERE id = '$natureID'
 			");
 
-		//On supprime sa relation avec l'univers
+		//On cherche les pouvoirs lui sont lié
+		$req = $bdd->query("
+			SELECT p.id
+			FROM powers as p
+			JOIN rel_natures2powers as n2p
+			ON n2p.powerid = p.id
+			WHERE n2p.natureID = '$natureID'
+			");
+		$res = $req->fetchall();
+
+		var_dump($res);
+
+/*		//On les supprime
+		$bdd->query("
+			DELETE FROM powers
+			WHERE id = '$powerID'
+			");
+
+		//On supprime leurs relations avec cette nature
+		$bdd->query("
+			DELETE FROM rel_natures2powers
+			WHERE powerID = '$powerID'
+			");*/
+
+		//On supprime la relation de la nature avec l'univers
 		$bdd->query("
 			DELETE FROM rel_univ2natures
 			WHERE natureID = '$natureID'
 			");
 
-		//On supprime les pouvoirs qui lui sont liés ??
-		//Peut être pas...
 	}
 }
 
@@ -120,13 +128,20 @@ if (isset($_POST['action']) AND $_POST['action'] == 'addPower') {
 	$natureID = $_POST['natureID'];
 	$name = nl2br(htmlspecialchars(($_POST['name']), ENT_QUOTES));
 	$description = nl2br(htmlspecialchars(($_POST['description']), ENT_QUOTES));
-	$type = $_POST['type'];
+	$what = $_POST['what'];
 	$lvl = 1;
-	if ($type == 'capa') {
+	if ($what == 'capa') {
 		$active = 0;
-	} elseif($type == 'disc'){
+	} elseif($what == 'disc'){
 		$active = 1;
 	}
+
+var_dump($univID);
+var_dump($natureID);
+var_dump($name);
+var_dump($description);
+var_dump($what);
+var_dump($lvl);
 
 	//On ajoute la pouvoir à la bdd
 	$bdd->query("INSERT INTO powers
@@ -135,7 +150,7 @@ if (isset($_POST['action']) AND $_POST['action'] == 'addPower') {
 		");
 
 	//On lie le pouvoir à la nature
-	$powerID = $bdd->query("SELECT id FROM powers ORDER BY id DESC")->fetch()[0];
+	$powerID = $bdd->query("SELECT id FROM powers WHERE name='$name'")->fetch()[0];
 	$bdd->query("INSERT INTO rel_natures2powers
 		(natureID, powerID)
 		VALUES ('$natureID', '$powerID')
@@ -206,7 +221,8 @@ if (isset($_POST['action']) AND $_POST['action'] == 'edit') {
 		$description = nl2br(htmlspecialchars(($_POST['description']), ENT_QUOTES));
 
 		if ($_POST['what'] == 'race' OR $_POST['what'] == 'classe') {
-			$bdd->query("UPDATE natures SET name='$name', description='$description' WHERE id='$id'");
+			$icon = $_POST['icon'];
+			$bdd->query("UPDATE natures SET name='$name', description='$description', icon='$icon' WHERE id='$id'");
 		}
 		if ($_POST['what'] == 'capa' OR $_POST['what'] == 'disc') {
 			$bdd->query("UPDATE powers SET name='$name', description='$description' WHERE id='$id'");

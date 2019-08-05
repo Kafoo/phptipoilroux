@@ -20,7 +20,6 @@ include("_shared_/start.php");
 	<h1>ACCUEIL</h1>
 
 
-<span class="button">Afficher 'lolilol' dans le log</span>
 
 
 	<div class="container centering">

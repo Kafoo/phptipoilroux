@@ -11,7 +11,7 @@ if (isset($_POST['getInfos']) AND ($_POST['what'] == 'race' OR $_POST['what'] ==
 	$natureType = $_POST['what'];
 
 	$req = $bdd->query("
-		SELECT nat.id, name, description
+		SELECT nat.id, name, description, icon
 		FROM natures as nat
 		JOIN rel_univ2natures as u2n 
 		ON nat.id = u2n.natureID

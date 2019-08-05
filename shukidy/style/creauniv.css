@@ -129,25 +129,7 @@ h3{
 }
 
 .chooseCaracIcon{
-	display: inline-block;
-	vertical-align: top;
-	font-size: 2em;
-	width: 40px;
-	height: 40px;
-	display: inline-block;
-	padding: 2px;
-	margin: 5px 5px;
-	border: 1px solid black;
-	background-color: grey;
 	border-radius: 50px;
-	background-size: 90% 90%;
-	background-position: center;
-	background-repeat: no-repeat;
-}
-
-.selectContainer{
-	margin: auto;
-	overflow: auto;
 }
 
 .selectBox{
@@ -171,17 +153,39 @@ h3{
     cursor: text;
 }
 
-.descriptionBox{
+.descriptionContainer{
+	position: relative;
     display: block;
-    height: 150px;
-    width: calc(80% - 43px);
-    margin: 0 10% 15px 10%;
-    padding: 12px 20px;
+    height: 250px;
+    width: calc(80% - 3px);
+    margin: 0 10% 5px 10%;
     border: 1.5px solid black;
     border-top: 1px solid black;
     border-radius: 0 0 4px 4px;
+    overflow: hidden;
+}
+
+.natureBackground{
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+	background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1;
+}
+
+.descriptionBox{
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: calc(100% - 40px);
+	height: calc(100% - 24px);
     background-color: rgba(0, 0, 0, 0.27);
     overflow: auto;
+    padding: 12px 20px;
 }
 
 .selectBox, .descriptionBox{
@@ -195,6 +199,19 @@ h3{
     resize: vertical;
     color: black;
     outline: none;
+}
+
+.chooseNatureIcon-hidden{
+	height: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+.chooseNatureIcon, .chooseNewNatureIcon{
+	border-radius: 4px;
+	background-color: rgb(207, 207, 207);
+	color: black;
 }
 
 .univDescription, .regles{
@@ -370,12 +387,25 @@ form td{
 		width: 100%;
 		margin: 0;
 	}
-	.descriptionBox{
+
+	.selectBox.editArea{
+	    width: calc(100% - 3px);
+	}
+
+	.descriptionContainer{
 		border: none;
 		border-radius: 0;
-		width: calc(100% - 43px);
+		width: 100%;
 		margin: 0 0 20px 0;
+	}
+
+	.descriptionBox{
 		box-shadow: inset 3px 2px 14px 0px #00000047;
+		border: none;
+	}
+
+	.natureBackground{
+		width: 100%;
 	}
 
 	.helper{
