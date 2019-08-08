@@ -140,7 +140,7 @@ foreach ($chat as $key => $msg) {
 		?>
 		<div class="helper_msg">
 			<div class="title">
-				de <?=$msg['pseudo']?>,  le <?=$date[0]?> à <?=$date[1]?>
+				<?=$msg['pseudo']?>,  le <?=$date[0]?> à <?=$date[1]?>
 			</div>
 			<div class="content">
 				<?=$msg['content']?>
