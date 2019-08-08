@@ -133,7 +133,7 @@ $caracOfUniv = $req->fetchall();
 
 		<div class="button form_button addCarac">Ajouter une caractéristique</div>
 		<div class="button form_button cancel_carac">Annuler les changements</div>
-		<div class="button form_button edit_carac">Valider les changement</div>
+		<div class="button form_button edit_carac">Valider les changements</div>
 	</div>
 </div>
 
