@@ -39,6 +39,8 @@ include("_shared_/start.php");
 
 		<?php //IF RIEN PRÉCISÉ
 		if (empty($_GET)){
+
+			
 			$userID = $_SESSION['id'];
 			$req = $bdd->query("
 				SELECT *
@@ -48,9 +50,9 @@ include("_shared_/start.php");
 			$persoInfos = $req->fetchall();
 			$infoUser = $persoInfos[0];
 			?>
-			
 			<h1>PROFIL DE <?=strtoupper($infoUser['pseudo'])?></h1>
 
+			<!-- 
 			<div class="container centering	infoUser">
 
 				<table>
@@ -67,7 +69,7 @@ include("_shared_/start.php");
 
 
 				<br>
-				<h3>Persos :</h3>
+				<h4>Persos :</h4>
 
 				<?php //Affichage des persos
 				for ($i=0; $i < count($persoInfos) ; $i++) {  ?>
@@ -77,8 +79,9 @@ include("_shared_/start.php");
 				<?php
 				} ?>
 
-			</div>
+			</div> -->
 			
+
 		<?php //endif rien précisé
 
 		//IF PERSO PRÉCISÉ
@@ -111,22 +114,18 @@ include("_shared_/start.php");
 
 			?>
 
-			<h2><?=strtoupper($persoInfos['nom'])?></h2>
+			<h1><?=strtoupper($persoInfos['nom'])?></h1>
 
-			<div class="container" id="gridFichePerso">
+			<div class="container">
 				
-				<img class="ficheBox ficheBox-avatar" style="grid-area: avatar" src="img/avatars/<?php
-							//Si GM, avatar générique de GM
-							if ($persoInfos['nom']=='GM'){echo'GM';}
-							else{echo $persoInfos['id'];} ?>.jpg">
+				<div class="ventreBox">
 
+					<img src="img/avatars/<?php
+						//Si GM, avatar générique de GM
+						if ($persoInfos['nom']=='GM'){echo'GM';}
+						else{echo $persoInfos['id'];} ?>.jpg">
 
-				<div class="ficheBox ficheBox-lvl mobile centering" style="grid-area: lvl">
-					<i>XP : soon<br>
-					suivant : soon</i>
-				</div>
-
-				<div class="ficheBox centering" style="grid-area: infos">
+					<div class="inline">
 						<h4>Nature</h4><b><?=$persoInfos['nature']?></b><br><br>
 						<h4>Attitude</h4><b><?=$persoInfos['attitude']?></b><br><br>
 						<h4>Concept</h4><b><?=$persoInfos['concept']?></b><br><br>
@@ -144,15 +143,10 @@ include("_shared_/start.php");
 								<input type="submit" name="submitEditPhysique" value="J'édite mon physique !">
 							</form>
 						</div>
+					</div>
 				</div>
 
-				<div class="ficheBox clanBox" style="grid-area: clan">
-					<img class="logoClan" src="">
-					<h3>CLAN : </h3>
-					<!-- Description du clan ici -->
-				</div>
-
-				<div class="ficheBox carac centering" style="grid-area: carac">
+				<div class="ventreBox carac">
 					<h4>LVL <?=$persoInfos['lvl']?></h4>
 					<span class="desktop">
 						<i>XP : soon<br>
@@ -183,36 +177,17 @@ include("_shared_/start.php");
 					</table>
 				</div>
 
-				<div class="ficheBox" style="grid-area: disciplines">
-					<h3>DISCIPLINES</h3>
-					<!-- Hidden windows des disciplines -->
-					<div class="discWindow discWindow-1 disc1">
-						<img class="croix" src="img/mobile/croix.png">
-						<h3><?=strtoupper($persoInfos['nom_discipline'])?> - lvl 1</h3>
-						<?=$persoInfos['description_discipline']?>
-						<div class="discWindow-box button">
-							level up : <i>soon !</i> 
-						</div>
-					</div>
-					<!-- end -->
-					<div class="discContainer">
-						<div class="discBox button" id="disc1">
-							<b>Nom Discipline</b><br>
-							<span>lvl 1</span>
-						</div>
-						<div class="discBox discBox-empty">
-							<i>soon</i>
-						</div>
-						<div class="discBox discBox-empty">
-							<i>soon</i>
-						</div>
-						<div class="discBox discBox-empty">
-							<i>soon</i>
-						</div>
-					</div>
+				<div class="ventreBox raceBox">
+					<h3>RACE : </h3>
+					<!-- Description du clan ici -->
 				</div>
 
-				<div class="ficheBox" style="grid-area: lore">
+				<div class="ventreBox classeBox">
+					<h3>CLASSE : </h3>
+					<!-- Description du clan ici -->
+				</div>
+
+				<div class="ventreBox">
 					<h3>HISTOIRE
 						<?php
 						if (in_array($persoID, $_SESSION['persosArray'])) { ?>

@@ -62,12 +62,72 @@
 					if ($coterie[$j]['c4Cond'] >= 0) {$c4Cond = '+'.$coterie[$j]['c4Cond'];$c4CondIsPos = true;}	else{$c4Cond = $coterie[$j]['c4Cond'];}		
 					if ($coterie[$j]['c5Cond'] >= 0) {$c5Cond = '+'.$coterie[$j]['c5Cond'];$c5CondIsPos = true;}	else{$c5Cond = $coterie[$j]['c5Cond'];}		
 					?>
-					<div>				
-						<div class="infoPersoCarac carac1" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($c1Name)?>"><?=$coterie[$j]['c1']?></div> 
-						<div class="infoPersoCarac carac2" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($c2Name)?>"><?=$coterie[$j]['c2']?></div> 
-						<div class="infoPersoCarac carac3" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($c3Name)?>"><?=$coterie[$j]['c3']?></div> 
-						<div class="infoPersoCarac carac4" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($c4Name)?>"><?=$coterie[$j]['c4']?></div>
-						<div class="infoPersoCarac carac5" data-toggle="tooltip" data-placement="top" title="<?=ucfirst($c5Name)?>"><?=$coterie[$j]['c5']?></div>
+					<div>
+						<div class="displayCarac-container" >
+							<div class="displayCarac-icon" 
+							data-toggle="tooltip" 
+							data-placement="top" 
+							title="<?=ucfirst($c1Name)?>"
+							style="background-image: url('img/gameicons/<?=$avInfos['c1_icon']?>');
+							background-color: <?=$avInfos['c1_color']?>">
+							</div>
+							<div class="displayCarac-value">
+								<?=$coterie[$j]['c1']?>
+							</div>
+						</div> 
+
+						<div class="displayCarac-container" >
+							<div class="displayCarac-icon" 
+							data-toggle="tooltip" 
+							data-placement="top" 
+							title="<?=ucfirst($c2Name)?>"
+							style="background-image: url('img/gameicons/<?=$avInfos['c2_icon']?>');
+							background-color: <?=$avInfos['c2_color']?>">
+							</div>
+							<div class="displayCarac-value">
+								<?=$coterie[$j]['c2']?>
+							</div>
+						</div> 
+
+						<div class="displayCarac-container" >
+							<div class="displayCarac-icon" 
+							data-toggle="tooltip" 
+							data-placement="top" 
+							title="<?=ucfirst($c3Name)?>"
+							style="background-image: url('img/gameicons/<?=$avInfos['c3_icon']?>');
+							background-color: <?=$avInfos['c3_color']?>">
+							</div>
+							<div class="displayCarac-value">
+								<?=$coterie[$j]['c3']?>
+							</div>
+						</div> 
+
+						<div class="displayCarac-container" >
+							<div class="displayCarac-icon" 
+							data-toggle="tooltip" 
+							data-placement="top" 
+							title="<?=ucfirst($c4Name)?>"
+							style="background-image: url('img/gameicons/<?=$avInfos['c4_icon']?>');
+							background-color: <?=$avInfos['c4_color']?>">
+							</div>
+							<div class="displayCarac-value">
+								<?=$coterie[$j]['c4']?>
+							</div>
+						</div>
+
+						<div class="displayCarac-container" >
+							<div class="displayCarac-icon" 
+							data-toggle="tooltip" 
+							data-placement="top" 
+							title="<?=ucfirst($c5Name)?>"
+							style="background-image: url('img/gameicons/<?=$avInfos['c5_icon']?>');
+							background-color: <?=$avInfos['c5_color']?>">
+							</div>
+							<div class="displayCarac-value">
+								<?=$coterie[$j]['c5']?>
+							</div>
+						</div>
+
 					</div>
 					<div>						
 						<div class="infoPersoCond <?php if($c1CondIsPos){echo 'infoPersoCond-pos';}else{echo 'infoPersoCond-neg';} ?>" data-toggle="tooltip" data-placement="top" title="Condition de <?=ucfirst($c1Name)?>"><?=$c1Cond?></div>

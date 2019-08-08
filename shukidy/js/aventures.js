@@ -20,7 +20,7 @@ function tinymceInit($format){
 		if ($format == 'desktop') {
 			tinymce.init({
 			    selector: '.mytextarea',
-			    content_css : "style/tinymce.css",
+			    content_css : "style/_shared_/tinymce.css",
 			    height: 300,
 			    menubar: false,
 			    forced_root_block : "",
@@ -38,7 +38,7 @@ function tinymceInit($format){
 		if ($format == 'mobile') {
 			tinymce.init({
 			    selector: '.mytextarea',
-			    content_css : "style/tinymce.css",
+			    content_css : "style/_shared_/tinymce.css",
 			    height: 184,
 			    menubar: false,
 			    forced_root_block : "",

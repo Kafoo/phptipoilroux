@@ -40,173 +40,106 @@ $req = $bdd->query("
 	");
 $univers = $req->fetch();
 
+//On récupère les carac de l'univers
+
+$req = $bdd->query("
+	SELECT id, num, name, color, icon
+	FROM carac
+	WHERE univid = '$univID'
+	ORDER BY num
+	");
+$caracOfUniv = $req->fetchall();
+
 ?>
+
 
 <div class="univID-stock" hidden><?=$univID?></div>
 
-<h1><?= strtoupper($univers['name'])?></h1>
+<h1>EDITION<br>"<?= strtoupper($univers['name'])?>"</h1>
 
-<div class="container">
-	<div class="chooseLabel">Choisis ce que tu veux changer dans ton univers :</div>
 
-	<div class="button selectBigContainer current" bigContainer="description">DESCRIPTION</div>	
-	<div class="button selectBigContainer" bigContainer="carac">CARACTERISTIQUES</div>	
-	<div class="button selectBigContainer" bigContainer="races">RACES</div>	
-	<div class="button selectBigContainer" bigContainer="classes">CLASSES</div>	
-	<div class="button selectBigContainer" bigContainer="regles">REGLES SPECIALES</div>
-</div>
+<div class="button selectBigContainer current" bigContainer="description">DESCRIPTION</div>	
+<div class="button selectBigContainer" bigContainer="carac">CARACTERISTIQUES</div>	
+<div class="button selectBigContainer" bigContainer="races">RACES</div>	
+<div class="button selectBigContainer" bigContainer="classes">CLASSES</div>	
+<div class="button selectBigContainer" bigContainer="regles">REGLES SPECIALES</div>
 
 
 <!-------------- DESCRIPTION UNIV -------------->
 <div class="bigContainer descriptionBigContainer">
-	<div class="titre">DESCRIPTION</div>
+	<h2>DESCRIPTION</h2>
 
 	<div class="helper">Tu peux ici décrire ton univers, de son environnement naturel aux les êtres qui y évoluent, en passant par sa politique, ses conflits, son ambiance, ses couleurs et ses odeurs. Fais-toi plaisir, tu feras plaisir à tes joueurs !</div>
 
 
 	<div class="univDescription"><?=$univers['description']?></div>
-	<div class="button update_button edit_univ" edit="univ">éditer la description</div>
+	<div class="button form_button edit_univ" edit="univ">éditer la description</div>
 </div>
 
 <!-------------- CARACTERISTIQUES -------------->
 <div class="bigContainer caracBigContainer" hidden>
-	<div class="titre">CARACTERISTIQUES</div>
+	<h2>CARACTERISTIQUES</h2>
 
-	<div class="helper">Ces caractéristiques définiront les attributs des personnages de ton univers. Chaque caractéristique sera représentée par une valeur entre 1 et 10 pour chaque personnage, cette valeur sera choisie par le joueur lors de la création de son personnage.</div>
+	<div class="helper" id="helper">Ces caractéristiques définiront les attributs des personnages de ton univers. Chaque caractéristique sera représentée par une valeur entre 1 et 10 pour chaque personnage, cette valeur sera choisie par le joueur lors de la création de son personnage.</div>
 
 	<div class="ventreBox caracBox">
-		<div class="caracContainer">
-			<div class="button chooseIcon chooseCaracIcon" carac="1" icon="<?=$univers['c1_icon']?>"
-			style="background-color: <?=$univers['c1_color']?>;<?php
-			if ($univers['c1_icon'] !== '') { ?>
-				background-image: url('img/gameicons/<?=$univers['c1_icon']?>')<?php
-			}?>
-			">
-				<?php 
-				if ($univers['c1_icon'] == ''){echo"?";}
-				?>
-			</div>
-			<div class="caracContainer-left">
-				<input type="text" class="input_carac1" value="<?=$univers['c1_name']?>" maxlength="20"><br>
-				<select class="selectIconColor" carac="1">
-					<option disabled selected value="<?=$univers['c1_color']?>">Couleur</option>
-					<option value="#F44336">Rouge</option>
-					<option value="#4CAF50">Vert</option>
-					<option value="#3F51B5">Bleu</option>
-					<option value="#9C27B0">Violet</option>
-					<option value="#FF9800">Orange</option>
-					<option value="#FFEB3B">Jaune</option>
 
-				</select>
-			</div>
-		</div>
-		<div class="caracContainer">
-			<div class="button chooseIcon chooseCaracIcon" carac="2" icon="<?=$univers['c2_icon']?>"
-			style="background-color: <?=$univers['c2_color']?>;<?php
-			if ($univers['c2_icon'] !== '') { ?>
-				background-image: url('img/gameicons/<?=$univers['c2_icon']?>')<?php
-			}?>
-			">
-				<?php 
-				if ($univers['c2_icon'] == ''){echo"?";}
-				?>
-			</div>
-			<div class="caracContainer-left">
-				<input type="text" class="input_carac2" value="<?=$univers['c2_name']?>" maxlength="20"><br>
-				<select class="selectIconColor" carac="2">
-					<option disabled selected value="<?=$univers['c2_color']?>">Couleur</option>
-					<option value="#F44336">Rouge</option>
-					<option value="#4CAF50">Vert</option>
-					<option value="#3F51B5">Bleu</option>
-					<option value="#9C27B0">Violet</option>
-					<option value="#FF9800">Orange</option>
-					<option value="#FFEB3B">Jaune</option>
+			<?php 
 
-				</select>
-			</div>
-		</div>
-		<div class="caracContainer">
-			<div class="button chooseIcon chooseCaracIcon" carac="3" icon="<?=$univers['c3_icon']?>"
-			style="background-color: <?=$univers['c3_color']?>;<?php
-			if ($univers['c3_icon'] !== '') { ?>
-				background-image: url('img/gameicons/<?=$univers['c3_icon']?>')<?php
-			}?>
-			">
-				<?php 
-				if ($univers['c3_icon'] == ''){echo"?";}
-				?>
-			</div>
-			<div class="caracContainer-left">
-				<input type="text" class="input_carac3" value="<?=$univers['c3_name']?>" maxlength="20"><br>
-				<select class="selectIconColor" carac="3">
-					<option disabled selected value="<?=$univers['c3_color']?>">Couleur</option>
-					<option value="#F44336">Rouge</option>
-					<option value="#4CAF50">Vert</option>
-					<option value="#3F51B5">Bleu</option>
-					<option value="#9C27B0">Violet</option>
-					<option value="#FF9800">Orange</option>
-					<option value="#FFEB3B">Jaune</option>
 
-				</select>
-			</div>
-		</div>
-		<div class="caracContainer">
-			<div class="button chooseIcon chooseCaracIcon" carac="4" icon="<?=$univers['c4_icon']?>"
-			style="background-color: <?=$univers['c4_color']?>;<?php
-			if ($univers['c4_icon'] !== '') { ?>
-				background-image: url('img/gameicons/<?=$univers['c4_icon']?>')<?php
-			}?>
-			">
+			foreach ($caracOfUniv as $key => $carac) { $key++;?>
+				
+				<div class="caracContainer" 
+				carac="<?=$key?>" 
+				caracID="<?=$carac['id']?>"
 				<?php 
-				if ($univers['c4_icon'] == ''){echo"?";}
-				?>
-			</div>
-			<div class="caracContainer-left">
-				<input type="text" class="input_carac4" value="<?=$univers['c4_name']?>" maxlength="20"><br>
-				<select class="selectIconColor" carac="4">
-					<option disabled selected value="<?=$univers['c4_color']?>">Couleur</option>
-					<option value="#F44336">Rouge</option>
-					<option value="#4CAF50">Vert</option>
-					<option value="#3F51B5">Bleu</option>
-					<option value="#9C27B0">Violet</option>
-					<option value="#FF9800">Orange</option>
-					<option value="#FFEB3B">Jaune</option>
+				if ($carac['name'] == '' AND $carac['icon'] == '' AND $carac['color'] == '#858585'):?>
+					hidden
+				<?php endif ?>
+				>
 
-				</select>
-			</div>
-		</div>
-		<div class="caracContainer">
-			<div class="button chooseIcon chooseCaracIcon" carac="5" icon="<?=$univers['c5_icon']?>"
-			style="background-color: <?=$univers['c5_color']?>;<?php
-			if ($univers['c5_icon'] !== '') { ?>
-				background-image: url('img/gameicons/<?=$univers['c5_icon']?>')<?php
-			}?>
-			">
-				<?php 
-				if ($univers['c5_icon'] == ''){echo"?";}
-				?>
-			</div>
-			<div class="caracContainer-left">
-				<input type="text" class="input_carac5" value="<?=$univers['c5_name']?>" maxlength="20"><br>
-				<select class="selectIconColor" carac="5">
-					<option disabled selected value="<?=$univers['c5_color']?>">Couleur</option>
-					<option value="#F44336">Rouge</option>
-					<option value="#4CAF50">Vert</option>
-					<option value="#3F51B5">Bleu</option>
-					<option value="#9C27B0">Violet</option>
-					<option value="#FF9800">Orange</option>
-					<option value="#FFEB3B">Jaune</option>
 
-				</select>
-			</div>
+					<div class="button chooseIcon chooseCaracIcon" carac="<?=$key?>" icon="<?=$carac['icon']?>"
+					style="background-color: <?=$carac['color']?>;<?php
+					if ($carac['icon'] !== '') { ?>
+						background-image: url('img/gameicons/<?=$carac['icon']?>')<?php
+					}?>
+					">
+						<?php
+						if ($carac['icon'] == ''){echo"?";}
+						?>
+					</div>
+					<div class="caracContainer-center">
+						<input type="text" class="caracName" placeholder="Nom" value="<?=ucfirst($carac['name'])?>" maxlength="20"><br>
+						<select class="selectIconColor" carac="<?=$key?>">
+							<option value="#858585" <?php if($carac['color'] == '#858585'){echo"selected";} ?>>Gris</option>
+							<option value="#ffffff" <?php if($carac['color'] == '#ffffff'){echo"selected";} ?>>Blanc</option>
+							<option value="#F44336" <?php if($carac['color'] == '#F44336'){echo"selected";} ?>>Rouge</option>
+							<option value="#4CAF50" <?php if($carac['color'] == '#4CAF50'){echo"selected";} ?>>Vert</option>
+							<option value="#3a53dd" <?php if($carac['color'] == '#3a53dd'){echo"selected";} ?>>Bleu</option>
+							<option value="#9C27B0" <?php if($carac['color'] == '#9C27B0'){echo"selected";} ?>>Violet</option>
+							<option value="#FF9800" <?php if($carac['color'] == '#FF9800'){echo"selected";} ?>>Orange</option>
+							<option value="#FFEB3B" <?php if($carac['color'] == '#FFEB3B'){echo"selected";} ?>>Jaune</option>
+							<option value="#795548" <?php if($carac['color'] == '#795548'){echo"selected";} ?>>Marron</option>
+							<option value="#ff64a6" <?php if($carac['color'] == '#ff64a6'){echo"selected";} ?>>Rose</option>
+							<option value="#00caca" <?php if($carac['color'] == '#00caca'){echo"selected";} ?>>Cyan</option>
+						</select>
+					</div>
+					<div class="button delete" carac="<?=$key?>"></div>
+				</div>
+			<?php
+			} ?>
 		</div>
-		<input type="submit" class="button update_button edit_carac" value="Valider les caractéristiques">
+
+		<div class="button form_button addCarac">Ajouter une caractéristique</div>
+		<div class="button form_button cancel_carac">Annuler les changements</div>
+		<div class="button form_button edit_carac">Valider les changement</div>
 	</div>
 </div>
 
 <!-------------- RACES -------------->
 <div class="bigContainer racesBigContainer" hidden>
-	<div class="titre">RACES</div>
+	<h2>RACES</h2>
 	<div class="helper"><b>Une race représente la nature biologique profonde d'un personnage</b>, c'est à dire l'espèce animal/végétal/monstrueuse/etc à laquelle il appartient.<br><!-- 
 	-->Chaque race possède ses propres <b>capacités</b>, qui sont des <b>pouvoirs passifs</b>. Par exemple, un elfe peut avoir la capacité de voir très loin. Cette capacité pourrait s'appeler "longue vue" et fait partie de la nature du personnage</div>
 
@@ -218,11 +151,9 @@ $univers = $req->fetch();
 				<div class="natureBackground raceBackground"></div>				
 				<div class="descriptionBox raceDescription"></div>
 			</div>
-
 			<div class="button chooseIcon chooseNatureIcon-hidden chooseRaceIcon"></div>
-
-			<div class="button update_button edit_button edit_race" edit="race" hidden>éditer cette race</div>
-			<div class="button update_button delete_button delete_nature delete_race" natureType="race" hidden>supprimer cette race</div>
+			<div class="button form_button edit_attribute edit_race" edit="race" hidden>éditer cette race</div>
+			<div class="button form_button delete_button delete_nature delete_race" natureType="race" hidden>supprimer cette race</div>
 		</div>
 
 		<!------ ADD RACE ------>
@@ -259,8 +190,8 @@ $univers = $req->fetch();
 				<div class="natureBackground capaBackground"></div>	
 				<div class="descriptionBox capaDescription">pas encore de capacité pour cette race</div>
 			</div>
-			<div class="button update_button edit_button edit_capa" edit="capa" hidden>éditer cette capacité</div>	
-			<div class="button update_button delete_button delete_power delete_capa" powerType="capa" hidden>supprimer cette capacité</div>	
+			<div class="button form_button edit_attribute edit_capa" edit="capa" hidden>éditer cette capacité</div>	
+			<div class="button form_button delete_button delete_power delete_capa" powerType="capa" hidden>supprimer cette capacité</div>	
 		</div>
 
 		<!------ ADD CAPA ------>
@@ -287,7 +218,7 @@ $univers = $req->fetch();
 
 <!-------------- CLASSES -------------->
 <div class="bigContainer classesBigContainer" hidden>
-	<div class="titre">CLASSES</div>
+	<h2>CLASSES</h2>
 	<div class="helper"><b>Une classe représente la spécialisation d'un personnage</b>, son métier en quelque sorte.<br><!-- 
 	-->Chaque classe possède ses propres <b>disciplines</b>, qui sont des <b>pouvoirs actifs</b>, c'est à dire qu'ils peuvent être utilisés ponctuellement. Par exemple, un mage peut avoir la discipline "Boule de feu" et l'utiliser aussi souvent que ce que le niveau de cette discipline le permet.</div>
 
@@ -302,8 +233,8 @@ $univers = $req->fetch();
 
 			<div class="button chooseIcon chooseNatureIcon-hidden chooseClasseIcon"></div>
 
-			<div class="button update_button edit_button edit_classe" edit="classe" hidden>éditer cette classe</div>
-			<div class="button update_button delete_button delete_nature delete_classe" natureType="classe" hidden>supprimer cette classe</div>
+			<div class="button form_button edit_attribute edit_classe" edit="classe" hidden>éditer cette classe</div>
+			<div class="button form_button delete_button delete_nature delete_classe" natureType="classe" hidden>supprimer cette classe</div>
 		</div>
 
 		<!------ ADD CLASSE ------>
@@ -338,8 +269,8 @@ $univers = $req->fetch();
 				<div class="natureBackground discBackground"></div>	
 				<div class="descriptionBox discDescription">Pas encore de discipline pour cette classe</div>
 			</div>
-			<div class="button update_button edit_button edit_disc" edit="disc" hidden>éditer cette discipline</div>
-			<div class="button update_button delete_button delete_power delete_disc" powerType="disc" hidden>supprimer cette discipline</div>		
+			<div class="button form_button edit_attribute edit_disc" edit="disc" hidden>éditer cette discipline</div>
+			<div class="button form_button delete_button delete_power delete_disc" powerType="disc" hidden>supprimer cette discipline</div>		
 		</div>
 
 		<!------ ADD DISC ------>
@@ -364,25 +295,35 @@ $univers = $req->fetch();
 	</div>
 </div>
 
+
 <!-------------- REGLES SPECIALES -------------->
 <div class="bigContainer reglesBigContainer" hidden>
-	<div class="titre">REGLES SPECIALES</div>
+	<h2>REGLES SPECIALES</h2>
 
-	<div class="helper">Tu peux définir des règles de jeu associé à cet univers. <br>Par exemple, tu peux vouloir que tout le monde écrive à la 3e personne, ou que les joueurs n'utilisent une caractéristique que dans des cas bien particuliers.</div>
+	<div class="helper">Tu peux définir des règles de jeu associé à cet univers. <br>Par exemple, tu peux vouloir que tout le monde écrive à la 3e personne, ou que les joueurs n'utilisent une caractéristique que dans un cas bien particulier.</div>
 
 	<div class="regles"><?=$univers['regles']?></div>
-	<div class="button update_button edit_regles" edit="regles">éditer les règles</div>
+	<div class="button form_button edit_regles" edit="regles">éditer les règles</div>
 </div>
-
-
-
 
 
 
 </section>
 
+
+
 <?php include("_shared_/scripts.php"); ?>
 <script type="text/javascript" src="js/creauniv.js?v=3"></script>
 
+<?php
+
+if (isset($_GET['p']) AND $_GET['p'] > 0 AND $_GET['p'] < 5) { ?>
+	
+	<script type="text/javascript">
+		$('.selectBigContainer')[<?=$_GET['p']-1?>].click()
+	</script>
+
+<?php
+}?>
 </body>
 </html>

@@ -39,9 +39,9 @@
 		<ul>
 			<li><a class="nav1" href="accueil.php">ACCUEIL</a></li>|
 			<li><a class="nav2" href="aventures.php">AVENTURES</a></li>|
-			<li><a class="nav3" href="social.php">SOCIAL</a></li>|
 			<li><a class="nav4" href="profil.php">PROFIL</a></li>|
-			<li><a class="nav5" href="help.php">HELP</a></li>
+			<li><a class="nav5" href="help.php">HELP</a></li>|
+			<li><a class="nav6" href="creauniv.php?univID=2">EDITION FANTASY</a></li>
 		</ul>
 	</div>
 </nav>
@@ -54,7 +54,6 @@
 		<img id="croixNav" src="img/mobile/croix.png" hidden>
 		<img id="croixConnection" src="img/mobile/croix.png" hidden>
 		<img id="connectionLogo" src="img/mobile/userlogo.png">
-
 	</header>
 </div>
 
@@ -73,9 +72,9 @@
 		<ul>
 			<li><a class="nav1" href="accueil.php">ACCUEIL</a></li>
 			<li><a class="nav2" href="aventures.php">AVENTURES</a></li>
-			<li><a class="nav3" href="social.php">SOCIAL</a></li>
 			<li><a class="nav4" href="profil.php">PROFIL</a></li>
 			<li><a class="nav5" href="help.php">HELP</a></li>
+			<li><a class="nav6" href="creauniv.php?univID=2">EDITION FANTASY</a></li>
 		</ul>
 	</nav>
 </div>

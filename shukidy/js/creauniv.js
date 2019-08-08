@@ -1,8 +1,11 @@
+$(".nav6").addClass("currentNav");
+
+var caracControl = new CaracControl()
+
 //--------- SELECT BIG CONTAINER ---------
 
 $('.selectBigContainer').click(function(){
 	var what = $(this).attr('bigContainer')
-
 	$('.selectBigContainer').removeClass('current');
 	$(this).addClass('current')
 	$('.bigContainer').hide(0, function(){
@@ -37,11 +40,71 @@ $('.selectIconColor').change(function(){
 	
 })
 
-//--------- UPDATE CARACS ---------
+
+//--------- ADD CARAC ---------
+
+$('.addCarac').click(function(){
+	caracControl.addCarac()
+})
+
+//--------- REMOVE CARAC ---------
+
+$('.caracContainer .delete').click(function(){
+	let caracKey = $(this).attr('carac')
+	caracControl.removeCarac(caracKey)
+})
+
+//--------- CANCEL CARACS ---------
+
+$('.cancel_carac').click(function(){
+	var univID = $('.univID-stock').html()
+	window.location = 'creauniv.php?univID='+univID+'&p=2'
+})
+
+//--------- CONFIRM CARACS ---------
 
 $('.edit_carac').click(function(e){
 	var univID = $('.univID-stock').html()
-	var c1_name = $('.input_carac1').val()
+
+	let dataForm = {}
+	//On récupère toutes les carac
+	var caracContainer = $('.caracContainer')
+
+	for (var i = 0; i <= caracContainer.length-1; i++) {
+		let caracBox = $(caracContainer[i])
+		let caracX = 'carac'+(i+1)
+		//On défini les choix
+		let name = caracBox.find('.caracName').val()
+		let color = caracBox.find('option:selected', '.selectIconColor').val()
+		let icon = caracBox.find('.chooseCaracIcon').attr('icon')
+		let id = caracBox.attr('caracID')
+		let num = i+1
+		//On les ajoute dans un objet, qui sera lui même dans l'objet dataForm
+		dataForm[caracX] = {'num':num, 'icon':icon, 'name':name, 'color':color, 'id':id}
+	}
+	debugger
+
+	//Loading
+	$('.edit_carac').html('...')
+	$.post({
+		url: 'server/set_univers.php',
+		data: {
+			action: 'changeCaracs',
+			univID: univID,
+			data: dataForm
+		},
+  		dataType: 'html',
+
+  		success: function(data, statut){
+  			$('.edit_carac').html('C\'est validé !')
+  			setTimeout(function(){
+  				$('.edit_carac').html('Valider les caractéristiques')
+  			}, 2000)
+  		},
+	})	
+
+
+/*	var c1_name = $('.input_carac1').val()
 	var c1_icon = $('.chooseCaracIcon[carac="1"]').attr('icon')
 	var c1_color = $('option:selected', '.selectIconColor[carac="1"]').val()
 	var c2_name = $('.input_carac2').val()
@@ -77,7 +140,9 @@ $('.edit_carac').click(function(e){
   				$('.edit_carac').val('Valider les caractéristiques')
   			}, 2000)
   		},
-	})	
+	})	*/
+
+
 })
 
 
@@ -94,6 +159,7 @@ function refresh(what, natureID = 0){
 	//Loading
 	$('.select'+What).html('<option>...</option>');
 	$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
+	$('.'+what+'Background').css('background-image','')	
 
 	$.post({
 		url : 'server/request_univers.php',
@@ -128,6 +194,7 @@ function refresh(what, natureID = 0){
 					}
 					$('.select'+What).append("<option value='"+value['description']+"' id='"+value['id']+"' icon='"+value['icon']+"'>"+value['name']+"</option>")
 				})
+				//On affiche les boutons d'édition et suppression
 				$('.edit_'+what).show();
 				$('.delete_'+what).show();				
 			}
@@ -178,7 +245,7 @@ function editUniv(){
     descriptionBox_new.html('');
     descriptionBox_new.html(v);
     descriptionBox_new.scrollTop(2000); 
-	$(this).replaceWith('<div class="button update_button confirm_button confirm_univ">valider</div>')
+	$(this).replaceWith('<div class="button form_button confirm_button confirm_univ">valider</div>')
 	$('.confirm_univ').one("click", confirm_editUniv);
 }
 
@@ -189,7 +256,7 @@ function confirm_editUniv(){
 	var descriptionBox = $('.univDescription');
 	var description_new = descriptionBox.val();
 	descriptionBox.replaceWith('<div class="univDescription"></div>')
-	$(this).replaceWith('<div class="button update_button edit_button edit_univ" edit="univ">éditer la description</div>')
+	$(this).replaceWith('<div class="button form_button edit_univ" edit="univ">éditer la description</div>')
 
     $('.edit_univ').one("click", editUniv);
 
@@ -234,7 +301,7 @@ function editRegles(){
     reglesBox_new.html('');
     reglesBox_new.html(v);
     reglesBox_new.scrollTop(2000); 
-	$(this).replaceWith('<div class="button update_button confirm_button confirm_regles">valider</div>')
+	$(this).replaceWith('<div class="button form_button confirm_button confirm_regles">valider</div>')
 	$('.confirm_regles').one("click", confirm_editRegles);
 }
 
@@ -245,7 +312,7 @@ function confirm_editRegles(){
 	var reglesBox = $('.regles');
 	var regles_new = reglesBox.val();
 	reglesBox.replaceWith('<div class="regles"></div>')
-	$(this).replaceWith('<div class="button update_button edit_button edit_regles" edit="univ">éditer les regles</div>')
+	$(this).replaceWith('<div class="button form_button edit_regles" edit="univ">éditer les regles</div>')
 
     $('.edit_regles').one("click", editRegles);
 
@@ -312,9 +379,9 @@ function edit(){
 	chooseIconBox.css('background-image','url(img/gameicons/'+icon+')').attr('icon',icon)
 	chooseIconBox.removeClass('chooseNatureIcon-hidden')
 	chooseIconBox.addClass('chooseNatureIcon')
-	$(this).replaceWith('<div class="button update_button confirm_button confirm_'+what+'" edit="'+what+'">valider</div>')
+	$(this).replaceWith('<div class="button form_button confirm_button confirm_'+what+'" edit="'+what+'">valider</div>')
 	$('.delete_'+what).hide();
-	$('.confirm_'+what).one("click", confirm_edit);
+	$('.confirm_'+what).click(confirm_edit);
 }
 
 function confirm_edit(){
@@ -340,46 +407,55 @@ function confirm_edit(){
 	var descriptionBox = $('.'+what+'Description')
 	var selectBox = $("select.select"+What)
 	var editArea = $("input.select"+What)
-	var description_new = descriptionBox.val();
-	var name_new = editArea.val();
+	var description_new = descriptionBox.val().trim();
+	var name_new = editArea.val().trim();
 	var id = $('option:selected', '.select'+What).attr('id');
-	descriptionBox.replaceWith('<div class="descriptionBox '+what+'Description"></div>')
-	selectBox.show();
-	editArea.remove();
 	var icon = 	chooseIconBox.attr('icon')
-	chooseIconBox.removeClass('chooseNatureIcon')
-	chooseIconBox.addClass('chooseNatureIcon-hidden')
-	$(this).replaceWith('<div class="button update_button edit_button edit_'+what+'" edit="'+what+'">éditer cette '+type+'</div>')
-    $('.edit_'+what).one("click", edit);
 
+    if (name_new !== '') {
+    	if (description_new !== '') {
+			descriptionBox.replaceWith('<div class="descriptionBox '+what+'Description"></div>')
+			selectBox.show();
+			editArea.remove();
+			chooseIconBox.removeClass('chooseNatureIcon')
+			chooseIconBox.addClass('chooseNatureIcon-hidden')
+			$(this).replaceWith('<div class="button form_button edit_button edit_'+what+'" edit="'+what+'">éditer cette '+type+'</div>')
+		    $('.edit_'+what).hide();
+		    $('.edit_'+what).one("click", edit);
+			//Loading
+			$('.select'+What).html('<option>...</option>');
+			$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
+			$('.'+what+'Background').css('background-image','')		
+			$.post({
+				url: 'server/set_univers.php',
+				data: {
+					action: 'edit',
+					what: what,
+					id: id,
+					icon: icon,
+					name: name_new,
+					description: description_new
+				},
+		  		dataType: 'html',
 
-	//Loading
-	$('.select'+What).html('<option>...</option>');
-	$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
-	$('.'+what+'Background').css('background-image','')		
-	$.post({
-		url: 'server/set_univers.php',
-		data: {
-			action: 'edit',
-			what: what,
-			id: id,
-			icon: icon,
-			name: name_new,
-			description: description_new
-		},
-  		dataType: 'html',
+		  		success: function(data, statut){
+		  			$('.'+type+'_name').val('');
+		  			$('.'+type+'_description').val('');
+		  			refresh(what, natureID)
+		  		},
+			})
+    	}else{
+    		alert('Il faut écrire une description ;-)')
+    	}
+    }else{
+    	alert('il faut écrire un nom ;-)')
+    }
 
-  		success: function(data, statut){
-  			$('.'+type+'_name').val('');
-  			$('.'+type+'_description').val('');
-  			refresh(what, natureID)
-  		},
-	})
 
 
 }
 
-$('.edit_button').one("click", edit);
+$('.edit_attribute').click(edit);
 
 
 //--------- CREATE SLIDE ---------
@@ -402,42 +478,56 @@ $('.nature_submit').click(function(){
 	var univID = $('.univID-stock').html();
 	var what = submit.attr('nature_type');
 	var What = what[0].toUpperCase() + what.substring(1)
-	var nature_name = $('.'+what+'_name').val();
-	var nature_description = $('.'+what+'_description').val();
+	var nature_name = $('.'+what+'_name').val().trim();
+	var nature_description = $('.'+what+'_description').val().trim();
 	chooseIconBox = $('.chooseNew'+What+'Icon')
 	var icon = chooseIconBox.attr('icon')
-	$('.add'+What+' .addTitle').click()
 
+    if (nature_name !== '') {
+    	if (nature_description !== '') {
+    		if (typeof icon !== 'undefined') {
+    			console.log(icon)
+				$('.add'+What+' .addTitle').click()
+				//Loading
+				$('.select'+What).html('<option>...</option>');
+				$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
+				$('.'+what+'Background').css('background-image','')	
 
-	$.post({
-		url: 'server/set_univers.php',
-		data: {
-			action: 'addNature',
-			univID: univID,
-			name: nature_name,
-			what: what,
-			description: nature_description,
-			icon: icon
-		},
-  		dataType: 'html',
+				$.post({
+					url: 'server/set_univers.php',
+					data: {
+						action: 'addNature',
+						univID: univID,
+						name: nature_name,
+						what: what,
+						description: nature_description,
+						icon: icon
+					},
+			  		dataType: 'html',
 
-  		success: function(data, statut){
-  			$('.'+what+'_name').val('');
-  			$('.'+what+'_description').val('');
-  			submit.after('<span class="success">ok</span>')
-  			setTimeout(function(){
-  				$('.success').fadeOut(200)
-  			}, 3000)
-  		},
-	})
+			  		success: function(data, statut){
+			  			$('.'+what+'_name').val('');
+			  			$('.'+what+'_description').val('');
+			  			refresh(what);
+			  		},
+				})
 
+    		}else{
+    			alert('Il faut choisir une icone ;-)')
+    		}
+    	}else{
+    		alert('Il faut écrire une description ;-)')
+    	}
+    }else{
+    	alert('il faut écrire un nom ;-)')
+    }
 })
 
 //--------- DELETE NATURE ---------
 
 $('.delete_nature').click(function(e){
 
-		var what = $(e.currentTarget).attr('natureType');
+	var what = $(e.currentTarget).attr('natureType');
 
 	customConfirm(
 		//msg
@@ -447,11 +537,14 @@ $('.delete_nature').click(function(e){
 		//noMsg
 		'Euh en fait non',
 		//yesCallBack
-		function(){			
+		function(){
 			var univID = $('.univID-stock').html();
 			var What = what[0].toUpperCase() + what.substring(1);
 			var natureID = $('option:selected', '.select'+What).attr('id');
-
+			//Loading
+			$('.select'+What).html('<option>...</option>');
+			$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
+			$('.'+what+'Background').css('background-image','')	
 
 			$.post({
 				url: 'server/set_univers.php',
@@ -488,34 +581,41 @@ $('.power_submit').click(function(e){
 	if (what == 'capa') {NatureType = 'Race'}
 	else if (what == 'disc') {NatureType = 'Classe'}
 	var natureID = $('option:selected', '.select'+NatureType).attr('id');
-	var name = $('.'+what+'_name').val();
-	var description = $('.'+what+'_description').val();
-	$('.add'+What+' .addTitle').click()
+	var name = $('.'+what+'_name').val().trim();
+	var description = $('.'+what+'_description').val().trim();
 
+    if (name !== '') {
+    	if (description !== '') {
 
-	$.post({
-		url: 'server/set_univers.php',
-		data: {
-			action: 'addPower',
-			univID: univID,
-			natureID: natureID,
-			what: what,
-			name: name,
-			description: description
-		},
-  		dataType: 'html',
+			$('.add'+What+' .addTitle').click()
+			//Loading
+			$('.select'+What).html('<option>...</option>');
+			$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');	
 
-  		success: function(data, statut){
-  			$('.'+what+'_name').val('');
-  			$('.'+what+'_description').val('');
-  			submit.after('<span class="success">ok</span>')
-  			setTimeout(function(){
-  				$('.success').fadeOut(200)
-  			}, 3000)
-  			refresh(what, natureID)
-  		},
-	})
+			$.post({
+				url: 'server/set_univers.php',
+				data: {
+					action: 'addPower',
+					univID: univID,
+					natureID: natureID,
+					what: what,
+					name: name,
+					description: description
+				},
+		  		dataType: 'html',
 
+		  		success: function(data, statut){
+		  			$('.'+what+'_name').val('');
+		  			$('.'+what+'_description').val('');
+		  			refresh(what, natureID)
+		  		},
+			})
+    	}else{
+    		alert('Il faut écrire une description ;-)')
+    	}
+    }else{
+    	alert('il faut écrire un nom ;-)')
+    }
 })
 
 //--------- DELETE POWER ---------
@@ -538,6 +638,9 @@ $('.delete_power').click(function(e){
 			var natureID = $('option:selected', '.select'+NatureType).attr('id');
 			var What = what[0].toUpperCase() + what.substring(1);
 			var powerID = $('option:selected', '.select'+What).attr('id');
+			//Loading
+			$('.select'+What).html('<option>...</option>');
+			$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
 
 			$.post({
 				url: 'server/set_univers.php',

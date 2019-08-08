@@ -11,7 +11,8 @@ include("_shared_/start.php");
 </head>
 <body>
 
-<?php include('_shared_/header.php') ?>
+<?php include('_shared_/header.php');
+?>
 
 
 <!-- -------- CONTENU -------- -->
@@ -20,20 +21,41 @@ include("_shared_/start.php");
 	<h1>ACCUEIL</h1>
 
 
-	<div class="container centering">
 
-		Mmh, ouais, alors ça c'est l'accueil<br>
-		Ok c'est pas très sexy pour le moment<br>
-		Mais promis je mets des trucs bientôt ^_^<br><br>
-		Des poutous
 
 	</div>
+<!-- 
+		<div class="pagerTitle">
+			<span class="pageCount"></span> : 
+			<span class="pageName"></span>
+		</div>
+		<div class="pagerNav">
+			<div class="button pagerbutton pagerPrev"></div>
+			<div class="button pagerbutton pagerNext"></div>
+		</div>
 
-	<div class="container centering">
+		<div class="pagesBigContainer">
+			<div class="pageContainer" pageName="Race/Capacité" page="1">
+				Bouh
+			</div>
 
-	</div>
 
+			<div class="pageContainer" pageName="Classe/Discipline" page="2">
+				Paf
+			</div>
+			
 
+			<div class="pageContainer" pageName="T'as quoi dans le ventre ?" page="3">
+				Ceci est la  page 3
+			</div>
+			
+
+			<div class="pageContainer" pageName="Qui es-tu ?" page="4">
+				Et ta mère ?
+			</div>
+
+		</div>
+ -->
 	<div class="container">
 
 	</div>

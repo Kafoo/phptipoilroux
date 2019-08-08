@@ -48,7 +48,7 @@ include('_shared_/class_persos.php');
 			?>
 
 			<!------ TITRE AVENTURE ------>
-			<h2><?=$avInfos['nom_aventure']?></h2>
+			<h2><?=strtoupper($avInfos['nom_aventure'])?></h2>
 
 			<!-- SELECTION DE PAGE -->	
 			<?php

@@ -26,8 +26,8 @@ session_start();
 /* ---------- MAIN INCLUDES ---------- */
 
     include("connectDB.php");
-    include("_shared_/functions.php");
-    include("_shared_/views.php");
+    include("functions.php");
+    include("views.php");
 
 
 

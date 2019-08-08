@@ -55,7 +55,10 @@ if ($userInAv == False){
 $req = $bdd->query("
 	SELECT
 	av.nom_aventure, av.gmID, av.writerID,
-	univ.name, univ.c1_name, univ.c2_name, univ.c3_name, univ.c4_name, univ.c5_name
+	univ.name, 
+	univ.c1_name, univ.c2_name, univ.c3_name, univ.c4_name, univ.c5_name,
+	univ.c1_icon, univ.c2_icon, univ.c3_icon, univ.c4_icon, univ.c5_icon,
+	univ.c1_color, univ.c2_color, univ.c3_color, univ.c4_color, univ.c5_color
 	FROM mas_aventures as av
 	INNER JOIN mas_univers as univ
 	ON av.univID = univ.id

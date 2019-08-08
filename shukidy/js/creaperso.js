@@ -1,163 +1,155 @@
-// --------- CARACTERISTIQUES ---------
+/*------ INITIALIZE ------*/
 
-function change(carac){
-	//Change la valeur affichée devant chaque caractéristique
-	var displayCarac = $("#display"+carac);
-	var valCarac = $("#val"+carac).val();
-	displayCarac.html(valCarac);
-	//Compte le total des carac et l'affiche dans total
-	var arrayCarac = $(".displayCarac");
-	var count = 0;
-	for (var i = 0; i < arrayCarac.length; i++) {
-		var add = arrayCarac[i].innerHTML;
-		count = count + Number(add);
-	}
-	$("#totalCarac").html(count);
-	//Change la couleur du total en fonction de l'objectif
-	var objectif = 25; 
-	if (count < objectif) {
-		$("#totalCarac").css("color", "blue");
-	}
-	if (count > objectif) {
-		$("#totalCarac").css("color", "red");
-	}
-	if (count == objectif) {
-		$("#totalCarac").css("color", "green");
-	}
-}
+const pager = new Pager()
+const controller = new Controller_creaperso()
+
+/*------ REFRESH ------*/
 
 
-
-function showHelp(x){
-	document.getElementById("help"+x).removeAttribute("hidden");
-}
-
-function hideHelp(x){
-	document.getElementById("help"+x).setAttribute("hidden", true);
-}
-
-
-function show(what,source,info){
-
-	/*Cache le Fixe*/
-	var shown = document.querySelectorAll("div["+what+"Shown]");
-	shown[0].setAttribute("hidden", true);
-	/*Affiche ce sur quoi l'utilisateur a la souris*/
-	var tempShown = document.getElementById(info);
-	tempShown.removeAttribute("hidden");
-	/*Met l'icone selectionnée en gris*/
-	document.getElementById(source).style.backgroundColor = "lightgrey";
-}
-
-function hide(what,source,info){
-
-	/*Cache le tempShown*/
-	var tempShown = document.getElementById(info);
-	tempShown.setAttribute("hidden", true);
-	/*Raffiche le Fixe*/
-	var shown = document.querySelectorAll("div["+what+"Shown]");
-	shown[0].removeAttribute("hidden");
-	/*Remet l'icone en transparent*/
-	document.getElementById(source).style.backgroundColor = "transparent";
-}
-
-function choose(what,choix){
-
-	/*Cache le Fixe définitivement */
-	var oldShown = document.querySelectorAll("div["+what+"Shown]");
-	oldShown[0].setAttribute("hidden", true);
-	oldShown[0].removeAttribute(what+"Shown");
-	/*Défini un nouveau Fixe*/
-	newShown = document.getElementById("info"+choix);
-	newShown.removeAttribute("hidden");
-	newShown.setAttribute(what+"Shown", true);
-	/*Enlève le contour et l'attribut currentLogo du choix précédent*/
-	var oldCurrent = document.querySelectorAll("div[current"+what+"Logo]");
-	oldCurrent[0].style.boxShadow = "inset 0 0 10px 1px black";
-	oldCurrent[0].removeAttribute("current"+what+"Logo");
-	/*Applique l'attribut au nouveau currentLogo*/
-	var newCurrent = document.getElementById("logo"+choix);
-	newCurrent.setAttribute("current"+what+"Logo", true);
-	newCurrent.style.boxShadow = "inset 0 0 30px 1px white";
-	/*Rentre le choix dans le formulaire*/
-	var stock = document.getElementById(what+"Stock")
-	stock.innerHTML = choix;
-	stock.setAttribute("value", choix);
-}
-
-
-//SELECT NATURE
-$('.selectNature').change(function(){
-	var natureType;
-	if ($(this).attr('natureType') == 'race') {natureType = 'race';} 
-	else if ($(this).attr('NatureType') == 'classe') {natureType = 'classe';}
-	var natureID = this.value;
-	
-
+function refresh(what, natureID = 0){
+	var univID = $('.univID-stock').html()
+	var What = what[0].toUpperCase() + what.substring(1)
+	//On définit "type" comme un "what" qui aurait toutes ses lettres
+	var type;
+	if (what == 'capa') {type = 'capacité'}
+	else if (what == 'disc') {type = 'discipline'}
+	else {type = what}
 	//Loading
-	if (natureType == 'race') {
-		$('.raceDescription').html('...');		
-		$('.selectCapacite').html('<option>...</option>');
-		$('.capaciteDescription-container').html('...');
-	}
-	if (natureType == 'classe') {
-		$('.classeDescription').html('...');		
-		$('.selectDiscipline').html('<option>...</option>');
-		$('.disciplineDescription-container').html('...');
-	}
+	$('.select'+What).html('<option>...</option>');
+	$('.'+what+'Description').html('<p class="saving"><span>.</span><span>.</span><span>.</span></p>');
+	$('.'+what+'Background').css('background-image','')	
 
-	//AJAX
-    $.get({
-		url : 'server/request_univers?get=natureInfos&natureID='+natureID,
-		dataType : 'json', // On désire recevoir du HTML
-
-		success : function(data, statut){
-			//NATURE = RACE
-			if (natureType == 'race') {
-				//On affiche la description
-				$('.raceDescription').html(data['description'])
-				//On vide le choix des capacités et on le rempli
-				$('.selectCapacite').html('');
-				$('.capaciteDescription-container').html('');
-				for (var i = data['powers'].length - 1; i >= 0; i--) {
-					$power = data['powers'][i]
-					console.log('yo')
-					$('.selectCapacite').append('<option value="'+$power['id']+'">'+$power['name']+' [lvl'+$power['lvl']+']</option>')
-					$('.capaciteDescription-container').append('<div class="capaciteDescription" powerID="'+$power['id']+'" hidden>'+$power['description']+'</div>');					
-				}
-			}
-			//NATURE = CLASSE
-			if (natureType == 'classe') {
-				//On affiche la description
-				$('.classeDescription').html(data['description'])
-				//On vide le choix des disciplines et on le rempli
-				$('.selectDiscipline').html('');
-				$('.disciplineDescription-container').html('');
-				for (var i = data['powers'].length - 1; i >= 0; i--) {
-					$power = data['powers'][i]
-					$('.selectDiscipline').append('<option value="'+$power['id']+'">'+$power['name']+' [lvl'+$power['lvl']+']</option>')
-					$('.disciplineDescription-container').append('<div class="disciplineDescription" powerID="'+$power['id']+'" hidden>'+$power['description']+'</div>');					
-				}
-			}
-			$('.selectPower').trigger('change');
+	$.post({
+		url : 'server/request_univers.php',
+		data : {
+			getInfos : true,
+			univID : univID,
+			what : what,
+			natureID : natureID
 		},
+		dataType : 'json',
 
-		error : function(e){
+		success : function(data){
+			//On vide les choix et la description
+			$('.select'+What).html('');
+			$('.'+what+'Description').html('');
+			//S'il n'y a pas encore d'attribut existant
+			if (data.length == 0) {
+				$('.select'+What).html('<option>---</option>');
+				$('.'+what+'Description').html('pas encore de '+type);
+				$('.edit_'+what).hide();
+				$('.delete_'+what).hide();			
+			}else{
+				//On refresh les pouvoirs correspondants à la nature
+				if (what == 'race') {refresh('capa', data[0]['id'])}
+				if (what == 'classe') {refresh('disc', data[0]['id'])}
+				//Pour chaque attribut, on l'ajoute aux choix
+				$.each(data, function(key, value){
+					//(on met la description du premier et son icon)
+					if (key == 0) {
+						$('.'+what+'Description').html(value['description'])
+						$('.'+what+'Background').css('background-image','url(img/gameicons/'+value['icon']+')')		
+					}
+					$('.select'+What).append("<option value='"+value['description']+"' id='"+value['id']+"' icon='"+value['icon']+"'>"+value['name']+"</option>")
+				})
+				//On affiche les boutons d'édition et suppression
+				$('.edit_'+what).show();
+				$('.delete_'+what).show();				
+			}
 		}
-	});
-})
-//Au chargement, on trigger le change pour afficher les infos des premières natures
-$('.selectNature').trigger('change');
+	})
+}
 
-//SELECT POWERS
-$('.selectCapacite').change(function(){
-	var powerID = $(this).val();
-	$('.capaciteDescription-container').children('[powerID]').hide();
-	$('.capaciteDescription-container').children('[powerID="'+powerID+'"]').show();
-})
-$('.selectDiscipline').change(function(){
-	var powerID = $(this).val();
-	$('.disciplineDescription-container').children('[powerID]').hide();
-	$('.disciplineDescription-container').children('[powerID="'+powerID+'"]').show();
+// On initialise tout au chargement
+refresh('race')
+refresh('classe')
+
+
+$('input[type=range]').on('input', function () {
+	let caracID = $(this).attr('carac')
+	let caracVal = $(this).val()
+	controller.changeCaracDisplay(caracID, caracVal)
+});
+
+
+/*------ CHECK CONDITIONS PAGE ------*/
+
+function checkPager(page){
+	
+	let success = 1
+	let msg
+
+	//CARAC CONDITIONS
+	if (page == 3) {
+
+		let caracGoal = $('.caracBox').length*5
+		let totalCarac = controller.totalCarac
+
+		if (totalCarac !== caracGoal) {
+			debugger
+			msg = 'Le total des valeurs de tes caractéristiques doit être de 25'
+			success = 0
+		}
+	}
+
+	//Si les conditions ne sont pas respectées, on retourne l'erreur
+	if (success == 0) {
+		return msg
+	//Sinon on continue
+	}else{
+		return true
+	}
+
+}
+
+
+
+//On affiche la description correspondante à n'importe quel changement
+$('.selectAttribute').change(function(){
+	var what = $(this).attr('select')
+	var description = this.value
+	$('.'+what+'Description').html(description)
+	//On change le background pour les natures
+	if (what == 'race' || what == 'classe') {
+		let icon = $('option:selected', this).attr('icon')
+		$('.'+what+'Background').css('background-image','url(img/gameicons/'+icon+')')
+	}
 })
 
+//On refresh les pouvoirs lorsqu'on change de nature
+$('.selectNature').change(function(){
+	var natureID = $(this).attr('id')
+	var natureID = $('option:selected', this).attr('id');
+	if ($(this).hasClass('selectRace') ) {
+		refresh('capa', natureID)
+	}
+	if ($(this).hasClass('selectClasse') ) {
+		refresh('disc', natureID)
+	}
+})
+
+
+
+
+
+
+
+
+//------------------TES6-----------
+
+
+// Fonction exécutée au redimensionnement, contenu executé seulement au passage mobile/desktop et desktop/mobile
+var isMobile;
+var lastFormat='';
+function redimensionnement(e) {
+	if("matchMedia" in window) {
+		var currentPage = pager.getCurrentPage()
+		pageHeight = $('.pageContainer[page="'+currentPage+'"]').height()
+		var pagesBigContainer = $('.pagesBigContainer')
+		pagesBigContainer.height(pageHeight)
+	}
+}
+// On lie l'événement resize à la fonction
+window.addEventListener('resize', redimensionnement, false);
+// Exécution de cette même fonction au démarrage pour avoir un retour initial
+redimensionnement();

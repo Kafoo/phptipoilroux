@@ -9,30 +9,23 @@ include("../_shared_/connectDB.php");
 if (isset($_POST['action']) AND $_POST['action'] == 'changeCaracs') {
 
 
-	$univID = $_POST['univID'];
-	$c1_name = $_POST['c1_name'];
-	$c1_icon = $_POST['c1_icon'];
-	$c1_color = $_POST['c1_color'];
-	$c2_name = $_POST['c2_name'];
-	$c2_icon = $_POST['c2_icon'];
-	$c2_color = $_POST['c2_color'];
-	$c3_name = $_POST['c3_name'];
-	$c3_icon = $_POST['c3_icon'];
-	$c3_color = $_POST['c3_color'];
-	$c4_name = $_POST['c4_name'];
-	$c4_icon = $_POST['c4_icon'];
-	$c4_color = $_POST['c4_color'];
-	$c5_name = $_POST['c5_name'];
-	$c5_icon = $_POST['c5_icon'];
-	$c5_color = $_POST['c5_color'];
+	$univID = htmlspecialchars($_POST['univID']);
+	$data = $_POST['data'];
+	$query = '';
 
+	$i = 0;
+	foreach ($data as $key => $carac) {
+		$name = htmlspecialchars($carac['name'], ENT_QUOTES);
+		$icon = htmlspecialchars($carac['icon'], ENT_QUOTES);
+		$color = htmlspecialchars($carac['color'], ENT_QUOTES);
+		$caracID = htmlspecialchars($carac['id'], ENT_QUOTES);
+		$caracNum = htmlspecialchars($carac['num'], ENT_QUOTES);
+		$query .= "UPDATE carac SET num='".$caracNum."',name='".$name."', icon = '".$icon."', color = '".$color."' WHERE id=".$caracID.";";
+	}
 
-	 	$bdd->query("UPDATE mas_univers 
-	 		SET 
-	 		c1_name='$c1_name', c2_name='$c2_name', c3_name='$c3_name', c4_name='$c4_name', c5_name='$c5_name',
-	 		c1_icon='$c1_icon', c2_icon='$c2_icon', c3_icon='$c3_icon', c4_icon='$c4_icon', c5_icon='$c5_icon',
-	 		c1_color='$c1_color', c2_color='$c2_color', c3_color='$c3_color', c4_color='$c4_color', c5_color='$c5_color' 
-	 		WHERE id='$univID' ");
+echo $query;
+
+$bdd->query($query);
 
 }
 

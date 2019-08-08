@@ -1,6 +1,5 @@
 /*CHOOSE ICONE*/
 
-
 //Fonction principale
 function chooseIcon(target, callBack){
 
@@ -43,6 +42,24 @@ function chooseIcon(target, callBack){
 
 
 /*CUSTOM CONFIRM*/
+
+/*
+element.click(function(){
+	customConfirm(
+		//msg
+		'',
+		//yesMsg
+		'',
+		//noMsg
+		'',
+		function(){			
+		//yesCallBack
+		},
+		function(){
+		//noCallBack
+		})
+})*/
+
 
 function customConfirm(msg, yesMsg, noMsg, yesCallBack, noCallBack){
 
@@ -133,7 +150,6 @@ $('#navLogo').click(function(){
 });
 
 
-
 /*CONNEXION DEROULANTE MOBILE*/
 
 $('#connectionLogo').click(function(){
@@ -192,5 +208,12 @@ $(document).mouseup(function(e) {
 		$('#connectionLogo').show();
 		$('#croixConnection').hide();
     }
-
 });
+
+
+
+/*-----------TEST-------------*/
+
+
+//RESIZING carac value in displayCarac-Container	
+$('.displayCarac-value').css('font-size', Math.max(Math.min($('.displayCarac-container').width()/4)))

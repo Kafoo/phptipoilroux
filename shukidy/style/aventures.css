@@ -68,8 +68,12 @@
 
 /* ------ AVENTURE PRÉCISÉE ------ */
 
-	h2 img{
-		width: 30px;
+	h2 {
+		font-family: Cinzel; 
+		margin: 15px auto 30px auto; 
+		font-size: 3em; 
+		text-shadow: 4px 4px 6px #0000009e; 
+		color: rgb(88, 26, 26);
 	}
 
 	#gridAv{
@@ -527,7 +531,6 @@
 		padding-bottom: 2px;
 	}
 
-
 	.infoPersoDropdown{
 		overflow: hidden;
 		height: max-content;
@@ -549,17 +552,12 @@
 		text-shadow: 1px 1px 3px black;
 	}
 
-	.infoPersoCarac{
-		display: inline-block;
-		width: 25px;
-		height: 25px;
-		line-height: 25px;
-		border-radius: 50px;
-		border: 1px solid black;
-		box-shadow: inset -1px -1px 1px rgb(50,50,50);
-		text-shadow: 1px 1px 1px black;
-		color: white;
+	.displayCarac-container{
+		width: 45px;
+		height: 30px;
+		margin: 0;
 	}
+
 
 	.infoPersoCond{
 		display: inline-block;
@@ -1003,6 +1001,10 @@
 
 
 @media (max-width: 720px){
+
+	h2{
+		font-size: 2em;
+	}
 
 	#gridAv{
 		grid-template-columns: 1fr;
