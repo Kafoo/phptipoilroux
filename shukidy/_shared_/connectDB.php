@@ -1,6 +1,6 @@
 <?php
 
-$onlinebdd = 0;
+$onlinebdd = 1;
 
 if (getenv('DB_PASSWORD') == false) {
 	include('configDB.php');
