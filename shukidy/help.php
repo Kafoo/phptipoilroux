@@ -81,9 +81,6 @@ if (isset($error)) { ?>
 
 ?>
 
-<div class="helper">
-	Voilà une <b>petite page temporaire</b>, le temps de la création du premier univers, juste pour que chacun puisse poster <b>une question / une remarque / une suggestion</b> <span style="font-size: 8px;">/une insulte</span> à la volée, sans qu'on fasse 10 000 conversations facebook ou autre xD <br><br>J'essaierai de répondre au plus vite, et ne supprimerai pas les messages pour que tout le monde profite des réponses^^<br>Zoubis
-</div>
 
 <!-- PAGINATION -->
 <?php
